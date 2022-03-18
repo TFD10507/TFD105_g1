@@ -1,0 +1,27 @@
+// ========== 這支不要動!! =================
+
+// @import '/node_modules/bootstrap/scss/bootstrap.scss';
+
+@import 'base/var';
+@import 'base/reset';
+@import 'mixin/space';
+@import 'layout/login';
+@import 'layout/nav';
+@import 'layout/footer';
+@import 'page/index';
+@import 'page/about';
+@import 'page/backend';
+@import 'page/cart';
+@import 'page/customize';
+@import 'page/faq';
+@import 'page/member';
+@import 'page/news';
+@import 'page/product';
+
+
+body {
+    font-size: 15px;
+
+}
+
+
