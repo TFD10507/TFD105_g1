@@ -1,51 +1,107 @@
 header {
     nav {
-        .nav_logo {
+        background-color: $p_color2;
+        .navLogo {
+            width: 60px;
+            a{
+                display: block;
+                img{
+                    max-width: 100%;
+                }
+            }
         }
-        .nav_icon {
+        .navIcon {
+            width: 100%;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            a{
+                text-decoration: none;
+                color: $p_color1;
+                display: block;
+                margin-right: 10px;
+                i{
+                    font-size: 35px;
+                }
+            }
             #meun_control {
+                display: none;
                 &:checked + div + div {
                     left: 0;
-                    top: 60px;
-                    opacity: 0.9;
+                    top: 0;
+                    opacity: 1;
                 }
                 &:checked + div > label > span:nth-child(1) {
-                    transform: translateY(6px) rotate(45deg);
+                    transform: translateY(10px) rotate(45deg);
                 }
                 &:checked + div > label > span:nth-child(2){
-                    transform: translateY(-1px) rotate(-45deg);
+                    transform: translateY(0px) rotate(-45deg);
                 }
                 &:checked + div > label > span:nth-child(3){
                     transform: scale(0);
                 }
             }
             .hamburger {
-                width: 25px;
+                padding-right: 10px;
+                margin-left: 5px;
+                width: 30px;
                 height: 50px;
-                margin: 0;
-                position: fixed;
-                top: 5px;
-                right: 20px;
+                // margin: 0;
+                // position: fixed;
+                // top: 5px;
+                // right: 20px;
                 display: block;
                 z-index: 5;
                 label {
                     display: flex;
-                    width: 25px;
+                    max-width: 100%;
                     height: 50px;
                     flex-direction: column;
                     padding-top: 10px;
                     position: relative;
                     cursor: pointer;
                     span {
-                        background-color: #333;
+                        background-color: $p_color1;
                         display: block;
                         width: 100%;
-                        height: 1px;
+                        height: 4px;
+                        border-radius: 5px;
                         margin: 3px 0;
                         transition: 0.3s ease;
                     }
                     span:nth-child(3) {
                         width: 18px;
+                    }
+                }
+            }
+        }
+        .mainSel{
+            position: absolute;
+            top: 0;
+            left: -100vw;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            .mainImg{
+                width: 50%;
+                max-height: 100vh;
+                background-image: url('../img/index/Group216.png');
+                background-position: center bottom;
+                background-size: cover;
+            }
+            .mainList{
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                // align-items: center;
+                justify-content: center;
+                background-color: $s_color2;
+                li{
+                    text-align: center;
+                    a{
+                        text-decoration: none;
+                        color: $p_color;
+                        display: inline-block;
                     }
                 }
             }

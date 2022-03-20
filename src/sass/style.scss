@@ -1,28 +1,36 @@
 // ========== 這支不要動!! =================
 
-// @import '/node_modules/bootstrap/scss/bootstrap.scss';
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-@import 'base/var';
-@import 'base/reset';
-@import 'mixin/space';
-@import 'layout/login';
-@import 'layout/nav';
-@import 'layout/footer';
-@import 'page/index';
-@import 'page/about';
-@import 'page/backend';
-@import 'page/cart';
-@import 'page/customize';
-@import 'page/faq';
-@import 'page/member';
-@import 'page/news';
-@import 'page/product';
+@import "base/var";
+@import "base/reset";
+@import "mixin/space";
+@import "layout/login";
+@import "layout/nav";
+@import "layout/footer";
+@import "page/index";
+@import "page/about";
+@import "page/backend";
+@import "page/cart";
+@import "page/customize";
+@import "page/faq";
+@import "page/member";
+@import "page/news";
+@import "page/product";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap");
 
-
-body {
-    font-size: 16px;
-    background-image: url('../img/body_bg.png');
-    background-size: cover;
+html {
+    body {
+        font-size: $p;
+        color: $p_color;
+        background-image: url("../img/body_bg.png");
+        background-size: cover;
+        font-family: "Noto Serif TC", serif;
+        letter-spacing: 2px;
+        line-height: 1.5;
+        box-sizing: border-box;
+        main{
+            padding-top: 90px;
+        }
+    }
 }
-
-

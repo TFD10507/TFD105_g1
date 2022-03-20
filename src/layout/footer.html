@@ -1,0 +1,24 @@
+<footer id="footer" class="padding_30 margin_top_50">
+    <ul>
+        <li v-for="footer in footers">{{footer}}</li>
+    </ul>
+    <div>
+        <a href="#" v-for="footer2 in footers2">{{footer2}}</a>
+    </div>
+</footer>
+
+<script>
+    new Vue({
+        el:'#footer',
+        data:{
+            footers:['森活木工','FACTORY 埼玉県川口市安行領家945-1','contact@sinrafurniture.com',' 048-278-3324'],
+            footers2:['facebook','instgram'],
+        },
+        methods:{
+
+        },
+        computed:{
+
+        },
+    });
+</script>
