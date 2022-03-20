@@ -8,7 +8,7 @@ const {
 
 // 搬檔案
 function package() {
-   return src('src/img/*.*').pipe(dest('dist/img'))
+   return src('src/img/*/*.*').pipe(dest('dist/img'))
 }
 const rename = require('gulp-rename');
 

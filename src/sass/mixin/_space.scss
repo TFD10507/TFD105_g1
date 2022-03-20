@@ -1,0 +1,20 @@
+@mixin margin_top($num) {
+    @for $i from 5 through $num{
+        .margin_top_#{$i}{
+            margin-top: $i *1px;
+        }
+    }
+}
+
+@include margin_top(50);
+
+
+@mixin padding($num) {
+    @for $i from 5 through $num{
+        .padding_#{$i}{
+            padding: $i *1px;
+        }
+    }
+}
+
+@include padding(50);
