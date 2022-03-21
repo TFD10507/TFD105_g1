@@ -1,40 +1,69 @@
 <header>
     <nav class="navbar fixed-top navbar-expand-lg padding_10">
-        <div class="navLogo">
-            <a class="navbar-brand" href="index.html">
-                <img src="./img/mori_logo.png" alt="">
-            </a>
-        </div>
-
-        <div class="navIcon">
-            <a href="#">
-                <i class="fas fa-user-circle"></i>
-            </a>
-            <a href="#">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-            <!-- 漢堡checkbox -->
-            <input type="checkbox" id="meun_control">
-            <!-- 漢堡 -->
-            <div class="hamburger">
-                <label for="meun_control" class="meun_btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
+        <div class="container-fluid">
+            <div class="navLogo">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./img/mori_logo.png" alt="">
+                </a>
             </div>
-            <!-- 漢堡出現介面 = 主選單內容 -->
-            <div class="mainSel">
-                <div class="mainImg">
-                    <!-- <img src="./img/index/pexels-anna-nekrashevich-8516702.jpg" alt=""> -->
+
+            <div class="navIcon">
+                <a href="#">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+                <a href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <!-- 漢堡checkbox -->
+                <input type="checkbox" id="meun_control">
+                <!-- 漢堡 -->
+                <div class="hamburger">
+                    <label for="meun_control" class="meun_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
                 </div>
-                <ul class="mainList">
-                    <li class="padding_10"><a href="about.html" class="nav-about">關於我們</a></li>
-                    <li class="padding_10"><a href="product.html" class="nav-product">所有商品</a></li>
-                    <li class="padding_10"><a href="course.html" class="nav-course">客製化專區</a></li>
-                    <li class="padding_10"><a href="course.html#reserve" class="nav-reserve">最新消息</a></li>
-                    <li class="padding_10"><a href="design.html" class="nav-design">常見問題</a></li>
-                </ul>
+                <!-- 漢堡出現介面 = 主選單內容 -->
+                <div class="mainSel">
+                    <div class="mainImg">
+                        <!-- <img src="./img/index/pexels-anna-nekrashevich-8516702.jpg" alt=""> -->
+                    </div>
+                    <ul class="mainList">
+                        <li class="padding_10 nav-item">
+                            <a href="about.html" class="nav-link">關於我們</a>
+                        </li>
+                        <!-- <li class="padding_10 dropdown-menu">
+                            <a href="product.html" class="nav-link">所有商品</a>
+                        </li> -->
+                        <li class="padding_10 nav-item dropdown">
+                            <a class="dropdown-toggle padding_10" href="product.html" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                所有商品
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li>
+                                    <a class="dropdown-item nav-link" href="#">桌子</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="#">櫃子</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link" href="#">椅子</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="padding_10 nav-item">
+                            <a href="customize.html" class="nav-link">客製化專區</a>
+                        </li>
+                        <li class="padding_10 nav-item">
+                            <a href="news.html" class="nav-link">最新消息</a>
+                        </li>
+                        <li class="padding_10 nav-item">
+                            <a href="faq.html" class="nav-link">常見問題</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>

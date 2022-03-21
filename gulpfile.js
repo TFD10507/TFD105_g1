@@ -31,7 +31,7 @@ exports.c = minicss;
 const uglify = require('gulp-uglify');
 
 function minijs() {
-   return src('src/js/*.js')
+   return src('src/js/*/*.js')
       .pipe(uglify())
       .pipe(rename({
          extname: '.min.js' // 修改附檔名
