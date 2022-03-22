@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  @@include('layout/head.html')
+  <!-- 載入 fullpage css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.css">
+</head>
+<body>
+
+  <section id="customize">
+    
+    <div class="sec1">
+      <h1>客製一張家具</h1>
+    </div>
+
+    <div class="sec2">
+      <h1>The 2nd section</h1>
+    </div>
+
+    <div class="sec3">
+      <h1>The 3rd section</h1>
+    </div>
+    
+    <div class="sec4">
+      <h1>The 4th section</h1>
+    </div>
+  </section>
+
+  @@include('layout/footer.html')
+
+  <!-- 載入 fullpage.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.js"></script>
+  <script>
+
+    new fullPage('#customize', {
+      autoScrolling: true,
+      navigation: true,
+      navigationTooltips:['Top', 'Chair', 'Cabinet','Table'],
+      scrollingSpeed: 1000,
+    })
+
+  </script>
+</body>
+</html>

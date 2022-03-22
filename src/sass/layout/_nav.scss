@@ -1,43 +1,52 @@
 header {
     nav {
+        font-size: $nav_fz;
         background-color: $p_color2;
         .navLogo {
             width: 60px;
-            a{
+            a {
                 display: block;
-                img{
+                img {
                     max-width: 100%;
                 }
             }
         }
         .navIcon {
-            width: 100%;
             display: flex;
-            justify-content: right;
             align-items: center;
-            a{
+            a {
                 text-decoration: none;
                 color: $p_color1;
                 display: block;
                 margin-right: 10px;
-                i{
+                i {
                     font-size: 35px;
                 }
             }
             #meun_control {
                 display: none;
                 &:checked + div + div {
-                    left: 0;
+                    right: 0;
+                    top: 0;
+                    opacity: 1;
+                }
+                &:checked + div + div > div {
+                    right: 50%;
+                    top: 0;
+                    opacity: 1;
+                }
+                &:checked + div + div > ul {
+                    right: 0;
                     top: 0;
                     opacity: 1;
                 }
                 &:checked + div > label > span:nth-child(1) {
                     transform: translateY(10px) rotate(45deg);
                 }
-                &:checked + div > label > span:nth-child(2){
+                &:checked + div > label > span:nth-child(2) {
                     transform: translateY(0px) rotate(-45deg);
                 }
-                &:checked + div > label > span:nth-child(3){
+                &:checked + div > label > span:nth-child(3) {
                     transform: scale(0);
                 }
             }
@@ -75,30 +84,41 @@ header {
                 }
             }
         }
-        .mainSel{
+        .mainSel {
             position: absolute;
             top: 0;
-            left: -100vw;
+            right: -100%;
             width: 100vw;
             height: 100vh;
+            background-color: $s_color2;
             display: flex;
-            .mainImg{
+            transition: right 1s;
+            .mainImg {
+                position: absolute;
+                top: 0;
+                right: -100%;
+                transition: right 1s .5s;
                 width: 50%;
-                max-height: 100vh;
-                background-image: url('../img/index/Group216.png');
+                height: 100vh;
+                background-image: url("../img/index/Group216.png");
                 background-position: center bottom;
                 background-size: cover;
             }
-            .mainList{
+            .mainList {
+                position: absolute;
+                top: 0;
+                right: -100%;
+                transition: right 1s 1s;
                 width: 50%;
+                height: 100vh;
                 display: flex;
                 flex-direction: column;
                 // align-items: center;
                 justify-content: center;
                 background-color: $s_color2;
-                li{
+                li {
                     text-align: center;
-                    a{
+                    a {
                         text-decoration: none;
                         color: $p_color;
                         display: inline-block;
