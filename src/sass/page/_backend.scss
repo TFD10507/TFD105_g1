@@ -15,15 +15,32 @@
     text-align: center;
 
     // 輔助高度
-    // height: 1200px;
+    height: 100vh;
+
+    // bootstrap區 開始
     .list-group-item.active {
       background-color: #6b6262;
       border: #6b6262;
     }
 
     .list-group-item {
-        margin-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    // bootstrap區 結束
+
+    // DATATABLE區 開始
+    // 新增標題區 開始
+    section{
+      text-align: left;
+    }
+    // 新增標題區 結束
+    thead{
+      background-color: #6b6262;
+      tr > th{
+        color: white;
       }
-      
+    }
+    // DATATABLE區 結束
+
   }
 }
