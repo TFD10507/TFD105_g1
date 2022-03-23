@@ -2,6 +2,7 @@ header {
     nav {
         font-size: $nav_fz;
         background-color: $p_color2;
+        box-shadow: 0 0 5px 0;
         .navLogo {
             width: 60px;
             a {
@@ -21,6 +22,9 @@ header {
                 margin-right: 10px;
                 i {
                     font-size: 35px;
+                }
+                &:hover {
+                    color: $btn_color;
                 }
             }
             #meun_control {
@@ -61,6 +65,11 @@ header {
                 // right: 20px;
                 display: block;
                 z-index: 5;
+                &:hover {
+                    span {
+                        background-color: $btn_color;
+                    }
+                }
                 label {
                     display: flex;
                     max-width: 100%;
@@ -88,7 +97,7 @@ header {
             position: absolute;
             top: 0;
             right: -100%;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
             background-color: $s_color2;
             display: flex;
@@ -97,7 +106,7 @@ header {
                 position: absolute;
                 top: 0;
                 right: -100%;
-                transition: right 1s .5s;
+                transition: right 1s 0.5s;
                 width: 50%;
                 height: 100vh;
                 background-image: url("../img/index/Group216.png");
@@ -113,7 +122,7 @@ header {
                 height: 100vh;
                 display: flex;
                 flex-direction: column;
-                // align-items: center;
+                align-items: center;
                 justify-content: center;
                 background-color: $s_color2;
                 li {
@@ -121,7 +130,20 @@ header {
                     a {
                         text-decoration: none;
                         color: $p_color;
-                        display: inline-block;
+                        display: block;
+                        margin-right: 0;
+                        &:hover {
+                            color: $btn_color;
+                            font-weight: bold;
+                        }
+                    }
+                    // 商品子選單
+                    ul {
+                        li {
+                            a {
+                                max-width: 100%;
+                            }
+                        }
                     }
                 }
             }
