@@ -10,8 +10,22 @@
   // 自定義 class 結束
 
   header {
-    height: 100px;
+    // height: 100px;
+    padding: 20px;
     background-color: #6b6262;
+    display: flex;
+    justify-content: space-between;
+
+    img{
+      height: 60px;
+    }
+    a{
+      color: white;
+      h5{
+        padding-top:auto;
+        display: inline;
+      }
+    }
   }
 
   main {
