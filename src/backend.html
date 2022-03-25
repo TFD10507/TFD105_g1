@@ -72,7 +72,7 @@
                             <!-- 表單顯示區塊起始 -->
                             <thead>
                                 <tr>
-                                    <th>會員ID</th>
+                                    <th>會員編號</th>
                                     <th>會員帳號</th>
                                     <th>會員名稱</th>
                                     <th>帳號狀態</th>
@@ -91,7 +91,7 @@
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#exampleModal">
+                                            data-target="#memberedit">
                                             編輯
                                         </button>
                                     </td>
@@ -114,7 +114,7 @@
                             <!-- 表單顯示區塊起始 -->
                             <thead>
                                 <tr>
-                                    <th>商品ID</th>
+                                    <th>商品編號</th>
                                     <th>商品名稱</th>
                                     <th>商品金額</th>
                                     <th>庫存數量</th>
@@ -151,7 +151,7 @@
                             <!-- 表單顯示區塊起始 -->
                             <thead>
                                 <tr>
-                                    <th>會員ID</th>
+                                    <th>會員編號</th>
                                     <th>訂單編號</th>
                                     <th>會員帳號</th>
                                     <th>訂單狀態</th>
@@ -218,7 +218,7 @@
                             <!-- 表單顯示區塊起始 -->
                             <thead>
                                 <tr>
-                                    <th>折扣碼ID</th>
+                                    <th>折扣碼編號</th>
                                     <th>折扣金額</th>
                                     <th>創建日期</th>
                                     <th>使用期限</th>
@@ -245,18 +245,64 @@
         </div>
 
         <!-- Modal 開始-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <!-- 會員編輯 -->
+        <div class="modal fade" id="memberedit" tabindex="-1" role="dialog" aria-labelledby="membereditLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">會員資訊</h5>
+                        <h5 class="modal-title" id="membereditLabel">會員資訊</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        ...
+                    <div class="modal-body">    
+                        <div class="half">
+                            <label>會員名稱</label>
+                            <input type="text">
+                            <br>
+                            <label>會員帳號</label>
+                            <input type="text">
+                            <br>
+                            <label>出生日期</label>
+                            <input type="text">
+                            <br>
+                            <label>連絡電話</label>
+                            <input type="text">
+                            <br>
+                            <label>收貨地址</label>
+                            <input type="text">
+                            
+                        </div>
+                        <div class="half">
+                            <label>會員編號</label>
+                            <input type="text">
+                            <br>
+                            <label> 新密碼</label>
+                            <input type="text">
+                            <br>
+                            <label>確認密碼</label>
+                            <input type="text">
+                            <br>
+                            <label>性別</label>
+                            <h6>男</h6>
+                            <input type="radio" name="gender">
+                            <h6>女</h6>
+                            <input type="radio" name="gender">
+                            <h6>第三性</ㄘ>
+                            <input type="radio" name="gender">
+                            <br>
+                            <label>註冊日期</label>
+                            <input type="text">
+                            <br>
+                            <label>會員狀態</label>
+                            <select name="" id="">
+                                <option value="">正常</option>
+                                <option value="">凍結</option>
+                            </select>
+                            <br>
+                            
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
