@@ -6,7 +6,7 @@
   margin: 0;
 
   // 自定義 class 開始
-  
+
   // 自定義 class 結束
 
   header {
@@ -16,13 +16,13 @@
     display: flex;
     justify-content: space-between;
 
-    img{
+    img {
       height: 60px;
     }
-    a{
+    a {
       color: white;
-      h5{
-        padding-top:auto;
+      h5 {
+        padding-top: auto;
         display: inline;
       }
     }
@@ -36,7 +36,7 @@
     // 輔助高度
     height: 100vh;
 
-    // bootstrap區 開始
+    // bootstrap區 開
     .list-group-item.active {
       background-color: #6b6262;
       border: #6b6262;
@@ -47,10 +47,35 @@
       padding: 12px;
     }
 
-    label{
+    label {
       margin-bottom: 10px;
     }
 
+    // 彈窗區
+    h6 {
+      display: inline;
+    }
+
+    .modal-dialog{
+      max-width: 700px;
+    }
+
+    .modal-body {
+      display: flex;
+    }
+
+    .half {
+      width: 50%;
+
+      label{
+        display: inline-block;
+        width: 100px;
+      }
+
+      input{
+        margin-bottom: 20px;
+      }
+    }
 
     // bootstrap區 結束
 
@@ -60,7 +85,7 @@
       text-align: left;
       margin-bottom: 10px;
 
-      .h2{
+      .h2 {
         font-size: $h2;
         display: inline;
       }
