@@ -1,10 +1,37 @@
 .container{
+    // = = = = = 標題 = = = = = //
     // 標題
     .title h1{
         font-size: $h1;
         font-weight: 800;
         letter-spacing: 5px;
-        color: $p_color1;
+        color: $p_color;
         padding: 20px;
+    }
+
+    //圖片
+    & img{
+        width: 100vw;
+    }
+
+    // = = = = = 品牌緣起 = = = = = //
+    //標題
+    h2{
+        text-align: center;
+        font-size: $h2;
+        font-weight: 600;
+        color: $p_color;
+        margin-bottom: 30px;
+    }
+    //內文說明
+    h3{
+        font-size: $h3;
+        font-weight: 500;
+        padding-bottom: 30px;
+    }
+
+    // = = = = = 門市據點 = = = = = //
+    .card img{
+        width: 320px;
     }
 }

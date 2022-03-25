@@ -4,20 +4,10 @@
 
 @import "base/var";
 @import "base/reset";
-@import "mixin/space";
-@import "layout/login";
-@import "layout/nav";
-@import "layout/footer";
-@import "page/index";
-@import "page/about";
-@import "page/backend";
-@import "page/cart";
-@import "page/customize";
-@import "page/faq";
-@import "page/member";
-@import "page/news";
-@import "page/product";
-@import "page/backendLogin";
+@import "mixin/mixins";
+@import "layout/layouts";
+@import "page/pages";
+
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap");
 
 html {
