@@ -1,4 +1,4 @@
-.container{
+.about{
     // = = = = = 標題 = = = = = //
     // 標題
     .title h1{
@@ -6,7 +6,7 @@
         font-weight: 800;
         letter-spacing: 5px;
         color: $p_color;
-        padding: 20px;
+        // padding: 20px;
     }
 
     //圖片
@@ -31,7 +31,10 @@
     }
 
     // = = = = = 門市據點 = = = = = //
-    .card img{
-        width: 320px;
+    h5{
+        text-align: center;
+        font-size: $h3;
+        font-weight: 500;
+
     }
 }
