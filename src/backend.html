@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,9 +27,14 @@
 
     <title>backend</title>
 </head>
+
 <body class="backend">
     <header class="header">
-        
+        <img src="./img/backend/backend_logo.svg" alt="">
+        <a href="">
+            <h5 class="h5">帳號登出</h5>
+            <i class="bi bi-box-arrow-right"></i>
+        </a>
     </header>
 
     <main>
@@ -83,7 +89,11 @@
                                     <td>正常</td>
                                     <td>2020.1.1</td>
                                     <td>
-                                        <a href="#">編輯</a>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#exampleModal">
+                                            編輯
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -134,6 +144,9 @@
                             <!-- 標題.新增資料區塊 -->
                             <section>
                                 <h2 class="h2">訂單管理</h2>
+                                <a href="#">
+                                    <i class="bi bi-cart-plus-fill add"></i>點擊新增資料
+                                </a>
                             </section>
                             <!-- 表單顯示區塊起始 -->
                             <thead>
@@ -230,10 +243,34 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal 開始-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">會員資訊</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                        <button type="button" class="btn btn-primary">更新</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 結束-->
     </main>
 
     <!-- TataTacle 啟動.翻譯引入 -->
     <!-- JS串聯有問題測試顯示用 -->
     <Script src="./js/vendors/datatable.min.js"></Script>
 </body>
+
 </html>
