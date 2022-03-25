@@ -1,22 +1,13 @@
+// 這支不要動
 @mixin btn() {
     font-family: "Noto Serif TC", serif;
-    font-size: $p;
     width: 100px;
     height: 40px;
-    border: 0;
-    // padding:10px;
-    background-color: $btn_color;
-    color:$p_color2;
-    text-align: center;
-    display: inline-block;
-    line-height: 40px;
-    box-sizing: border-box;
-    text-decoration: none;
     letter-spacing: 2px;
     @content;
-    &:hover{
-        background-color: darken($btn_color,20);
-    }
+    // &:hover{
+    //     background-color: darken($btn_color,20);
+    // }
 }
 .btn_style{
     @include btn();
@@ -25,3 +16,4 @@
 button{
     border-radius: 0;
 }
+
