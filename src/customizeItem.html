@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('layout/head.html')
+    <!-- 字型 google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    @@include('layout/login.html')
+    @@include('layout/nav.html')
+
+    <div id="customizeItem">
+        <section class="container margin_top_70">
+            <div class="row">
+                <div class="img col-lg-6 col-sm-12">
+                    
+
+                </div>
+                <div class="text col-lg-6 col-sm-12">
+                    <h2>原木圓桌</h2>
+                    <h3>請選擇木材顏色</h3>
+                    <div class="woodColor">
+                        <img src="../img/customize/woodColor/t1.jpg">
+                        <img src="../img/customize/woodColor/t2.jpg">
+                        <img src="../img/customize/woodColor/t3.jpg">
+                        <img src="../img/customize/woodColor/t4.jpg">
+                        <img src="../img/customize/woodColor/t5.jpg">
+                    </div>
+                    <div class="woodName">
+                        <p>白梣木</p>
+                        <p>胡桃橡木</p>
+                        <p>紅橡木</p>
+                        <p>綠橡木</p>
+                        <p>黑梣木</p>
+                    </div>
+                    數量: <input type="number" value="1"><br>
+                    其他需求: <br>
+                    <textarea name="" id="" cols="20" rows="5" placeholder="請輸入額外需求"></textarea><br>
+                    <button type="submit" class="btn btn-primary btn-sm" id="send_btn">送出</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    @@include('layout/footer.html')
+</body>
+</html>
