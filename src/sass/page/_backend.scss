@@ -67,14 +67,16 @@
     .half {
       width: 50%;
 
-      label{
-        display: inline-block;
-        width: 100px;
-      }
-
-      input{
+      li{
+        text-align: left;
         margin-bottom: 20px;
+
+        label{
+          display: inline-block;
+          width: 100px;
+        }
       }
+      
     }
 
     // bootstrap區 結束
