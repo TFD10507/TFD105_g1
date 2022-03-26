@@ -5,10 +5,6 @@
   padding: 0;
   margin: 0;
 
-  // 自定義 class 開始
-
-  // 自定義 class 結束
-
   header {
     // height: 100px;
     padding: 20px;
@@ -19,8 +15,10 @@
     img {
       height: 60px;
     }
+
     a {
       color: white;
+
       h5 {
         padding-top: auto;
         display: inline;
@@ -36,7 +34,7 @@
     // 輔助高度
     height: 100vh;
 
-    // bootstrap區 開
+    // bootstrap區 起始
     .list-group-item.active {
       background-color: #6b6262;
       border: #6b6262;
@@ -62,23 +60,24 @@
 
     .modal-body {
       display: flex;
-    }
+      flex-wrap: wrap;
 
-    .half {
-      width: 50%;
-
-      li{
-        text-align: left;
-        margin-bottom: 20px;
-
-        label{
-          display: inline-block;
-          width: 100px;
+      .half {
+        width: 50%;
+  
+        li{
+          text-align: left;
+          margin-bottom: 20px;
+  
+          label{
+            display: inline-block;
+            width: 100px;
+          }
         }
-      }
-      
-    }
 
+      }
+    }
+    // 彈窗區 結束
     // bootstrap區 結束
 
     // DATATABLE區 開始
