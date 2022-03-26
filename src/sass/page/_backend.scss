@@ -74,7 +74,24 @@
             width: 100px;
           }
         }
+      }
 
+      .buyproduct{
+        width: 100%;
+        padding: 10px;
+        border-top: 1px black solid;
+
+        .outproduct{
+          width: 100%;
+
+          th{
+            padding:6px 0;
+          }
+
+          tbody td{
+            padding: 6px 0;
+          }
+        }
       }
     }
     // 彈窗區 結束

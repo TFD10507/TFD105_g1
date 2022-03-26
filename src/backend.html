@@ -370,8 +370,12 @@
                             </ul>
                             <ul class="half">
                                 <li>
-                                    <label>商品圖片</label>
-                                    <input type="file">
+                                    <label>商品種類</label>
+                                    <select name="" id="">
+                                        <option value="">桌子</option>
+                                        <option value="">櫃子</option>
+                                        <option value="">椅子</option>
+                                    </select>
                                 </li>
                                 <li>
                                     <label>商品顏色</label>
@@ -386,6 +390,10 @@
                                         <option value="">正常</option>
                                         <option value="">停售</option>
                                     </select>
+                                </li>
+                                <li>
+                                    <label>商品圖片</label>
+                                    <input type="file">
                                 </li>
                             </ul>
                         </div>
@@ -425,6 +433,10 @@
                                     <label>下單時間</label>
                                     <input type="text" disabled>
                                 </li>
+                                <li>
+                                    <label>訂單金額</label>
+                                    <input type="text" disabled>
+                                </li>
                             </ul>
                             <ul class="half">
                                 <li>
@@ -448,7 +460,40 @@
                                     </select>
                                 </li>
                             </ul>
-                            <div class="line"></div>
+                            <div class="buyproduct">
+                                <label for="">商品內容</label>
+                                <table class="outproduct">
+                                    <thead>
+                                        <tr>
+                                            <th>商品編號</th>
+                                            <th>商品名稱</th>
+                                            <th>商品種類</th>
+                                            <th>材質顏色</th>
+                                            <th>商品數量</th>
+                                            <th>商品金額</th>
+                                            <th>小計</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <td>TB-001</td>
+                                        <td>雅典原木桌</td>
+                                        <td>桌子</td>
+                                        <td>松柏褐</td>
+                                        <td>4</td>
+                                        <td>1000</td>
+                                        <td>4000</td>
+                                    </tbody>
+                                    <tbody>
+                                        <td>TB-002</td>
+                                        <td>流行原木桌</td>
+                                        <td>桌子</td>
+                                        <td>原木灰</td>
+                                        <td>2</td>
+                                        <td>1000</td>
+                                        <td>2000</td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
