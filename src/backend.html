@@ -62,13 +62,13 @@
                         aria-labelledby="list-home-list">
                         <!-- DataTable 會員管理區 -->
                         <table id="table_id" class="display table_id">
-                            <!-- 標題.新增資料區塊 -->
+                            <!-- 標題.新增資料區塊
                             <section>
                                 <h2 class="h2">會員管理</h2>
                                 <a href="#">
                                     <i class="bi bi-person-plus-fill add"></i>點擊新增資料
                                 </a>
-                            </section>
+                            </section> -->
                             <!-- 表單顯示區塊起始 -->
                             <thead>
                                 <tr>
@@ -206,7 +206,11 @@
                                     <td>Chaos00</td>
                                     <td>2022/1/10</td>
                                     <td>
-                                        <a href="#">編輯</a>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#customerorderedit">
+                                            編輯
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -509,6 +513,77 @@
         </div>
         <!-- 訂單編輯 結束 -->
 
+        <!-- 客製編輯 開始 -->
+        <div class="modal fade" id="customerorderedit" tabindex="-1" role="dialog" aria-labelledby="customerordereditLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="customerordereditLabel">客製管理</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="half">
+                                <li>
+                                    <label>訂單編號</label>
+                                    <input type="text" disabled>
+                                </li>
+                                <li>
+                                    <label>會員編號</label>
+                                    <input type="text" disabled>
+                                </li>
+                                <li>
+                                    <label>下單時間</label>
+                                    <input type="text" disabled>
+                                </li>
+                                <li>
+                                    <label>訂製數量</label>
+                                    <input type="text" disabled>
+                                </li>
+                                <li>
+                                    <label>訂單狀態</label>
+                                    <select name="" id="">
+                                        <option value="">未付款</option>
+                                        <option value="">製作中</option>
+                                        <option value="">已出貨</option>
+                                    </select>
+                                </li>
+                            </ul>
+                            <ul class="half">
+                                <li>
+                                    <label>商品種類</label>
+                                    <select name="" id="">
+                                        <option value="">桌子</option>
+                                        <option value="">櫃子</option>
+                                        <option value="">椅子</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <label>商品顏色</label>
+                                    <select name="" id="">
+                                        <option value="">檜木褐</option>
+                                        <option value="">桃花粉</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <label>商品內容</label>
+                                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                            <button type="button" class="btn btn-primary">更新</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 客製編輯 結束 -->
+
         <!-- 折扣編輯 開始 -->
         <div class="modal fade" id="couponedit" tabindex="-1" role="dialog" aria-labelledby="couponeditLabel"
             aria-hidden="true">
@@ -548,7 +623,7 @@
                 </div>
             </div>
         </div>
-        <!-- 會員編輯 結束 -->
+        <!-- 折扣編輯 結束 -->
         <!-- Modal 結束-->
     </main>
 
