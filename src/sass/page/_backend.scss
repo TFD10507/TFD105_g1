@@ -54,7 +54,7 @@
       display: inline;
     }
 
-    .modal-dialog{
+    .modal-dialog {
       max-width: 700px;
     }
 
@@ -64,31 +64,35 @@
 
       .half {
         width: 50%;
-  
-        li{
+
+        li {
           text-align: left;
           margin-bottom: 20px;
-  
-          label{
+
+          label {
             display: inline-block;
             width: 100px;
+          }
+
+          textarea{
+            resize: none;
           }
         }
       }
 
-      .buyproduct{
+      .buyproduct {
         width: 100%;
         padding: 10px;
         border-top: 1px black solid;
 
-        .outproduct{
+        .outproduct {
           width: 100%;
 
-          th{
-            padding:6px 0;
+          th {
+            padding: 6px 0;
           }
 
-          tbody td{
+          tbody td {
             padding: 6px 0;
           }
         }
@@ -107,9 +111,13 @@
         font-size: $h2;
         display: inline;
       }
-      .add {
-        margin-left: 30px;
-        margin-right: 10px;
+
+      button {
+        margin-left: 20px;
+
+        .add {
+          margin-right: 10px;
+        }
       }
     }
     // 新增標題區 結束
