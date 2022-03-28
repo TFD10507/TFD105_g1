@@ -5,10 +5,6 @@
   padding: 0;
   margin: 0;
 
-  // 自定義 class 開始
-
-  // 自定義 class 結束
-
   header {
     // height: 100px;
     padding: 20px;
@@ -19,8 +15,10 @@
     img {
       height: 60px;
     }
+
     a {
       color: white;
+
       h5 {
         padding-top: auto;
         display: inline;
@@ -36,7 +34,7 @@
     // 輔助高度
     height: 100vh;
 
-    // bootstrap區 開
+    // bootstrap區 起始
     .list-group-item.active {
       background-color: #6b6262;
       border: #6b6262;
@@ -56,27 +54,51 @@
       display: inline;
     }
 
-    .modal-dialog{
+    .modal-dialog {
       max-width: 700px;
     }
 
     .modal-body {
       display: flex;
-    }
+      flex-wrap: wrap;
 
-    .half {
-      width: 50%;
+      .half {
+        width: 50%;
 
-      label{
-        display: inline-block;
-        width: 100px;
+        li {
+          text-align: left;
+          margin-bottom: 20px;
+
+          label {
+            display: inline-block;
+            width: 100px;
+          }
+
+          textarea{
+            resize: none;
+          }
+        }
       }
 
-      input{
-        margin-bottom: 20px;
+      .buyproduct {
+        width: 100%;
+        padding: 10px;
+        border-top: 1px black solid;
+
+        .outproduct {
+          width: 100%;
+
+          th {
+            padding: 6px 0;
+          }
+
+          tbody td {
+            padding: 6px 0;
+          }
+        }
       }
     }
-
+    // 彈窗區 結束
     // bootstrap區 結束
 
     // DATATABLE區 開始
@@ -89,9 +111,13 @@
         font-size: $h2;
         display: inline;
       }
-      .add {
-        margin-left: 30px;
-        margin-right: 10px;
+
+      button {
+        margin-left: 20px;
+
+        .add {
+          margin-right: 10px;
+        }
       }
     }
     // 新增標題區 結束
