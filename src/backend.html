@@ -65,9 +65,6 @@
                             <!-- 標題.新增資料區塊 -->
                             <section>
                                 <h2 class="h2">會員管理</h2>
-                                <!-- <a href="#">
-                                    <i class="bi bi-person-plus-fill add"></i>點擊新增資料
-                                </a> -->
                             </section>
                             <!-- 表單顯示區塊起始 -->
                             <thead>
@@ -153,14 +150,11 @@
                             <!-- 標題.新增資料區塊 -->
                             <section>
                                 <h2 class="h2">訂單管理</h2>
-                                <!-- <a href="#">
-                                    <i class="bi bi-cart-plus-fill add"></i>點擊新增資料
-                                </a> -->
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#addorderedit">
-                                編輯
-                            </button>
+                                    data-target="#addorderedit">
+                                    <i class="bi bi-cart-plus-fill add"></i>點擊新增資料
+                                </button>
                             </section>
                             <!-- 表單顯示區塊起始 -->
                             <thead>
@@ -233,9 +227,11 @@
                             <!-- 標題.新增資料區塊 -->
                             <section>
                                 <h2 class="h2">折扣碼管理</h2>
-                                <a href="#">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#addcouponedit">
                                     <i class="bi bi-plus-square add"></i></i>點擊新增資料
-                                </a>
+                                </button>
                             </section>
                             <!-- 表單顯示區塊起始 -->
                             <thead>
@@ -350,7 +346,7 @@
             </div>
         </div>
         <!-- 會員編輯 結束 -->
-        
+
         <!-- 新增商品 開始 -->
         <div class="modal fade" id="addproductedit" tabindex="-1" role="dialog" aria-labelledby="addproducteditLabel"
             aria-hidden="true">
@@ -413,7 +409,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">更新</button>
+                            <button type="button" class="btn btn-primary">新增</button>
                         </div>
                     </form>
                 </div>
@@ -515,7 +511,7 @@
                                 </li>
                                 <li>
                                     <label>會員編號</label>
-                                    <input type="text" >
+                                    <input type="text">
                                 </li>
                                 <li>
                                     <label>下單時間</label>
@@ -585,7 +581,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">更新</button>
+                            <button type="button" class="btn btn-primary">新增</button>
                         </div>
                     </form>
                 </div>
@@ -762,6 +758,40 @@
         </div>
         <!-- 客製編輯 結束 -->
 
+        <!-- 新增折扣 開始 -->
+        <div class="modal fade" id="addcouponedit" tabindex="-1" role="dialog" aria-labelledby="addcouponeditLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addcouponeditLabel">折扣碼管理</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="half">
+                                <li>
+                                    <label for="">折扣金額</label>
+                                    <input type="text">
+                                </li>
+                                <li>
+                                    <label for="">可使用時間</label>
+                                    <input type="text">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                            <button type="button" class="btn btn-primary">更新</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 新增折扣 結束 -->
+
         <!-- 折扣編輯 開始 -->
         <div class="modal fade" id="couponedit" tabindex="-1" role="dialog" aria-labelledby="couponeditLabel"
             aria-hidden="true">
@@ -795,7 +825,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">更新</button>
+                            <button type="button" class="btn btn-primary">新增</button>
                         </div>
                     </form>
                 </div>
