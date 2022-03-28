@@ -18,30 +18,25 @@
   <body>
     @@include('layout/login.html')
     @@include('layout/nav.html')
-    <div id="customize" class="fullpage">
-      
+    <div id="customize" class="fullpage">  
       <section id="sec1" class="section">
         <div class="container">
-          <div class="row col-md-12 text-center">
-            <h1 class="title">
-              客製一張家具<br />
-              <h3>
-                森活木工精選了三款家具與木材<br />
-                讓每位顧客都可以擁有屬於自己的家具
-              </h3>
-            </h1>
-            <p>Scroll down</p>
-            <div class="mouse_scroll">
-              <div class="mouse">
-                <div class="wheel"></div>
-              </div>
-              <div>
-                <span class="m_scroll_arrows unu"></span>
-                <span class="m_scroll_arrows doi"></span>
-                <span class="m_scroll_arrows trei"></span>
-              </div>
+          <div class="row justify-content-center text-center">
+            <div class="inner col-lg-10 col-sm-12">
+              <h1>
+                客製一張家具<br />
+                <h3>
+                  森活木工精選了三款家具與木材<br />
+                  讓每位顧客都可以擁有屬於自己的家具
+                </h3>
+              </h1>
+            </div>
           </div>
-          </div>
+        </div>
+        <div class="container_scroll">
+          <div class="chevron"></div>
+          <div class="chevron"></div>
+          <div class="chevron"></div>
         </div>
       </section>
 
@@ -53,10 +48,10 @@
                 原木圓桌<br />
                 <h3>
                   圓桌被認為比起方桌更能縮短人與人的距離<br/>
-                  由職人打造出簡單流線的設計，請務必參考看看。
+                  由職人打造出簡單流線的設計，請務必參考看看
                 </h3>
               </h1>
-              <button type="button" class="btn btn-primary btn-sm" id="sec2_btn">前往客製</button>
+              <button type="button" class="btn btn-primary btn-sm" id="sec2_btn"><a href="customizeItem.html">前往客製</a></button>
             </div>
             
           </div>
@@ -70,11 +65,11 @@
               <h1>
                 原木收納櫃<br />
                 <h3>
-                  乾淨俐落的線條呈現家具的美感<br/>
-                  輕鬆營造出自然的居家品味。
+                  乾淨俐落的線條呈現櫃子的美感<br/>
+                  輕鬆營造出自然的居家品味
                 </h3>
               </h1>
-              <button type="button" class="btn btn-primary btn-sm" id="sec3_btn">前往客製</button>
+              <button type="button" class="btn btn-primary btn-sm" id="sec3_btn"><a href="customizeItem.html">前往客製</a></button>
             </div> 
           </div>
         </div>
@@ -88,16 +83,23 @@
                 原木餐椅<br />
                 <h3>
                   看似簡單的設計森活木工也以不妥協的精神製作<br/>
-                  是一張讓人感到舒適的優良椅子。
+                  是一張讓人感到舒適的優良椅子
                 </h3>
               </h1>
-              <button type="button" class="btn btn-primary btn-sm" id="sec4_btn">前往客製</button>
+              <button type="button" class="btn btn-primary btn-sm" id="sec4_btn">
+                <a href="customizeItem.html">前往客製</a></button>
             </div>
           </div>
       </section>
+
+      <section id="sec5" class="section fp-auto-height">
+        @@include('layout/footer.html')
+      </section>
+      
+
     </div>
 
-    @@include('layout/footer.html')
+    
     
     <!-- 載入 fullpage.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.js"></script>
