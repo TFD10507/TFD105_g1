@@ -265,6 +265,8 @@ $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) 
 $position-values: (
   0: 0,
   50: 50%,
+  25: 25%,
+  75: 75%,
   100: 100%
 ) !default;
 // scss-docs-end position-map
@@ -355,7 +357,7 @@ $container-padding-x: $grid-gutter-width / 2 !default;
 // Define common padding and border radius sizes and more.
 
 // scss-docs-start border-variables
-$border-width:                1px !default;
+$border-width:                0px !default;
 $border-widths: (
   1: 1px,
   2: 2px,
