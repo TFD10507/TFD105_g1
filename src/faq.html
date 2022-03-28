@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    @@include('layout/head.html')
+
+    <style>
+        /* .owl-theme .item {
+            height: 10rem;
+            background: #4dc7a0;
+            padding: 1rem;
+        }
+
+        .owl-carousel .item h4 {
+            color: #fff;
+            font-weight: 400;
+            font-size: 1.4375rem;
+            margin-top: 0rem;
+        } */
+    </style>
+
+</head>
+
+<body class="faq">
+    <div class="wrapper">
+        @@include('layout/login.html')
+        @@include('layout/nav.html')
+        <!-- QA -->
+        <main class="container">
+            <section class="row justify-content-center book">
+                <h1 class="m-5 ">常見問題 Q&A</h1>
+                <img src="./img/faq/1.png" alt="">
+            </section>
+
+            <section>
+                <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active my-4 bg-yellow text-primary" id="pills-home-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-home" type="button">常見問題</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link my-4 bg-yellow text-primary" id="pills-shopping-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-shopping" type="button"
+                            aria-selected="false">購物問題</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link my-4 bg-yellow text-primary" id="pills-product-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-product" type="button"
+                            aria-selected="false">商品問題</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link my-4 bg-yellow text-primary" id="pills-fix-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-fix" type="button" aria-selected="false">退換維修</button>
+                    </li>
+
+                </ul>
+
+                <div class="tab-content" id="pills-tabContent">
+                    <!------------------------- 常見問題 --------------->
+                    <div class="tab-pane fade show active" id="pills-home">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        Q1 網路商品都是現貨嗎？
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A1：
+                                            一般商品詳細頁會註明該商品有無庫存, 無現貨商品可點擊補貨後通知。
+                                            客製化商品一律接單後製作。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        Q2 為什麼網路上的商品缺貨，卻沒有立即下架？
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A2：
+                                            因網路商品有上萬多數量，人力不足、資料庫龐大的情況下，很難在第一時間檢查各商品的庫存量，造成顧客的困擾，我們深表歉意，會加強控管商品上架的庫存狀況。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        Q3 網路價格與門市價格有不同嗎？
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A3：網路商品皆是量產品，金額較為便宜。門市擺放的商品皆是台灣工廠製造居多，可訂製、改色的商品款式也較多，但產量較少，因此網路商品相較下金額有些許落差。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq4">
+                                        Q4 出貨時間？
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A4：配送天數約4~7天。出貨時間會先電話確認後才安排，可提前預訂商品後再致電客服確認出貨時間。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq5">
+                                        Q5 是否可以幫忙處理舊家具？
+                                    </button>
+                                </h2>
+                                <div id="faq5" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            A5：森活木工沒有提供回收舊家具的服務。<br>
+                                            建議您下單後先與環保局大型廢棄物回收單位聯絡回收時間，再與我們確認出貨時間，以便送貨時可以幫忙將舊家具搬運至指定地點。（搬運件數以您購買的商品件數為主）
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!------------------------- 購物問題 ------------------->
+                    <div class="tab-pane fade" id="pills-shopping">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        Q1：購物流程
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A1：
+                                            挑選商品 <i class="fa-solid fa-arrow-right"></i> 確認訂單 <i
+                                                class="fa-solid fa-arrow-right"></i> 結帳 <i
+                                                class="fa-solid fa-arrow-right"></i> 客服聯繫 <i
+                                                class="fa-solid fa-arrow-right"></i> 等待到貨</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        Q2 鑑賞期限及定義？是否有7天鑑賞期？
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A2：
+                                            7天鑑賞期為商品全新狀態與包裝完整之情況下才可以受理退換貨。個人因素需退換貨的情況，會收取來回運費與人事費用。（商品外包裝可自行保留，一旦由司機拆除後取回則不負保管責任）
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        Q3 是否有訂做服務？
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A3：我們有客製化服務，若有需求請帶著商品參考圖、所需尺寸到各門市進一步討論，因訂製商品不得退換貨，建議當面討論確認訂製需求。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq4">
+                                        Q4 遇到商品缺貨時，什麼時候會再進貨？
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A4：顧客下訂單後，我們會查詢庫存並電話通知客戶，商品是否有現貨、缺貨或停產。若商品缺貨，會告知下次到貨日期。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq5">
+                                        Q5 是否有樓層加給費用？
+                                    </button>
+                                </h2>
+                                <div id="faq5" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            A5：若有樓梯，4樓以上或電梯無法進入，會加收樓層費用，以總價計算，一層樓加1％服務費。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--------------------------- 商品問題 ---------------------->
+                    <div class="tab-pane fade" id="pills-product">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        Q1：是否有寄送外島或海外服務？
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A1：森活木工可為您運送到指定港口，運費另計，可致電客服洽詢。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        Q2 全部商品是台灣製造嗎？
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A2：
+                                            網路商品皆是量產品，因此部份商品因製作數量龐大而委託國外工廠製作，部分材料會仰賴國外進口。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        Q3 剛收到的家具出現損傷或瑕疵，該如何處理？
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A3：若遇到商品損傷、瑕疵，請先將受損或瑕疵部分拍照，並聯絡客服，客服人員了解後會為您免費更換新商品。若因個人使用不當、色差、不喜歡、尺寸不對等個人因素，會有額外收取費用。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--------------------------- 退換維修 ---------------------->
+                    <div class="tab-pane fade" id="pills-fix">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        Q1：退換貨流程
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A1：
+                                            來電告知退貨原因 <i class="fa-solid fa-arrow-right"></i>
+                                            提供產品瑕疵或損傷照片 <i class="fa-solid fa-arrow-right"></i>
+                                            審核 <i class="fa-solid fa-arrow-right"></i>
+                                            開立服務單並安排取回貨物 <i class="fa-solid fa-arrow-right"></i>
+                                            物流前往取貨 <i class="fa-solid fa-arrow-right"></i> 根據客戶需求更換或退回商品</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        Q2 有無保固／保修服務？
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A2：
+                                            皆為一年保固服務，終身保修。（終身保修服務：當保固期過後，商品損傷需維修服務，皆可致電給我們，不會有找不到人維修的情況，費用收取方式依商品損傷程度及運送地區評估。聚會場所、營業店家除外。）
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        Q3 維修運費由哪方支付？
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A3：若是非人為損傷的大型商品需載回維修，在保固期內，我們會立即安排司機載回商品，不加收任何運費。若是人為損傷需維修服務，會以商品大小、地區評估運費及維修費。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq4">
+                                        Q4 退貨方式？運費由哪方支付？
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>A4：如需退貨請致電客服人員，告知退貨原因。運費依照商品大小計算，司機會安裝、定位完後請在場收貨人仔細驗貨，再收款離開。若因個人喜好、尺寸估算錯誤、色差、等非商品本身物提而退貨，會酌收商品包裝費與搬運費。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-4">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button faq-button bg-white text-primary " type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq5">
+                                        Q5 退款方式？全額嗎？
+                                    </button>
+                                </h2>
+                                <div id="faq5" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>
+                                            A5：以匯款方式退款，金額視情況而定。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!------------- banner ------------->
+            <div class="conainer p-5">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6">
+                            <h3 class="bg-yellow p-5 banner text-center">新風格的締造者，給您最好的家具</h3>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </main>
+        @@include('layout/footer.html')
+    </div>
+    <script src="./js/main.min.js"></script>
+</body>
+
+</html>
