@@ -92,9 +92,26 @@
                         width: 25px;
                         height: .5px;
                         background: $p_color;
-                        transform: rotate(-60deg) translateX(-78px) translateY(52px);
+                        transform: rotate(45deg) translateX(53px) translateY(-73px);
                     }
                 }
+            }
+        }
+        .section3{
+            div{
+                div{
+                    width: 300px;
+                    img{
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+        .section4{
+            h2{
+                text-align: center;
+            }
+            .responsive{
             }
         }
     }
