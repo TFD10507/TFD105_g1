@@ -104,13 +104,18 @@
                             <!-- 標題.新增資料區塊 -->
                             <section>
                                 <h2 class="h2">商品管理</h2>
-                                <!-- <a href="#">
-                                    <i class="bi bi-bag-plus-fill add"></i>點擊新增資料
-                                </a> -->
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#addproductedit">
-                                    <i class="bi bi-bag-plus-fill add"></i>點擊新增資料
+                                    <i class="bi bi-bag-plus-fill add"></i>點擊新增商品
+                                </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#addkindedit">
+                                    <i class="bi bi-bookmark-plus-fill add"></i>點擊新增種類
+                                </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#addcoloredit">
+                                    <i class="bi bi-paint-bucket add"></i>點擊新增材質
                                 </button>
                             </section>
                             <!-- 表單顯示區塊起始 -->
@@ -153,7 +158,7 @@
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#addorderedit">
-                                    <i class="bi bi-cart-plus-fill add"></i>點擊新增資料
+                                    <i class="bi bi-cart-plus-fill add"></i>點擊新增訂單
                                 </button>
                             </section>
                             <!-- 表單顯示區塊起始 -->
@@ -230,7 +235,7 @@
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#addcouponedit">
-                                    <i class="bi bi-plus-square add"></i></i>點擊新增資料
+                                    <i class="bi bi-plus-square add"></i></i>點擊新增折扣
                                 </button>
                             </section>
                             <!-- 表單顯示區塊起始 -->
@@ -832,6 +837,75 @@
             </div>
         </div>
         <!-- 折扣編輯 結束 -->
+
+        <!-- 創建種類 開始 -->
+        <div class="modal fade" id="addkindedit" tabindex="-1" role="dialog" aria-labelledby="addkindeditLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addkindeditLabel">創建種類</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="half">
+                                <li>
+                                    <label for="">種類名稱</label>
+                                    <input type="text">
+                                </li>
+                                <li>
+                                    <label for="">種類照片</label>
+                                    <input type="file">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                            <button type="button" class="btn btn-primary">新增</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 創建種類 結束 -->
+
+        <!-- 創建材質 開始 -->
+        <div class="modal fade" id="addcoloredit" tabindex="-1" role="dialog" aria-labelledby="addcoloreditLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addcoloreditLabel">創建材質</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="half">
+                                <li>
+                                    <label for="">材質名稱</label>
+                                    <input type="text">
+                                </li>
+                                <li>
+                                    <label for="">種類照片</label>
+                                    <input type="file">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                            <button type="button" class="btn btn-primary">新增</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 創建材質 結束 -->
+
         <!-- Modal 結束-->
     </main>
 
