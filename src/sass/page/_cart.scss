@@ -1,0 +1,60 @@
+.cart{
+    .wrapper{
+        padding-top: 85px;
+        max-width: 1200px;
+        .step{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            div{
+                font-size: 30px;
+                font-weight: bold;
+                color: $p_color1;
+                text-align: center;
+                line-height: 57px;
+                width: 65px;
+                height: 65px;
+                border-radius: 50%;
+                border: 3px solid $p_color1;
+            }
+            .fst_step{
+                color: $p_color2;
+            }
+            span{
+                display: block;
+                width: 70px;
+                height: 3px;
+                // border: 1px solid $p_color1;
+                background-color: #e9e9e9;
+                position: relative;
+                overflow: hidden;
+                .move{
+                    display: inline-block;
+                    border-radius: 5px;
+                    width: 50px;
+                    height: 3px;
+                    // background-color: #fff;
+                    background-color: $p_color1;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    // overflow: hidden;
+                    animation: moving 2s linear infinite;
+                }
+                .move2{
+                    animation: moving 2s 1s linear infinite;
+                }
+            }
+        }
+    }
+}
+
+@keyframes moving {
+    0%{
+        left: -40px;
+    }
+    100%{
+        left: 100px;
+    }
+    
+}

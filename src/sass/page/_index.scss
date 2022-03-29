@@ -78,22 +78,26 @@
             div{
                 width: 50%;
                 a{
-                    &::before {
-                        content: "";
-                        display: inline-block;
+                    img{
                         width: 100px;
-                        height: 0.5px;
-                        background: $p_color;
-                        transform: rotate(0deg) translateX(210px) translateY(-5px);
+                        padding-bottom: 13px;
                     }
-                    &::after {
-                        content: "";
-                        display: inline-block;
-                        width: 25px;
-                        height: .5px;
-                        background: $p_color;
-                        transform: rotate(30deg) translateX(70px) translateY(-54px);
-                    }
+                    // &::before {
+                    //     content: "";
+                    //     display: inline-block;
+                    //     width: 100px;
+                    //     height: 0.5px;
+                    //     background: $p_color;
+                    //     transform: rotate(0deg) translateX(210px) translateY(-5px);
+                    // }
+                    // &::after {
+                    //     content: "";
+                    //     display: inline-block;
+                    //     width: 25px;
+                    //     height: .5px;
+                    //     background: $p_color;
+                    //     transform: rotate(30deg) translateX(70px) translateY(-54px);
+                    // }
                 }
             }
         }
