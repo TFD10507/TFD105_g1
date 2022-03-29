@@ -92,7 +92,7 @@
                         width: 25px;
                         height: .5px;
                         background: $p_color;
-                        transform: rotate(45deg) translateX(53px) translateY(-73px);
+                        transform: rotate(30deg) translateX(70px) translateY(-54px);
                     }
                 }
             }
@@ -111,7 +111,30 @@
             h2{
                 text-align: center;
             }
-            .responsive{
+            .container{
+                max-width: 1100px;
+                position: relative;
+                i{
+                    font-size: 30px;
+                    color: $p_color;
+                    cursor: pointer;
+                }
+                .fa-angle-left{
+                    position: absolute;
+                    left: -20px;
+                    top: calc( 50% - 30px );
+                }
+                .fa-angle-right{
+                    position: absolute;
+                    right: -20px;
+                    top: calc( 50% - 30px );
+                }
+                .news_item{
+                    width: 300px;
+                    img{
+                        max-width: 100%;
+                    }
+                }
             }
         }
     }

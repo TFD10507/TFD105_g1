@@ -5,7 +5,7 @@
     @@include('layout/head.html')
 </head>
 
-<body>
+<body class="index">
     <div class="wrapper">
         @@include('layout/login.html')
         @@include('layout/nav.html')
@@ -82,43 +82,46 @@
             </section>
 
             <!-- 最新消息 -->
-            <section class="section4 mt-5 bg-yellow">
-                <h2 class="pt-5">最新消息 News</h2>
-                <div class="responsive">
-                    <div>
-                        <img src="./img/news/main.jpg" alt="">
-                        <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                        </p>
+            <section class="section4 mt-5 pb-5 bg-yellow">
+                <h2 class="pt-5 pb-3">最新消息 News</h2>
+                <div class="container">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <div class="responsive">
+                        <div class="news_item me-2">
+                            <img src="./img/news/main.jpg" alt="">
+                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                            </p>
+                        </div>
+                        <div class="news_item me-2">
+                            <img src="./img/news/main.jpg" alt="">
+                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                            </p>
+                        </div>
+                        <div class="news_item me-2">
+                            <img src="./img/news/main.jpg" alt="">
+                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                            </p>
+                        </div>
+                        <div class="news_item me-2">
+                            <img src="./img/news/main.jpg" alt="">
+                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                            </p>
+                        </div>
+                        <div class="news_item me-2">
+                            <img src="./img/news/main.jpg" alt="">
+                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                            </p>
+                        </div>
+                        <div class="news_item me-2">
+                            <img src="./img/news/main.jpg" alt="">
+                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <img src="./img/news/main.jpg" alt="">
-                        <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                        </p>
-                    </div>
-                    <div>
-                        <img src="./img/news/main.jpg" alt="">
-                        <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                        </p>
-                    </div>
-                    <div>
-                        <img src="./img/news/main.jpg" alt="">
-                        <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                        </p>
-                    </div>
-                    <div>
-                        <img src="./img/news/main.jpg" alt="">
-                        <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                        </p>
-                    </div>
-                    <div>
-                        <img src="./img/news/main.jpg" alt="">
-                        <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                        </p>
-                    </div>
+                    <i class="fa-solid fa-angle-right"></i>
                 </div>
             </section>
         </main>
-        @@include('layout/footer.html')
     </div>
     @@include('layout/footer.html')
 
@@ -126,7 +129,7 @@
     <script>
         $('.responsive').slick({
             dots: true,
-            infinite: false,
+            infinite: true,
             // speed: 300,
             autoplay: true,
             autoplaySpeed: 2000,
@@ -160,6 +163,26 @@
                 // settings: "unslick"
                 // instead of a settings object
             ]
+        });
+
+        // 輪播按鈕控制
+        $(function () {
+            // DOM 載入完成之後
+            $(window).resize(function () {
+                $('.slick-prev').hide();
+                $('.slick-next').hide();
+                $('.slick-dots').hide();
+            });
+            $('.slick-prev').hide();
+            $('.slick-next').hide();
+            $('.slick-dots').hide();
+
+            $('.fa-angle-right').on("click",function(){
+                $('.slick-next').click();
+            });
+            $('.fa-angle-left').on("click",function(){
+                $('.slick-prev').click();
+            });
         });
     </script>
 </body>
