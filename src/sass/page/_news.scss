@@ -1,11 +1,21 @@
 .news{
-    .title h1{
+    .title {
+    & h1{
         font-size: $h1;
+        }
+    
+    & img{
+        width: 100%;
+        }
     }
-    h2{
-        font-size: $h2;
-        text-align: center;
+    .container{
+        & h2{
+            font-size: $h2;
+            text-align: center;
+        }
+            
     }
+
     .lightBlack{
         color: #76706A;
     }
@@ -14,6 +24,7 @@
         text-align: center;
     }
 
+ 
     .rectangle{
         width: 100%;
         height: 500px;

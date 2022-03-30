@@ -28,29 +28,29 @@
         @@include('layout/nav.html')
         <!-- QA -->
         <main class="container">
-            <section class="row justify-content-center book">
-                <h1 class="m-5 ">常見問題 Q&A</h1>
-                <img src="./img/faq/1.png" alt="">
+            <section class="justify-content-center title">
+                <h1 class="p-3">常見問題 Q&A</h1>
+                <img src="./img/faq/1.png" class="img-fluid">
             </section>
 
-            <section>
-                <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+            <section class="container">
+                <ul class="nav nav-pills m-3 justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active my-4 bg-yellow text-primary" id="pills-home-tab"
-                            data-bs-toggle="pill" data-bs-target="#pills-home" type="button">常見問題</button>
+                        <button class="nav-link active my-4 ms-3 text-primary" id="pills-home-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">常見問題</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link my-4 bg-yellow text-primary" id="pills-shopping-tab"
+                        <button class="nav-link my-4 ms-3 text-primary" id="pills-shopping-tab"
                             data-bs-toggle="pill" data-bs-target="#pills-shopping" type="button"
-                            aria-selected="false">購物問題</button>
+                            role="tab" aria-controls="pills-profile" aria-selected="false">購物問題</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link my-4 bg-yellow text-primary" id="pills-product-tab"
+                        <button class="nav-link my-4 ms-3 text-primary" id="pills-product-tab"
                             data-bs-toggle="pill" data-bs-target="#pills-product" type="button"
                             aria-selected="false">商品問題</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link my-4 bg-yellow text-primary" id="pills-fix-tab" data-bs-toggle="pill"
+                        <button class="nav-link my-4 ms-3 text-primary" id="pills-fix-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-fix" type="button" aria-selected="false">退換維修</button>
                     </li>
 
