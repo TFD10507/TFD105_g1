@@ -1,17 +1,17 @@
 // 客製化首頁
-#customize{
+#customize {
   width: 100%;
 
-  .container{
+  .container {
     max-width: 100%;
     padding: 0;
   }
 
-  #footer {
+  footer {
     margin-top: 0;
   }
 
-  .row{
+  .row {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -20,7 +20,7 @@
     margin: 0;
   }
 
-  #sec1{
+  #sec1 {
     height: calc(100vh - 70px);
     margin: 0;
     h1 {
@@ -28,7 +28,7 @@
       text-align: center;
       color: $p_color1;
       font-weight: bold;
-      margin-bottom: 10px; 
+      margin-bottom: 10px;
     }
     h3 {
       font-size: $h3;
@@ -37,7 +37,7 @@
 
   .sec2,
   .sec3,
-  .sec4{
+  .sec4 {
     @extend #sec1;
     display: flex;
     flex-direction: column;
@@ -45,7 +45,7 @@
     align-items: center;
     align-content: center;
     padding: 0;
-    h1{
+    h1 {
       color: $p_color2;
       text-shadow: black 0.1em 0.1em 0.2em;
     }
@@ -141,75 +141,279 @@
 
 // 客製化內頁
 #customizeItem {
-  .container {
-    .row {
-      .img {
-        border: 1px solid black;
-      }
-      .text {
-        border: 1px solid red;
-      }
-    }
-  }
-}
 
-// 客製化內頁:右邊文字, 材質, 顏色
-#customizeItem {
-  #footer {
+  footer {
     margin-top: 0;
   }
-  h2 {
-    font-size: $h2;
-    font-weight: bold;
-    color: $p_color1;
-  }
-  .woodColor > img {
-    width: 50px;
-    border-radius: 50%;
-  }
-  .woodName {
-    display: flex;
-  }
-}
 
-// 客製化內頁:左邊圖片
-#customizeItem {
-  #lightSliderVertical {
-    list-style: none outside none;
-    padding-left: 0;
-    margin-bottom: 0;
-    li {
-      display: block;
-      float: left;
-      cursor: pointer;
+  .product-detail {
+    max-width: 100%;
+
+    .imagery {
+      background-image: url(/img/customize/color/brown.jpg);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: 0.4s;
+      display: flex;
+      align-items: center;
+      text-align: center;
+
       img {
         display: block;
-        height: auto;
-        width: 500px;
+        margin: 0 auto;
+        width: 70%;
+        animation: fadein 1s ease-in-out forwards;
+        animation-delay: 0.5s;
+        opacity: 0;
+      }
+    }
+
+    .detail {
+      text-align: center;
+
+      h2 {
+        font-size: $h2;
+        color: $p_color;
+        font-weight: 900;
+      }
+
+      .options {
+        p {
+          color: $p_color;
+          font-size: $p;
+        }
+        .colors .btn_wrap .black.selected {
+          background-image: url(../img/customize/color/black.jpg);
+          // background-color: #081c15;
+          color: $p_color2;
+        }
+        .colors .btn_wrap .green.selected {
+          background-image: url(../img/customize/color/green.jpg);
+          color: $p_color2;
+        }
+        .colors .btn_wrap .red.selected {
+          background-image: url(../img/customize/color/red.jpg);
+          color: $p_color2;
+        }
+        .colors .btn_wrap .beige.selected {
+          background-image: url(../img/customize/color/beige.jpg);
+          color: $p_color;
+        }
+        .colors .btn_wrap .brown.selected {
+          background-image: url(../img/customize/color/brown.jpg);
+          color: $p_color2;
+        }
+
+        .btn_grid {
+          display: flex;
+          flex-wrap: wrap;
+          text-align: center;
+          .btn_wrap {
+            flex: 1 1 50%;
+            width: 50%;
+            button {
+              display: block;
+              width: 100%;
+              appearance: none;
+              outline: none;
+              background: none;
+              cursor: pointer;
+              border: 1px solid $btn_color;
+              border-radius: 2px;
+
+              color: $p_color;
+              font-size: $p;
+              font-weight: 700;
+              transition: 0.4s;
+            }
+            button:hover {
+              box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
+
+        .qty input {
+          border: 1px solid $btn_color;
+          width: 50px;
+          height: 30px;
+        }
+
+        .comment textarea {
+          border: 1px solid $btn_color;
+          width: 300px;
+          height: 100px;
+          resize: none;
+        }
+
+        .submit {
+          background-image: linear-gradient(
+            to right,
+            transparent 50%,
+            #76706a 50%,
+            #a0643e 100%
+          );
+          transition: 0.8s;
+          background-size: 200%;
+          background-position: 0% 50%;
+          width: 150px;
+          height: 50px;
+          border: 1px solid $btn_color;
+          border-radius: 2px;
+          margin-bottom: 20px;
+        }
+
+        .submit:hover {
+          color: #fff;
+          background-position: 100% 50%;
+        }
+
+        @keyframes fadein {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
       }
     }
   }
 }
 
-// 客製化內頁:左邊圖片
-#customizeItem {
-  .lSSlideOuter .lSPager.lSGallery li {
-    opacity: 0.5;
-  }
-  .lSSlideOuter .lSPager.lSGallery li.active {
-    opacity: 1;
-  }
-  .lSSlideOuter .lSPager.lSGallery li.active,
-  .lSSlideOuter .lSPager.lSGallery li {
-    border-radius: 0;
-  }
-  .lSSlideOuter .lSPager.lSGallery li.active:hover,
-  .lSSlideOuter .lSPager.lSGallery li:hover {
-    border-radius: 0;
-  }
-  .lSSlideOuter .lSPager.lSGallery img {
-    display: block;
-    height: 64px;
-    max-width: 100%;
+// 會員中心內頁
+#memberNew {
+  .container {
+    [data-tab-content] {
+      display: none;
+    }
+
+    .active[data-tab-content] {
+      display: block;
+    }
+
+    h2 .textUnderline {
+      font-size: $h2;
+      font-weight: 900;
+      border-bottom: 1px solid $p_color1;
+      padding-bottom: 5px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-evenly;
+      list-style-type: none;
+      border-bottom: 1px solid $p_color1;
+      .tab {
+        cursor: pointer;
+      }
+      .tab.active {
+        border-bottom: 5px solid $btn_color;
+      }
+      .tab:hover {
+        background-color: $btn_color;
+        color: $p_color2;
+      }
+    }
+
+    .tab-content {
+      margin: 0 auto;
+      text-align: center;
+
+      #member,
+      #password{ // 會員資料變更 & 密碼變更
+        
+        h3{
+          font-size: $h3;
+          text-align: center;
+        }
+
+        span{
+          font-size: $p;
+        }
+
+        .member-btn,
+        .password-btn{
+          cursor: pointer;
+          border: 1px solid $btn_color;
+          background-color: $btn_color;
+          border-radius: 2px;
+        }
+      }
+
+      .search { //訂單查詢
+        position: relative;
+        width: 30%;
+        float: right;
+
+        .search-bar {
+          width: 100%;
+          height: 30px;
+          font-size: $p;
+          border: 1px solid $p_color1;
+          background-color: $s_color1;
+          border-radius: 15px;
+        }
+
+        .search-btn {
+          width: 80px;
+          height: 70px;
+          background-color: transparent;
+          color: $p_color;
+          outline: none;
+          border: none;
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+      }
+      .clearFloat {
+        clear: both;
+      }
+
+      .order-title {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .collapsible {
+        background-color: $p_color1;
+        color: $p_color2;
+        cursor: pointer;
+        // padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: $p;
+
+        .collapsible.active,
+        .collapsible:hover {
+          background-color: $s_color1;
+        }
+
+        .collapsible.active::after {
+          content: "\2796";
+        }
+      }
+
+      .collapsible::after {
+        content: "\002B";
+        font-size: 14px;
+        color: $p_color2;
+        float: right;
+        margin-left: 5px;
+      }
+
+      .order-content {
+        display: none;
+        overflow: hidden;
+        background-color: $s_color2;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+      }
+    }
   }
 }
