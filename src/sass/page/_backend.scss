@@ -30,6 +30,9 @@
     padding: 20px;
     background-color: #dddddd;
     text-align: center;
+    ol,ul {
+      padding-left: 0;
+    }
 
     // 輔助高度
     height: 100vh;
@@ -74,7 +77,7 @@
             width: 100px;
           }
 
-          textarea{
+          textarea {
             resize: none;
           }
         }
