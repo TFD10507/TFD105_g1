@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/head.html')
+</head>
+
+
+<body class="product_in">
+    <div class="wrapper">
+        @@include('layout/login.html')
+        @@include('layout/nav.html')
+        <!-- 首頁 -->
+        <section class="cart">
+            <main class="cart">
+                <section class="main">
+                    <ul class="cart">
+                        <li class="photo">
+                            <img id="mainImg" class="mainImg product" src="./img/product/chair_001.jpg" alt="">
+                            <!-- <img class="favorite" src="./style/img/icon/favorite/hallowheart-01.svg" alt="" srcset=""> -->
+                            <!-- <ul class="showbar">
+                                <li><img class="smallImg" src="./img/product/chair_002.pg" alt="" srcset=""></li>
+                                <li><img class="smallImg" src="./img/product/chair_003.jpg" alt="" srcset=""></li>
+                                <li><img class="smallImg" src="./style/img/product/LM/01/s2.jpg" alt="" srcset=""></li>
+                            </ul> -->
+                        </li>
+                        <li class="content">
+                            <h4>The Eye Concentrate</h4>
+                            <h3>羅丹辦公桌</h3>
+                            <hr>
+                            <p>熱銷商品</i>
+                                <br>
+                                在起居室或臥室等緊湊空間內，被精心挑選的物品包圍著的高挑大人書桌。考慮到電源線的佈線，建議將此桌子用於 PC 工作。
+                                <br>
+                                材質：
+                                <br>
+                                白橡木
+                                ※可選擇等級的產品價格因等級而異。
+                                <br>
+                                尺寸/規格：
+                                <br> W159 x D45 x H83
+
+                                <br> $ 99,999
+                            </p>
+                            <!-- 與下面對應，這裡是椅子的材質 -->
+                            <div class="choice_item">
+                                <ul>
+                                    <li><img class="choice" src="./img/product/treasure_001.png" alt=""
+                                            srcset=""></button></li>
+                                    <li><img class="choice" src="./img/product/treasure_002.png" alt=""
+                                            srcset=""></button></li>
+                                    <li><img class="choice" src="./img/product/treasure_003.png" alt=""
+                                            srcset=""></button></li>
+                                </ul>
+                            </div>
+                            <!-- 與上面的對應，這裡是椅子款式 -->
+                            <div class="chair_style" style="display: none;">
+
+                                <ul>
+                                    <li><img class="chair_style" src="./img/product/chair_001.jpg" alt=""
+                                            srcset=""></button>
+                                    </li>
+                                    <li><img class="chair_style" src="./img/product/chair_002.jpg" alt=""
+                                            srcset=""></button>
+                                    </li>
+                                    <li><img class="chair_style" src="./img/product/chair_003.jpg" alt=""
+                                            srcset=""></button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- <div class="buttom">加入購物車</div> -->
+                            <button class="btn_style">加入購物車</button>
+                        </li>
+                    </ul>
+
+                </section>
+
+            </main>
+        </section>
+        @@include('layout/footer.html')
+    </div>
+    <script>
+        let main_img = document.querySelector('#mainImg');
+        let choice = document.querySelectorAll('img.choice');
+        let chair_style = document.querySelectorAll('img.chair_style');
+
+
+        // let productarr = [];
+        // for (let i = 0; i < choice.length; i++)
+        //     console.log(choice);
+
+
+        // function choice_array([],i){
+        //     for(let i = 0; i <= 5; i++){
+        //         counter=0;
+        //     }
+        // }
+
+        //設定第一項為黑框樣式(初始值)
+        choice[0].style = 'outline: black 2px solid;'
+        for (let i = 0; i < choice.length; i++) {
+            // console.log(choice[i]);
+            choice[i].addEventListener("click", function () {
+                //換主圖
+                main_img.src = chair_style[i].src;
+                // counter = 0; 
+                for (let j = 0; j < choice.length; j++) {
+                    if (i == j) {
+                        //設定黑框
+                        choice[i].style = 'outline: black 2px solid;'
+                    } else {
+                        //如果沒選定則取消樣式
+                        choice[j].style = 'none;'
+                    }
+                }
+                // console.log(choice[i]);
+
+                // main_img.src = chair_style[i].src;
+                // choice[i].style = 'outline: black 2px solid;'
+
+
+
+
+                // choice[0].style = 'outline: black 2px solid;'
+                // for (let i = 0; i <= 5; i++) {
+                //     counter = 0;
+                //     for (let j = 0; j <= 5; j++) {
+                //         if (i = j) {
+                //             choice[j].style = 'none';
+                //         }
+                //     }
+                //     // console.log(choice[i]);
+                //     choice[i].addEventListener("click", function () {
+                //         main_img.src = chair_style[i].src;
+                //         choice[i].style = 'outline: black 2px solid;'
+
+
+                //     choice[i].style = 'outline: black 2px solid;'
+                // } else {
+                //     choice[i].style = 'outline: black 2px solid;'
+                // }
+                // choice.forEach(function () {
+                //     choice[i].style = 'outline: black 2px solid;'
+                // })
+                // console.log(choice[i]);
+                // if (i === [i]) {
+                //     choice[i].style = 'none;'
+                // } else {
+                //     choice[i].style = 'outline: black 2px solid;'
+                // }
+
+
+                // chair_style[i].classList.toggle('-active');
+
+
+                // console.log(chair_style[i].classList.toggle('-active'));
+                // console.log(chair_style[i] = chair_style[i].classList.add('-active'));
+                // console.log(main_img.src)
+                // console.log(i)
+            })
+
+
+
+
+            // function () {
+            //     console.log("main_img.src" + main_img.src);
+            //     main_img.src = choice[i].src;
+            //     console.log(i);
+            // }
+        }
+
+
+
+        // let mainImg = document.getElementById("mainImg");
+        //     let smallImg = document.getElementsByClassName("smallImg");
+        //     smallImg[0].onclick = function(){
+        //         mainImg.src = smallImg[0].src;
+        //     }
+        //     smallImg[1].onclick = function(){
+        //         mainImg.src  = smallImg[1].src;
+        //     }
+        //     smallImg[2].onclick = function(){
+        //         mainImg.src  = smallImg[2].src;
+        //     }
+        //     smallImg[3].onclick = function(){
+        //         mainImg.src  = smallImg[3].src;
+        //     } 
+
+    </script>
+
+
+</body>
+
+
+</html>
