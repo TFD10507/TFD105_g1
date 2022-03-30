@@ -4,14 +4,14 @@
     .title h1{
         font-size: $h1;
         font-weight: 800;
-        letter-spacing: 5px;
+        // letter-spacing: 5px;
         color: $p_color;
         padding: 20px;
     }
 
     //圖片
     & img{
-        width: 100vw;
+        width: 100%;
     }
 
     // = = = = = 品牌緣起 = = = = = //
