@@ -31,7 +31,7 @@
                 .move{
                     display: inline-block;
                     // border-radius: 5px;
-                    width: 50px;
+                    width: 20px;
                     height: 3px;
                     // background-color: #fff;
                     background-color: $p_color1;
@@ -42,7 +42,16 @@
                     animation: moving 2s linear infinite;
                 }
                 .move2{
+                    animation: moving 2s .5s linear infinite;
+                }
+                .move3{
                     animation: moving 2s 1s linear infinite;
+                }
+                .move4{
+                    animation: moving 2s 1.5s linear infinite;
+                }
+                .move5{
+                    animation: moving 2s 2s linear infinite;
                 }
             }
         }
