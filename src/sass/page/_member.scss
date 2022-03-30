@@ -22,12 +22,15 @@
       justify-content: space-evenly;
       list-style-type: none;
       border-bottom: 1px solid $p_color1;
+
       .tab {
         cursor: pointer;
       }
+
       .tab.active {
         border-bottom: 5px solid $btn_color;
       }
+
       .tab:hover {
         background-color: $btn_color;
         color: $p_color2;
@@ -35,6 +38,16 @@
     }
 
     .tab-content {
+      margin: 0 auto;
+      text-align: center;
+
+      .btn_style{
+        cursor: pointer;
+        border: 1px solid $btn_color;
+        background-color: $btn_color;
+        border-radius: 2px;
+        color: $p_color2;
+      }
 
       .search {
         position: relative;
@@ -63,6 +76,7 @@
           right: 0;
         }
       }
+
       .clearFloat {
         clear: both;
       }
@@ -76,7 +90,6 @@
         background-color: $p_color1;
         color: $p_color2;
         cursor: pointer;
-        // padding: 18px;
         width: 100%;
         border: none;
         text-align: left;
