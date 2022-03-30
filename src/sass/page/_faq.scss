@@ -1,0 +1,12 @@
+.faq{
+
+   .faq-button:not(.collapsed){
+       color: black; 
+   }
+
+   .accordion-button:focus{
+       box-shadow: none;
+   }
+
+ 
+}

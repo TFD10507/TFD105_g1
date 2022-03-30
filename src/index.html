@@ -6,9 +6,9 @@
 </head>
 
 <body class="index">
-    @@include('layout/login.html')
-    @@include('layout/nav.html')
     <div class="wrapper">
+        @@include('layout/login.html')
+        @@include('layout/nav.html')
         <!-- 首頁 -->
         <main>
             <!-- <div class="btn btn-primary mt-5 btn_style">按鈕</div> -->
@@ -29,57 +29,162 @@
             <!-- 關於我們 -->
             <section class="section2">
                 <div class="section2_img">
-                    <img src="./img/index/2.jpg" alt="">
+                    <img src="./img/index/2.jpg" alt="" class="img-fluid">
                 </div>
                 <div class="pt-5 px-5">
                     <h2>關於我們 About us</h2>
                     <p class="mt-3">森活木工以再生木材製造，符合環保、職人工藝以及設計的高標準製作每一件家具。</p>
-                    <a href="about.html">view more</a>
+                    <a href="about.html">view more
+                        <img src="./img/index/arrow.png" alt="">
+                    </a>
                 </div>
             </section>
-            <section>
-                <h2>最新消息 News</h2>
-                <div class="autoplay">
-                    <img src="./img/news/main.jpg" alt="">
-                    <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                    </p>
+
+            <section class="section3">
+                <!-- 前一張按鈕 -->
+                <div class="controller">
+                    <span>PREV</span>
                 </div>
-                <div class="autoplay">
-                    <img src="./img/news/main.jpg" alt="">
-                    <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                    </p>
+                <!-- 商品名 -->
+                <div class="product-name">
+                    <div class="slide-mask">
+                        <p class="shifting-slide-title">DESK</p>
+                        <!-- <p class="shifting-slide-title">CABINET</p>
+                        <p class="shifting-slide-title">CHAIR</p> -->
+                    </div>
                 </div>
-                <div class="autoplay">
-                    <img src="./img/news/main.jpg" alt="">
-                    <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                    </p>
+                <!-- 後一張按鈕 -->
+                <div class="controller">
+                    <span>NEXT</span>
                 </div>
-                <div class="autoplay">
-                    <img src="./img/news/main.jpg" alt="">
-                    <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                    </p>
+                <!-- 小商品圖 -->
+                <div class="slides-wrapper">
+                    <div class="small">
+                        <img src="./img/index/sample_small.jpg" alt="">
+                    </div>
+                    <!-- <div class="small">
+                        <img src="./img/index/sample_small.jpg" alt="">
+                    </div>
+                    <div class="small">
+                        <img src="./img/index/sample_small.jpg" alt="">
+                    </div> -->
                 </div>
-                <div class="autoplay">
-                    <img src="./img/news/main.jpg" alt="">
-                    <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                    </p>
+                <!-- 大商品圖 -->
+                <div class="slides-wrapper-2">
+                    <div class="large">
+                        <img src="./img/index/sample_large.jpg" alt="">
+                    </div>
+                    <!-- <div class="large">
+                        <img src="./img/index/sample_large.jpg" alt="">
+                    </div>
+                    <div class="large">
+                        <img src="./img/index/sample_large.jpg" alt="">
+                    </div> -->
                 </div>
-                <div class="autoplay">
-                    <img src="./img/news/main.jpg" alt="">
-                    <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                    </p>
+            </section>
+
+            <!-- 最新消息 -->
+            <section class="section4 mt-5 pb-5 bg-yellow">
+                <h2 class="pt-5 pb-3">最新消息 News</h2>
+                <div class="container">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <div class="responsive">
+                        <div class="news_item me-2">
+                            <img src="./img/news/main.jpg" alt="">
+                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                            </p>
+                        </div>
+                        <div class="news_item me-2">
+                            <img src="./img/news/main.jpg" alt="">
+                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                            </p>
+                        </div>
+                        <div class="news_item me-2">
+                            <img src="./img/news/main.jpg" alt="">
+                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                            </p>
+                        </div>
+                        <div class="news_item me-2">
+                            <img src="./img/news/main.jpg" alt="">
+                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                            </p>
+                        </div>
+                        <div class="news_item me-2">
+                            <img src="./img/news/main.jpg" alt="">
+                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                            </p>
+                        </div>
+                        <div class="news_item me-2">
+                            <img src="./img/news/main.jpg" alt="">
+                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                            </p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-angle-right"></i>
                 </div>
             </section>
         </main>
     </div>
     @@include('layout/footer.html')
-    <script src="./js/main.min.js"></script>
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
-        $('.autoplay').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
+        $('.responsive').slick({
+            dots: true,
+            infinite: true,
+            // speed: 300,
             autoplay: true,
             autoplaySpeed: 2000,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+
+        // 輪播按鈕控制
+        $(function () {
+            // DOM 載入完成之後
+            $(window).resize(function () {
+                $('.slick-prev').hide();
+                $('.slick-next').hide();
+                $('.slick-dots').hide();
+            });
+            $('.slick-prev').hide();
+            $('.slick-next').hide();
+            $('.slick-dots').hide();
+
+            $('.fa-angle-right').on("click",function(){
+                $('.slick-next').click();
+            });
+            $('.fa-angle-left').on("click",function(){
+                $('.slick-prev').click();
+            });
         });
     </script>
 </body>

@@ -1,4 +1,4 @@
-<footer id="footer" class="padding_30 margin_top_50">
+<!-- <footer id="footer" class="padding_30 margin_top_50">
     <ul>
         <li v-for="footer in footers">{{footer}}</li>
     </ul>
@@ -21,4 +21,56 @@
 
         },
     });
+</script> -->
+
+
+<div id="footer">
+    
+</div>
+
+<script>
+    // global component
+    // Vue.component('組件名稱',{
+    //     template: ``, //用來定義視覺元件
+    // });
+    Vue.component('footer-list', {
+        template: `
+        <div>
+            <li class="pb-2">森活木工</li>
+            <li class="pb-2">FACTORY 埼玉県川口市安行領家945-1</li>
+            <li class="pb-2">contact@sinrafurniture.com</li>
+            <li>048-278-3324</li>
+        </div>
+        `, //用來定義視覺元件
+    });
+    Vue.component('footer-link', {
+        template: `
+        <div>
+            <a href="https://www.facebook.com/" class="pb-2">facebook</a>
+            <a href="https://www.instagram.com/">instagram</a>
+        </div>
+            `, //用來定義視覺元件
+    });
+
+    new Vue({
+        el: '#footer',
+        data: {},
+        methods: {},
+
+        // 在template 必須要有一個父元素(一個root)把他們包住
+        template: `
+        <footer class="padding_30 margin_top_50">
+            <ul>
+                <footer-list></footer-list>
+            </ul>
+            <div>
+                <footer-link></footer-link>
+            </div>
+        </footer>
+        `,
+
+    });
+
+
+
 </script>

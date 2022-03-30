@@ -1,187 +1,215 @@
 // 客製化首頁
-#customize {
+#customize{
   width: 100%;
-  .section {
+
+  .container{
+    max-width: 100%;
+    padding: 0;
+  }
+
+  #footer {
+    margin-top: 0;
+  }
+
+  .row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 0;
+  }
+
+  #sec1{
+    height: calc(100vh - 70px);
+    margin: 0;
     h1 {
       font-size: $h1;
       text-align: center;
       color: $p_color1;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 10px; 
     }
-  }
-
-  $base: 0.6rem;
-
-  #sec1 {
-    @extend .section;
-    background-image: url(../img/customize/1.jpg);
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    .container{
-      margin: 0 auto;
-      .row{
-        margin: 0 auto;
-      }
-    }
-    .row > .inner > h3{
-      margin-bottom: 100px;
-    }
-    .title {
-      margin-bottom: 10px;
-    }
-    .container_scroll{
-      width: 100%;
-    }
-    .chevron {
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: $base * 3.5;
-      height: $base * 0.8;
-      opacity: 0;
-      transform: scale(0.3);
-      animation: move-chevron 3s ease-out infinite;
-    }
-    .chevron:first-child {
-      animation: move-chevron 3s ease-out 1s infinite;
-    }
-    .chevron:nth-child(2) {
-      animation: move-chevron 3s ease-out 2s infinite;
-    }
-    .chevron:before,
-    .chevron:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      height: 100%;
-      width: 50%;
-      background: #2c3e50;
-    }
-
-    .chevron:before {
-      left: 0;
-      transform: skewY(30deg);
-    }
-
-    .chevron:after {
-      right: 0;
-      width: 50%;
-      transform: skewY(-30deg);
-    }
-
-    @keyframes move-chevron {
-      25% {
-        opacity: 1;
-      }
-      33.3% {
-        opacity: 1;
-        transform: translateY($base * 3.8);
-      }
-      66.6% {
-        opacity: 1;
-        transform: translateY($base * 5.2);
-      }
-      100% {
-        opacity: 0;
-        transform: translateY($base * 8) scale(0.5);
-      }
-    }
-  }
-
-  #sec2,
-  #sec3,
-  #sec4 {
-    @extend .section;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    .container {
-      background-color: $s_color2;
-      opacity: 0.8;
-    }
-  }
-
-  #sec2 {
-    background-image: url(../img/customize/2.jpg);
-  }
-
-  #sec3 {
-    background-image: url(../img/customize/3.jpg);
-  }
-
-  #sec4 {
-    background-image: url(../img/customize/4.jpg);
-  }
-
-  // #sec5 > .margin_top_50{
-  //   margin-top: 0 !important;
-  // }
-}
-
-#sec2_btn,
-#sec3_btn,
-#sec4_btn,
-#send_btn {
-  width: 150px;
-  background-color: $btn_color;
-  border-radius: 3px;
-  color: $p_color2;
-  padding: 5px;
-  cursor: pointer;
-  margin: 20px 0;
-  a{
-    text-decoration: none;
-    color: $p_color2;
-  }
-}
-
-#fp-nav ul li a span {
-  background: $btn_color !important;
-}
-
-#fp-nav ul li .fp-tooltip {
-  color: $btn_color !important;
-}
-
-
-
-// 客製化內頁
-#customizeItem{
-  .container{
-    @include margin_top(100);
-    margin-top: 100px;
-    .row{
-      .img{
-        border: 1px solid black;
-        // border-right: 1px dashed $p_color1;
-      }
-      .text{
-        border: 1px solid red;
-
-      }
-    }
-  }
-}
-
-#customizeItem{
-  h2{
-    font-size: $h2;
-    font-weight: bold;
-    color: $p_color1;
-    h3{
+    h3 {
       font-size: $h3;
     }
   }
+
+  .sec2,
+  .sec3,
+  .sec4{
+    @extend #sec1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 0;
+    h1{
+      color: $p_color2;
+      text-shadow: black 0.1em 0.1em 0.2em;
+    }
+    span {
+      color: $p_color2;
+      text-shadow: black 0.1em 0.1em 0.2em;
+    }
+  }
+
+  .icon-scroll,
+  .icon-scroll:before {
+    position: absolute;
+    left: 50%;
+  }
+
+  .icon-scroll {
+    width: 40px;
+    height: 70px;
+    margin-left: -20px;
+    top: 75%;
+    margin-top: -35px;
+    box-shadow: inset 0 0 0 3px #a0643e;
+    border-radius: 25px;
+  }
+
+  .icon-scroll:before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #a0643e;
+    margin-left: -4px;
+    top: 8px;
+    border-radius: 4px;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-name: scroll;
+  }
+
+  @keyframes scroll {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(46px);
+    }
+  }
+
+  #sec1,
+  .sec2,
+  .sec3,
+  .sec4 {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: calc(100vh - 70px);
+  }
+
+  #sec1 {
+    background-image: url(../img/customize/1.jpg);
+  }
+
+  .sec2 {
+    background-image: url(../img/customize/2.jpg);
+  }
+
+  .sec3 {
+    background-image: url(../img/customize/3.jpg);
+  }
+
+  .sec4 {
+    background-image: url(../img/customize/4.jpg);
+  }
+
+  #sec2_btn,
+  #sec3_btn,
+  #sec4_btn,
+  #send_btn {
+    width: 100px;
+    background-color: $btn_color;
+    border: none;
+    border-radius: 3px;
+    color: $p_color2;
+    padding: 5px;
+    cursor: pointer;
+    margin: 20px 0;
+    a {
+      text-decoration: none;
+      color: $p_color2;
+    }
+  }
 }
 
-.woodColor > img {
-  width: 50px;
-  border-radius: 50%;
+// 客製化內頁
+#customizeItem {
+  .container {
+    .row {
+      .img {
+        border: 1px solid black;
+      }
+      .text {
+        border: 1px solid red;
+      }
+    }
+  }
 }
 
-.woodName{
-  display: flex;
+// 客製化內頁:右邊文字, 材質, 顏色
+#customizeItem {
+  #footer {
+    margin-top: 0;
+  }
+  h2 {
+    font-size: $h2;
+    font-weight: bold;
+    color: $p_color1;
+  }
+  .woodColor > img {
+    width: 50px;
+    border-radius: 50%;
+  }
+  .woodName {
+    display: flex;
+  }
+}
+
+// 客製化內頁:左邊圖片
+#customizeItem {
+  #lightSliderVertical {
+    list-style: none outside none;
+    padding-left: 0;
+    margin-bottom: 0;
+    li {
+      display: block;
+      float: left;
+      cursor: pointer;
+      img {
+        display: block;
+        height: auto;
+        width: 500px;
+      }
+    }
+  }
+}
+
+// 客製化內頁:左邊圖片
+#customizeItem {
+  .lSSlideOuter .lSPager.lSGallery li {
+    opacity: 0.5;
+  }
+  .lSSlideOuter .lSPager.lSGallery li.active {
+    opacity: 1;
+  }
+  .lSSlideOuter .lSPager.lSGallery li.active,
+  .lSSlideOuter .lSPager.lSGallery li {
+    border-radius: 0;
+  }
+  .lSSlideOuter .lSPager.lSGallery li.active:hover,
+  .lSSlideOuter .lSPager.lSGallery li:hover {
+    border-radius: 0;
+  }
+  .lSSlideOuter .lSPager.lSGallery img {
+    display: block;
+    height: 64px;
+    max-width: 100%;
+  }
 }

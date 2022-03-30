@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     @@include('layout/head.html')
     <!-- 字型 google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -9,43 +9,171 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap"
       rel="stylesheet"
     />
-</head>
-<body>
-    @@include('layout/login.html')
+    <!-- lightSlider & fancybox css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"
+    />
+  </head>
+  <body class="customizeItem">
+    @@include('layout/login.html') 
     @@include('layout/nav.html')
 
-    <div id="customizeItem">
-        <section class="container margin_top_70">
-            <div class="row">
-                <div class="img col-lg-6 col-sm-12">
-                    
-
+    <main id="customizeItem">
+      <section class="container margin_top_50"> 
+        <div class="row">
+          <div class="img col-lg-6 col-sm-12">
+            <ul id="lightSlider">
+              <li data-thumb="/img/customize/c.png">
+                <a
+                  href="/img/customize/c.png"
+                  data-fancybox="gallery"
+                  data-caption="Caption #1"
+                  ><img src="/img/customize/c.png" alt=""
+                /></a>
+              </li>
+              <li data-thumb="/img/customize/c.png">
+                <a
+                  href="/img/customize/c.png"
+                  data-fancybox="gallery"
+                  data-caption="Caption #2"
+                  ><img src="/img/customize/c.png" alt=""
+                /></a>
+              </li>
+              <li data-thumb="/img/customize/c.png">
+                <a
+                  href="/img/customize/c.png"
+                  data-fancybox="gallery"
+                  data-caption="Caption #3"
+                  ><img src="/img/customize/c.png" alt=""
+                /></a>
+              </li>
+              <li data-thumb="/img/customize/c.png">
+                <a
+                  href="/img/customize/c.png"
+                  data-fancybox="gallery"
+                  data-caption="Caption #4"
+                  ><img src="/img/customize/c.png" alt=""
+                /></a>
+              </li>
+              <li data-thumb="/img/customize/c.png">
+                <a
+                  href="/img/customize/c.png"
+                  data-fancybox="gallery"
+                  data-caption="Caption #5"
+                  ><img src="/img/customize/c.png" alt=""
+                /></a>
+              </li>
+              <li data-thumb="/img/customize/c.png">
+                <a
+                  href="/img/customize/c.png"
+                  data-fancybox="gallery"
+                  data-caption="Caption #6"
+                  ><img src="/img/customize/c.png" alt=""
+                /></a>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="text col-lg-6 col-sm-12">
+              <form action="xxx.php" method="POST">
+                <h2>原木圓桌</h2>
+                <p>請選擇木材顏色</p>
+                <div class="woodColor">
+                  <img src="../img/customize/woodColor/t1.jpg" />
+                  <img src="../img/customize/woodColor/t2.jpg" />
+                  <img src="../img/customize/woodColor/t3.jpg" />
+                  <img src="../img/customize/woodColor/t4.jpg" />
+                  <img src="../img/customize/woodColor/t5.jpg" />
                 </div>
-                <div class="text col-lg-6 col-sm-12">
-                    <h2>原木圓桌</h2>
-                    <h3>請選擇木材顏色</h3>
-                    <div class="woodColor">
-                        <img src="../img/customize/woodColor/t1.jpg">
-                        <img src="../img/customize/woodColor/t2.jpg">
-                        <img src="../img/customize/woodColor/t3.jpg">
-                        <img src="../img/customize/woodColor/t4.jpg">
-                        <img src="../img/customize/woodColor/t5.jpg">
-                    </div>
-                    <div class="woodName">
-                        <p>白梣木</p>
-                        <p>胡桃橡木</p>
-                        <p>紅橡木</p>
-                        <p>綠橡木</p>
-                        <p>黑梣木</p>
-                    </div>
-                    數量: <input type="number" value="1"><br>
-                    其他需求: <br>
-                    <textarea name="" id="" cols="20" rows="5" placeholder="請輸入額外需求"></textarea><br>
-                    <button type="submit" class="btn btn-primary btn-sm" id="send_btn">送出</button>
+                <div class="woodName">
+                  <p>白梣木</p>
+                  <p>胡桃橡木</p>
+                  <p>紅橡木</p>
+                  <p>綠橡木</p>
+                  <p>黑梣木</p>
                 </div>
-            </div>
-        </section>
-    </div>
+                數量: <input type="number" value="1" /><br />
+                其他需求: <br />
+                <textarea
+                  name=""
+                  id=""
+                  cols="20"
+                  rows="5"
+                  placeholder="請輸入額外需求"
+                  resize="flase"
+                ></textarea
+                ><br />
+                <button type="submit" class="btn btn-primary btn-sm" id="send_btn">
+                  送出
+                </button>
+              </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    
     @@include('layout/footer.html')
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+    <script>
+      $ = jQuery;
+      $(document).ready(function () {
+        $h_slider_options = {
+          gallery: true,
+          item: 1,
+          loop: true,
+          slideMargin: 0,
+          thumbItem: 6,
+          galleryMargin: 10,
+          thumbMargin: 10,
+        };
+
+        $v_slider_options = {
+          gallery: true,
+          item: 1,
+          loop: true,
+          slideMargin: 0,
+          thumbItem: 6,
+          galleryMargin: 10,
+          thumbMargin: 10,
+          vertical: true,
+        };
+
+        h_slider = $("#lightSlider").lightSlider($h_slider_options);
+        v_slider = $("#lightSliderVertical").lightSlider($v_slider_options);
+
+        /* Fancybox & lightSlider Sync - Bug Fix */
+        $selector = '#lightSlider li:not(".clone") a';
+        $selector += ',#lightSliderVertical li:not(".clone") a';
+        $().fancybox({
+          selector: $selector,
+          backFocus: false, //The most important options for sync bug fix
+          buttons: [
+            "slideShow",
+            "share",
+            "zoom",
+            "fullScreen",
+            "thumbs",
+            "download",
+            "close",
+          ],
+        });
+      });
+
+      // #RESIZE BUG FIXING
+      // # if slider have height in % or vh,
+      // # on resize rebuild
+      $(window).resize(function () {
+        slider.destroy();
+        h_slider = $("#ocassions-slider").lightSlider(h_slider_options);
+      });
+    </script>
+  </body>
 </html>
