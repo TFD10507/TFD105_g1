@@ -19,161 +19,80 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"
     />
   </head>
-  <body class="customizeItem">
+  <body id="customizeItem">
     @@include('layout/login.html') 
     @@include('layout/nav.html')
 
-    <main id="customizeItem">
-      <section class="container margin_top_50"> 
-        <div class="row">
-          <div class="img col-lg-6 col-sm-12">
-            <ul id="lightSlider">
-              <li data-thumb="/img/customize/c.png">
-                <a
-                  href="/img/customize/c.png"
-                  data-fancybox="gallery"
-                  data-caption="Caption #1"
-                  ><img src="/img/customize/c.png" alt=""
-                /></a>
-              </li>
-              <li data-thumb="/img/customize/c.png">
-                <a
-                  href="/img/customize/c.png"
-                  data-fancybox="gallery"
-                  data-caption="Caption #2"
-                  ><img src="/img/customize/c.png" alt=""
-                /></a>
-              </li>
-              <li data-thumb="/img/customize/c.png">
-                <a
-                  href="/img/customize/c.png"
-                  data-fancybox="gallery"
-                  data-caption="Caption #3"
-                  ><img src="/img/customize/c.png" alt=""
-                /></a>
-              </li>
-              <li data-thumb="/img/customize/c.png">
-                <a
-                  href="/img/customize/c.png"
-                  data-fancybox="gallery"
-                  data-caption="Caption #4"
-                  ><img src="/img/customize/c.png" alt=""
-                /></a>
-              </li>
-              <li data-thumb="/img/customize/c.png">
-                <a
-                  href="/img/customize/c.png"
-                  data-fancybox="gallery"
-                  data-caption="Caption #5"
-                  ><img src="/img/customize/c.png" alt=""
-                /></a>
-              </li>
-              <li data-thumb="/img/customize/c.png">
-                <a
-                  href="/img/customize/c.png"
-                  data-fancybox="gallery"
-                  data-caption="Caption #6"
-                  ><img src="/img/customize/c.png" alt=""
-                /></a>
-              </li>
-            </ul>
+    <main>
+      <section class="container product-detail">
+        <div class="row justify-content-between">
+
+          <div class="imagery col-lg-6" style="background-image: url('/img/customize/color/brown.jpg');">
+            <img src="/img/customize/image/xr-brown.png" class="image" />
           </div>
-          
-          <div class="text col-lg-6 col-sm-12">
-              <form action="xxx.php" method="POST">
-                <h2>原木圓桌</h2>
+
+          <div class="col-lg-6">
+            <form class="detail margin_top_30">
+              <h2>原木圓桌</h2>
+              <div class="options">
                 <p>請選擇木材顏色</p>
-                <div class="woodColor">
-                  <img src="../img/customize/woodColor/t1.jpg" />
-                  <img src="../img/customize/woodColor/t2.jpg" />
-                  <img src="../img/customize/woodColor/t3.jpg" />
-                  <img src="../img/customize/woodColor/t4.jpg" />
-                  <img src="../img/customize/woodColor/t5.jpg" />
+                <div class="colors btn_grid margin_top_20">
+                  <div class="btn_wrap padding_10">
+                    <button type="button" class="color brown padding_10 selected" data-name="brown" data-color="#7f4f24">胡桃木</button>
+                  </div>
+                  <div class="btn_wrap padding_10">
+                    <button type="button" class="color beige padding_10" data-name="beige" data-color="#fefae0">白梣木</button>
+                  </div>
+                  <div class="btn_wrap padding_10">
+                    <button type="button" class="color red padding_10" data-name="red" data-color="#800f2f">紅橡木</button>
+                  </div>
+                  <div class="btn_wrap padding_10">
+                    <button type="button" class="color green padding_10" data-name="green" data-color="#6b705c">綠橡木</button>
+                  </div>
+                  <div class="btn_wrap padding_10">
+                    <button type="button" class="color black padding_10" data-name="black" data-color="#081c15">黑梣木</button>
+                  </div>
                 </div>
-                <div class="woodName">
-                  <p>白梣木</p>
-                  <p>胡桃橡木</p>
-                  <p>紅橡木</p>
-                  <p>綠橡木</p>
-                  <p>黑梣木</p>
-                </div>
-                數量: <input type="number" value="1" /><br />
-                其他需求: <br />
-                <textarea
-                  name=""
-                  id=""
-                  cols="20"
-                  rows="5"
-                  placeholder="請輸入額外需求"
-                  resize="flase"
-                ></textarea
-                ><br />
-                <button type="submit" class="btn btn-primary btn-sm" id="send_btn">
-                  送出
-                </button>
-              </form>
+                
+                <div class="qty margin_top_20">數量<br><input type="number" value="1"></div>
+                <div class="comment margin_top_20">其他需求<br><textarea></textarea></div>
+                
+                <button type="submit" class="submit margin_top_20">送出訂製單</button>
+              </div>
+            </form>
           </div>
         </div>
-      </section>
+      </section>  
     </main>
-    
-    @@include('layout/footer.html')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+    @@include('layout/footer.html') 
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script> -->
 
     <script>
-      $ = jQuery;
-      $(document).ready(function () {
-        $h_slider_options = {
-          gallery: true,
-          item: 1,
-          loop: true,
-          slideMargin: 0,
-          thumbItem: 6,
-          galleryMargin: 10,
-          thumbMargin: 10,
-        };
+      window.onload = function () {
+        const color_btn_el = document.querySelectorAll(".colors .color");
+        const imagery_el = document.querySelector(".imagery");
+        console.log(imagery_el);
+        const image_el = document.querySelector(".imagery .image");
+        // console.log(image_el);
 
-        $v_slider_options = {
-          gallery: true,
-          item: 1,
-          loop: true,
-          slideMargin: 0,
-          thumbItem: 6,
-          galleryMargin: 10,
-          thumbMargin: 10,
-          vertical: true,
-        };
+        for (let i = 0; i < color_btn_el.length; i++) {
+          let btn = color_btn_el[i];
 
-        h_slider = $("#lightSlider").lightSlider($h_slider_options);
-        v_slider = $("#lightSliderVertical").lightSlider($v_slider_options);
-
-        /* Fancybox & lightSlider Sync - Bug Fix */
-        $selector = '#lightSlider li:not(".clone") a';
-        $selector += ',#lightSliderVertical li:not(".clone") a';
-        $().fancybox({
-          selector: $selector,
-          backFocus: false, //The most important options for sync bug fix
-          buttons: [
-            "slideShow",
-            "share",
-            "zoom",
-            "fullScreen",
-            "thumbs",
-            "download",
-            "close",
-          ],
-        });
-      });
-
-      // #RESIZE BUG FIXING
-      // # if slider have height in % or vh,
-      // # on resize rebuild
-      $(window).resize(function () {
-        slider.destroy();
-        h_slider = $("#ocassions-slider").lightSlider(h_slider_options);
-      });
+          btn.addEventListener("click", function () {
+            document.querySelector(".colors .color.selected").classList.remove("selected");
+            this.classList.add("selected");
+            // 產品圖片邊更
+            image_el.src = '/img/customize/image/xr-' + this.dataset.name + ".png";
+            
+            // 背景圖變更
+            imagery_el.style.backgroundImage = "url('/img/customize/color/' + \this.dataset.name + '.jpg')";
+            console.log(imagery_el.style.backgroundImage);
+          });
+        }
+      };
     </script>
   </body>
 </html>
