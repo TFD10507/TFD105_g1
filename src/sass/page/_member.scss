@@ -1,6 +1,5 @@
 // 會員中心內頁
-#member2{
-
+#member2 {
   .container {
     [data-tab-content] {
       display: none;
@@ -41,7 +40,7 @@
       margin: 0 auto;
       text-align: center;
 
-      .btn_style{
+      .btn_style {
         cursor: pointer;
         border: 1px solid $btn_color;
         background-color: $btn_color;
@@ -93,7 +92,7 @@
         width: 100%;
         border: none;
 
-        .order-list{
+        .order-list {
           display: flex;
           justify-content: space-around;
           margin: 0;
@@ -115,7 +114,6 @@
         //   float: right;
         //   margin-left: 5px;
         // }
-
       }
 
       .order-content {
@@ -123,8 +121,31 @@
         overflow: hidden;
         background-color: $s_color2;
         max-height: 0;
+        width: 100%;
         overflow: hidden;
         transition: max-height 0.2s ease-out;
+
+        .order-details {
+          width: 100%;
+
+          tr,
+          th,
+          td {
+            border: 1px solid $p_color1;
+            padding: 5px;
+
+            tr:nth-child(even) {
+              background-color: $s_color1;
+            }
+          }
+
+          .order-details th {
+            padding: 0 10px;
+            text-align: left;
+            background-color: $p_color1;
+            color: $p_color2;
+          }
+        }
       }
     }
   }
