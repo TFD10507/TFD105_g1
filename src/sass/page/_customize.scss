@@ -2,6 +2,14 @@
 #customize {
   width: 100%;
 
+  .btn_style{
+    cursor: pointer;
+    border: 1px solid $btn_color;
+    background-color: $btn_color;
+    border-radius: 2px;
+    color: $p_color2;
+  }
+
   .container {
     max-width: 100%;
     padding: 0;
@@ -247,26 +255,32 @@
         }
 
         .submit {
-          background-image: linear-gradient(
-            to right,
-            transparent 50%,
-            #76706a 50%,
-            #a0643e 100%
-          );
-          transition: 0.8s;
-          background-size: 200%;
-          background-position: 0% 50%;
+          cursor: pointer;
           width: 150px;
-          height: 50px;
           border: 1px solid $btn_color;
+          background-color: $btn_color;
           border-radius: 2px;
+          color: $p_color2;
+          // background-image: linear-gradient(
+          //   to right,
+          //   transparent 50%,
+          //   #76706a 50%,
+          //   #a0643e 100%
+          // );
+          // transition: 0.8s;
+          // background-size: 200%;
+          // background-position: 0% 50%;
+          // width: 150px;
+          // height: 50px;
+          // border: 1px solid $btn_color;
+          // border-radius: 2px;
           margin-bottom: 20px;
         }
 
-        .submit:hover {
-          color: #fff;
-          background-position: 100% 50%;
-        }
+        // .submit:hover {
+        //   color: #fff;
+        //   background-position: 100% 50%;
+        // }
 
         @keyframes fadein {
           0% {

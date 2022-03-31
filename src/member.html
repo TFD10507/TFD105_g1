@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
   </head>
-  <body id="member">
+  <body id="member2">
     @@include('layout/login.html')
     @@include('layout/nav.html')
     <main class="container">
@@ -37,7 +37,7 @@
                 <input type="text" name="address" required>
                 <div class="member-phone margin_top_10">電話:</div>
                 <input type="tel" name="phone" maxlength="10" required><br>
-                <button type="submit" name="submit" id="submit" class="member-btn margin_top_20">修改</button>
+                <button type="submit" name="submit" id="submit" class="btn_style member-btn margin_top_20">修改</button>
             </form>
         </div>
 
@@ -57,7 +57,7 @@
                 <input type="password" name="password" placeholder="請再次輸入新密碼" required>
             </div>
             <!-- <input class="send" type="submit" value="修改"> -->
-            <button type="submit" name="submit" id="submit" class="password-btn margin_top_20">修改</button>
+            <button type="submit" name="submit" id="submit" class="btn_style password-btn margin_top_20">修改</button>
         </div>
 
         <!-- 訂單查詢內容 -->
@@ -109,13 +109,14 @@
         tab.addEventListener("click", () => {
           const target = document.querySelector(tab.dataset.tabTarget);
           tabContents.forEach((tabContent) => {
-            tabContent.classList.remove("active");
+            tabContent.classList.remove("active");           
           });
           tabs.forEach((tab) => {
             tab.classList.remove("active");
           });
           tab.classList.add("active");
           target.classList.add("active");
+          console.log(target)
         });
       });
 

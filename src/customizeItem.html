@@ -57,7 +57,7 @@
                 <div class="qty margin_top_20">數量<br><input type="number" value="1"></div>
                 <div class="comment margin_top_20">其他需求<br><textarea></textarea></div>
                 
-                <button type="submit" class="submit margin_top_20">送出訂製單</button>
+                <button type="submit" class="submit margin_top_10 btn_style">送出訂製單</button>
               </div>
             </form>
           </div>
@@ -73,7 +73,7 @@
     <script>
       window.onload = function () {
         const color_btn_el = document.querySelectorAll(".colors .color");
-        const imagery_el = document.querySelector(".imagery");
+        const imagery_el = document.querySelector("div.imagery");
         console.log(imagery_el);
         const image_el = document.querySelector(".imagery .image");
         // console.log(image_el);
@@ -88,8 +88,10 @@
             image_el.src = '/img/customize/image/xr-' + this.dataset.name + ".png";
             
             // 背景圖變更
-            imagery_el.style.backgroundImage = "url('/img/customize/color/' + \this.dataset.name + '.jpg')";
-            console.log(imagery_el.style.backgroundImage);
+            // imagery_el.style.backgroundImage = "url('/img/customize/color/"+ this.dataset.name +".jpg')";
+            imagery_el.style.backgroundImage = `url('/img/customize/color/${this.dataset.name}.jpg')`;
+            console.log(imagery_el)
+            console.log(this.dataset.name);
           });
         }
       };
