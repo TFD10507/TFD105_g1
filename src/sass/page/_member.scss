@@ -17,6 +17,7 @@
     }
 
     .tabs {
+      // tab頁籤
       display: flex;
       justify-content: space-evenly;
       list-style-type: none;
@@ -36,7 +37,7 @@
       }
     }
 
-    .tab-content {
+    .tab-content { // 頁籤內容
       margin: 0 auto;
       text-align: center;
 
@@ -116,7 +117,7 @@
         // }
       }
 
-      .order-content {
+      .order-content {         // 訂單查詢 訂單明細表格
         display: none;
         overflow: hidden;
         background-color: $s_color2;
@@ -146,6 +147,16 @@
             color: $p_color2;
           }
         }
+      }
+
+      #favor {
+        // 收藏清單
+        width: 100%;
+
+        .row img {
+          width: 100%;
+        }
+
       }
     }
   }
