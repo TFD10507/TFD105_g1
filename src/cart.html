@@ -9,27 +9,28 @@
     @@include('layout/nav.html')
     @@include('layout/login.html')
     <div class="wrapper">
-        <div class="step pt-4">
+        <div class="step pt-4 pb-4">
             <div class="fst_step bg-primary">1</div>
             <span>
-                <span class="move"></span>
+                <span class="move move1"></span>
                 <span class="move move2"></span>
                 <span class="move move3"></span>
                 <span class="move move4"></span>
-                <span class="move move5"></span>
+                <!-- <span class="move move5"></span>
+                <span class="move move6"></span> -->
             </span>
             <div class="snd_step bg-white">2</div>
             <span></span>
             <div class="trd_step bg-white">3</div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-9">
+            <div class="col-12 col-md-8">
                 <p>※因超商包裹體積限制，森活木工一律只提供宅配寄送，敬請見諒。</p>
 
-                <ul>
+                <ul class="title cart_title bg-primary mb-0">
                     <li>購物車</li>
                 </ul>
-                <ul>
+                <ul class="content cart_content bg-gray">
                     <li>
                         <div class="img">
                             <img src="./img/index/sample_small.jpg" alt="">
@@ -37,15 +38,15 @@
                         <div class="info">
                             <p>SEOTO-EX 機櫃</p>
                             <p>白橡木</p>
+                            <div class="count">
+                                <div><span class="num-jian">-</span></div>
+                                <div><input type="text" class="input-num" value="1" /></div>
+                                <div><span class="num-jia">+</span></div>
+                            </div>
                         </div>
                     </li>
                     <li class="price">
                         3370
-                    </li>
-                    <li class="count">
-                        <div><span class="num-jian">-</span></div>
-                        <div><input type="text" class="input-num" value="1" /></div>
-                        <div><span class="num-jia">+</span></div>
                     </li>
                     <li class="operate">
                         <a href="#" class="del">
@@ -58,23 +59,23 @@
                 </ul>
             </div>
 
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-4">
                 <!-- 折價券 -->
-                <ul>
+                <ul class="title coupon_title bg-primary mb-0">
                     <li>使用折價券</li>
                 </ul>
-                <ul>
+                <ul class="content coupon_content bg-gray">
                     <li>
-                        <button>折價券</button>
+                        <button class="btn btn-warning btn_style">折價券</button>
                         <input type="text">
                     </li>
                 </ul>
 
                 <!-- 訂單資訊 -->
-                <ul>
+                <ul class="title order_title bg-primary mb-0">
                     <li>訂單資訊</li>
                 </ul>
-                <ul>
+                <ul class="content order_content bg-gray">
                     <li>
                         <span>商品總計</span>
                         <span>NT$2960</span>
