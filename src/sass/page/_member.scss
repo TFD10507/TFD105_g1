@@ -92,26 +92,30 @@
         cursor: pointer;
         width: 100%;
         border: none;
-        text-align: left;
-        outline: none;
-        font-size: $p;
 
-        .collapsible.active,
-        .collapsible:hover {
-          background-color: $s_color1;
+        .order-list{
+          display: flex;
+          justify-content: space-around;
+          margin: 0;
+          padding-left: 0;
         }
 
-        .collapsible.active::after {
-          content: "\2796";
-        }
-      }
+        // .collapsible.active{
+        //   background-color: $s_color1;
+        // }
 
-      .collapsible::after {
-        content: "\002B";
-        font-size: 14px;
-        color: $p_color2;
-        float: right;
-        margin-left: 5px;
+        // .collapsible.active::after {
+        //   content: "\2796";
+        // }
+
+        // .collapsible::after {
+        //   content: "\002B";
+        //   font-size: 14px;
+        //   color: $p_color2;
+        //   float: right;
+        //   margin-left: 5px;
+        // }
+
       }
 
       .order-content {
