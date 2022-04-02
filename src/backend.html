@@ -29,6 +29,7 @@
 </head>
 
 <body class="backend">
+
     <header class="header">
         <img src="./img/backend/backend_logo.svg" alt="">
         <a href="">
@@ -37,7 +38,7 @@
         </a>
     </header>
 
-    <main>
+    <main id="app">
         <!-- Bootstrap 格線系統 -->
         <div class="row">
             <!-- 左半邊導覽列表 -->
@@ -64,7 +65,7 @@
                         <table id="table_id" class="display table_id">
                             <!-- 標題.新增資料區塊 -->
                             <section>
-                                <h2 class="h2">會員管理</h2>
+                                <h2 class="h2">會員管理{{aaa}}</h2>
                             </section>
                             <!-- 表單顯示區塊起始 -->
                             <thead>
@@ -155,11 +156,6 @@
                             <!-- 標題.新增資料區塊 -->
                             <section>
                                 <h2 class="h2">訂單管理</h2>
-                                <!-- Button trigger modal -->
-                                <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#addorderedit">
-                                    <i class="bi bi-cart-plus-fill add"></i>點擊新增訂單
-                                </button> -->
                             </section>
                             <!-- 表單顯示區塊起始 -->
                             <thead>
@@ -210,14 +206,14 @@
                             </thead>
                             <tbody>
                                 <!-- 假資料示意區 -->
-                                <tr>
-                                    <td>FOD01</td>
-                                    <td>Chaos00</td>
-                                    <td>2022/1/10</td>
+                                <tr v-for="(fake,i) in fakes">
+                                    <td>{{fake.couid}}</td>
+                                    <td>{{fake.couaccount}}</td>
+                                    <td>{{fake.coutime}}</td>
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#customerorderedit">
+                                            data-target="#customerorderedit" :id="'coustomer_'+fake.couid">
                                             編輯
                                         </button>
                                     </td>
@@ -250,15 +246,15 @@
                             </thead>
                             <tbody>
                                 <!-- 假資料示意區 -->
-                                <tr>
-                                    <td>CP500</td>
-                                    <td>500元</td>
-                                    <td>2022/1/10</td>
-                                    <td>30天</td>
+                                <tr v-for="(coupon,index) in coupons">
+                                    <td>{{coupon.id}}</td>
+                                    <td>{{coupon.price}}</td>
+                                    <td>{{coupon.date}}</td>
+                                    <td>{{coupon.time}}</td>
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#couponedit">
+                                            data-target="#couponedit" :id="'coupon_'+coupon.id">
                                             編輯
                                         </button>
                                     </td>
@@ -491,104 +487,6 @@
             </div>
         </div>
         <!-- 商品編輯 結束 -->
-
-        <!-- 新增訂單 開始 -->
-        <!-- <div class="modal fade" id="addorderedit" tabindex="-1" role="dialog" aria-labelledby="addordereditLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form action="">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addordereditLabel">訂單資訊</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <ul class="half">
-                                <li>
-                                    <label>訂單編號</label>
-                                    <input type="text">
-                                </li>
-                                <li>
-                                    <label>會員編號</label>
-                                    <input type="text">
-                                </li>
-                                <li>
-                                    <label>下單時間</label>
-                                    <input type="text" disabled>
-                                </li>
-                                <li>
-                                    <label>訂單金額</label>
-                                    <input type="text" disabled>
-                                </li>
-                            </ul>
-                            <ul class="half">
-                                <li>
-                                    <label>連絡電話</label>
-                                    <input type="number">
-                                </li>
-                                <li>
-                                    <label>收貨地址</label>
-                                    <input type="text">
-                                </li>
-                                <li>
-                                    <label>E-mail</label>
-                                    <input type="email">
-                                </li>
-                                <li>
-                                    <label>訂單狀態</label>
-                                    <select name="" id="">
-                                        <option value="">未付款</option>
-                                        <option value="">付款完成</option>
-                                        <option value="">待出貨</option>
-                                    </select>
-                                </li>
-                            </ul>
-                            <div class="buyproduct">
-                                <label for="">商品內容</label>
-                                <table class="outproduct">
-                                    <thead>
-                                        <tr>
-                                            <th>商品編號</th>
-                                            <th>商品名稱</th>
-                                            <th>商品種類</th>
-                                            <th>材質顏色</th>
-                                            <th>商品數量</th>
-                                            <th>商品金額</th>
-                                            <th>小計</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <td>TB-001</td>
-                                        <td>雅典原木桌</td>
-                                        <td>桌子</td>
-                                        <td>松柏褐</td>
-                                        <td>4</td>
-                                        <td>1000</td>
-                                        <td>4000</td>
-                                    </tbody>
-                                    <tbody>
-                                        <td>TB-002</td>
-                                        <td>流行原木桌</td>
-                                        <td>桌子</td>
-                                        <td>原木灰</td>
-                                        <td>2</td>
-                                        <td>1000</td>
-                                        <td>2000</td>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">新增</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> -->
-        <!-- 新增訂單 結束 -->
 
         <!-- 訂單編輯 開始 -->
         <div class="modal fade" id="orderedit" tabindex="-1" role="dialog" aria-labelledby="ordereditLabel"
@@ -905,9 +803,43 @@
         <!-- Modal 結束-->
     </main>
 
+
+    <!-- Vus,js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script> -->
     <!-- TataTacle 啟動.翻譯引入 -->
-    <!-- JS串聯有問題測試顯示用 -->
     <Script src="./js/vendors/datatable.min.js"></Script>
+    <!-- VUE.JS -->
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                aaa: 'vue測試',
+                fakes: [
+                    {
+                        couid:'1',
+                        couaccount:'ooooo',
+                        coutime:'2020-1-1',
+                    },
+                    {
+                        couid:'2',
+                        couaccount:'rrrrrr',
+                        coutime:'2020-1-2',
+                    },
+                ],
+                coupons:[
+                    {
+                        id:'1',
+                        price:'500',
+                        date:'2020-1-1',
+                        time:'30',
+                    }
+                ]
+
+                
+            },
+
+        })
+    </script>
 </body>
 
 </html>

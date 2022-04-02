@@ -16,7 +16,7 @@
     <main class="container">
       <h2 class="padding_10"><span class="textUnderline">會員中心</span></h1>
 
-        <!-- tab標籤 -->
+        <!-- tab頁籤 -->
       <ul class="tabs margin_top_20">
         <li data-tab-target="#member" class="active tab padding_10">
           會員資料
@@ -79,21 +79,138 @@
           <ul class="order-title padding_10">
             <li>訂單編號</li>
             <li>購買日期</li>
-            <li>訂單金額</li>
+            <li>訂單總額</li>
             <li>訂單狀態</li>
+            <li>訂單明細</li>
           </ul>
 
-          <button type="button" class="collapsible padding_20">
-            Open Collapsible
+          <button type="button" class="collapsible padding_10">
+            <ul class="order-list">
+              <li>22040101</li>
+              <li>2022-03-31</li>
+              <li>NT$38,888</li>
+              <li>已出貨</li>
+              <li style="outline: 1px solid #ffffff; border-radius: 2px; padding: 1px 5px;">查看</li>
+            </ul>
           </button>
-          <div class="order-content padding_20">
-            <p>Lorem ipsum...</p>
+          <div class="order-content padding_10">
+            <table class="order-details">
+              <tr>
+                <th>商品名稱</th>
+                <th>材質</th>
+                <th>數量</th>
+                <th>價錢</th>
+              </tr>
+              <tr>
+                <td>羅丹辦公桌</td>
+                <td>白橡木</td>
+                <td>1</td>
+                <td>NT$18,999</td>
+              </tr>
+              <tr>
+                <td>羅丹辦公椅</td>
+                <td>白橡木</td>
+                <td>1</td>
+                <td>NT$20,000</td>
+              </tr>
+            </table>
+          </div>
+
+          <button type="button" class="collapsible padding_10">
+            <ul class="order-list">
+              <li>22033189</li>
+              <li>2022-04-01</li>
+              <li>NT$60,000</li>
+              <li>待出貨</li>
+              <li style="outline: 1px solid #ffffff; border-radius: 2px; padding: 1px 5px;">查看</li>
+            </ul>
+          </button>
+          <div class="order-content padding_10">
+            <table class="order-details">
+              <tr>
+                <th>商品名稱</th>
+                <th>材質</th>
+                <th>數量</th>
+                <th>價錢</th>
+              </tr>
+              <tr>
+                <td>羅丹辦公桌</td>
+                <td>白橡木</td>
+                <td>1</td>
+                <td>NT$18,999</td>
+              </tr>
+              <tr>
+                <td>羅丹辦公桌</td>
+                <td>白橡木</td>
+                <td>1</td>
+                <td>NT$20,000</td>
+              </tr>
+              <tr>
+                <td>羅丹辦公桌</td>
+                <td>白橡木</td>
+                <td>1</td>
+                <td>NT$11,001</td>
+              </tr>
+              <tr>
+                <td>羅丹辦公桌</td>
+                <td>白橡木</td>
+                <td>1</td>
+                <td>NT$10,000</td>
+              </tr>
+            </table>
+          </div>
+
+          <button type="button" class="collapsible padding_10">
+            <ul class="order-list">
+              <li>22010133</li>
+              <li>2022-04-01</li>
+              <li>NT$1,450</li>
+              <li>已取消</li>
+              <li style="outline: 1px solid #ffffff; border-radius: 2px; padding: 1px 5px;">查看</li>
+            </ul>
+          </button>
+          <div class="order-content padding_10">
+            <table class="order-details">
+              <tr>
+                <th>商品名稱</th>
+                <th>材質</th>
+                <th>數量</th>
+                <th>價錢</th>
+              </tr>
+              <tr>
+                <td>羅丹辦公桌</td>
+                <td>白橡木</td>
+                <td>1</td>
+                <td>NT$10,000</td>
+              </tr>
+            </table>
           </div>
         </div>
+
         <!-- 收藏清單內容 -->
-        <div id="favor" data-tab-content>
-          <h2>收藏清單</h2>
-          <p>收藏清單</p>
+        <div id="favor" data-tab-content class="container">
+          <div class="row justify-content-between">
+            <div class="col-12 col-lg-3 col-md-6">
+              <img src="/img/member/favor/chair_001.jpg">
+              <p class=""> 羅丹辦公椅</p>
+            </div>
+            <div class="col-12 col-lg-3 col-md-6">
+              <img src="/img/member/favor/chair_002.jpg">
+              <p>羅丹辦公椅</p>
+            </div>
+            <div class="col-12 col-lg-3 col-md-6">
+              <img src="/img/member/favor/chair_003.jpg">
+              <p>羅丹辦公椅</p>
+            </div>
+            <div class="col-12 col-lg-3 col-md-6">
+              <img src="/img/member/favor/chair_001.jpg">
+              <p>羅丹辦公椅</p>
+            </div>
+            <div class="col-12 col-lg-3 col-md-6">
+              <img src="/img/member/favor/chair_001.jpg">
+              <p>羅丹辦公椅</p>
+            </div>
+          </div>
         </div>
       </div>
     </main>
