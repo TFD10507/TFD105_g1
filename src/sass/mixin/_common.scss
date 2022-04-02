@@ -4,6 +4,7 @@
     width: 100px;
     height: 40px;
     letter-spacing: 2px;
+    border-radius: 2px;
     @content;
     // &:hover{
     //     background-color: darken($btn_color,20);
