@@ -29,18 +29,16 @@
 </head>
 
 <body class="backend">
-    <div id="app">
 
-    
     <header class="header">
         <img src="./img/backend/backend_logo.svg" alt="">
         <a href="">
-            <h5 class="h5">帳號登出 {{aaa}}</h5>
+            <h5 class="h5">帳號登出</h5>
             <i class="bi bi-box-arrow-right"></i>
         </a>
     </header>
 
-    <main ID="app">
+    <main id="app">
         <!-- Bootstrap 格線系統 -->
         <div class="row">
             <!-- 左半邊導覽列表 -->
@@ -67,7 +65,7 @@
                         <table id="table_id" class="display table_id">
                             <!-- 標題.新增資料區塊 -->
                             <section>
-                                <h2 class="h2">會員管理</h2>
+                                <h2 class="h2">會員管理{{aaa}}</h2>
                             </section>
                             <!-- 表單顯示區塊起始 -->
                             <thead>
@@ -208,14 +206,14 @@
                             </thead>
                             <tbody>
                                 <!-- 假資料示意區 -->
-                                <tr>
-                                    <td>FOD01</td>
-                                    <td>Chaos00</td>
-                                    <td>2022/1/10</td>
+                                <tr v-for="(fake,i) in fakes">
+                                    <td>{{fake.couid}}</td>
+                                    <td>{{fake.couaccount}}</td>
+                                    <td>{{fake.coutime}}</td>
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#customerorderedit">
+                                            data-target="#customerorderedit" :id="'coustomer_'+fake.couid">
                                             編輯
                                         </button>
                                     </td>
@@ -804,7 +802,7 @@
 
         <!-- Modal 結束-->
     </main>
-</div>
+
 
     <!-- Vus,js cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script> -->
@@ -815,17 +813,23 @@
         new Vue({
             el: '#app',
             data: {
-                
-            },
-            methods: {
-
-            },
-            components: {
-
+                aaa: 'vue測試',
+                fakes: [
+                    {
+                        couid:'1',
+                        couaccount:'ooooo',
+                        coutime:'2020-1-1',
+                    },
+                    {
+                        couid:'2',
+                        couaccount:'rrrrrr',
+                        coutime:'2020-1-2',
+                    },
+                ]
             },
 
         })
     </script>
 </body>
 
-</html>sadsa
+</html>
