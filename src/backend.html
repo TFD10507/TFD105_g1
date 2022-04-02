@@ -246,15 +246,15 @@
                             </thead>
                             <tbody>
                                 <!-- 假資料示意區 -->
-                                <tr>
-                                    <td>CP500</td>
-                                    <td>500元</td>
-                                    <td>2022/1/10</td>
-                                    <td>30天</td>
+                                <tr v-for="(coupon,index) in coupons">
+                                    <td>{{coupon.id}}</td>
+                                    <td>{{coupon.price}}</td>
+                                    <td>{{coupon.date}}</td>
+                                    <td>{{coupon.time}}</td>
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#couponedit">
+                                            data-target="#couponedit" :id="'coupon_'+coupon.id">
                                             編輯
                                         </button>
                                     </td>
@@ -825,7 +825,17 @@
                         couaccount:'rrrrrr',
                         coutime:'2020-1-2',
                     },
+                ],
+                coupons:[
+                    {
+                        id:'1',
+                        price:'500',
+                        date:'2020-1-1',
+                        time:'30',
+                    }
                 ]
+
+                
             },
 
         })
