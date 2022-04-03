@@ -1,20 +1,32 @@
 footer {
     background-color: $p_color1;
     color: $p_color2;
-    display: flex;
-    // justify-content: center;
-    align-items: center;
-
-    ul{
-        width: 50%;
+    .footer_info{
+        display: flex;
+        align-items: center;
+        ul{
+            width: 50%;
+            a{
+                text-decoration: none;
+                color: $p_color2;
+                display: inline-block;
+                &:hover{
+                    color: darken($p_color2, 20);
+                }
+            }
+        }
     }
-    div{
-        a{
-            text-decoration: none;
-            color: $p_color2;
+    hr.oneheight{
+        height: 1px;
+    }
+    .pt-4{
+        text-align: center;
+    }
+    @media (max-width:768.98px){
+        .footer_info{
             display: block;
-            &:hover{
-                color: darken($p_color2, 20);
+            ul{
+                width: 100%;
             }
         }
     }

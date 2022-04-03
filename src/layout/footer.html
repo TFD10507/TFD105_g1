@@ -35,20 +35,24 @@
     // });
     Vue.component('footer-list', {
         template: `
-        <div>
+        <ul>
             <li class="pb-2">森活木工</li>
             <li class="pb-2">FACTORY 埼玉県川口市安行領家945-1</li>
-            <li class="pb-2">contact@sinrafurniture.com</li>
-            <li>048-278-3324</li>
-        </div>
+            <li class="pb-2">morifurniture@gmail.com</li>
+            <li>04-8278-3324</li>
+        </ul>
         `, //用來定義視覺元件
     });
     Vue.component('footer-link', {
         template: `
-        <div>
-            <a href="https://www.facebook.com/" class="pb-2">facebook</a>
-            <a href="https://www.instagram.com/">instagram</a>
-        </div>
+        <ul>
+            <li>
+                <a href="https://www.facebook.com/" class="pb-2">facebook</a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/">instagram</a>
+            </li>
+        </ul>
             `, //用來定義視覺元件
     });
 
@@ -60,11 +64,13 @@
         // 在template 必須要有一個父元素(一個root)把他們包住
         template: `
         <footer class="padding_30 margin_top_50">
-            <ul>
+            <div class="footer_info">
                 <footer-list></footer-list>
-            </ul>
-            <div>
                 <footer-link></footer-link>
+            </div>
+            <hr class="oneheight">
+            <div class="pt-4 mx-auto">
+                本網站為緯育TibaMe前端設計工程師班第74期第1組學員專題成果作品，本平台僅供學習、展示之用。參考資源：https://sinrafurniture.com/
             </div>
         </footer>
         `,
