@@ -9,10 +9,17 @@
   @@include('layout/login.html')
   @@include('layout/nav.html')
   <!-- <div class="wrapper"></div>   -->
-  <section class="productslider"></section>
-  <section class="product">
-    <main class="product_container bootstrap snipets">
-      <h1 class="text-center text-muted">Product catalog</h1>
+  <main class="container" id="app">
+    <section class="title">
+      <h1 class="p-3">產品總覽
+        <div v-html="cart2"></div>
+      </h1>
+      <img src="./img/product/all_bn001.jpg" class="img-fluid w-100">
+    </section>
+    <!-- <div class="box">
+      <section class="productslider"></section>
+    </div> -->
+    <section class="productNav">
       <section class="smallicon">
         <div class="smallicon_case">
           <a href=""><img src="./img/product/nav_nav_all.svg" alt=""></a>
@@ -22,149 +29,148 @@
         </div>
       </section>
 
-      <div class="row flow-offset-1">
-        <div class="col-sm-6 col-md-4 col-xl-3">
-          <a href="./product_in.html">
-            <div class="product tumbnail thumbnail-3"><img src="./img/product/chair_001.jpg" alt="">
-              <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-              <div class="caption">
-                <h6>Short Sleeve T-Shirt</h6>
-                <p class="price">$24.99</p>
-          </a>
-        </div>
-      </div>
-
-      </div>
-      <div class="col-sm-6 col-md-4 col-xl-3">
-        <div class="product tumbnail thumbnail-3">
-          <a href="#">
-            <img src="./img/product/shelf_001.jpg" alt="">
-            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-            <div class="caption">
-              <h6><a href="#">Short Sleeve T-Shirt</a></h6>
-              <p class="price">$24.99</p>
-          </a>
-        </div>
-      </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-xl-3 ">
-        <div class="product tumbnail thumbnail-3"><a href="#">
-            <a href="">
-              <img src="./img/product/table_001.jpg" alt="">
-              <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-              <div class="caption">
-                <h6><a href="#">Short Sleeve T-Shirt</a></h6>
-                <p class="price">$24.99</p>
-            </a>
-        </div>
-      </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-xl-3 ">
-        <div class="product tumbnail thumbnail-3">
-          <a href="">
-            <img src="./img/product/table_001.jpg" alt="">
-            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-            <div class="caption">
-              <h6><a href="#">Short Sleeve T-Shirt</a></h6>
-              <p class="price">$24.99</p>
-          </a>
-        </div>
-      </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-xl-3">
-        <div class="product tumbnail thumbnail-3">
-          <a href="#"><img src="./img/product/shelf_001.jpg" alt="">
-            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-            <div class="caption">
-              <h6><a href="#">Short Sleeve T-Shirt</a></h6>
-              <p class="price">$24.99</p>
-          </a>
-        </div>
-      </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-xl-3">
-        <div class="product tumbnail thumbnail-3">
-          <a href="#"><img src="./img/product/chair_001.jpg" alt=""></a>
-          <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-          <div class="caption">
-            <h6><a href="#">Short Sleeve T-Shirt</a></h6>
-            <p class="price">$24.99</p>
-            </a>
+      <!-- <section class="product">
+      <main class="product_container bootstrap snipets">
+        <h1 class="text-center text-muted"></h1>
+        <section class="smallicon">
+          <div class="smallicon_case">
+            <a href=""><img src="./img/product/nav_nav_all.svg" alt=""></a>
+            <a href=""><img src="./img/product/nav_nav_chair.svg" alt=""></a>
+            <a href=""><img src="./img/product/nav_nav_table.svg" alt=""></a>
+            <a href=""><img src="./img/product/nav_nav_self.svg" alt=""></a>
           </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-xl-3">
-        <div class="product tumbnail thumbnail-3">
-          <a href="">
-            <img src="./img/product/table_001.jpg" alt="">
-            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-            <div class="caption">
-              <h6><a href="#">Short Sleeve T-Shirt</a></h6>
-              <p class="price">$24.99</p>
+        </section> -->
+      <div class="row flow-offset-1">
+        <div class="col-sm-6 col-md-4 col-xl-3" v-for="(product,i) in products">
+          <a :href="'./product_in.html?id='+product.id">
+            <div class="product tumbnail thumbnail-3">
+              <img :src="product.image" alt="">
+              <!-- <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="" @click.stop.prevent="add_cart()"> -->
+              <div class="caption">
+                <h6>{{product.productname}}</h6>
+                <p class="price">${{product.price}}</p>
           </a>
         </div>
       </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-xl-3">
-        <div class="product tumbnail thumbnail-3"><a href="">
-            <img src="./img/product/table_001.jpg" alt="">
-            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-            <div class="caption">
-              <h6><a href="#">Short Sleeve T-Shirt</a></h6>
-              <p class="price">$24.99</p>
-          </a>
-        </div>
-      </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-xl-3">
-        <div class="product tumbnail thumbnail-3"><a href="">
-            <img src="./img/product/table_001.jpg" alt="">
-            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-            <div class="caption">
-              <h6><a href="#">Short Sleeve T-Shirt</a></h6>
-              <p class="price">$24.99</p>
-          </a>
-        </div>
-      </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-xl-3">
-        <div class="product tumbnail thumbnail-3"><a href="">
-            <img src="./img/product/table_001.jpg" alt="">
-            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-            <div class="caption">
-              <h6><a href="#">Short Sleeve T-Shirt</a></h6>
-              <p class="price">$24.99</p>
-          </a>
-        </div>
-      </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-xl-3">
-        <div class="product tumbnail thumbnail-3"><a href="">
-            <img src="./img/product/table_001.jpg" alt="">
-            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-            <div class="caption">
-              <h6><a href="#">Short Sleeve T-Shirt</a></h6>
-              <p class="price">$24.99</p>
-          </a>
-        </div>
-      </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-xl-3">
-        <div class="product tumbnail thumbnail-3"><a href="">
-            <img src="./img/product/table_001.jpg" alt="">
-            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-            <div class="caption">
-              <h6><a href="#">Short Sleeve T-Shirt</a></h6>
-              <p class="price">$24.99</p>
-          </a>
-        </div>
-
-
-      </div>
-    </main>
+  </main>
   </section>
-  @@include('layout/footer.html')
 
+  </main>
+  @@include('layout/footer.html')
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        text: 'ss',
+        // cart2: '<div>asdadx</div>',
+        products:
+          [
+            {
+              "id": 2,
+              "image": "/img/product/chair_001.jpg",
+              "productname": "chair",
+              "price": '1,000'
+            },
+            {
+              "id": 3,
+              "image": "/img/product/shelf_001.jpg",
+              "productname": "chair",
+              "price": 100
+            },
+            {
+              "id": 4,
+              "image": "/img/product/chair_001.jpg",
+              "productname": "chair",
+              "price": 100
+            },
+            {
+              "id": 5,
+              "image": "/img/product/chair_001.jpg",
+              "productname": "chair",
+              "price": 100
+            },
+            {
+              "id": 6,
+              "image": "/img/product/table_001.jpg",
+              "productname": "chair",
+              "price": 100
+            },
+            {
+              "id": 7,
+              "image": "/img/product/chair_001.jpg",
+              "productname": "chair",
+              "price": 100
+            },
+            {
+              "id": 8,
+              "image": "/img/product/shelf_001.jpg",
+              "productname": "chair",
+              "price": 100
+            },
+            {
+              "id": 9,
+              "image": "/img/product/table_001.jpg",
+              "productname": "chair",
+              "price": 100
+            },
+            {
+              "id": 10,
+              "image": "/img/product/chair_001.jpg",
+              "productname": "chair",
+              "price": 100
+            },
+            {
+              "id": 11,
+              "image": "/img/product/shelf_001.jpg",
+              "productname": "chair",
+              "price": 100
+            },
+            {
+              "id": 12,
+              "image": "/img/product/table_001.jpg",
+              "productname": "chair",
+              "price": 100
+            },
+            {
+              "id": 13,
+              "image": "/img/product/chair_001.jpg",
+              "productname": "chair",
+              "price": 100
+            },
+          ]
+        // <div class="col-sm-6 col-md-4 col-xl-3">
+        //   <a href="./product_in.html">
+        //     <div class="product tumbnail thumbnail-3">
+        //       <img src="./img/product/chair_001.jpg" alt="">
+        //       <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
+        //         @click.stop.prevent="add_cart()">
+        //       <div class="caption">
+        //         <h6>Short Sleeve T-Shirt</h6>
+        //         <p class="price">$24.99</p>
+
+      },
+      methods: {
+        add_cart() {
+          alert(123);
+        }
+      }
+    })
+  </script>
+
+  <!-- <script>
+    let productArr = [{
+      name: "",
+      prize: 0,
+      content: "",
+      photo: ""
+    }];
+    for (let i = 0; i <= 10; i++) {
+      let counter = 0;
+      counter++;
+      console.log(counter);
+
+    }
+  </script> -->
 </body>
 
 </html>
