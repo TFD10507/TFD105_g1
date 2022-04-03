@@ -1,4 +1,37 @@
 .index {
+    // 輪盤
+    .roulette{
+        width: 50px;
+        z-index: 5;
+        cursor: pointer;
+        position: fixed;
+        right: 10px;
+        bottom: 100px;
+        opacity: .5;
+        &:hover{
+            opacity: 1;
+        }
+        img{
+            max-width: 100%;
+        }
+    }
+    .js-back-to-top{
+        width: 45px;
+        z-index: 5;
+        cursor: pointer;
+        position: fixed;
+        right: 14px;
+        bottom: 30px;
+        opacity: .5;
+        &:hover{
+            opacity: .8;
+        }
+        img{
+            max-width: 100%;
+        }
+    }
+  
+  
     .wrapper {
         overflow: hidden;
         // max-width: 1200px;
@@ -45,6 +78,7 @@
                 img {
                     max-width: 100%;
                 }
+                // scroll
                 .vertical {
                     writing-mode: vertical-lr;
                     position: absolute;
@@ -140,7 +174,7 @@
                             opacity: 0;
                         }
                         50%{
-                            transform: rotate(0deg) translateX(250px) translateY(-5px);
+                            transform: rotate(0deg) translateX(243px) translateY(-5px);
                             opacity: 1;
                         }
                         100%{
@@ -154,12 +188,12 @@
                         width: 25px;
                         height: .5px;
                         background: $p_color;
-                        // transform: rotate(30deg) translateX(64px) translateY(-50px);
+                        // transform: rotate(30deg) translateX(67px) translateY(-50px);
                         animation: fade4 2s linear infinite;
                     }
                     @keyframes fade4 {
                         0%{
-                            transform: rotate(30deg) translateX(64px) translateY(-50px);
+                            transform: rotate(30deg) translateX(73px) translateY(-54px);
                             opacity: 0;
                         }
                         50%{
@@ -167,7 +201,7 @@
                             opacity: 1;
                         }
                         100%{
-                            transform: rotate(30deg) translateX(116px) translateY(-81px);
+                            transform: rotate(30deg) translateX(120px) translateY(-83px);
                             opacity: 0;
                         }
                     }
@@ -183,11 +217,15 @@
             // justify-content: space-between;
             // padding-top: 70px;
             div{
-                div{
-                    // width: 300px;
+                .small{
+                    display: none;
                     img{
                         max-width: 100%;
                     }
+                }
+                // 商品展示控制
+                .-active{
+                    display: block;
                 }
             }
             .slides-wrapper{
@@ -213,7 +251,7 @@
             }
             .product-name{
                 position: absolute;
-                left: -35px;
+                left: -25px;
                 top: calc(50% - 60px);
                 writing-mode: vertical-lr;
                 font-size: 50px;

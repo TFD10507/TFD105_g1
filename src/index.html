@@ -6,6 +6,12 @@
 </head>
 
 <body class="index">
+    <div class="roulette">
+        <img src="./img/index/lucky-wheel.png">
+    </div>
+    <div class="js-back-to-top">
+        <img src="./img/index/up-arrow.png">
+    </div>
     <div class="wrapper">
         @@include('layout/login.html')
         @@include('layout/nav.html')
@@ -27,17 +33,15 @@
             <!-- 關於我們 -->
             <section class="section2 pb-5 row">
                 <div class="section2_img col-12 col-md-6">
-                    <video src="./img/index/production ID_4957770.mp4" playsinline autoplay muted loop type="video/mp4" height="100%"
-                        width="100%" class="banner-video">
+                    <video src="./img/index/production.mp4" playsinline autoplay muted loop type="video/mp4"
+                        height="100%" width="100%" class="banner-video">
                     </video>
                     <!-- <img src="./img/index/2.jpg" alt="" class="img-fluid"> -->
                 </div>
                 <div class="pt-5 px-5 col-12 col-md-6">
                     <h2>關於我們 About us</h2>
                     <p class="mt-3">森活木工以再生木材製造，符合環保、職人工藝以及設計的高標準製作每一件家具。</p>
-                    <a href="about.html">view more
-                        <!-- <img src="./img/index/arrow.png" alt=""> -->
-                    </a>
+                    <a href="about.html">view more</a>
                 </div>
             </section>
 
@@ -45,13 +49,13 @@
             <section class="section3 mt-5 pb-5 row">
                 <!-- 小商品圖 -->
                 <div class="slides-wrapper col-12 col-md-4 mx-auto">
-                    <div class="small">
+                    <div class="small chair -active">
                         <img src="./img/index/sample_small.jpg" class="img-fluid">
                     </div>
-                    <!-- <div class="small">
-                        <img src="./img/index/sample_small.jpg" alt="">
+                    <div class="small cabinet">
+                        <img src="./img/product/shelf_001.jpg" alt="">
                     </div>
-                    <div class="small">
+                    <!-- <div class="small">
                         <img src="./img/index/sample_small.jpg" alt="">
                     </div> -->
 
@@ -62,9 +66,9 @@
                     <!-- 商品名 -->
                     <div class="product-name">
                         <div class="slide-mask">
-                            <p class="shifting-slide-title">DESK</p>
-                            <!-- <p class="shifting-slide-title">CABINET</p>
-                            <p class="shifting-slide-title">CHAIR</p> -->
+                            <p class="shifting-slide-title">CHAIR</p>
+                            <!-- <p class="shifting-slide-title">CABINET</p> -->
+                            <!-- <p class="shifting-slide-title">DESK</p> -->
                         </div>
                     </div>
                     <!-- 後一張按鈕 -->
@@ -132,6 +136,7 @@
 
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
+        // 最新消息的輪播
         $('.responsive').slick({
             dots: true,
             infinite: true,
@@ -188,7 +193,43 @@
             $('.fa-angle-left').on("click", function () {
                 $('.slick-prev').click();
             });
+
+            // go to top
+            var $win = $(window);
+            var $backToTop = $('.js-back-to-top');
+
+            // 當user滾動到離頂部300像素時，展示回到頂部按鈕
+            $win.scroll(function () {
+                if ($win.scrollTop() > 300) {
+                    $backToTop.show();
+                } else if ($win.scrollTop() == 0) {
+                    let slide_in_rwds = document.querySelectorAll('.slide-in-rwd');
+                    slide_in_rwds.forEach(slide_in_rwd => {
+                        slide_in_rwd.classList.add('active');
+                    });
+                } else {
+                    $backToTop.hide();
+                }
+            });
+
+            // 當user點擊按鈕時，通過動畫效果返回頭部
+            $backToTop.click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 700);
+            });
+
+
+            // 商品展示
+            $('.next').click(function(){
+                $('.chair').removeClass('-active');
+                $('.cabinet').addClass('-active');
+            });
+
+
         });
+
+        
+
+
     </script>
 </body>
 
