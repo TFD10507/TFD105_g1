@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/head.html')
+</head>
+
+<body class="cart3">
+    @@include('layout/nav.html')
+    @@include('layout/login.html')
+    <div class="wrapper">
+        <div class="step pt-4 pb-4">
+            <div class="fst_step bg-primary">1</div>
+            <span></span>
+            <div class="snd_step bg-primary">2</div>
+            <span></span>
+            <div class="trd_step bg-primary">3</div>
+        </div>
+        <main>
+            <div class="row">
+                <h2 class="mx-auto mb-4">恭喜您完成此次訂單，若要查詢訂單狀態，可至訂單紀錄查看！</h2>
+                <div class="col-12 col-md-6 mx-auto">
+                    <!-- 訂購人資料 -->
+                    <ul class="title bg-primary mb-0">
+                        <li>訂單明細</li>
+                    </ul>
+                    <ul class="content bg-gray p-3">
+                        <li class="detail">
+                            <div class="img">
+                                <img src="./img/index/sample_small.jpg" alt="">
+                            </div>
+                            <div class="info ps-5">
+                                <div class="orderid">00000000</div>
+                                <div class="orderdate">2022/3/10</div>
+                                <div class="orderprice">3370</div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="member.html" class="btn btn-warning btn_style">訂單詳請</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="gobuy mt-4">
+                    <img src="./img/cart/dining.png">
+                    <a href="product.html">繼續購物</a>
+                </div>
+            
+
+
+            </div>
+        </main>
+    </div>
+    @@include('layout/footer.html')
+
+
+    </script>
+</body>
+
+</html>

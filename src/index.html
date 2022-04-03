@@ -6,51 +6,56 @@
 </head>
 
 <body class="index">
+    <div class="roulette">
+        <img src="./img/index/lucky-wheel.png">
+    </div>
+    <div class="js-back-to-top">
+        <img src="./img/index/up-arrow.png">
+    </div>
     <div class="wrapper">
         @@include('layout/login.html')
         @@include('layout/nav.html')
         <!-- 首頁 -->
         <main>
-            <!-- <div class="btn btn-primary mt-5 btn_style">按鈕</div> -->
-
             <!-- banner -->
-            <section class="banner bg-yellow">
-                <div class="pt-5 px-5">
+            <section class="banner bg-yellow row">
+                <div class="pt-5 px-5 col-12 col-md-6">
                     <h1 class="text">森活木工</h1>
                     <h1>Mori Furniture</h1>
                     <p class="mt-3">堅持不過度濫砍森林樹木，不大量製造量產，在使用樹木的同時也還給森林呼吸的生活空間，感謝森林給予我們的，為我們的生活帶來方便舒適的環境。</p>
                 </div>
-                <div class="banner_img">
+                <div class="banner_img col-12 col-md-6">
                     <img src="./img/index/1.jpg" alt="" class="img-fluid">
                     <p class="vertical">SCROLL</p>
                 </div>
             </section>
 
             <!-- 關於我們 -->
-            <section class="section2 pb-5">
-                <div class="section2_img">
-                    <img src="./img/index/2.jpg" alt="" class="img-fluid">
+            <section class="section2 pb-5 row">
+                <div class="section2_img col-12 col-md-6">
+                    <video src="./img/index/production.mp4" playsinline autoplay muted loop type="video/mp4"
+                        height="100%" width="100%" class="banner-video">
+                    </video>
+                    <!-- <img src="./img/index/2.jpg" alt="" class="img-fluid"> -->
                 </div>
-                <div class="pt-5 px-5">
+                <div class="pt-5 px-5 col-12 col-md-6">
                     <h2>關於我們 About us</h2>
                     <p class="mt-3">森活木工以再生木材製造，符合環保、職人工藝以及設計的高標準製作每一件家具。</p>
-                    <a href="about.html">view more
-                        <img src="./img/index/arrow.png" alt="">
-                    </a>
+                    <a href="about.html">view more</a>
                 </div>
             </section>
 
             <!-- 商品呈現 -->
-            <section class="section3 mt-5 pb-5">
+            <section class="section3 mt-5 pb-5 row">
                 <!-- 小商品圖 -->
-                <div class="slides-wrapper">
-                    <div class="small">
-                        <img src="./img/index/sample_small.jpg" alt="">
+                <div class="slides-wrapper col-12 col-md-4 mx-auto">
+                    <div class="small chair -active">
+                        <img src="./img/index/sample_small.jpg" class="img-fluid">
+                    </div>
+                    <div class="small cabinet">
+                        <img src="./img/product/shelf_001.jpg" alt="">
                     </div>
                     <!-- <div class="small">
-                        <img src="./img/index/sample_small.jpg" alt="">
-                    </div>
-                    <div class="small">
                         <img src="./img/index/sample_small.jpg" alt="">
                     </div> -->
 
@@ -61,9 +66,9 @@
                     <!-- 商品名 -->
                     <div class="product-name">
                         <div class="slide-mask">
-                            <p class="shifting-slide-title">DESK</p>
-                            <!-- <p class="shifting-slide-title">CABINET</p>
-                            <p class="shifting-slide-title">CHAIR</p> -->
+                            <p class="shifting-slide-title">CHAIR</p>
+                            <!-- <p class="shifting-slide-title">CABINET</p> -->
+                            <!-- <p class="shifting-slide-title">DESK</p> -->
                         </div>
                     </div>
                     <!-- 後一張按鈕 -->
@@ -72,9 +77,9 @@
                     </div>
                 </div>
                 <!-- 大商品圖 -->
-                <div class="slides-wrapper-2">
+                <div class="slides-wrapper-2 col-12 col-md-6 mx-auto">
                     <div class="large">
-                        <img src="./img/index/sample_large.jpg" alt="">
+                        <img src="./img/index/sample_large.jpg" class="img-fluid">
                     </div>
                     <!-- <div class="large">
                         <img src="./img/index/sample_large.jpg" alt="">
@@ -131,6 +136,7 @@
 
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
+        // 最新消息的輪播
         $('.responsive').slick({
             dots: true,
             infinite: true,
@@ -181,13 +187,49 @@
             $('.slick-next').hide();
             $('.slick-dots').hide();
 
-            $('.fa-angle-right').on("click",function(){
+            $('.fa-angle-right').on("click", function () {
                 $('.slick-next').click();
             });
-            $('.fa-angle-left').on("click",function(){
+            $('.fa-angle-left').on("click", function () {
                 $('.slick-prev').click();
             });
+
+            // go to top
+            var $win = $(window);
+            var $backToTop = $('.js-back-to-top');
+
+            // 當user滾動到離頂部300像素時，展示回到頂部按鈕
+            $win.scroll(function () {
+                if ($win.scrollTop() > 300) {
+                    $backToTop.show();
+                } else if ($win.scrollTop() == 0) {
+                    let slide_in_rwds = document.querySelectorAll('.slide-in-rwd');
+                    slide_in_rwds.forEach(slide_in_rwd => {
+                        slide_in_rwd.classList.add('active');
+                    });
+                } else {
+                    $backToTop.hide();
+                }
+            });
+
+            // 當user點擊按鈕時，通過動畫效果返回頭部
+            $backToTop.click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 700);
+            });
+
+
+            // 商品展示
+            $('.next').click(function(){
+                $('.chair').removeClass('-active');
+                $('.cabinet').addClass('-active');
+            });
+
+
         });
+
+        
+
+
     </script>
 </body>
 
