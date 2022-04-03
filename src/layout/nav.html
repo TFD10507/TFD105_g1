@@ -8,9 +8,15 @@
             </div>
 
             <div class="navIcon">
-                <a href="member.html">
+                <a href="member.html" class="member_ul">
                     <i class="fas fa-user-circle"></i>
                 </a>
+                <ul class="member_list bg-primary p-3 btn">
+                    <li>
+                        <a href="member.html">會員中心</a>
+                    </li>
+                    <li>會員登入</li>
+                </ul>
                 <a href="cart.html">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
@@ -67,3 +73,13 @@
         </div>
     </nav>
 </header>
+
+<!-- <script>
+    $(function () {
+        $('.member_ul').click(function (e) {
+            e.preventDefault();
+            // $('.member_list').toggleClass("active");
+            $('.member_list').toggle(500);
+        });
+    });
+</script> -->

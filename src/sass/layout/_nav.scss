@@ -27,19 +27,44 @@ header {
                     color: $btn_color;
                 }
             }
+            // 會員中心&會員登入 子選單
+            .member_list {
+                position: absolute;
+                top: 70px;
+                right: 130px;
+                color: $p_color2;
+                border-radius: 2px;
+                display: none;
+                li {
+                    a{
+                        color: $p_color2;
+                        margin-right: 0;
+                        &:hover {
+                            color: darken($p_color2, 20);
+                        }
+                    }
+                    &:hover {
+                        color: darken($p_color2, 20);
+                    }
+                }
+                li:nth-child(1) {
+                    margin-bottom: 20px;
+                }
+                
+            }
             #meun_control {
                 display: none;
-                &:checked + div + div {
+                &:checked ~ .mainSel {
                     right: 0;
                     top: 0;
                     opacity: 1;
                 }
-                &:checked + div + div > div {
+                &:checked ~ .mainSel > .mainImg {
                     right: 50%;
                     top: 0;
                     opacity: 1;
                 }
-                &:checked + div + div > ul {
+                &:checked ~ .mainSel > .mainList {
                     right: 0;
                     top: 0;
                     opacity: 1;
@@ -150,3 +175,5 @@ header {
         }
     }
 }
+
+

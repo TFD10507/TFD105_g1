@@ -9,9 +9,8 @@
     <div class="roulette">
         <img src="./img/index/lucky-wheel.png">
     </div>
-    <div class="js-back-to-top">
-        <img src="./img/index/up-arrow.png">
-    </div>
+    <!-- 共用的top鍵 -->
+    @@include('layout/top.html')
     <div class="wrapper">
         @@include('layout/login.html')
         @@include('layout/nav.html')
@@ -194,28 +193,28 @@
                 $('.slick-prev').click();
             });
 
-            // go to top
-            var $win = $(window);
-            var $backToTop = $('.js-back-to-top');
+            // // go to top
+            // var $win = $(window);
+            // var $backToTop = $('.js-back-to-top');
 
-            // 當user滾動到離頂部300像素時，展示回到頂部按鈕
-            $win.scroll(function () {
-                if ($win.scrollTop() > 300) {
-                    $backToTop.show();
-                } else if ($win.scrollTop() == 0) {
-                    let slide_in_rwds = document.querySelectorAll('.slide-in-rwd');
-                    slide_in_rwds.forEach(slide_in_rwd => {
-                        slide_in_rwd.classList.add('active');
-                    });
-                } else {
-                    $backToTop.hide();
-                }
-            });
+            // // 當user滾動到離頂部300像素時，展示回到頂部按鈕
+            // $win.scroll(function () {
+            //     if ($win.scrollTop() > 300) {
+            //         $backToTop.show();
+            //     } else if ($win.scrollTop() == 0) {
+            //         let slide_in_rwds = document.querySelectorAll('.slide-in-rwd');
+            //         slide_in_rwds.forEach(slide_in_rwd => {
+            //             slide_in_rwd.classList.add('active');
+            //         });
+            //     } else {
+            //         $backToTop.hide();
+            //     }
+            // });
 
-            // 當user點擊按鈕時，通過動畫效果返回頭部
-            $backToTop.click(function () {
-                $('html, body').animate({ scrollTop: 0 }, 700);
-            });
+            // // 當user點擊按鈕時，通過動畫效果返回頭部
+            // $backToTop.click(function () {
+            //     $('html, body').animate({ scrollTop: 0 }, 700);
+            // });
 
 
             // 商品展示
