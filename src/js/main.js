@@ -11,9 +11,9 @@ $(function () {
     var $win = $(window);
     var $backToTop = $('.js-back-to-top');
 
-    // 當user滾動到離頂部500像素時，展示回到頂部按鈕
+    // 當user滾動到離頂部300像素時，展示回到頂部按鈕
     $win.on("scroll",function () {
-        if ($win.scrollTop() > 500) {
+        if ($win.scrollTop() > 300) {
             $backToTop.show();
         } else if ($win.scrollTop() == 0) {
             let slide_in_rwds = document.querySelectorAll('.slide-in-rwd');
