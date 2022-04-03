@@ -27,20 +27,24 @@
                         <li class="content">
                             <h4>The Eye Concentrate</h4>
                             <h3>羅丹辦公桌</h3>
-                            <hr>
-                            <p>熱銷商品</i>
-                                <br>
-                                在起居室或臥室等緊湊空間內，被精心挑選的物品包圍著的高挑大人書桌。考慮到電源線的佈線，建議將此桌子用於 PC 工作。
-                                <br>
-                                材質：
-                                <br>
-                                白橡木
-                                ※可選擇等級的產品價格因等級而異。
-                                <br>
-                                尺寸/規格：
-                                <br> W159 x D45 x H83
+                            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
+                                @click.stop.prevent="add_cart()">
 
-                                <br> $ 99,999
+
+                            <hr>
+                            <p>熱銷商品</p>
+                            <br>
+                            在起居室或臥室等緊湊空間內，被精心挑選的物品包圍著的高挑大人書桌。考慮到電源線的佈線，建議將此桌子用於 PC 工作。
+                            <br>
+                            材質：
+                            <br>
+                            白橡木
+                            ※可選擇等級的產品價格因等級而異。
+                            <br>
+                            尺寸/規格：
+                            <br> W159 x D45 x H83
+
+                            <br> $ 99,999
                             </p>
                             <!-- 與下面對應，這裡是椅子的材質 -->
                             <div class="choice_item">
@@ -68,8 +72,9 @@
                                     </li>
                                 </ul>
                             </div>
+                            <br>
                             <!-- <div class="buttom">加入購物車</div> -->
-                            <button class="btn_style">加入購物車</button>
+                            <button type="submit">加入購物車</button>
                         </li>
                     </ul>
 
@@ -80,22 +85,27 @@
         @@include('layout/footer.html')
     </div>
     <script>
+
+
+
+
+
+
+
+
+
         let main_img = document.querySelector('#mainImg');
         let choice = document.querySelectorAll('img.choice');
         let chair_style = document.querySelectorAll('img.chair_style');
-
-
         // let productarr = [];
         // for (let i = 0; i < choice.length; i++)
         //     console.log(choice);
-
 
         // function choice_array([],i){
         //     for(let i = 0; i <= 5; i++){
         //         counter=0;
         //     }
         // }
-
         //設定第一項為黑框樣式(初始值)
         choice[0].style = 'outline: black 2px solid;'
         for (let i = 0; i < choice.length; i++) {
@@ -113,13 +123,19 @@
                         choice[j].style = 'none;'
                     }
                 }
+
+
+
+
+
+
+
+
+
                 // console.log(choice[i]);
 
                 // main_img.src = chair_style[i].src;
                 // choice[i].style = 'outline: black 2px solid;'
-
-
-
 
                 // choice[0].style = 'outline: black 2px solid;'
                 // for (let i = 0; i <= 5; i++) {
@@ -187,6 +203,26 @@
         //     } 
 
     </script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                text: 'ss',
+                cart2: '<div>asdadx</div>',
+                products:
+                    [
+                        {
+                        },
+                    ]
+            },
+            methods: {
+                add_cart() {
+                    alert(123);
+                }
+            }
+        })
+    </script>
+
 
 
 </body>
