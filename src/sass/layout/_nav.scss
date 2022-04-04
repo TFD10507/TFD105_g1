@@ -36,7 +36,7 @@ header {
                 border-radius: 2px;
                 display: none;
                 li {
-                    a{
+                    a {
                         color: $p_color2;
                         margin-right: 0;
                         &:hover {
@@ -50,13 +50,72 @@ header {
                 li:nth-child(1) {
                     margin-bottom: 20px;
                 }
-                
             }
-            .cart_side{
+            .cart_side {
                 width: 600px;
                 position: absolute;
                 top: 0;
                 right: 0;
+                // 購物車內容
+                .cart_content {
+                    .detail {
+                        display: flex;
+                        width: 100%;
+                        .img {
+                            width: 200px;
+                            img {
+                                max-width: 100%;
+                            }
+                        }
+                        .info {
+                            flex-grow: 1;
+                            div {
+                                padding-bottom: 10px;
+                            }
+                            .ptype {
+                                &::before {
+                                    content: "材質  ";
+                                }
+                            }
+                            .price {
+                                &::before {
+                                    content: "價錢  NT$";
+                                }
+                            }
+                        }
+                        .price {
+                            justify-content: flex-end;
+                        }
+                        .count {
+                            display: flex;
+                            padding-bottom: 10px;
+                            div {
+                                font-size: 20px;
+                                .num-jian,
+                                .input-num,
+                                .num-jia {
+                                    text-align: center;
+                                    display: inline-block;
+                                    font-size: 20px;
+                                    width: 30px;
+                                    height: 30px;
+                                    line-height: 30px;
+                                    color: #999;
+                                    cursor: pointer;
+                                    border: 1px solid #e6e6e6;
+                                }
+                                .input-num {
+                                    width: 48px;
+                                    height: 30px;
+                                }
+                            }
+                        }
+                        .operate {
+                            font-size: 30px;
+                            text-align: right;
+                        }
+                    }
+                }
             }
             #meun_control {
                 display: none;
@@ -181,5 +240,3 @@ header {
         }
     }
 }
-
-
