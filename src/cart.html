@@ -6,6 +6,7 @@
 </head>
 
 <body class="cart">
+    @@include('layout/top.html')
     @@include('layout/nav.html')
     @@include('layout/login.html')
     <div class="wrapper">
@@ -23,86 +24,103 @@
             <span></span>
             <div class="trd_step bg-white">3</div>
         </div>
-        <div class="row">
-            <div class="col-12 col-md-8">
-                <p>※因超商包裹體積限制，森活木工一律只提供宅配寄送，敬請見諒。</p>
+        <main>
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <p>※因超商包裹體積限制，森活木工一律只提供宅配寄送，敬請見諒。</p>
 
-                <ul class="title cart_title bg-primary mb-0">
-                    <li>購物車</li>
-                </ul>
-                <ul class="content cart_content bg-gray">
-                    <li>
-                        <div class="img">
-                            <img src="./img/index/sample_small.jpg" alt="">
-                        </div>
-                        <div class="info">
-                            <p>SEOTO-EX 機櫃</p>
-                            <p>白橡木</p>
-                            <div class="count">
-                                <div><span class="num-jian">-</span></div>
-                                <div><input type="text" class="input-num" value="1" /></div>
-                                <div><span class="num-jia">+</span></div>
+                    <ul class="title cart_title bg-primary mb-0">
+                        <li>購物車</li>
+                    </ul>
+                    <ul class="content cart_content bg-gray p-3">
+                        <li class="detail">
+                            <div class="img">
+                                <img src="./img/index/sample_small.jpg" alt="">
                             </div>
-                        </div>
-                    </li>
-                    <li class="price">
+                            <div class="info ps-5">
+                                <div class="pname">SEOTO-EX 機櫃</div>
+                                <div class="ptype">白橡木</div>
+                                <div class="count">
+                                    <div><span class="num-jian">-</span></div>
+                                    <div><input type="text" class="input-num" value="1" /></div>
+                                    <div><span class="num-jia">+</span></div>
+                                </div>
+                                <div class="price">
+                                    3370
+                                </div>
+                                <div class="operate">
+                                    <a href="#" class="del">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                    <a href="#" class="heart">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- <li class="price">
                         3370
-                    </li>
-                    <li class="operate">
+                    </li> -->
+                        <!-- <li class="operate">
                         <a href="#" class="del">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                         <a href="#" class="heart">
                             <i class="far fa-heart"></i>
                         </a>
-                    </li>
-                </ul>
+                    </li> -->
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <!-- 折價券 -->
+                    <ul class="title coupon_title bg-primary mb-0">
+                        <li>使用折價券</li>
+                    </ul>
+                    <ul class="content coupon_content bg-gray p-3">
+                        <li>
+                            <button class="btn btn-warning btn_style">折價券</button>
+                            <input type="text">
+                        </li>
+                    </ul>
+
+                    <!-- 訂單資訊 -->
+                    <ul class="title order_title bg-primary mb-0">
+                        <li>訂單資訊</li>
+                    </ul>
+                    <ul class="content order_content bg-gray p-3">
+                        <li>
+                            <span>商品總計</span>
+                            <span>NT$2960</span>
+                        </li>
+                        <li>
+                            <span>折抵總計</span>
+                            <span>-NT$0</span>
+                        </li>
+                        <li>
+                            <span>運費</span>
+                            <span>NT$80</span>
+                        </li>
+                        <li>
+                            <span>總金額</span>
+                            <span>NT$3040</span>
+                        </li>
+                        <li>
+                            <a href="cart2.html" class="btn btn-warning btn_style">結帳
+                            </a>
+                            <!-- <button type="button" class="btn btn-warning btn_style">結帳</button> -->
+                        </li>
+                    </ul>
+                </div>
+
+
             </div>
-
-            <div class="col-12 col-md-4">
-                <!-- 折價券 -->
-                <ul class="title coupon_title bg-primary mb-0">
-                    <li>使用折價券</li>
-                </ul>
-                <ul class="content coupon_content bg-gray">
-                    <li>
-                        <button class="btn btn-warning btn_style">折價券</button>
-                        <input type="text">
-                    </li>
-                </ul>
-
-                <!-- 訂單資訊 -->
-                <ul class="title order_title bg-primary mb-0">
-                    <li>訂單資訊</li>
-                </ul>
-                <ul class="content order_content bg-gray">
-                    <li>
-                        <span>商品總計</span>
-                        <span>NT$2960</span>
-                    </li>
-                    <li>
-                        <span>折抵總計</span>
-                        <span>-NT$0</span>
-                    </li>
-                    <li>
-                        <span>運費</span>
-                        <span>NT$80</span>
-                    </li>
-                    <li>
-                        <span>總金額</span>
-                        <span>NT$3040</span>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-        <main>
-
         </main>
     </div>
     @@include('layout/footer.html')
 
-
+    <script>
+        AOS.init();
     </script>
 </body>
 

@@ -5,7 +5,8 @@
     }
 
     & .nav-pills .nav-link.active, .nav-pills .show >.nav-link{
-        background-color: $s_color2;
+        background-color: $btn_color;
+        color: $s_color1;
     }
 
     .accordion-button:focus{

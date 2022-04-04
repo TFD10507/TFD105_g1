@@ -10,7 +10,6 @@
     background-color: #6b6262;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
 
     img {
       height: 60px;
@@ -130,6 +129,10 @@
       tr > th {
         color: white;
       }
+    }
+
+    table.dataTable tbody td {
+      padding: 10px;
     }
     // DATATABLE區 結束
   }
