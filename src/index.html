@@ -23,11 +23,16 @@
                     <h1>Mori Furniture</h1>
                     <p class="mt-3">堅持不過度濫砍森林樹木，不大量製造量產，在使用樹木的同時也還給森林呼吸的生活空間，感謝森林給予我們的，為我們的生活帶來方便舒適的環境。</p>
                 </div>
-                <div class="banner_img col-12 col-md-6" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="200">
+                <div class="banner_img col-12 col-md-6" data-aos="fade-up" data-aos-duration="3000"
+                    data-aos-delay="200">
                     <img src="./img/index/1.jpg" alt="" class="img-fluid">
                     <p class="vertical" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="300">SCROLL</p>
                 </div>
             </section>
+
+            <!-- <div class="circle_position">
+                <span class="circle"></span>
+            </div> -->
 
             <!-- 關於我們 -->
             <section class="section2 pb-5 row">
@@ -39,7 +44,8 @@
                 </div>
                 <div class="pt-5 px-5 col-12 col-md-6">
                     <h2 data-aos="fade-left" data-aos-duration="3000" data-aos-delay="200">關於我們 About us</h2>
-                    <p class="mt-3" data-aos="fade-left" data-aos-duration="3000" data-aos-delay="200">森活木工以再生木材製造，符合環保、職人工藝以及設計的高標準製作每一件家具。</p>
+                    <p class="mt-3" data-aos="fade-left" data-aos-duration="3000" data-aos-delay="200">
+                        森活木工以再生木材製造，符合環保、職人工藝以及設計的高標準製作每一件家具。</p>
                     <a href="about.html" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="300">view more</a>
                 </div>
             </section>
@@ -48,15 +54,15 @@
             <section class="section3 mt-5 pb-5 row">
                 <!-- 小商品圖 -->
                 <div class="slides-wrapper col-12 col-md-4 mx-auto" data-aos="fade-right" data-aos-duration="3000">
-                    <div class="small chair -active">
+                    <div class="small chair">
                         <img src="./img/index/sample_small.jpg" class="img-fluid">
                     </div>
                     <div class="small cabinet">
-                        <img src="./img/product/shelf_001.jpg" alt="">
+                        <img src="./img/index/shelf_small.jpg" class="img-fluid">
                     </div>
-                    <!-- <div class="small">
-                        <img src="./img/index/sample_small.jpg" alt="">
-                    </div> -->
+                    <div class="small">
+                        <img src="./img/index/table_small.jpg" class="img-fluid">
+                    </div>
 
                     <!-- 前一張按鈕 -->
                     <div class="controller prev">
@@ -66,8 +72,8 @@
                     <div class="product-name">
                         <div class="slide-mask">
                             <p class="shifting-slide-title">CHAIR</p>
-                            <!-- <p class="shifting-slide-title">CABINET</p> -->
-                            <!-- <p class="shifting-slide-title">DESK</p> -->
+                            <p class="shifting-slide-title">CABINET</p>
+                            <p class="shifting-slide-title">DESK</p>
                         </div>
                     </div>
                     <!-- 後一張按鈕 -->
@@ -80,19 +86,19 @@
                     <div class="large">
                         <img src="./img/index/sample_large.jpg" class="img-fluid">
                     </div>
-                    <!-- <div class="large">
-                        <img src="./img/index/sample_large.jpg" alt="">
+                    <div class="large">
+                        <img src="./img/index/shelf_large2.jpg" class="img-fluid">
                     </div>
                     <div class="large">
-                        <img src="./img/index/sample_large.jpg" alt="">
-                    </div> -->
+                        <img src="./img/index/table_large.jpg" class="img-fluid">
+                    </div>
                 </div>
             </section>
 
             <!-- 最新消息 -->
             <section class="section4 mt-5 pb-5 bg-yellow">
                 <h2 class="pt-5 pb-3" data-aos="fade-up" data-aos-duration="3000">最新消息 News</h2>
-                
+
                 <div class="container" data-aos="fade-left" data-aos-duration="3000" data-aos-delay="200">
                     <i class="fa-solid fa-angle-left"></i>
                     <div class="responsive">
@@ -170,15 +176,11 @@
                         slidesToScroll: 1
                     }
                 }
-                // You can unslick at a given breakpoint now by adding:
-                // settings: "unslick"
-                // instead of a settings object
             ]
         });
 
-        // 輪播按鈕控制
         $(function () {
-            // DOM 載入完成之後
+            // ==== 輪播按鈕控制 ====
             $(window).resize(function () {
                 $('.slick-prev').hide();
                 $('.slick-next').hide();
@@ -195,35 +197,60 @@
                 $('.slick-prev').click();
             });
 
-            // // go to top
-            // var $win = $(window);
-            // var $backToTop = $('.js-back-to-top');
 
-            // // 當user滾動到離頂部300像素時，展示回到頂部按鈕
-            // $win.scroll(function () {
-            //     if ($win.scrollTop() > 300) {
-            //         $backToTop.show();
-            //     } else if ($win.scrollTop() == 0) {
-            //         let slide_in_rwds = document.querySelectorAll('.slide-in-rwd');
-            //         slide_in_rwds.forEach(slide_in_rwd => {
-            //             slide_in_rwd.classList.add('active');
-            //         });
-            //     } else {
-            //         $backToTop.hide();
-            //     }
-            // });
-
-            // // 當user點擊按鈕時，通過動畫效果返回頭部
-            // $backToTop.click(function () {
-            //     $('html, body').animate({ scrollTop: 0 }, 700);
-            // });
-
-
-            // 商品展示
-            $('.next').click(function () {
-                $('.chair').removeClass('-active');
-                $('.cabinet').addClass('-active');
-            });
+            // ==== 商品展示 ====
+            let count = 0;
+            $('.small').eq(0).addClass('-active'); //將第一張圖顯示出來
+            $('.shifting-slide-title').eq(0).addClass('-active');
+            $('.large').eq(0).addClass('-active');
+            $(document).on('click', '.next', function (e) {
+                count++;
+                $('.small').each(function (index) {
+                    $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
+                    $('.small').eq(count).addClass('-active');
+                    if(count == 3) {
+                        count = 0;
+                    }
+                })
+                $('.shifting-slide-title').each(function (index) {
+                    $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
+                    $('.shifting-slide-title').eq(count).addClass('-active');
+                    if(count == 3) {
+                        count = 0;
+                    }
+                })
+                $('.large').each(function (index) {
+                    $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
+                    $('.large').eq(count).addClass('-active');
+                    if(count == 3) {
+                        count = 0;
+                    }
+                })
+            })
+            $(document).on('click', '.prev', function (e) {
+                count--;
+                $('.small').each(function (index) {
+                    $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
+                    $('.small').eq(count).addClass('-active');
+                    if(count == -1) {
+                        count = 2;
+                    }
+                })
+                $('.shifting-slide-title').each(function (index) {
+                    $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
+                    $('.shifting-slide-title').eq(count).addClass('-active');
+                    if(count == -1) {
+                        count = 2;
+                    }
+                })
+                $('.large').each(function (index) {
+                    $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
+                    $('.large').eq(count).addClass('-active');
+                    if(count == -1) {
+                        count = 2;
+                    }
+                })
+            })
 
 
         });

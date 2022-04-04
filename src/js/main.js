@@ -31,8 +31,6 @@ $(function () {
     });
 
     // aos
-    <script>
-        AOS.init();
-    </script>
+    AOS.init();
 
 });
