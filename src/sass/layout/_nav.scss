@@ -52,17 +52,49 @@ header {
                 }
             }
             .cart_side {
+                z-index: 10;
                 width: 600px;
+                height: 100vh;
                 position: absolute;
                 top: 0;
-                right: 0;
+                right: -100%;
+                .cart_title {
+                    color: $p_color2;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .btn_cart_close {
+                        width: 50px;
+                        height: 50px;
+                        padding-top: 10px;
+                        span {
+                            // position: absolute;
+                            // top: 10px;
+                            // right: 10px;
+                            background-color: $p_color2;
+                            display: block;
+                            width: 100%;
+                            height: 4px;
+                            border-radius: 5px;
+                            margin: 3px 0;
+                            &:nth-child(1) {
+                                transform: translateY(10px) rotate(45deg);
+                            }
+                            &:nth-child(2) {
+                                transform: translateY(4px) rotate(-45deg);
+                            }
+                        }
+                    }
+                }
                 // 購物車內容
                 .cart_content {
+                    font-size: 16px;
                     .detail {
                         display: flex;
                         width: 100%;
+                        border-bottom: 1px solid #e3e3e3;
                         .img {
-                            width: 200px;
+                            width: 150px;
                             img {
                                 max-width: 100%;
                             }
@@ -112,8 +144,23 @@ header {
                         }
                         .operate {
                             font-size: 30px;
-                            text-align: right;
+                            display: flex;
+                            justify-content: flex-end;
                         }
+                    }
+                }
+                .link_cart{
+                    display: inline-block;
+                    width: 100%;
+                    height: 50px;
+                    text-align: center;
+                    line-height: 50px;
+                    position: absolute;
+                    background-color: #e3e3e3;
+                    bottom: 0;
+                    &:hover{
+                        background-color:darken($color: #e3e3e3, $amount: 30);
+                        color: $p_color2;
                     }
                 }
             }
