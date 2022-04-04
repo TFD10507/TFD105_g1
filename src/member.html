@@ -18,9 +18,7 @@
 
         <!-- tab頁籤 -->
       <ul class="tabs margin_top_20">
-        <li data-tab-target="#member" class="active tab padding_10">
-          會員資料
-        </li>
+        <li data-tab-target="#member" class="active tab padding_10">會員資料</li>
         <li data-tab-target="#password" class="tab padding_10">密碼變更</li>
         <li data-tab-target="#order" class="tab padding_10">訂單查詢</li>
         <li data-tab-target="#favor" class="tab padding_10">收藏清單</li>
@@ -30,46 +28,67 @@
       <div class="tab-content padding_20">
         <div id="member" data-tab-content class="active">
             <h3>資料變更</h3>
-            <form action="#" method="post">
-                <div class="member-name margin_top_20">姓名:</div>
-                <input type="text" name="name" placeholder="xxx" required>
-                <div class="member-add margin_top_10">聯絡地址:</div>
-                <input type="text" name="address" required>
-                <div class="member-phone margin_top_10">電話:</div>
-                <input type="tel" name="phone" maxlength="10" required><br>
-                <button type="submit" name="submit" id="submit" class="btn_style member-btn margin_top_20">修改</button>
-            </form>
+            <div id="container">
+              <form action="#" method="post">
+                <div class="row justify-content-center">
+                  <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                    <label for="memberName">姓名:</label>
+                    <input type="text" class="form-control margin_top_10" id="memberName" placeholder="輸入姓名">
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                    <label for="memberAdd">聯絡地址:</label>
+                    <input type="text" class="form-control margin_top_10" id="memberAdd" placeholder="輸入地址">
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                    <label for="memberPhone">電話:</label>
+                    <input type="text" class="form-control margin_top_10" id="memberPhone" placeholder="輸入電話">
+                  </div>
+                </div>
+                <div class="form-group margin_top_30 member-btn">
+                  <button type="submit" class="btn btn-primary btn_style">確認修改</button>
+                </div>
+              </form>
+            </div>
         </div>
 
         <!-- 密碼變更內容 -->
         <div id="password" data-tab-content>
             <h3>密碼變更</h3>
-            <div class="margin_top_20">
-                <span>舊密碼:</span><br>
-                <input type="password" name="password" placeholder="請輸入舊密碼" required>
+            <div id="container">
+              <form action="#" method="post">
+                <div class="row justify-content-center">
+                  <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                    <label for="oldPassword">舊密碼:</label>
+                    <input type="password" class="form-control margin_top_10" id="oldPassword" placeholder="輸入舊密碼" required>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                    <label for="newPassword">新密碼:</label>
+                    <input type="password" class="form-control margin_top_10" id="newPassword" placeholder="輸入新密碼" required>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                    <label for="newPassword2">確認新密碼:</label>
+                    <input type="password" class="form-control margin_top_10" id="newPassword2" placeholder="再次輸入新密碼" required>
+                  </div>
+                </div>
+                <div class="form-group margin_top_30 password-btn">
+                  <button type="submit" class="btn btn-primary btn_style">確認修改</button>
+                </div>
+              </form>
             </div>
-            <div class="margin_top_10">
-                <span>新密碼:</span><br>
-                <input type="password" name="password" placeholder="請輸入新密碼" required>
-            </div>
-            <div class="margin_top_10">
-                <span>確認新密碼:</span><br>
-                <input type="password" name="password" placeholder="請再次輸入新密碼" required>
-            </div>
-            <!-- <input class="send" type="submit" value="修改"> -->
-            <button type="submit" name="submit" id="submit" class="btn_style password-btn margin_top_20">修改</button>
         </div>
 
         <!-- 訂單查詢內容 -->
         <div id="order" data-tab-content>
           <div class="search padding_20">
-            <input
-              class="search-bar"
-              type="text"
-              name="search"
-              id="search"
-              placeholder="  請輸入訂單編號"
-            />
+            <input class="search-bar" type="search" name="search" id="search" placeholder="  請輸入訂單編號"/>
             <button class="search-btn" type="submit">
               <i class="fas fa-search"></i>
             </button>
@@ -190,25 +209,35 @@
         <!-- 收藏清單內容 -->
         <div id="favor" data-tab-content class="container">
           <div class="row justify-content-between">
-            <div class="col-12 col-lg-3 col-md-6">
-              <img src="/img/member/favor/chair_001.jpg">
-              <p class=""> 羅丹辦公椅</p>
+
+            <div class="liked_product col-12 col-lg-3 col-md-6">
+              <i class="heart-like-button fas fa-heart"></i>
+              <img class="liked_img" src="/img/member/favor/chair_001.jpg">
+              <span> 羅丹辦公椅</span>
             </div>
-            <div class="col-12 col-lg-3 col-md-6">
-              <img src="/img/member/favor/chair_002.jpg">
-              <p>羅丹辦公椅</p>
+
+            <div class="liked_product col-12 col-lg-3 col-md-6">
+              <i class="heart-like-button fas fa-heart"></i>
+              <img class="liked_img" src="/img/member/favor/chair_002.jpg">
+              <span> 羅丹辦公椅</span>
             </div>
-            <div class="col-12 col-lg-3 col-md-6">
-              <img src="/img/member/favor/chair_003.jpg">
-              <p>羅丹辦公椅</p>
+
+            <div class="liked_product col-12 col-lg-3 col-md-6">
+              <i class="heart-like-button fas fa-heart"></i>
+              <img class="liked_img" src="/img/member/favor/chair_003.jpg">
+              <span> 羅丹辦公椅</span>
             </div>
-            <div class="col-12 col-lg-3 col-md-6">
-              <img src="/img/member/favor/chair_001.jpg">
-              <p>羅丹辦公椅</p>
+
+            <div class="liked_product col-12 col-lg-3 col-md-6">
+              <i class="heart-like-button fas fa-heart"></i>
+              <img class="liked_img" src="/img/member/favor/chair_001.jpg">
+              <span> 羅丹辦公椅</span>
             </div>
-            <div class="col-12 col-lg-3 col-md-6">
-              <img src="/img/member/favor/chair_001.jpg">
-              <p>羅丹辦公椅</p>
+
+            <div class="liked_product col-12 col-lg-3 col-md-6">
+              <i class="heart-like-button fas fa-heart"></i>
+              <img class="liked_img" src="/img/member/favor/chair_001.jpg">
+              <span> 羅丹辦公椅</span>
             </div>
           </div>
         </div>
@@ -233,7 +262,7 @@
           });
           tab.classList.add("active");
           target.classList.add("active");
-          console.log(target)
+          // console.log(target)
         });
       });
 
@@ -264,6 +293,13 @@
           }
         });
       }
+
+      // 收藏清單愛心點擊照片消失功能
+      const heart_btn = document.querySelector(".heart-like-button");
+      const liked_product = document.querySelectorAll('.liked_product');
+      console.log(heart_btn);
+      console.log(liked_product);
+
     </script>
   </body>
 </html>
