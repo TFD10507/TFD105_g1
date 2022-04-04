@@ -18,36 +18,36 @@
         <main>
             <!-- banner -->
             <section class="banner bg-yellow row">
-                <div class="pt-5 px-5 col-12 col-md-6">
+                <div class="pt-5 px-5 col-12 col-md-6" data-aos="fade-up" data-aos-duration="3000">
                     <h1 class="text">森活木工</h1>
                     <h1>Mori Furniture</h1>
                     <p class="mt-3">堅持不過度濫砍森林樹木，不大量製造量產，在使用樹木的同時也還給森林呼吸的生活空間，感謝森林給予我們的，為我們的生活帶來方便舒適的環境。</p>
                 </div>
-                <div class="banner_img col-12 col-md-6">
+                <div class="banner_img col-12 col-md-6" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="200">
                     <img src="./img/index/1.jpg" alt="" class="img-fluid">
-                    <p class="vertical">SCROLL</p>
+                    <p class="vertical" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="300">SCROLL</p>
                 </div>
             </section>
 
             <!-- 關於我們 -->
             <section class="section2 pb-5 row">
-                <div class="section2_img col-12 col-md-6">
+                <div class="section2_img col-12 col-md-6" data-aos="fade-right" data-aos-duration="3000">
                     <video src="./img/index/production.mp4" playsinline autoplay muted loop type="video/mp4"
                         height="100%" width="100%" class="banner-video">
                     </video>
                     <!-- <img src="./img/index/2.jpg" alt="" class="img-fluid"> -->
                 </div>
                 <div class="pt-5 px-5 col-12 col-md-6">
-                    <h2>關於我們 About us</h2>
-                    <p class="mt-3">森活木工以再生木材製造，符合環保、職人工藝以及設計的高標準製作每一件家具。</p>
-                    <a href="about.html">view more</a>
+                    <h2 data-aos="fade-left" data-aos-duration="3000" data-aos-delay="200">關於我們 About us</h2>
+                    <p class="mt-3" data-aos="fade-left" data-aos-duration="3000" data-aos-delay="200">森活木工以再生木材製造，符合環保、職人工藝以及設計的高標準製作每一件家具。</p>
+                    <a href="about.html" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="300">view more</a>
                 </div>
             </section>
 
             <!-- 商品呈現 -->
             <section class="section3 mt-5 pb-5 row">
                 <!-- 小商品圖 -->
-                <div class="slides-wrapper col-12 col-md-4 mx-auto">
+                <div class="slides-wrapper col-12 col-md-4 mx-auto" data-aos="fade-right" data-aos-duration="3000">
                     <div class="small chair -active">
                         <img src="./img/index/sample_small.jpg" class="img-fluid">
                     </div>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <!-- 大商品圖 -->
-                <div class="slides-wrapper-2 col-12 col-md-6 mx-auto">
+                <div class="slides-wrapper-2 col-12 col-md-6 mx-auto" data-aos="fade-left" data-aos-duration="3000">
                     <div class="large">
                         <img src="./img/index/sample_large.jpg" class="img-fluid">
                     </div>
@@ -91,8 +91,9 @@
 
             <!-- 最新消息 -->
             <section class="section4 mt-5 pb-5 bg-yellow">
-                <h2 class="pt-5 pb-3">最新消息 News</h2>
-                <div class="container">
+                <h2 class="pt-5 pb-3" data-aos="fade-up" data-aos-duration="3000">最新消息 News</h2>
+                
+                <div class="container" data-aos="fade-left" data-aos-duration="3000" data-aos-delay="200">
                     <i class="fa-solid fa-angle-left"></i>
                     <div class="responsive">
                         <div class="news_item me-2">
@@ -133,8 +134,9 @@
     </div>
     @@include('layout/footer.html')
 
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
+        AOS.init();
+
         // 最新消息的輪播
         $('.responsive').slick({
             dots: true,
@@ -218,7 +220,7 @@
 
 
             // 商品展示
-            $('.next').click(function(){
+            $('.next').click(function () {
                 $('.chair').removeClass('-active');
                 $('.cabinet').addClass('-active');
             });
@@ -226,7 +228,7 @@
 
         });
 
-        
+
 
 
     </script>
