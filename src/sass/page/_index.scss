@@ -1,4 +1,5 @@
 .index {
+<<<<<<< HEAD
     //彈窗定位css
     .wheel-pop-up{
         width: 500px;
@@ -231,302 +232,305 @@
     //         max-width: 100%;
     //     }
     // }
+=======
+  // 輪盤
+  .roulette {
+      width: 50px;
+      z-index: 5;
+      cursor: pointer;
+      position: fixed;
+      right: 10px;
+      bottom: 100px;
+      opacity: 0.5;
+      &:hover {
+          opacity: 1;
+      }
+      img {
+          max-width: 100%;
+      }
+  }
+>>>>>>> e3f39164ce472f900f3ed41ceead0cb6e3e9e343
 
-    .wrapper {
-        overflow-x: hidden;
-        // max-width: 1200px;
-        // margin: 0 auto;
-        main {
-            // max-width: 100%;
-            padding-top: 80px;
-        }
-        .banner {
-            // width: 100%;
-            // height: 400px;
-            // background-color: $s_color2;
-            // display: flex;
-            // justify-content: center;
-            position: relative;
-            margin-bottom: 200px;
-            padding-bottom: 200px;
-            div {
-                // max-width: 1200px;
-                // width: 50%;
-                text-align: center;
-                // padding-top: 30px;
-                // padding-left: 30px;
-                p {
-                    text-align: left;
-                }
-            }
-            .banner_img {
-                // width: 500px;
-                padding-right: 0;
-                // margin-top: 200px;
-                // position: relative;
-                position: absolute;
-                right: 0;
-                top: 100px;
-                // &::before {
-                //     content: "";
-                //     display: block;
-                //     width: 120px;
-                //     height: 1px;
-                //     background: $p_color;
-                //     transform: rotate(90deg);
-                // }
-                .bg_1 {
-                    top: 0;
-                    img {
-                        max-width: 100%;
-                    }
-                }
-                // scroll
-                .vertical {
-                    writing-mode: vertical-lr;
-                    position: absolute;
-                    bottom: 90px;
-                    left: -70px;
-                    &::before {
-                        content: "";
-                        display: inline-block;
-                        width: 100px;
-                        height: 0.5px;
-                        background: $p_color;
-                        // transform: rotate(90deg) translateX(130px);
-                        animation: fade 2s linear infinite;
-                    }
-                    @keyframes fade {
-                        0% {
-                            transform: rotate(90deg) translateX(130px);
-                            opacity: 0;
-                        }
-                        50% {
-                            transform: rotate(90deg) translateX(140px);
-                            opacity: 1;
-                        }
-                        100% {
-                            transform: rotate(90deg) translateX(150px);
-                            opacity: 0;
-                        }
-                    }
-                    &::after {
-                        content: "";
-                        display: inline-block;
-                        width: 25px;
-                        height: 0.5px;
-                        background: $p_color;
-                        // transform: rotate(-60deg) translateX(-78px) translateY(52px);
-                        animation: fade2 2s linear infinite;
-                    }
-                    @keyframes fade2 {
-                        0% {
-                            transform: rotate(-60deg) translateX(-78px) translateY(52px);
-                            opacity: 0;
-                        }
-                        50% {
-                            transform: rotate(-60deg) translateX(-86px) translateY(57px);
-                            opacity: 1;
-                        }
-                        100% {
-                            transform: rotate(-60deg) translateX(-95px) translateY(62px);
-                            opacity: 0;
-                        }
-                    }
-                }
-            }
-            @media (max-width: 768.98px) {
-                .banner_img {
-                    margin-top: 20px;
-                }
-            }
-        }
-        @media (max-width: 768.98px) {
-            .banner {
-                margin-bottom: 50px;
-            }
-        }
+  .wrapper {
+      overflow-x: hidden;
+      // max-width: 1200px;
+      // margin: 0 auto;
+      main {
+          // max-width: 100%;
+          padding-top: 80px;
+          // 黃色圓形
+          .circle_position {
+              transform: translate(100px, -350px);
+              .circle {
+                  display: inline-block;
+                  border-radius: 50%;
+                  width: 150px;
+                  height: 150px;
+                  opacity: .7;
+                  background-color: darken($s_color2, 20);
+              }
+          }
+      }
+      .banner {
+          // width: 100%;
+          // height: 400px;
+          // background-color: $s_color2;
+          // display: flex;
+          // justify-content: center;
+          position: relative;
+          margin-bottom: 200px;
+          div {
+              // max-width: 1200px;
+              // width: 50%;
+              text-align: center;
+              // padding-top: 30px;
+              // padding-left: 30px;
+              p {
+                  text-align: left;
+              }
+          }
+          .banner_img {
+              // width: 500px;
+              padding-right: 0;
+              margin-top: 200px;
+              position: relative;
+              // position: absolute;
+              // right: 0;
+              // top: 300px;
+              // &::before {
+              //     content: "";
+              //     display: block;
+              //     width: 120px;
+              //     height: 1px;
+              //     background: $p_color;
+              //     transform: rotate(90deg);
+              // }
 
-        // 關於我們
-        .section2 {
-            display: flex;
-            .section2_img {
-                padding-right: 0;
-                // width: 700px;
-                img {
-                    max-width: 100%;
-                }
-            }
-            div {
-                // width: 50%;
-                a {
-                    &::before {
-                        content: "";
-                        display: inline-block;
-                        width: 100px;
-                        height: 0.5px;
-                        background: $p_color;
-                        // transform: rotate(0deg) translateX(210px) translateY(-5px);
-                        animation: fade3 2s linear infinite;
-                    }
-                    @keyframes fade3 {
-                        0% {
-                            transform: rotate(0deg) translateX(210px) translateY(-5px);
-                            opacity: 0;
-                        }
-                        50% {
-                            transform: rotate(0deg) translateX(243px) translateY(-5px);
-                            opacity: 1;
-                        }
-                        100% {
-                            transform: rotate(0deg) translateX(270px) translateY(-5px);
-                            opacity: 0;
-                        }
-                    }
-                    &::after {
-                        content: "";
-                        display: inline-block;
-                        width: 25px;
-                        height: 0.5px;
-                        background: $p_color;
-                        // transform: rotate(30deg) translateX(67px) translateY(-50px);
-                        animation: fade4 2s linear infinite;
-                    }
-                    @keyframes fade4 {
-                        0% {
-                            transform: rotate(30deg) translateX(73px) translateY(-54px);
-                            opacity: 0;
-                        }
-                        50% {
-                            transform: rotate(30deg) translateX(98px) translateY(-70px);
-                            opacity: 1;
-                        }
-                        100% {
-                            transform: rotate(30deg) translateX(120px) translateY(-83px);
-                            opacity: 0;
-                        }
-                    }
-                }
-            }
-        }
+              img {
+                  max-width: 100%;
+              }
+              // scroll
+              .vertical {
+                  writing-mode: vertical-lr;
+                  position: absolute;
+                  bottom: 90px;
+                  left: -70px;
+                  &::before {
+                      content: "";
+                      display: inline-block;
+                      width: 100px;
+                      height: 0.5px;
+                      background: $p_color;
+                      // transform: rotate(90deg) translateX(130px);
+                      animation: fade 2s linear infinite;
+                  }
+                  @keyframes fade {
+                      0% {
+                          transform: rotate(90deg) translateX(130px);
+                          opacity: 0;
+                      }
+                      50% {
+                          transform: rotate(90deg) translateX(140px);
+                          opacity: 1;
+                      }
+                      100% {
+                          transform: rotate(90deg) translateX(150px);
+                          opacity: 0;
+                      }
+                  }
+                  &::after {
+                      content: "";
+                      display: inline-block;
+                      width: 25px;
+                      height: 0.5px;
+                      background: $p_color;
+                      // transform: rotate(-60deg) translateX(-78px) translateY(52px);
+                      animation: fade2 2s linear infinite;
+                  }
+                  @keyframes fade2 {
+                      0% {
+                          transform: rotate(-60deg) translateX(-78px) translateY(52px);
+                          opacity: 0;
+                      }
+                      50% {
+                          transform: rotate(-60deg) translateX(-86px) translateY(57px);
+                          opacity: 1;
+                      }
+                      100% {
+                          transform: rotate(-60deg) translateX(-95px) translateY(62px);
+                          opacity: 0;
+                      }
+                  }
+              }
+          }
+          @media (max-width: 768.98px) {
+              .banner_img {
+                  margin-top: 20px;
+              }
+          }
+      }
+      @media (max-width: 768.98px) {
+          .banner {
+              margin-bottom: 50px;
+          }
+      }
 
-        .circle_position {
-            position: absolute;
-            top: 920px;
-            right: 190px;
-            .circle {
-                display: inline-block;
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-                opacity: 0.8;
-            }
-            .bg_2_1 {
-                position: absolute;
-                right: 50px;
-                background-color: darken($color: $s_color2, $amount: 20);
-            }
-            .bg_2_2 {
-                width: 80px;
-                height: 80px;
-                top: 1100px;
-                right: 170px;
-                background-color: darken($color: $s_color1, $amount: 20);
-            }
-        }
-        // 商品展示
-        .section3 {
-            max-width: 1100px;
-            margin: 0 auto;
-            // display: flex;
-            // justify-content: space-between;
-            // padding-top: 70px;
-            div {
-                .small {
-                    display: none;
-                    img {
-                        max-width: 100%;
-                    }
-                }
-                // 商品展示控制
-                .-active {
-                    display: block;
-                }
-            }
-            .slides-wrapper {
-                position: relative;
-            }
-            @media (max-width: 768.98px) {
-                .slides-wrapper {
-                    max-width: 300px;
-                    margin-bottom: 50px;
-                }
-            }
-            .slides-wrapper-2 {
-                .large {
-                    display: none;
-                }
-                // 商品展示控制
-                .-active {
-                    display: block;
-                }
-            }
-            .controller {
-                position: absolute;
-                cursor: pointer;
-            }
-            .prev {
-                top: -30px;
-                left: calc(50% - 30px);
-            }
-            .next {
-                bottom: -30px;
-                left: calc(50% - 30px);
-            }
-            .product-name {
-                position: absolute;
-                left: -25px;
-                top: calc(50% - 60px);
-                writing-mode: vertical-lr;
-                font-size: 50px;
-                .shifting-slide-title {
-                    display: none;
-                }
-                // 商品展示控制
-                .-active {
-                    display: block;
-                }
-            }
-        }
-        .section4 {
-            h2 {
-                text-align: center;
-            }
-            .container {
-                max-width: 1100px;
-                position: relative;
-                i {
-                    font-size: 30px;
-                    color: $p_color;
-                    cursor: pointer;
-                }
-                .fa-angle-left {
-                    position: absolute;
-                    left: -20px;
-                    top: calc(50% - 30px);
-                }
-                .fa-angle-right {
-                    position: absolute;
-                    right: -20px;
-                    top: calc(50% - 30px);
-                }
-                .news_item {
-                    width: 300px;
-                    img {
-                        max-width: 100%;
-                    }
-                }
-            }
-        }
-    }
+      // 關於我們
+      .section2 {
+          display: flex;
+          .section2_img {
+              padding-right: 0;
+              // width: 700px;
+              img {
+                  max-width: 100%;
+              }
+          }
+          div {
+              // width: 50%;
+              a {
+                  &::before {
+                      content: "";
+                      display: inline-block;
+                      width: 100px;
+                      height: 0.5px;
+                      background: $p_color;
+                      // transform: rotate(0deg) translateX(210px) translateY(-5px);
+                      animation: fade3 2s linear infinite;
+                  }
+                  @keyframes fade3 {
+                      0% {
+                          transform: rotate(0deg) translateX(210px) translateY(-5px);
+                          opacity: 0;
+                      }
+                      50% {
+                          transform: rotate(0deg) translateX(243px) translateY(-5px);
+                          opacity: 1;
+                      }
+                      100% {
+                          transform: rotate(0deg) translateX(270px) translateY(-5px);
+                          opacity: 0;
+                      }
+                  }
+                  &::after {
+                      content: "";
+                      display: inline-block;
+                      width: 25px;
+                      height: 0.5px;
+                      background: $p_color;
+                      // transform: rotate(30deg) translateX(67px) translateY(-50px);
+                      animation: fade4 2s linear infinite;
+                  }
+                  @keyframes fade4 {
+                      0% {
+                          transform: rotate(30deg) translateX(73px) translateY(-54px);
+                          opacity: 0;
+                      }
+                      50% {
+                          transform: rotate(30deg) translateX(98px) translateY(-70px);
+                          opacity: 1;
+                      }
+                      100% {
+                          transform: rotate(30deg) translateX(120px) translateY(-83px);
+                          opacity: 0;
+                      }
+                  }
+              }
+          }
+      }
+
+      // 商品展示
+      .section3 {
+          max-width: 1100px;
+          margin: 0 auto;
+          // display: flex;
+          // justify-content: space-between;
+          // padding-top: 70px;
+          div {
+              .small {
+                  display: none;
+                  img {
+                      max-width: 100%;
+                  }
+              }
+              // 商品展示控制
+              .-active {
+                  display: block;
+              }
+          }
+          .slides-wrapper {
+              position: relative;
+          }
+          @media (max-width: 768.98px) {
+              .slides-wrapper {
+                  max-width: 300px;
+                  margin-bottom: 50px;
+              }
+          }
+          .slides-wrapper-2 {
+              .large {
+                  display: none;
+              }
+              // 商品展示控制
+              .-active {
+                  display: block;
+              }
+          }
+          .controller {
+              position: absolute;
+              cursor: pointer;
+          }
+          .prev {
+              top: -30px;
+              left: calc(50% - 30px);
+          }
+          .next {
+              bottom: -30px;
+              left: calc(50% - 30px);
+          }
+          .product-name {
+              position: absolute;
+              left: -25px;
+              top: calc(50% - 100px);
+              writing-mode: vertical-lr;
+              font-size: 50px;
+              .shifting-slide-title {
+                  display: none;
+              }
+              // 商品展示控制
+              .-active {
+                  display: block;
+              }
+          }
+      }
+      .section4 {
+          h2 {
+              text-align: center;
+          }
+          .container {
+              max-width: 1100px;
+              position: relative;
+              i {
+                  font-size: 30px;
+                  color: $p_color;
+                  cursor: pointer;
+              }
+              .fa-angle-left {
+                  position: absolute;
+                  left: -20px;
+                  top: calc(50% - 30px);
+              }
+              .fa-angle-right {
+                  position: absolute;
+                  right: -20px;
+                  top: calc(50% - 30px);
+              }
+              .news_item {
+                  width: 300px;
+                  img {
+                      max-width: 100%;
+                  }
+              }
+          }
+      }
+  }
 }

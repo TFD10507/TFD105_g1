@@ -20,76 +20,63 @@
     />
   </head>
   <body id="customizeItem">
-    @@include('layout/login.html') @@include('layout/nav.html')
-
+    @@include('layout/login.html')
+    @@include('layout/nav.html')
+    @@include('layout/top.html')
     <main>
       <section class="container product-detail">
         <div class="row justify-content-between">
-          <div
-            class="imagery col-lg-6"
-            style="background-image: url('/img/customize/color/brown.jpg')"
-          >
+          
+          <div data-tab-content class="imagery col-lg-6" style="background-image: url('/img/customize/color/brown.jpg')">
             <img src="/img/customize/image/xr-brown.png" class="type-image" />
           </div>
 
+          <!-- <div data-tab-content class="imagery col-lg-6" style="background-image: url('/img/customize/color/brown.jpg')">
+            <img src="/img/customize/image/cb-brown.png" class="type-image" />
+          </div>
+
+          <div data-tab-content class="imagery col-lg-6" style="background-image: url('/img/customize/color/brown.jpg')">
+            <img src="/img/customize/image/ch-brown.png" class="type-image" />
+          </div> -->
+
           <div class="col-lg-6">
             <form class="detail margin_top_30">
-              <div class="catagory">
-                <button id="table" data-catagory="table" class="selected catagory-btn">原木圓桌</button>
-                <button id="cabinet" data-catagory="cabinet" class="catagory-btn">原木收納櫃</button>
+              <ul class="tabs catagory">
+                <li id="tab1" data-tab-target="#table" class="tab padding_10" value="1">原木圓桌</li>
+                <li id="tab2" data-tab-target="#cabinet" class="tab padding_10" value="2">原木收納櫃</li>
+                <li id="tab3" data-tab-target="#chai" class="tab padding_10" value="3">原木餐椅</li>
+              </ul>
+              <!-- <div class="catagory">
+                <button  data-catagory="table" class="active catagory-btn">原木圓桌</button>
+                <button  data-catagory="cabinet" class="catagory-btn">原木收納櫃</button>
                 <button id="chair" data-catagory="chair" class="catagory-btn">原木餐椅</button>
-              </div>
+              </div> -->
 
               <div class="options">
                 <p class="margin_top_20">請選擇木材</p>
                 <div class="colors btn_grid margin_top_20">
                   <div class="btn_wrap padding_10">
-                    <button
-                      type="button"
-                      class="color brown padding_10 selected"
-                      data-name="brown"
-                      data-color="#7f4f24"
-                    >
+                    <button type="button" class="color brown padding_10 selected" data-name="brown">
                       胡桃木
                     </button>
                   </div>
                   <div class="btn_wrap padding_10">
-                    <button
-                      type="button"
-                      class="color beige padding_10"
-                      data-name="beige"
-                      data-color="#fefae0"
-                    >
+                    <button type="button" class="color beige padding_10" data-name="beige">
                       白梣木
                     </button>
                   </div>
                   <div class="btn_wrap padding_10">
-                    <button
-                      type="button"
-                      class="color red padding_10"
-                      data-name="red"
-                      data-color="#800f2f"
-                    >
+                    <button type="button" class="color red padding_10" data-name="red">
                       紅橡木
                     </button>
                   </div>
                   <div class="btn_wrap padding_10">
-                    <button
-                      type="button"
-                      class="color green padding_10"
-                      data-name="green"
-                      data-color="#6b705c"
-                    >
+                    <button type="button" class="color green padding_10" data-name="green">
                       綠橡木
                     </button>
                   </div>
                   <div class="btn_wrap padding_10">
-                    <button
-                      type="button"
-                      class="color black padding_10"
-                      data-name="black"
-                      data-color="#081c15"
-                    >
+                    <button type="button" class="color black padding_10" data-name="black">
                       黑梣木
                     </button>
                   </div>
@@ -116,10 +103,11 @@
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script> -->
-    <scrip src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    
     <script>
       window.onload = function () {
         const color_btn_el = document.querySelectorAll(".colors .color");
+        // console.log(color_btn_el);
         const imagery_el = document.querySelector("div.imagery");
         // console.log(imagery_el);
         const image_el = document.querySelector(".imagery .type-image");
@@ -129,10 +117,9 @@
           let btn = color_btn_el[i];
 
           btn.addEventListener("click", function () {
-            document
-              .querySelector(".colors .color.selected")
-              .classList.remove("selected");
+            document.querySelector(".colors .color.selected").classList.remove("selected");
             this.classList.add("selected");
+
             // 產品圖片邊更
             image_el.src =
               "/img/customize/image/xr-" + this.dataset.name + ".png";
@@ -144,33 +131,53 @@
           });
         }
 
-      };
-      
-      // catagory-btn 種類切換
-      $(document).ready(function() {
-        $(".catagory-btn").on("click", function () {
-        $(".catagory-btn").removeClass("selected");
-        $(this).addClass("selected");
-        });
-      });
+        // 款式圖片切換
+        let img = document.querySelector(".type-image");
+        let tableBtn = document.querySelector("#tab1");
+        let cabinetBtn = document.querySelector("#tab2");
+        let chairBtn = document.querySelector("#tab3");
 
-      // 種類圖片切換
-      let img = document.querySelector(".type-image");
-      let tableBtn = document.querySelector("#table");
-      let cabinetBtn = document.querySelector("#cabinet");
-      let chairBtn = document.querySelector("#chair");
-
-      $( document ).ready(function() {
         tableBtn.addEventListener('click', () => {
         img.src = '/img/customize/image/xr-brown.png';
         })
+        
         cabinetBtn.addEventListener('click', () => {
         img.src = '/img/customize/image/cb-brown.png';
         })
+          
         chairBtn.addEventListener('click', () => {
         img.src = '/img/customize/image/ch-brown.png';
         })
+
+        //由customize.html進入, tab顯示active
+        var search_obj = new URLSearchParams(location.search);
+        var catagory_btn = document.querySelectorAll('li.tab');
+        console.log(search_obj.get("tab"));
+        console.log(catagory_btn);
+        
+        for(let i = 0; i < catagory_btn.length; i++){
+          if(catagory_btn.values(catagory_btn) === search_obj.get("tab")){
+            this.classList.add('active')
+          }
+        }
+
+        // 款式btn切換class
+        var catagory_btn = document.querySelectorAll('li.tab');
+        var tabContents = document.querySelectorAll("[data-tab-content]");
+
+        catagory_btn.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabContents.forEach((tabContent) => {
+            tabContent.classList.remove("active");           
+          });
+          catagory_btn.forEach((tab) => {
+            tab.classList.remove("active");
+          });
+          tab.classList.add("active");
+        });
       });
+
+      };  
       
     </script>
   </body>
