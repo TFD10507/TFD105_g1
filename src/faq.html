@@ -23,9 +23,7 @@
 </head>
 
 <body class="faq">
-    <div class="js-back-to-top">
-        <img src="./img/index/up-arrow.png">
-    </div>
+    @@include('layout/top.html')
     <div class="wrapper">
         @@include('layout/login.html')
         @@include('layout/nav.html')
@@ -33,10 +31,10 @@
         <main class="container">
             <section class="justify-content-center title">
                 <h1 class="p-3">常見問題 Q&A</h1>
-                <img src="./img/faq/1.png" class="img-fluid" style="width: 100%;">
+                <img src="./img/faq/1.png" class="img-fluid" data-aos="zoom-in" data-aos-duration="2000" style="width: 100%;">
             </section>
 
-            <section class="container">
+            <section class="container" data-aos="zoom-in" data-aos-duration="2000">
                 <ul class="nav nav-pills m-3 justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active my-4 ms-3 " id="pills-home-tab" data-bs-toggle="pill"
@@ -61,9 +59,9 @@
 
                 <div class="tab-content" id="pills-tabContent">
                     <!------------------------- 常見問題 --------------->
-                    <div class="tab-pane fade show active" id="pills-home">
+                    <div class="tab-pane fade show active"  id="pills-home">
                         <div class="accordion" id="accordionExample">
-                            <div class="accordion-item mb-4">
+                            <div class="accordion-item mb-4" >
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button faq-button bg-white text-primary " type="button"
                                         data-bs-toggle="collapse" data-bs-target="#faq1">
@@ -367,7 +365,8 @@
             </section>
 
             <!------------- banner ------------->
-            <div class="conainer p-5">
+            <div class="conainer p-5" data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-6">
                         <h3 class="bg-yellow p-5 banner text-center">新風格的締造者，給您最好的家具</h3>
@@ -381,29 +380,6 @@
         @@include('layout/footer.html')
     </div>
     <script src="./js/main.min.js"></script>
-    <script>
-        // go to top
-        var $win = $(window);
-        var $backToTop = $('.js-back-to-top');
-        // 當user滾動到離頂部300像素時，展示回到頂部按鈕
-        $win.scroll(function () {
-            if ($win.scrollTop() > 300) {
-                $backToTop.show();
-            } else if ($win.scrollTop() == 0) {
-                let slide_in_rwds = document.querySelectorAll('.slide-in-rwd');
-                slide_in_rwds.forEach(slide_in_rwd => {
-                    slide_in_rwd.classList.add('active');
-                });
-            } else {
-                $backToTop.hide();
-            }
-        });
-
-        // 當user點擊按鈕時，通過動畫效果返回頭部
-        $backToTop.click(function () {
-            $('html, body').animate({ scrollTop: 0 }, 700);
-        });
-    </script>
 </body>
 
 </html>
