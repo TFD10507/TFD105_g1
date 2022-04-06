@@ -6,9 +6,11 @@
 </head>
 
 <body class="product">
+
   @@include('layout/login.html')
-  @@include('layout/nav.html')
+  <!-- @@include('layout/nav.html') -->
   <!-- <div class="wrapper"></div>   -->
+  <section class="productslider"></section>
   <main class="container" id="app">
     <section class="title">
       <h1 class="p-3">產品總覽
@@ -48,7 +50,7 @@
               <!-- <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="" @click.stop.prevent="add_cart()"> -->
               <div class="caption">
                 <h6>{{product.productname}}</h6>
-                <p class="price">${{product.price}}</p>
+                <p class="price">{{product.price}}</p>
           </a>
         </div>
       </div>

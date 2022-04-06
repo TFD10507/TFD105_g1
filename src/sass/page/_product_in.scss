@@ -12,6 +12,11 @@ body.product_in {
             justify-content: space-between;
         }
 
+        p {
+            font-size: $p;
+
+        }
+
         main section.main>ul.cart>li.photo {
             flex-grow: 5;
             flex-basis: 400px;
@@ -25,7 +30,7 @@ body.product_in {
             border: 1px solid black;
         }
 
-        button {
+        button.submit {
             //消除button的默认样式
             margin: 0;
             padding: 10px 15px;
@@ -34,6 +39,22 @@ body.product_in {
             color: aliceblue;
             background-color: #A0643E;
 
+        }
+
+        .qty-input {
+            display: flex;
+            justify-content: flex-start;
+            padding: 10px;
+
+
+        }
+
+        button {
+
+            // border: 0.2;
+            border: solid 0.2px gray;
+            background-color: rgb(236, 233, 233);
+            outline: none;
         }
 
         // ul.showbar{
@@ -73,22 +94,21 @@ body.product_in {
             position: absolute;
             top: 15%;
             right: 15%;
-
         }
 
         main section.main>ul.cart>li>img:hover {
             /* outline: solid 0.5px gray; */
             border-radius: 5px;
-
         }
 
-        div.choice_item>ul {
+        div.type_item>ul {
             display: flex;
             justify-content: space-between;
             width: 70%;
+
         }
 
-        div.choice_item>ul>li {
+        div.type_item>ul>li {
             // font-size: 0.8rem;
             text-align: center;
             flex-grow: 1;
@@ -96,8 +116,10 @@ body.product_in {
                 // border-radius: 5px;
         }
 
-        li>img.choice {
+        li>img.type {
+            height: 100%;
             // outline: black 2px solid;
+
         }
 
         li>img.-active {
@@ -108,9 +130,10 @@ body.product_in {
         }
 
 
-        div.choice_item>ul>li>img:hover {
+        div.type_item>ul>li img:hover {
             outline: black 2px solid;
             cursor: pointer;
+
         }
 
         // ul.showbar li:hover{
@@ -124,6 +147,21 @@ body.product_in {
             // max-width: 100%;
         }
 
+        li.content> {
+            img {
+                cursor: pointer;
+            }
+
+            img:nth-child(2n+1) {
+                display: none;
+
+            }
+
+            img:nth-child(2n+1).-on {
+                display: block;
+            }
+        }
+
         // li.content {
         //     width: 100%;
         //     position: relative;
@@ -135,26 +173,70 @@ body.product_in {
         //     right: 0%;
         // }
 
-        li.content>a>img {
-            margin-left: auto;
-            width: 10%;
+        // li.content>a>img {
+        //     margin-left: auto;
+        //     width: 10%;
+        // }
+
+        // li.content>a>img {
+        //     display: none;
+        // }
+        p.price::before {
+            content: "NT$";
+
         }
 
+        .count {
+            display: flex;
+            padding-bottom: 10px;
 
-        @media screen and (max-width:575.98px) {
-            ul.showbar li {
-                width: 20%;
-                height: 20%;
-                background-color: #fff;
-            }
+            div {
+                font-size: 20px;
 
-            * {
-                text-align: center;
-            }
+                .num-jian,
+                .input-num,
+                .num-jia {
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 20px;
+                    width: 30px;
+                    height: 30px;
+                    line-height: 30px;
+                    color: #999;
+                    cursor: pointer;
+                    border: 1px solid #e6e6e6;
+                }
 
-            div.buttom {
-                display: inline-block;
+                .input-num {
+                    width: 48px;
+                    height: 30px;
+                }
             }
+        }
+
+        .operate {
+            font-size: 30px;
+            text-align: right;
+        }
+    }
+
+
+
+
+
+    @media screen and (max-width:575.98px) {
+        ul.showbar li {
+            width: 20%;
+            height: 20%;
+            background-color: #fff;
+        }
+
+        * {
+            text-align: center;
+        }
+
+        div.buttom {
+            display: inline-block;
         }
     }
 }
