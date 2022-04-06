@@ -4,10 +4,10 @@
 
   .btn_style{
     cursor: pointer;
-    border: 1px solid $btn_color;
     background-color: $btn_color;
     border-radius: 2px;
     color: $p_color2;
+    line-height: 40px;
   }
 
   .container {
@@ -127,24 +127,6 @@
   .sec4 {
     background-image: url(../img/customize/4.jpg);
   }
-
-  #sec2_btn,
-  #sec3_btn,
-  #sec4_btn,
-  #send_btn {
-    width: 100px;
-    background-color: $btn_color;
-    border: none;
-    border-radius: 3px;
-    color: $p_color2;
-    padding: 5px;
-    cursor: pointer;
-    margin: 20px 0;
-    a {
-      text-decoration: none;
-      color: $p_color2;
-    }
-  }
 }
 
 // 客製化內頁
@@ -202,24 +184,17 @@
       text-align: center;
 
       .catagory{
-        display: flex;
-        justify-content: space-around;
 
-        button{
-          border: none;
-          background-color: transparent;
-          font-size: $h2;
-          color: $p_color;
-          font-weight: 900;
-        }
-
-        button.selected{
-          @extend button;
+        .tab.active {
           border-bottom: 3px solid $btn_color;
         }
+  
+        .tab:hover {
+          background-color: $btn_color;
+          color: $p_color2;
+        }
       }
-      
-
+    
       .options {
         p {
           color: $p_color;
