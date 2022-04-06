@@ -1,5 +1,4 @@
 .index {
-<<<<<<< HEAD
     //彈窗定位css
     .wheel-pop-up{
         width: 500px;
@@ -232,24 +231,6 @@
     //         max-width: 100%;
     //     }
     // }
-=======
-  // 輪盤
-  .roulette {
-      width: 50px;
-      z-index: 5;
-      cursor: pointer;
-      position: fixed;
-      right: 10px;
-      bottom: 100px;
-      opacity: 0.5;
-      &:hover {
-          opacity: 1;
-      }
-      img {
-          max-width: 100%;
-      }
-  }
->>>>>>> e3f39164ce472f900f3ed41ceead0cb6e3e9e343
 
   .wrapper {
       overflow-x: hidden;
