@@ -7,6 +7,7 @@
 </head>
 
 <body class="news">
+  @@include('layout/top.html')
   <div class="wrapper">
     @@include('layout/login.html')
     @@include('layout/nav.html')
@@ -14,19 +15,19 @@
     <main class="container">
       <section class="title">
         <h1 class="p-3">最新消息 News</h1>
-        <img src="./img/news/index1.png" class="img-fluid w-100">
+        <img src="./img/news/index1.png" class="img-fluid w-100" data-aos="zoom-in" data-aos-duration="2000">
       </section>
 
 
       <!-------------------- 公告消息 ---------------------->
-      <section class="container">
+      <section class="container" >
 
-        <h2 class="mt-5">公告消息</h2>
+        <h2 class="mt-5" data-aos="zoom-in" data-aos-duration="2000">公告消息</h2>
 
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center"  data-aos="fade-up" data-aos-duration="3000">
 
           <div class="col-12 col-md-3 my-5 ">
-            <div class="card h-100 news_card bg-primary">
+            <div class="card h-100 news_card bg-primary" >
 
               <img src="./img/news/main.jpg.png" class="card-img-top p-3 img-fluid">
               <div class="card-body">
@@ -143,9 +144,9 @@
       <!-------------------- 優惠活動 ---------------------->
       <section class="container mb-5">
 
-        <h2 class="mt-5">優惠活動</h2>
+        <h2 class="mt-5" data-aos="zoom-in" data-aos-duration="2000">優惠活動</h2>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center"  data-aos="fade-up" data-aos-duration="3000">
 
           <div class="col-12 col-md-3 my-5">
             <div class="card h-100 news_card bg-primary">
@@ -264,21 +265,21 @@
       <!-------------------- 主打商品 ---------------------->
       <section class="container ">
         <div class="row justify-content-around">
-        <div class="col-12 col-md-4  position-relative">
-          <div class="bg-yellow rectangle"></div>
-          <img src="./img/news/Rectangle 39.png" class="img-fluid position-absolute top-50 start-75 translate-middle">
-        </div>
-        <div class="col-12 col-md-4 position-relative">
-          <div class="bg-gray gray-square"></div>
-          <div class="bg-white new-product position-absolute top-50 start-75 translate-middle p-5">
-            <h3>The Eye Concentrate</h3>
+          <div class="col-12 col-md-4  position-relative" data-aos="fade-right" data-aos-duration="2000">
+            <div class="bg-yellow rectangle"></div>
+            <img src="./img/news/Rectangle 39.png" class="img-fluid  position-absolute top-50 start-75 translate-middle">
+          </div>
+          <div class="col-12 col-md-4 position-relative" data-aos="fade-left" data-aos-duration="3000">
+            <div class="bg-gray gray-square"></div>
+            <div class="bg-white new-product position-absolute top-50 start-75 translate-middle p-5">
+              <h3>The Eye Concentrate</h3>
               <h3>羅丹辦公桌</h3>
-            <p class="describe">在起居室或臥室等緊湊空間內，被精心挑選的物品包圍著的高挑大人書桌。考慮到電源線的佈線，建議將此桌子用於 PC 工作。</p>
-            <a class="btn btn-yellow position-absolute bottom-20 pb-3 text-center" href="product_in.html">前往查看</a>
+              <p class="describe">在起居室或臥室等緊湊空間內，被精心挑選的物品包圍著的高挑大人書桌。考慮到電源線的佈線，建議將此桌子用於 PC 工作。</p>
+              <a class="btn btn-yellow position-absolute bottom-20 pb-3 text-center" href="product_in.html">前往查看</a>
+            </div>
           </div>
         </div>
-      </div>
-      
+
       </section>
 
 
