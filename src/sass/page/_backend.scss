@@ -134,6 +134,10 @@
     table.dataTable tbody td {
       padding: 10px;
     }
+
+    li textarea{
+      max-width: 100px;
+    }
     // DATATABLE區 結束
   }
 }

@@ -37,9 +37,20 @@
       }
     }
 
-    .tab-content { // 頁籤內容
+    .tab-content {
+      // 頁籤內容
       margin: 0 auto;
-      text-align: center;
+
+      #member,
+      #password {
+        h3 {
+          text-align: center;
+        }
+        .member-btn,
+        .password-btn {
+          text-align: center;
+        }
+      }
 
       .btn_style {
         cursor: pointer;
@@ -99,32 +110,17 @@
           margin: 0;
           padding-left: 0;
         }
-
-        // .collapsible.active{
-        //   background-color: $s_color1;
-        // }
-
-        // .collapsible.active::after {
-        //   content: "\2796";
-        // }
-
-        // .collapsible::after {
-        //   content: "\002B";
-        //   font-size: 14px;
-        //   color: $p_color2;
-        //   float: right;
-        //   margin-left: 5px;
-        // }
       }
 
-      .order-content {         // 訂單查詢 訂單明細表格
+      .order-content {
+        // 訂單查詢 訂單明細表格
         display: none;
         overflow: hidden;
         background-color: $s_color2;
         max-height: 0;
         width: 100%;
-        overflow: hidden;
         transition: max-height 0.2s ease-out;
+        text-align: center;
 
         .order-details {
           width: 100%;
@@ -132,7 +128,7 @@
           tr,
           th,
           td {
-            border: 1px solid $p_color1;
+            border-bottom: 1px solid $p_color1;
             padding: 5px;
 
             tr:nth-child(even) {
@@ -149,14 +145,32 @@
         }
       }
 
-      #favor {
-        // 收藏清單
-        width: 100%;
+      #favor { // 收藏清單
+        width: 100%; 
 
-        .row img {
-          width: 100%;
+        .liked_product {
+          text-align: center;
+          position: relative;
+
+          .liked_img{
+            width: 100%;
+            margin-bottom: 10px;
+          }
+
+          .off {
+            display: none;
+          }
+
+          .heart-like-button {
+            position: absolute;
+            font-size: $h3;
+            right: 25px;
+            top: 10px;
+            color: #d65076;
+            border: none;
+            cursor: pointer;
+          }
         }
-
       }
     }
   }

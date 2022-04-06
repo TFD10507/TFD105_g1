@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
     @@include('layout/head.html')
 </head>
-
-
 <body class="product_in">
     <div class="wrapper">
+        
         @@include('layout/login.html')
-        @@include('layout/nav.html')
+        <!-- @@include('layout/nav.html') -->
         <!-- 首頁 -->
         <section class="cart">
             <main class="cart">
@@ -17,49 +16,62 @@
                     <ul class="cart">
                         <li class="photo">
                             <img id="mainImg" class="mainImg product" src="./img/product/chair_001.jpg" alt="">
-                            <!-- <img class="favorite" src="./style/img/icon/favorite/hallowheart-01.svg" alt="" srcset=""> -->
+                            
                             <!-- <ul class="showbar">
                                 <li><img class="smallImg" src="./img/product/chair_002.pg" alt="" srcset=""></li>
                                 <li><img class="smallImg" src="./img/product/chair_003.jpg" alt="" srcset=""></li>
                                 <li><img class="smallImg" src="./style/img/product/LM/01/s2.jpg" alt="" srcset=""></li>
                             </ul> -->
                         </li>
-                        <li class="content">
-                            <h4>The Eye Concentrate</h4>
-                            <h3>羅丹辦公桌</h3>
+                        <li class="content">                            
+                            <h3 data-prd_id="001">羅丹辦公椅</h3>
                             <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
                                 @click.stop.prevent="add_cart()">
-
+                            <img class="favorite" src="./img/product/favorite_touch.svg" alt="" srcset=""
+                                @click.stop.prevent="add_cart()">
 
                             <hr>
-                            <p>熱銷商品</p>
-                            <br>
-                            在起居室或臥室等緊湊空間內，被精心挑選的物品包圍著的高挑大人書桌。考慮到電源線的佈線，建議將此桌子用於 PC 工作。
-                            <br>
-                            材質：
-                            <br>
-                            白橡木
-                            ※可選擇等級的產品價格因等級而異。
-                            <br>
-                            尺寸/規格：
-                            <br> W159 x D45 x H83
+                            <p class="content">在起居室或臥室等緊湊空間內，被精心挑選的物品包圍著的高挑大人書桌。考慮到電源線的佈線，建議將此桌子用於 PC 工作。</p>                   
+                            <p>※可選擇等級的產品價格因等級而異。</p>                         
+                            <p>尺寸/規格：</p>
+                            <p>W159 x D45 x H83</p>
 
-                            <br> $ 99,999
-                            </p>
+                            <!-- counter -->
+                            <div class="count__wrapper count__wrapper--ml .count">
+                                <div class="qty-input">
+                                  <button class="qty-count qty-count--minus .count" data-action="minus" type="button">
+                                    <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M8 2L3 7L8 12L7 14L0 7L7 0L8 2Z" fill="black" />
+                                    </svg>
+                                  </button>
+                                  <input class="product-qty input" type="number" name="product-qty" min="0" max="10" value="1">
+                                  <button class="qty-count qty-count--add" data-action="add" type="button">
+                                    <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M0 2L5 7L0 12L1 14L8 7L1 0L0 2Z" fill="black" />
+                                    </svg>
+                                  </button>
+                                </div>
+                              </div> <!-- Counter || END -->
+                              
+                              <div class="product__buy pr-0">
+                                <div class="product__buy-container">
+                                  <h2 class="product__price"><p class="subtotal__price price">19.99</p></h2>
+                                </div>
+                              </div>
+                            <!-- <p class="price">99,999</p> -->
                             <!-- 與下面對應，這裡是椅子的材質 -->
-                            <div class="choice_item">
+                            <div class="type_item">
                                 <ul>
-                                    <li><img class="choice" src="./img/product/treasure_001.png" alt=""
+                                    <li><img class="type" src="./img/product/treasure_001.png" alt=""
                                             srcset=""></button></li>
-                                    <li><img class="choice" src="./img/product/treasure_002.png" alt=""
+                                    <li><img class="type" src="./img/product/treasure_002.png" alt=""
                                             srcset=""></button></li>
-                                    <li><img class="choice" src="./img/product/treasure_003.png" alt=""
+                                    <li><img class="type" src="./img/product/treasure_003.png" alt=""
                                             srcset=""></button></li>
                                 </ul>
                             </div>
                             <!-- 與上面的對應，這裡是椅子款式 -->
                             <div class="chair_style" style="display: none;">
-
                                 <ul>
                                     <li><img class="chair_style" src="./img/product/chair_001.jpg" alt=""
                                             srcset=""></button>
@@ -74,7 +86,7 @@
                             </div>
                             <br>
                             <!-- <div class="buttom">加入購物車</div> -->
-                            <button type="submit">加入購物車</button>
+                            <button class="submit" type="submit">加入購物車</button>
                         </li>
                     </ul>
 
@@ -82,99 +94,147 @@
 
             </main>
         </section>
+        @@include('layout/top.html')
         @@include('layout/footer.html')
     </div>
-    <script>
-
-
-
-
-
-
-
-
+    <script>  
 
         let main_img = document.querySelector('#mainImg');
-        let choice = document.querySelectorAll('img.choice');
+        let type = document.querySelectorAll('img.type');
         let chair_style = document.querySelectorAll('img.chair_style');
-        // let productarr = [];
-        // for (let i = 0; i < choice.length; i++)
-        //     console.log(choice);
-
-        // function choice_array([],i){
-        //     for(let i = 0; i <= 5; i++){
-        //         counter=0;
-        //     }
-        // }
+        
         //設定第一項為黑框樣式(初始值)
-        choice[0].style = 'outline: black 2px solid;'
-        for (let i = 0; i < choice.length; i++) {
-            // console.log(choice[i]);
-            choice[i].addEventListener("click", function () {
+        type[0].style = 'outline: black 2px solid;'
+        for (let i = 0; i < type.length; i++) {
+            // console.log(type[i]);
+            type[i].addEventListener("click", function () {
+                // console.log(type[i]);
                 //換主圖
                 main_img.src = chair_style[i].src;
                 // counter = 0; 
-                for (let j = 0; j < choice.length; j++) {
+                for (let j = 0; j < type.length; j++) {
                     if (i == j) {
                         //設定黑框
-                        choice[i].style = 'outline: black 2px solid;'
+                        type[i].style = 'outline: black 2px solid;'
                     } else {
                         //如果沒選定則取消樣式
-                        choice[j].style = 'none;'
+                        type[j].style = 'none;'
                     }
                 }
-
-
-
-
-
-
-
-
-
-                // console.log(choice[i]);
-
-                // main_img.src = chair_style[i].src;
-                // choice[i].style = 'outline: black 2px solid;'
-
-                // choice[0].style = 'outline: black 2px solid;'
-                // for (let i = 0; i <= 5; i++) {
-                //     counter = 0;
-                //     for (let j = 0; j <= 5; j++) {
-                //         if (i = j) {
-                //             choice[j].style = 'none';
-                //         }
-                //     }
-                //     // console.log(choice[i]);
-                //     choice[i].addEventListener("click", function () {
-                //         main_img.src = chair_style[i].src;
-                //         choice[i].style = 'outline: black 2px solid;'
-
-
-                //     choice[i].style = 'outline: black 2px solid;'
-                // } else {
-                //     choice[i].style = 'outline: black 2px solid;'
-                // }
-                // choice.forEach(function () {
-                //     choice[i].style = 'outline: black 2px solid;'
-                // })
-                // console.log(choice[i]);
-                // if (i === [i]) {
-                //     choice[i].style = 'none;'
-                // } else {
-                //     choice[i].style = 'outline: black 2px solid;'
-                // }
-
-
-                // chair_style[i].classList.toggle('-active');
-
-
-                // console.log(chair_style[i].classList.toggle('-active'));
-                // console.log(chair_style[i] = chair_style[i].classList.add('-active'));
-                // console.log(main_img.src)
-                // console.log(i)
             })
+        }        
+        let fabtn = document.querySelectorAll(".favorite");
+            fabtn[0].addEventListener("click", function () {
+                fabtn[1].classList.toggle('-on')
+            
+            fabtn[1].addEventListener("click", function () {
+                // console.log(fabtn[1]);
+                fabtn[1].classList.remove('-on');
+            })
+        })
+        </script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                text: 'ss',
+                cart2: '<div>asdadx</div>',
+                products:
+                    [
+                        {  
+                            "id": 2,
+                            "image": "/img/product/chair_001.jpg",
+                            "productname": "chair",
+                            "price": '1,000'
+                        },
+                    ]
+            },
+            methods: {
+                add_cart() {
+                    alert(123);
+                }
+            }
+        })
 
+        // counter
+        var wrapper= document.querySelector('.count__wrapper'),
+        res= document.querySelector('.subtotal__price'),
+        input= wrapper.querySelector('input[class*=input]');
+
+        wrapper.addEventListener('click', e=>{
+        var t= e.target;
+  
+        input.value= +input.value;
+  
+        if(t.closest('button[class*=--minus]')){
+    --input.value;
+        }
+        else if(t.closest('button[class*=--add]')){
+            ++input.value;
+         }
+  
+        res.textContent= (19.99*input.value).toFixed(2);
+});
+
+
+
+
+            // let fabtn = document.querySelectorAll(".favorite");
+        // // console.log(fabtn);
+        // for (let i = 0; i < 2; i++) {
+        //     // console.log(fabtn[i]);
+        //     fabtn[i].addEventListener("click", function () {
+        //         // console.log(fabtn[i]);
+        //         // cog(e.classlist.src.target);onsole.l
+        //         // e.src= chair_style[i].src
+        //     }
+
+
+
+
+
+
+            // console.log(choice[i]);
+
+            // main_img.src = chair_style[i].src;
+            // choice[i].style = 'outline: black 2px solid;'
+
+            // choice[0].style = 'outline: black 2px solid;'
+            // for (let i = 0; i <= 5; i++) {
+            //     counter = 0;
+            //     for (let j = 0; j <= 5; j++) {
+            //         if (i = j) {
+            //             choice[j].style = 'none';
+            //         }
+            //     }
+            //     // console.log(choice[i]);
+            //     choice[i].addEventListener("click", function () {
+            //         main_img.src = chair_style[i].src;
+            //         choice[i].style = 'outline: black 2px solid;'
+
+
+            //     choice[i].style = 'outline: black 2px solid;'
+            // } else {
+            //     choice[i].style = 'outline: black 2px solid;'
+            // }
+            // choice.forEach(function () {
+            //     choice[i].style = 'outline: black 2px solid;'
+            // })
+            // console.log(choice[i]);
+            // if (i === [i]) {
+            //     choice[i].style = 'none;'
+            // } else {
+            //     choice[i].style = 'outline: black 2px solid;'
+            // }
+
+
+            // chair_style[i].classList.toggle('-active');
+
+
+            // console.log(chair_style[i].classList.toggle('-active'));
+            // console.log(chair_style[i] = chair_style[i].classList.add('-active'));
+            // console.log(main_img.src)
+            // console.log(i)
 
 
 
@@ -183,7 +243,7 @@
             //     main_img.src = choice[i].src;
             //     console.log(i);
             // }
-        }
+        
 
 
 
@@ -202,28 +262,9 @@
         //         mainImg.src  = smallImg[3].src;
         //     } 
 
-    </script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                text: 'ss',
-                cart2: '<div>asdadx</div>',
-                products:
-                    [
-                        {
-                        },
-                    ]
-            },
-            methods: {
-                add_cart() {
-                    alert(123);
-                }
-            }
-        })
-    </script>
+   
 
-
+    </script>
 
 </body>
 

@@ -23,6 +23,9 @@
 </head>
 
 <body class="faq">
+    <div class="js-back-to-top">
+        <img src="./img/index/up-arrow.png">
+    </div>
     <div class="wrapper">
         @@include('layout/login.html')
         @@include('layout/nav.html')
@@ -36,18 +39,18 @@
             <section class="container">
                 <ul class="nav nav-pills m-3 justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active my-4 ms-3 " id="pills-home-tab"
-                            data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">常見問題</button>
+                        <button class="nav-link active my-4 ms-3 " id="pills-home-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                            aria-selected="true">常見問題</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link my-4 ms-3 " id="pills-shopping-tab"
-                            data-bs-toggle="pill" data-bs-target="#pills-shopping" type="button"
-                            role="tab" aria-controls="pills-profile" aria-selected="false">購物問題</button>
+                        <button class="nav-link my-4 ms-3 " id="pills-shopping-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-shopping" type="button" role="tab" aria-controls="pills-profile"
+                            aria-selected="false">購物問題</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link my-4 ms-3 " id="pills-product-tab"
-                            data-bs-toggle="pill" data-bs-target="#pills-product" type="button"
-                            aria-selected="false">商品問題</button>
+                        <button class="nav-link my-4 ms-3 " id="pills-product-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-product" type="button" aria-selected="false">商品問題</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link my-4 ms-3 " id="pills-fix-tab" data-bs-toggle="pill"
@@ -69,7 +72,7 @@
                                 </h2>
                                 <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                                     data-bs-parent="#accordionExample">
-                                    <div class="accordion-body bg-gray" >
+                                    <div class="accordion-body bg-gray">
                                         <p>A1：
                                             一般商品詳細頁會註明該商品有無庫存, 無現貨商品可點擊補貨後通知。
                                             客製化商品一律接單後製作。</p>
@@ -163,8 +166,8 @@
                             </div>
                             <div class="accordion-item mb-4">
                                 <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed faq-button bg-white text-primary " type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <button class="accordion-button collapsed faq-button bg-white text-primary "
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
                                         Q2 鑑賞期限及定義？是否有7天鑑賞期？
                                     </button>
                                 </h2>
@@ -179,8 +182,8 @@
                             </div>
                             <div class="accordion-item mb-4">
                                 <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed faq-button bg-white text-primary " type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <button class="accordion-button collapsed faq-button bg-white text-primary "
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
                                         Q3 是否有訂做服務？
                                     </button>
                                 </h2>
@@ -367,7 +370,7 @@
             <div class="conainer p-5">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-6">
-                            <h3 class="bg-yellow p-5 banner text-center">新風格的締造者，給您最好的家具</h3>
+                        <h3 class="bg-yellow p-5 banner text-center">新風格的締造者，給您最好的家具</h3>
                     </div>
                 </div>
             </div>
@@ -378,6 +381,29 @@
         @@include('layout/footer.html')
     </div>
     <script src="./js/main.min.js"></script>
+    <script>
+        // go to top
+        var $win = $(window);
+        var $backToTop = $('.js-back-to-top');
+        // 當user滾動到離頂部300像素時，展示回到頂部按鈕
+        $win.scroll(function () {
+            if ($win.scrollTop() > 300) {
+                $backToTop.show();
+            } else if ($win.scrollTop() == 0) {
+                let slide_in_rwds = document.querySelectorAll('.slide-in-rwd');
+                slide_in_rwds.forEach(slide_in_rwd => {
+                    slide_in_rwd.classList.add('active');
+                });
+            } else {
+                $backToTop.hide();
+            }
+        });
+
+        // 當user點擊按鈕時，通過動畫效果返回頭部
+        $backToTop.click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 700);
+        });
+    </script>
 </body>
 
 </html>

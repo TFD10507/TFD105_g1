@@ -17,9 +17,46 @@
                     </li>
                     <li>會員登入</li>
                 </ul>
-                <a href="cart.html">
+                <a href="#" class="btn_cart_open">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
+                <div class="cart_side bg-gray">
+                    <ul class="cart_title bg-primary mb-0 p-3">
+                        <li>購物車</li>
+                        <li class="btn_cart_close">
+                            <span></span>
+                            <span></span>
+                        </li>
+                    </ul>
+                    <ul class="cart_content p-3">
+                        <li class="detail">
+                            <div class="img">
+                                <img src="./img/index/sample_small.jpg" alt="">
+                            </div>
+                            <div class="info ps-5">
+                                <div class="pname">SEOTO-EX 機櫃</div>
+                                <div class="ptype">白橡木</div>
+                                <div class="count">
+                                    <div><span class="num-jian">-</span></div>
+                                    <div><input type="text" class="input-num" value="1" /></div>
+                                    <div><span class="num-jia">+</span></div>
+                                </div>
+                                <div class="price">
+                                    3370
+                                </div>
+                                <div class="operate">
+                                    <a href="#" class="del">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                    <a href="#" class="heart">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="cart.html" class="link_cart">前往結帳</a>
+                </div>
                 <!-- 漢堡checkbox -->
                 <input type="checkbox" id="meun_control">
                 <!-- 漢堡 -->
@@ -74,12 +111,13 @@
     </nav>
 </header>
 
-<!-- <script>
+<script>
     $(function () {
-        $('.member_ul').click(function (e) {
-            e.preventDefault();
-            // $('.member_list').toggleClass("active");
-            $('.member_list').toggle(500);
+        $('.btn_cart_open').on('click',function(){
+            $(".cart_side").animate({right:'0'},1500);
+        });
+        $('.btn_cart_close').on('click',function(){
+            $(".cart_side").animate({right:'-100%'},1500);
         });
     });
-</script> -->
+</script>
