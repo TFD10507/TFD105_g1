@@ -13,6 +13,7 @@
   <body id="member2">
     @@include('layout/login.html')
     @@include('layout/nav.html')
+    @@include('layout/top.html')
     <main class="container">
       <h2 class="padding_10"><span class="textUnderline">會員中心</span></h1>
 
@@ -208,7 +209,7 @@
 
         <!-- 收藏清單內容 -->
         <div id="favor" data-tab-content class="container">
-          <div class="row justify-content-between">
+          <div class="row">
 
             <div class="liked_product col-12 col-lg-3 col-md-6">
               <i class="heart-like-button fas fa-heart"></i>
@@ -270,7 +271,7 @@
       var order = document.getElementsByClassName("collapsible");
       var i;
 
-      for (i = 0; i < order.length; i++) {
+      for (let i = 0; i < order.length; i++) {
         order[i].addEventListener("click", function () {
           this.classList.toggle("active");
           var content = this.nextElementSibling;
@@ -295,11 +296,16 @@
       }
 
       // 收藏清單愛心點擊照片消失功能
-      const heart_btn = document.querySelector(".heart-like-button");
+      const heart_btn = document.querySelectorAll(".heart-like-button");
       const liked_product = document.querySelectorAll('.liked_product');
-      console.log(heart_btn);
-      console.log(liked_product);
+      // console.log(heart_btn);
+      // console.log(liked_product);
 
+      for (let i = 0; i < heart_btn.length; i++){
+        heart_btn[i].addEventListener("click", function(e){
+        e.target.closest("div.liked_product").remove();
+        });
+      }
     </script>
   </body>
 </html>

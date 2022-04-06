@@ -28,7 +28,7 @@
       }
 
       .tab.active {
-        border-bottom: 5px solid $btn_color;
+        border-bottom: 3px solid $btn_color;
       }
 
       .tab:hover {
@@ -157,9 +157,9 @@
             margin-bottom: 10px;
           }
 
-          .off {
-            display: none;
-          }
+          // .off {
+          //   display: none;
+          // }
 
           .heart-like-button {
             position: absolute;

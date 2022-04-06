@@ -15,7 +15,7 @@ header {
         .navIcon {
             display: flex;
             align-items: center;
-            a {
+            .icon {
                 text-decoration: none;
                 color: $p_color1;
                 display: block;
@@ -57,16 +57,15 @@ header {
                 height: 100vh;
                 position: absolute;
                 top: 0;
-                right: -100%;
+                right: -200%;
                 .cart_title {
                     color: $p_color2;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     .btn_cart_close {
-                        width: 50px;
-                        height: 50px;
-                        padding-top: 10px;
+                        width: 30px;
+                        height: 30px;
                         span {
                             // position: absolute;
                             // top: 10px;
@@ -146,6 +145,9 @@ header {
                             font-size: 30px;
                             display: flex;
                             justify-content: flex-end;
+                            .del{
+                                margin-right: 10px;
+                            }
                         }
                     }
                 }
