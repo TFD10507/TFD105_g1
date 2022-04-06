@@ -9,10 +9,55 @@
     <div class="roulette button">
         <img src="./img/index/lucky-wheel.png">
     </div>
-    <div class="pop-up">
-        
+    <!-- 輪盤小遊戲彈跳視窗 -->
+    <div class="wheel-pop-up">
+        <h2 class="pop-up-title">幸運輪盤</h2>
+        <div class="wheel-inner-pop-up">
+            <div class="wheel-outter"></div>
+
+            <div id="wheel">
+                <div id="inner-wheel">
+                    <div class="sec">
+                        <span class="fa">
+                            <img src="./bath-solid.svg" alt="">
+                        </span>
+                    </div>
+                    <div class="sec">
+                        <span class="fa">
+                            <img src="./bed-solid.svg" alt="">
+                        </span>
+                    </div>
+                    <div class="sec">
+                        <span class="fa">
+                            <img src="./img/index/wheel/bath-solid.svg" alt="">
+                        </span>
+                    </div>
+                    <div class="sec">
+                        <span class="fa">
+                            <img class="wheel-ing" src="./chair-solid.svg" alt="">
+                        </span>
+                    </div>
+                    <div class="sec">
+                        <span class="fa">
+                            <img src="./bomb-solid.svg" alt="">
+                        </span>
+                    </div>
+                    <div class="sec">
+                        <span class="fa">
+                            <img src="door-closed-solid.svg" alt="">
+                        </span>
+                    </div>
+                </div>
+
+                <div id="spin">
+                    <div id="inner-spin"></div>
+                </div>
+
+                <div id="shine"></div>
+            </div>
+        </div>
     </div>
-    
+
     <!-- 共用的top鍵 -->
     @@include('layout/top.html')
     <div class="wrapper">
@@ -211,13 +256,47 @@
         });
 
         $(function () {
-            // ==== 右下輪盤彈窗 ====
-            $('button').click(function () {
-                $('.pop-up').addClass('open');
-            });
+            // ==== 輪盤彈窗 ====
+            // ==== 右下輪盤JS ====
+            var degree = 1800;
+            var clicks = 0;
 
-            $('.pop-up .close').click(function () {
-                $('.pop-up').removeClass('open');
+            $(document).ready(function () {
+                $('#spin').click(function () {
+
+                    clicks++;
+                    var newDegree = degree * clicks;
+                    var extraDegree = Math.floor(Math.random() * (360 - 1 + 1)) + 1;
+                    totalDegree = newDegree + extraDegree;
+
+                    $('#wheel .sec').each(function () {
+                        var t = $(this);
+                        var noY = 0;
+
+                        var c = 0;
+                        var n = 700;
+                        var interval = setInterval(function () {
+                            c++;
+                            if (c === n) {
+                                clearInterval(interval);
+                            }
+
+                            var aoY = t.offset().top;
+                            $('#txt').html(aoY);
+
+                            if (aoY < 23.89) {
+                                $('#spin').addClass('spin');
+                                setTimeout(function () {
+                                    $("#spin").removeClass('spin');
+                                }, 100);
+                            }
+                        }, 10);
+
+                        $('#inner-wheel').css({ 'transform': 'rotate(' + totalDegree + 'deg)' });
+
+                        noY = t.offset().top;
+                    });
+                });
             });
             // ==== 輪播按鈕控制 ====
             $(window).resize(function () {
