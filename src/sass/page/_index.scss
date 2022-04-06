@@ -1,4 +1,5 @@
 .index {
+<<<<<<< HEAD
     //彈窗定位css
     .wheel-pop-up{
         width: 500px;
@@ -231,6 +232,24 @@
     //         max-width: 100%;
     //     }
     // }
+=======
+  // 輪盤
+  .roulette {
+      width: 50px;
+      z-index: 5;
+      cursor: pointer;
+      position: fixed;
+      right: 10px;
+      bottom: 100px;
+      opacity: 0.5;
+      &:hover {
+          opacity: 1;
+      }
+      img {
+          max-width: 100%;
+      }
+  }
+>>>>>>> fa706145e75d4c176e3ae7638ccb1c8de772a81a
 
   .wrapper {
       overflow-x: hidden;
@@ -240,17 +259,17 @@
           // max-width: 100%;
           padding-top: 80px;
           // 黃色圓形
-          .circle_position {
-              transform: translate(100px, -350px);
-              .circle {
-                  display: inline-block;
-                  border-radius: 50%;
-                  width: 150px;
-                  height: 150px;
-                  opacity: .7;
-                  background-color: darken($s_color2, 20);
-              }
-          }
+        //   .circle_position {
+        //       transform: translate(100px, -350px);
+        //       .circle {
+        //           display: inline-block;
+        //           border-radius: 50%;
+        //           width: 150px;
+        //           height: 150px;
+        //           opacity: .7;
+        //           background-color: darken($s_color2, 20);
+        //       }
+        //   }
       }
       .banner {
           // width: 100%;
@@ -350,11 +369,11 @@
               }
           }
       }
-      @media (max-width: 768.98px) {
-          .banner {
-              margin-bottom: 50px;
-          }
-      }
+    //   @media (max-width: 768.98px) {
+    //       .banner {
+    //           margin-bottom: 50px;
+    //       }
+    //   }
 
       // 關於我們
       .section2 {

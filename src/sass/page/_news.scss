@@ -61,7 +61,6 @@
 .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
 
     /* Center slide text vertically */
     display: -webkit-box;
@@ -76,6 +75,7 @@
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
+
 }
 
 .swiper-slide img {
@@ -86,7 +86,7 @@
 }
 
 .swiper-button-next, .swiper-button-prev{
-    color: $btn_color;
+    color: $s_color1;
 }
 
 }
