@@ -24,17 +24,17 @@
           // max-width: 100%;
           padding-top: 80px;
           // 黃色圓形
-          .circle_position {
-              transform: translate(100px, -350px);
-              .circle {
-                  display: inline-block;
-                  border-radius: 50%;
-                  width: 150px;
-                  height: 150px;
-                  opacity: .7;
-                  background-color: darken($s_color2, 20);
-              }
-          }
+        //   .circle_position {
+        //       transform: translate(100px, -350px);
+        //       .circle {
+        //           display: inline-block;
+        //           border-radius: 50%;
+        //           width: 150px;
+        //           height: 150px;
+        //           opacity: .7;
+        //           background-color: darken($s_color2, 20);
+        //       }
+        //   }
       }
       .banner {
           // width: 100%;
@@ -134,11 +134,11 @@
               }
           }
       }
-      @media (max-width: 768.98px) {
-          .banner {
-              margin-bottom: 50px;
-          }
-      }
+    //   @media (max-width: 768.98px) {
+    //       .banner {
+    //           margin-bottom: 50px;
+    //       }
+    //   }
 
       // 關於我們
       .section2 {
