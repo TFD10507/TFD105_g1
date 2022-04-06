@@ -1,5 +1,15 @@
 .index {
-    // 輪盤
+    //輪盤css
+    .pop-up{
+        width: 400px;
+        height: 400px;
+        background-color: black;
+    }
+    .open {
+        visibility: visible;
+        opacity: 1;
+        
+    // 輪盤按鈕
     .roulette {
         width: 50px;
         z-index: 5;

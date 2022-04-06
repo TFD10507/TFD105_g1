@@ -6,9 +6,13 @@
 </head>
 
 <body class="index">
-    <div class="roulette">
+    <div class="roulette button">
         <img src="./img/index/lucky-wheel.png">
     </div>
+    <div class="pop-up">
+        
+    </div>
+    
     <!-- 共用的top鍵 -->
     @@include('layout/top.html')
     <div class="wrapper">
@@ -180,6 +184,14 @@
         });
 
         $(function () {
+            // ==== 右下輪盤彈窗 ====
+            $('button').click(function () {
+                $('.pop-up').addClass('open');
+            });
+
+            $('.pop-up .close').click(function () {
+                $('.pop-up').removeClass('open');
+            });
             // ==== 輪播按鈕控制 ====
             $(window).resize(function () {
                 $('.slick-prev').hide();
@@ -208,21 +220,21 @@
                 $('.small').each(function (index) {
                     $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
                     $('.small').eq(count).addClass('-active');
-                    if(count == 3) {
+                    if (count == 3) {
                         count = 0;
                     }
                 })
                 $('.shifting-slide-title').each(function (index) {
                     $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
                     $('.shifting-slide-title').eq(count).addClass('-active');
-                    if(count == 3) {
+                    if (count == 3) {
                         count = 0;
                     }
                 })
                 $('.large').each(function (index) {
                     $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
                     $('.large').eq(count).addClass('-active');
-                    if(count == 3) {
+                    if (count == 3) {
                         count = 0;
                     }
                 })
@@ -232,21 +244,21 @@
                 $('.small').each(function (index) {
                     $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
                     $('.small').eq(count).addClass('-active');
-                    if(count == -1) {
+                    if (count == -1) {
                         count = 2;
                     }
                 })
                 $('.shifting-slide-title').each(function (index) {
                     $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
                     $('.shifting-slide-title').eq(count).addClass('-active');
-                    if(count == -1) {
+                    if (count == -1) {
                         count = 2;
                     }
                 })
                 $('.large').each(function (index) {
                     $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
                     $('.large').eq(count).addClass('-active');
-                    if(count == -1) {
+                    if (count == -1) {
                         count = 2;
                     }
                 })
