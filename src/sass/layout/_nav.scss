@@ -27,19 +27,156 @@ header {
                     color: $btn_color;
                 }
             }
+            // 會員中心&會員登入 子選單
+            .member_list {
+                position: absolute;
+                top: 70px;
+                right: 130px;
+                color: $p_color2;
+                border-radius: 2px;
+                display: none;
+                li {
+                    a {
+                        color: $p_color2;
+                        margin-right: 0;
+                        &:hover {
+                            color: darken($p_color2, 20);
+                        }
+                    }
+                    &:hover {
+                        color: darken($p_color2, 20);
+                    }
+                }
+                li:nth-child(1) {
+                    margin-bottom: 20px;
+                }
+            }
+            .cart_side {
+                z-index: 10;
+                width: 600px;
+                height: 100vh;
+                position: absolute;
+                top: 0;
+                right: -100%;
+                .cart_title {
+                    color: $p_color2;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .btn_cart_close {
+                        width: 50px;
+                        height: 50px;
+                        padding-top: 10px;
+                        span {
+                            // position: absolute;
+                            // top: 10px;
+                            // right: 10px;
+                            background-color: $p_color2;
+                            display: block;
+                            width: 100%;
+                            height: 4px;
+                            border-radius: 5px;
+                            margin: 3px 0;
+                            &:nth-child(1) {
+                                transform: translateY(10px) rotate(45deg);
+                            }
+                            &:nth-child(2) {
+                                transform: translateY(4px) rotate(-45deg);
+                            }
+                        }
+                    }
+                }
+                // 購物車內容
+                .cart_content {
+                    font-size: 16px;
+                    .detail {
+                        display: flex;
+                        width: 100%;
+                        border-bottom: 1px solid #e3e3e3;
+                        .img {
+                            width: 150px;
+                            img {
+                                max-width: 100%;
+                            }
+                        }
+                        .info {
+                            flex-grow: 1;
+                            div {
+                                padding-bottom: 10px;
+                            }
+                            .ptype {
+                                &::before {
+                                    content: "材質  ";
+                                }
+                            }
+                            .price {
+                                &::before {
+                                    content: "價錢  NT$";
+                                }
+                            }
+                        }
+                        .price {
+                            justify-content: flex-end;
+                        }
+                        .count {
+                            display: flex;
+                            padding-bottom: 10px;
+                            div {
+                                font-size: 20px;
+                                .num-jian,
+                                .input-num,
+                                .num-jia {
+                                    text-align: center;
+                                    display: inline-block;
+                                    font-size: 20px;
+                                    width: 30px;
+                                    height: 30px;
+                                    line-height: 30px;
+                                    color: #999;
+                                    cursor: pointer;
+                                    border: 1px solid #e6e6e6;
+                                }
+                                .input-num {
+                                    width: 48px;
+                                    height: 30px;
+                                }
+                            }
+                        }
+                        .operate {
+                            font-size: 30px;
+                            display: flex;
+                            justify-content: flex-end;
+                        }
+                    }
+                }
+                .link_cart{
+                    display: inline-block;
+                    width: 100%;
+                    height: 50px;
+                    text-align: center;
+                    line-height: 50px;
+                    position: absolute;
+                    background-color: #e3e3e3;
+                    bottom: 0;
+                    &:hover{
+                        background-color:darken($color: #e3e3e3, $amount: 30);
+                        color: $p_color2;
+                    }
+                }
+            }
             #meun_control {
                 display: none;
-                &:checked + div + div {
+                &:checked ~ .mainSel {
                     right: 0;
                     top: 0;
                     opacity: 1;
                 }
-                &:checked + div + div > div {
+                &:checked ~ .mainSel > .mainImg {
                     right: 50%;
                     top: 0;
                     opacity: 1;
                 }
-                &:checked + div + div > ul {
+                &:checked ~ .mainSel > .mainList {
                     right: 0;
                     top: 0;
                     opacity: 1;

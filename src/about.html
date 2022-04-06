@@ -3,9 +3,12 @@
 
 <head>
     @@include('layout/head.html')
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
+    <!-- 共用的top鍵 -->
+    @@include('layout/top.html')
     <div class="wrapper">
         @@include('layout/login.html')
         @@include('layout/nav.html')
@@ -14,7 +17,7 @@
             <!-- 標題 -->
             <section class="title container">
                 <h1>關於我們 About us</h1>
-                <img class="img-fluid" src="./img/about/title.png" alt="">
+                <img class="img-fluid" data-aos="zoom-in" data-aos-duration="2000" src="./img/about/title.png" alt="">
             </section>
 
             <!-- 品牌緣起 -->
@@ -26,9 +29,9 @@
                     <div class="container">
                         <div class="row d-flex justify-content-center align-items-center">
                             <div class="col-sm-6">
-                                <img class="img-fluid" src="./img/about/origin.png" alt="">
+                                <img class="img-fluid" data-aos="fade-right" data-aos-duration="2000" src="./img/about/origin.png" alt="">
                             </div>
-                            <div class="col-sm-6  ">
+                            <div class="col-sm-6" data-aos="fade-left" data-aos-duration="3000">
                                 <h3>森活木工，締造永恆經典的環保實木家具品牌。</h3>
                                 <p>
                                     環境保護、可持續發展是近年備受關注的議題，<br>
@@ -50,8 +53,8 @@
                 <h2>門市據點</h2>
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-3">
-                        <div class="card mb-3">
-                            <img src="./img/about/15.jpeg" class="card-img-top img-fluid" alt="...">
+                        <div class="card mb-3"  data-aos="fade-up" data-aos-duration="3000">
+                            <img src="./img/about/15.jpeg" class="card-img-top img-fluid " alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">[ 台北店｜Taipei ]</h5>
                                 <p class="card-text">
@@ -64,7 +67,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-3">
+                    <div class="col-12 col-md-3"  data-aos="fade-up" data-aos-duration="3000">
                         <div class="card mb-3">
                             <img src="./img/about/16.jpeg" class="card-img-top img-fluid" alt="..." style="font-size: 12px;">
                             <div class="card-body">
@@ -79,7 +82,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-3">
+                    <div class="col-12 col-md-3"  data-aos="fade-up" data-aos-duration="3000">
                         <div class="card mb-3">
                             <img src="./img/about/17.jpeg" class="card-img-top img-fluid" alt="...">
                             <div class="card-body">
@@ -103,6 +106,10 @@
         </main>
         @@include('layout/footer.html')
     </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
 
 </body>
 

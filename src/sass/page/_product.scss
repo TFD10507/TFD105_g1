@@ -8,16 +8,16 @@ body.product {
     margin: 0 auto;
   }
 
-  section.productslider {
-    margin-top: 10vh;
-    background-image: url(../img/product/all_bn001.jpg);
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    height: 40vw;
-    max-width: 100%;
-    z-index: 2000;
-  }
+  // section.productslider {
+  //   margin-top: 10vh;
+  //   // background-image: url(../img/product/all_bn001.jpg);
+  //   background-size: cover;
+  //   background-position: top center;
+  //   background-repeat: no-repeat;
+  //   // height: 40vw;
+  //   max-width: 100%;
+  //   z-index: 2000;
+  // }
 
   section.productNav {
     section.smallicon {
@@ -46,7 +46,6 @@ body.product {
         }
       }
     }
-
 
     .product {
       display: flex;
@@ -84,6 +83,9 @@ body.product {
       margin: 30px auto 0 auto;
     }
 
+    p.price::before {
+      content: "NT$";
+    }
 
 
     // .product .caption .price + .price {
@@ -217,55 +219,6 @@ body.product {
       .single-product .table-mobile tr:before {
         display: none;
       }
-    }
-
-    .price {
-      display: inline-block;
-      font-size: 15px;
-      font-family: Montserrat, sans-serif;
-      // font-weight: 700;
-      letter-spacing: 0.02em;
-      color: #2b2f3e;
-    }
-
-    // .price.sale {
-
-    // }    
-    .price del {
-      color: #b0bec5;
-    }
-
-    .quantity {
-      text-align: center;
-      font-family: Montserrat, sans-serif;
-      font-size: 12px;
-      background: #eceff1;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      width: 82px;
-      height: auto;
-      display: inline-block;
-      text-align: center;
-    }
-
-    .quantity span {
-      display: inline-block;
-    }
-
-    .quantity .num {
-      width: 26px;
-    }
-
-    .quantity [class*='fa-'] {
-      padding-top: 4px;
-      width: 22px;
-      padding-bottom: 4px;
-      color: #b0bec5;
-      cursor: pointer;
-    }
-
-    .quantity [class*='fa-']:hover {
-      color: #455a64;
     }
   }
 }
