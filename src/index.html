@@ -23,16 +23,14 @@
                     <h1>Mori Furniture</h1>
                     <p class="mt-3">堅持不過度濫砍森林樹木，不大量製造量產，在使用樹木的同時也還給森林呼吸的生活空間，感謝森林給予我們的，為我們的生活帶來方便舒適的環境。</p>
                 </div>
-                <div class="banner_img col-12 col-md-6" data-aos="fade-up" data-aos-duration="3000"
-                    data-aos-delay="200">
-                    <img src="./img/index/1.jpg" alt="" class="img-fluid">
+                <div class="banner_img col-12 col-md-6 parallax-bg" data-aos="fade-up">
+                    <div class="bg_1">
+                        <img src="./img/index/1.jpg" alt="" class="img-fluid">
+                    </div>
+
                     <p class="vertical" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="300">SCROLL</p>
                 </div>
             </section>
-
-            <!-- <div class="circle_position">
-                <span class="circle"></span>
-            </div> -->
 
             <!-- 關於我們 -->
             <section class="section2 pb-5 row">
@@ -49,6 +47,11 @@
                     <a href="about.html" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="300">view more</a>
                 </div>
             </section>
+
+            <div class="circle_position parallax-bg" data-aos="fade-up">
+                <span class="circle bg_2_1"></span>
+                <span class="circle bg_2_2"></span>
+            </div>
 
             <!-- 商品呈現 -->
             <section class="section3 mt-5 pb-5 row">
@@ -103,34 +106,46 @@
                     <i class="fa-solid fa-angle-left"></i>
                     <div class="responsive">
                         <div class="news_item me-2">
-                            <img src="./img/news/main.jpg" alt="">
-                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                            </p>
+                            <a href="news.html">
+                                <img src="./img/news/main.jpg" alt="">
+                                <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                                </p>
+                            </a>
                         </div>
                         <div class="news_item me-2">
-                            <img src="./img/news/main.jpg" alt="">
-                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                            </p>
+                            <a href="news.html">
+                                <img src="./img/news/main.jpg" alt="">
+                                <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                                </p>
+                            </a>
                         </div>
                         <div class="news_item me-2">
-                            <img src="./img/news/main.jpg" alt="">
-                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                            </p>
+                            <a href="news.html">
+                                <img src="./img/news/main.jpg" alt="">
+                                <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                                </p>
+                            </a>
                         </div>
                         <div class="news_item me-2">
-                            <img src="./img/news/main.jpg" alt="">
-                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                            </p>
+                            <a href="news.html">
+                                <img src="./img/news/main.jpg" alt="">
+                                <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                                </p>
+                            </a>
                         </div>
                         <div class="news_item me-2">
-                            <img src="./img/news/main.jpg" alt="">
-                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                            </p>
+                            <a href="news.html">
+                                <img src="./img/news/main.jpg" alt="">
+                                <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                                </p>
+                            </a>
                         </div>
                         <div class="news_item me-2">
-                            <img src="./img/news/main.jpg" alt="">
-                            <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                            </p>
+                            <a href="news.html">
+                                <img src="./img/news/main.jpg" alt="">
+                                <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                                </p>
+                            </a>
                         </div>
                     </div>
                     <i class="fa-solid fa-angle-right"></i>
@@ -139,9 +154,21 @@
         </main>
     </div>
     @@include('layout/footer.html')
+    <!-- gsap -->
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?r=5426"></script>
+
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js?v=7"></script>
 
     <script>
         AOS.init();
+        // gsap
+        gsap.to(".parallax-bg", {
+            scrollTrigger: {
+                scrub: true
+            },
+            y: (i, target) => -ScrollTrigger.maxScroll(window) * target.dataset.speed,
+            ease: "none"
+        });
 
         // 最新消息的輪播
         $('.responsive').slick({
@@ -208,21 +235,21 @@
                 $('.small').each(function (index) {
                     $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
                     $('.small').eq(count).addClass('-active');
-                    if(count == 3) {
+                    if (count == 3) {
                         count = 0;
                     }
                 })
                 $('.shifting-slide-title').each(function (index) {
                     $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
                     $('.shifting-slide-title').eq(count).addClass('-active');
-                    if(count == 3) {
+                    if (count == 3) {
                         count = 0;
                     }
                 })
                 $('.large').each(function (index) {
                     $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
                     $('.large').eq(count).addClass('-active');
-                    if(count == 3) {
+                    if (count == 3) {
                         count = 0;
                     }
                 })
@@ -232,21 +259,21 @@
                 $('.small').each(function (index) {
                     $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
                     $('.small').eq(count).addClass('-active');
-                    if(count == -1) {
+                    if (count == -1) {
                         count = 2;
                     }
                 })
                 $('.shifting-slide-title').each(function (index) {
                     $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
                     $('.shifting-slide-title').eq(count).addClass('-active');
-                    if(count == -1) {
+                    if (count == -1) {
                         count = 2;
                     }
                 })
                 $('.large').each(function (index) {
                     $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
                     $('.large').eq(count).addClass('-active');
-                    if(count == -1) {
+                    if (count == -1) {
                         count = 2;
                     }
                 })
