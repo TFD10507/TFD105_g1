@@ -1,147 +1,352 @@
 .cart {
-    .wrapper {
-        padding-top: 85px;
-        max-width: 1200px;
-        margin: 0 auto;
-        main{
-            padding-top: 0;
+    padding-top: 85px;
+    max-width: 1200px;
+    margin: 0 auto;
+    main {
+        padding-top: 0;
+    }
+    .step {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div {
+            font-size: 30px;
+            font-weight: bold;
+            color: $p_color1;
+            text-align: center;
+            line-height: 57px;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border: 3px solid $p_color1;
         }
-        .step {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            div {
-                font-size: 30px;
-                font-weight: bold;
-                color: $p_color1;
-                text-align: center;
-                line-height: 57px;
-                width: 65px;
-                height: 65px;
-                border-radius: 50%;
-                border: 3px solid $p_color1;
-            }
-            .fst_step {
-                color: $p_color2;
-            }
-            span {
-                display: block;
-                width: 70px;
-                height: 3px;
-                background-color: #e9e9e9;
-                position: relative;
-                overflow: hidden;
-                .move {
-                    display: inline-block;
-                    width: 25px;
-                    height: 3px;
-                    background-color: $p_color1;
-                    position: absolute;
-                    top: 0;
-                    left: -25px;
-                }
-                .move1 {
-                    animation: moving 2s linear infinite;
-                }
-                .move2 {
-                    animation: moving 2s 0.5s linear infinite;
-                }
-                .move3 {
-                    animation: moving 2s 1s linear infinite;
-                }
-                .move4 {
-                    animation: moving 2s 1.5s linear infinite;
-                }
-            }
-        }
-        .title {
+        .fst_step {
             color: $p_color2;
-            padding: 10px;
         }
-        .content{
-            box-shadow: 0 5px 5px -3px;
+        span {
+            display: block;
+            width: 70px;
+            height: 3px;
+            background-color: #e9e9e9;
+            position: relative;
+            overflow: hidden;
+            .move {
+                display: inline-block;
+                width: 25px;
+                height: 3px;
+                background-color: $p_color1;
+                position: absolute;
+                top: 0;
+                left: -25px;
+            }
+            .move1 {
+                animation: moving 2s linear infinite;
+            }
+            .move2 {
+                animation: moving 2s 0.5s linear infinite;
+            }
+            .move3 {
+                animation: moving 2s 1s linear infinite;
+            }
+            .move4 {
+                animation: moving 2s 1.5s linear infinite;
+            }
         }
+    }
+    .title {
+        color: $p_color2;
+        padding: 10px;
+    }
+    .content {
+        box-shadow: 0 5px 5px -3px;
+    }
 
-        // 購物車內容
-        .cart_content {
-            .detail {
-                display: flex;
-                width: 100%;
-                .img {
-                    width: 200px;
-                    img {
-                        max-width: 100%;
-                    }
+    // 購物車內容
+    .cart_content {
+        .detail {
+            display: flex;
+            width: 100%;
+            .img {
+                width: 200px;
+                img {
+                    max-width: 100%;
                 }
-                .info{
-                    flex-grow: 1;
-                    div{
-                        padding-bottom: 10px;
-                    }
-                    .ptype{
-                        &::before{
-                            content: '材質  ';
-                        }
-                    }
-                    .price{
-                        &::before{
-                            content: '價錢  NT$';
-                        }
+            }
+            .info {
+                flex-grow: 1;
+                div {
+                    padding-bottom: 10px;
+                }
+                .ptype {
+                    &::before {
+                        content: "材質  ";
                     }
                 }
                 .price {
-                    justify-content: flex-end;
-                }
-                .count {
-                    display: flex;
-                    padding-bottom: 10px;
-                    div {
-                        font-size: 20px;
-                        .num-jian,
-                        .input-num,
-                        .num-jia {
-                            text-align: center;
-                            display: inline-block;
-                            font-size: 20px;
-                            width: 30px;
-                            height: 30px;
-                            line-height: 30px;
-                            color: #999;
-                            cursor: pointer;
-                            border: 1px solid #e6e6e6;
-                        }
-                        .input-num {
-                            width: 48px;
-                            height: 30px;
-                        }
+                    &::before {
+                        content: "價錢  NT$";
                     }
                 }
-                .operate{
-                    font-size: 30px;
-                    text-align: right;
+            }
+            .price {
+                justify-content: flex-end;
+            }
+            .count {
+                display: flex;
+                padding-bottom: 10px;
+                div {
+                    font-size: 20px;
+                    .num-jian,
+                    .input-num,
+                    .num-jia {
+                        text-align: center;
+                        display: inline-block;
+                        font-size: 20px;
+                        width: 30px;
+                        height: 30px;
+                        line-height: 30px;
+                        color: #999;
+                        cursor: pointer;
+                        border: 1px solid #e6e6e6;
+                    }
+                    .input-num {
+                        width: 48px;
+                        height: 30px;
+                    }
                 }
             }
-        }
-        // 折價券區塊
-        .coupon_title {
-            margin-top: 40px;
-        }
-        .coupon_content{
-            li{
-                display: flex;
+            .operate {
+                font-size: 30px;
+                text-align: right;
             }
         }
-        // 訂單資訊區塊
-        .order_content{
+    }
+    // 折價券區塊
+    .coupon_title {
+        margin-top: 40px;
+    }
+    .coupon_content {
+        li {
+            display: flex;
+        }
+    }
+    // 訂單資訊區塊
+    .order_content {
+        position: relative;
+        li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            &:nth-child(5) {
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+// ================== cart2 =================
+.cart2 {
+    padding-top: 85px;
+    max-width: 1200px;
+    margin: 0 auto;
+    main {
+        padding-top: 0;
+    }
+    .step {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div {
+            font-size: 30px;
+            font-weight: bold;
+            color: $p_color1;
+            text-align: center;
+            line-height: 57px;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border: 3px solid $p_color1;
+        }
+        .snd_step {
+            color: $p_color2;
+        }
+        .fst_step,
+        .trd_step {
+            color: $p_color1;
+        }
+        span {
+            display: block;
+            width: 70px;
+            height: 3px;
+            background-color: #e9e9e9;
             position: relative;
-            li{
-                display: flex;
-                justify-content: space-between;
-                padding: 10px 0;
-                &:nth-child(5){
-                    justify-content: flex-end;
+            overflow: hidden;
+            &:nth-child(2) {
+                background-color: #e9e9e9;
+            }
+            .move {
+                display: inline-block;
+                width: 25px;
+                height: 3px;
+                background-color: $p_color1;
+                position: absolute;
+                top: 0;
+                left: -25px;
+            }
+            .move1 {
+                animation: moving 2s linear infinite;
+            }
+            .move2 {
+                animation: moving 2s 0.5s linear infinite;
+            }
+            .move3 {
+                animation: moving 2s 1s linear infinite;
+            }
+            .move4 {
+                animation: moving 2s 1.5s linear infinite;
+            }
+        }
+    }
+    .title {
+        color: $p_color2;
+        padding: 10px;
+    }
+    .content {
+        box-shadow: 0 5px 5px -3px;
+        li {
+            padding-bottom: 10px;
+            &:nth-child(2n) {
+                padding-bottom: 20px;
+            }
+            textarea {
+                resize: none;
+            }
+        }
+    }
+
+    // 付款方式內容
+    .payment_content {
+        li {
+            img {
+                width: 40px;
+                margin-right: 10px;
+            }
+            #goback {
+                background-color: #e3e3e3;
+                // border: #999 solid 1px;
+                margin-right: 20px;
+                &:hover {
+                    background-color: darken($color: #e3e3e3, $amount: 20);
+                    color: #fff;
                 }
             }
+            &:nth-child(2) {
+                padding-left: 20px;
+                padding-bottom: 30px;
+            }
+            &:nth-child(4) {
+                display: flex;
+                justify-content: right;
+                padding-bottom: 0;
+                padding-top: 20px;
+            }
+        }
+    }
+}
+
+// ================= cart3 =================
+.cart3 {
+    padding-top: 85px;
+    max-width: 1200px;
+    margin: 0 auto;
+    // padding-top: 0;
+    main {
+        padding-top: 0;
+        h2 {
+            width: auto;
+        }
+    }
+
+    .step {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div {
+            font-size: 30px;
+            font-weight: bold;
+            color: $p_color1;
+            text-align: center;
+            line-height: 57px;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border: 3px solid $p_color1;
+        }
+        .trd_step {
+            color: $p_color2;
+        }
+        span {
+            display: block;
+            width: 70px;
+            height: 3px;
+            background-color: $p_color1;
+            position: relative;
+            overflow: hidden;
+        }
+    }
+    .title {
+        color: $p_color2;
+        padding: 10px;
+    }
+    .content {
+        box-shadow: 0 5px 5px -3px;
+        // 內容
+        .detail {
+            display: flex;
+            width: 100%;
+            .img {
+                width: 200px;
+                img {
+                    max-width: 100%;
+                }
+            }
+            .info {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                div {
+                    padding-bottom: 10px;
+                }
+                .orderid {
+                    &::before {
+                        content: "訂單編號：  ";
+                    }
+                }
+                .orderdate {
+                    &::before {
+                        content: "訂單日期：  ";
+                    }
+                }
+                .orderprice {
+                    &::before {
+                        content: "訂單總額：  NT$";
+                    }
+                }
+            }
+        }
+        li {
+            &:nth-child(2) {
+                display: flex;
+                justify-content: right;
+            }
+        }
+    }
+
+    .gobuy {
+        text-align: center;
+        img {
+            width: 40px;
         }
     }
 }
@@ -152,209 +357,5 @@
     }
     100% {
         left: 100px;
-    }
-}
-
-
-.cart2 {
-    .wrapper {
-        padding-top: 85px;
-        max-width: 1200px;
-        margin: 0 auto;
-        main{
-            padding-top: 0;
-        }
-        .step {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            div {
-                font-size: 30px;
-                font-weight: bold;
-                color: $p_color1;
-                text-align: center;
-                line-height: 57px;
-                width: 65px;
-                height: 65px;
-                border-radius: 50%;
-                border: 3px solid $p_color1;
-            }
-            .fst_step,.snd_step {
-                color: $p_color2;
-            }
-            span {
-                display: block;
-                width: 70px;
-                height: 3px;
-                background-color: #e9e9e9;
-                position: relative;
-                overflow: hidden;
-                &:nth-child(2){
-                    background-color: $p_color1;
-                }
-                .move {
-                    display: inline-block;
-                    width: 25px;
-                    height: 3px;
-                    background-color: $p_color1;
-                    position: absolute;
-                    top: 0;
-                    left: -25px;
-                }
-                .move1 {
-                    animation: moving 2s linear infinite;
-                }
-                .move2 {
-                    animation: moving 2s 0.5s linear infinite;
-                }
-                .move3 {
-                    animation: moving 2s 1s linear infinite;
-                }
-                .move4 {
-                    animation: moving 2s 1.5s linear infinite;
-                }
-            }
-        }
-        .title {
-            color: $p_color2;
-            padding: 10px;
-        }
-        .content{
-            box-shadow: 0 5px 5px -3px;
-            li{
-                padding-bottom: 10px;
-                &:nth-child(2n){
-                    padding-bottom: 20px;
-                }
-                textarea{
-                    resize: none;
-                }
-            }
-        }
-
-
-        // 付款方式內容
-        .payment_content {
-            li{
-                img{
-                    width: 40px;
-                    margin-right: 10px;
-                }
-                &:nth-child(2){
-                    padding-left: 20px;
-                    padding-bottom: 30px;
-                }
-                &:nth-child(4){
-                    display: flex;
-                    justify-content: right;
-                    padding-bottom: 0;
-                    padding-top: 20px;
-                }
-            }
-        }
-        
-    }
-}
-
-
-.cart3 {
-    .wrapper {
-        padding-top: 85px;
-        max-width: 1200px;
-        margin: 0 auto;
-        main{
-            padding-top: 0;
-            h2{
-                width: auto;
-            }
-            // 繼續購物
-            .gobuy{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                img{
-                    width: 40px;
-                    display: block;
-                }
-            }
-        }
-        .step {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            div {
-                font-size: 30px;
-                font-weight: bold;
-                color: $p_color1;
-                text-align: center;
-                line-height: 57px;
-                width: 65px;
-                height: 65px;
-                border-radius: 50%;
-                border: 3px solid $p_color1;
-            }
-            .fst_step,.snd_step,.trd_step {
-                color: $p_color2;
-            }
-            span {
-                display: block;
-                width: 70px;
-                height: 3px;
-                background-color: $p_color1;
-                position: relative;
-                overflow: hidden;
-            }
-        }
-        .title {
-            color: $p_color2;
-            padding: 10px;
-        }
-        .content{
-            box-shadow: 0 5px 5px -3px;
-        }
-
-        // 內容
-        .content {
-            .detail {
-                display: flex;
-                width: 100%;
-                .img {
-                    width: 200px;
-                    img {
-                        max-width: 100%;
-                    }
-                }
-                .info{
-                    flex-grow: 1;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    div{
-                        padding-bottom: 10px;
-                    }
-                    .orderid{
-                        &::before{
-                            content: '訂單編號：  ';
-                        }
-                    }
-                    .orderdate{
-                        &::before{
-                            content: '訂單日期：  ';
-                        }
-                    }
-                    .orderprice{
-                        &::before{
-                            content: '訂單總額：  NT$';
-                        }
-                    }
-                }
-            }
-            li{
-                &:nth-child(2){
-                    display: flex;
-                    justify-content: right;
-                }
-            }
-        }
     }
 }

@@ -3,10 +3,13 @@
 
 
 <head>
+
   @@include('layout/head.html')
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
 <body class="news">
+  @@include('layout/top.html')
   <div class="wrapper">
     @@include('layout/login.html')
     @@include('layout/nav.html')
@@ -14,280 +17,402 @@
     <main class="container">
       <section class="title">
         <h1 class="p-3">最新消息 News</h1>
-        <img src="./img/news/index1.png" class="img-fluid w-100">
+        <img src="./img/news/index1.png" class="img-fluid w-100" data-aos="zoom-in" data-aos-duration="2000">
       </section>
 
 
       <!-------------------- 公告消息 ---------------------->
       <section class="container">
 
-        <h2 class="mt-5">公告消息</h2>
+        <h2 class="m-5" data-aos="zoom-in" data-aos-duration="2000">公告消息</h2>
 
-        <div class="row justify-content-center ">
+        <div class="swiper mySwiper container">
+          <div class="swiper-wrapper">
 
-          <div class="col-12 col-md-3 my-5 ">
-            <div class="card h-100 news_card bg-primary">
-
-              <img src="./img/news/main.jpg.png" class="card-img-top p-3 img-fluid">
-              <div class="card-body">
-                <p class="card-text">身處都市中的叢林~<br>誰說辦公室...</p>
-                <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  Read More
-                </button>
-
-                <!-------- Modal ---------->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-width">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <img src="./img/news/main.jpg" class="img-fluid" alt="">
-                        <p class="mt-3 lightBlack">
-                          身處都市中的叢林~<br>
-                          誰說辦公室只能一成不變<br>
-                          往往國外設計相關案例<br>
-                          都讓辦公室成為一個放鬆的空間<br>
-                          並非正規辦公室才能做好工作<br>
-                          有個好的環境能加乘工作效率~~~
-                        </p>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="#" class="btn btn-yellow disabled">2022-02-22</a>
-                      </div>
-                    </div>
-                  </div>
+            <div class="swiper-slide">
+              <div class="card swiper-slide card h-100 news_card bg-primary">
+                <img src="./img/news/main.jpg.png" class="card-img-top p-3 img-fluid">
+                <div class="card-body">
+                  <p class="card-text">身處都市中的叢林~<br>誰說辦公室...</p>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#modal1">
+                    Read More
+                  </button>
                 </div>
-                <!-------- Modal end---------->
               </div>
             </div>
-          </div>
-          <div class="col-12 col-md-3 my-5">
-            <div class="card h-100 news_card bg-primary">
-              <img src="./img/news/img_flag-01.png" class="card-img-top p-3 img-fluid">
-              <div class="card-body">
-                <p class="card-text">五倍券也可以買家具！<br>12/10正式啟用五倍券...</p>
-                <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                  Read More
-                </button>
 
-                <!-------- Modal 2 ---------->
-                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-width">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body news_modal_body">
-                        <img src="./img/news/coupon 1.jpg" class="img-fluid" alt="">
-                        <p class="mt-3 lightBlack">
-                          五倍券也可以買家具！<br>12月10日森活木工正式啟用五倍券啦！<br>歡迎來參觀中古家具、新品批發零售、OA辦公家具、萬物皆收
-                        </p>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="#" class="btn btn-yellow disabled">2021-12-10</a>
-                      </div>
-                    </div>
-                  </div>
+            <div class="swiper-slide">
+              <div class="card swiper-slide card h-100 news_card bg-primary">
+                <img src="./img/news/img_flag-01.png" class="card-img-top p-3 img-fluid">
+                <div class="card-body">
+                  <p class="card-text">五倍券也可以買家具！<br>12/10正式啟用五倍券...</p>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#modal2">
+                    Read More
+                  </button>
                 </div>
-                <!-------- Modal end---------->
               </div>
             </div>
-          </div>
-          <div class="col-12 col-md-3 mt-5 mb-5">
-            <div class="card h-100 news_card bg-primary">
-              <img src="./img/news/1864_101_l.jpg.png" class="card-img-top p-3 img-fluid">
-              <div class="card-body">
-                <p class="card-text">想要營造出舒適環境<br>沙發是你不可獲缺的...</p>
-                <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#exampleModal3">
-                  Read More
-                </button>
 
-                <!------------------ Modal 3--------------->
-                <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-width">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body news_modal_body">
-                        <img src="./img/news/1864_101_l.jpg" class="img-fluid" alt="">
-                        <p class="mt-3 lightBlack">
-                          想要營造出舒適環境<br>
-                          沙發是你不可獲缺的<br>
-                          從L型、3人座、沙發床<br>
-                          無論是牛皮、貓抓皮、涼感布、實木<br>
-                          您想要的體驗我們都能給你<br>
-                          眾多商品限量販售中<br>
-                          就找個時間來好好感受一下<br>
-                        </p>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="#" class="btn btn-yellow disabled">2021-10-14</a>
-                      </div>
-                    </div>
-                  </div>
+            <div class="swiper-slide">
+              <div class="card swiper-slide card h-100 news_card bg-primary">
+                <img src="./img/news/1864_101_l.jpg.png" class="card-img-top p-3 img-fluid">
+                <div class="card-body">
+                  <p class="card-text">想要營造出舒適環境<br>沙發是你不可獲缺的...</p>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#modal3">
+                    Read More
+                  </button>
                 </div>
-                <!-------- Modal end---------->
               </div>
             </div>
+
+            <div class="swiper-slide">
+              <div class="card swiper-slide card h-100 news_card bg-primary">
+                <img src="./img/news/main.jpg.png" class="card-img-top p-3 img-fluid">
+                <div class="card-body">
+                  <p class="card-text">身處都市中的叢林~<br>誰說辦公室...</p>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#modal1">
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card swiper-slide card h-100 news_card bg-primary">
+                <img src="./img/news/img_flag-01.png" class="card-img-top p-3 img-fluid">
+                <div class="card-body">
+                  <p class="card-text">五倍券也可以買家具！<br>12/10正式啟用五倍券...</p>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#modal2">
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card swiper-slide card h-100 news_card bg-primary">
+                <img src="./img/news/1864_101_l.jpg.png" class="card-img-top p-3 img-fluid">
+                <div class="card-body">
+                  <p class="card-text">想要營造出舒適環境<br>沙發是你不可獲缺的...</p>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#modal3">
+                    Read More
+                  </button>
+                </div>
+              </div>
+            </div>
+
           </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
         </div>
-      </section>
 
-
-      <!-------------------- 優惠活動 ---------------------->
-      <section class="container mb-5">
-
-        <h2 class="mt-5">優惠活動</h2>
-
-        <div class="row justify-content-center">
-
-          <div class="col-12 col-md-3 my-5">
-            <div class="card h-100 news_card bg-primary">
-
-              <img src="./img/news/1.jpeg" class="card-img-top p-3 img-fluid">
-              <div class="card-body">
-                <p class="card-text">全館滿額 折現又贈紅利點<br>消費滿2500...</p>
-                <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#exampleModal4">
-                  Read More
-                </button>
-
-                <!-------- Modal 4---------->
-                <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-width">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <img src="./img/news/1.jpeg" class="img-fluid" alt="">
-                        <p class="mt-3 lightBlack">
-                          全館滿額 折現又贈紅利點<br>
-                          消費滿2500 現折50、再送50點<br>
-                          消費滿4000 現折100、再送100點<br>
-                          消費滿6000 現折150、再送150點<br>
-                          提醒您，請先加入會員，紅利點數才有辦法歸戶唷!
-                        </p>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="#" class="btn btn-yellow disabled">2022-03-22</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-------- Modal end---------->
+        <!-- Modal 1 -->
+        <div class="myModal modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-width">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-3 my-5">
-            <div class="card h-100 news_card bg-primary">
-              <img src="./img/news/2.jpeg" class="card-img-top p-3 img-fluid">
-              <div class="card-body">
-                <p class="card-text">雙11光棍節 森活木工<br>推出「狂歡購物季」..
+              <div class="modal-body">
+                <img src="./img/news/main.jpg" class="img-fluid" alt="">
+                <p class="mt-3 lightBlack text-center">
+                  身處都市中的叢林~<br>
+                  誰說辦公室只能一成不變<br>
+                  往往國外設計相關案例<br>
+                  都讓辦公室成為一個放鬆的空間<br>
+                  並非正規辦公室才能做好工作<br>
+                  有個好的環境能加乘工作效率~~~
                 </p>
-                <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#exampleModal5">
-                  Read More
-                </button>
-
-                <!-------- Modal 5---------->
-                <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-width">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body news_modal_body">
-                        <img src="./img/news/2.jpeg" class="img-fluid" alt="">
-                        <p class="mt-3 lightBlack">
-                          雙11光棍節 森活木工推出「居家狂歡購物季」<br>
-                          精選台韓同步熱銷傢俱<br>
-                          店長加碼<br>
-                          【 11/1 ~ 11/12 全館限時免運】<br>
-                          把握機會，要搶要快!<br>
-                        </p>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="#" class="btn btn-yellow disabled">2021-10-30</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-------- Modal end---------->
               </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-3 mt-5 mb-5">
-            <div class="card h-100 news_card bg-primary">
-              <img src="./img/news/3.jpeg" class="card-img-top p-3 img-fluid">
-              <div class="card-body">
-                <p class="card-text">超殺優惠6折起<br>滿3000折100...</p>
-                <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#exampleModal6">
-                  Read More
-                </button>
-
-                <!------------------ Modal 6--------------->
-                <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-width">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body news_modal_body">
-                        <img src="./img/news/3.jpeg" class="img-fluid" alt="">
-                        <p class="mt-3 lightBlack">
-                          超殺優惠6折起<br>
-                          滿3000折100、滿6000折200 → 買越多折越多!<br>
-                          讓愛家的你，把喜歡的傢俱帶回家!!<br>
-                          整個11月都是購物季~<br>
-                        </p>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="#" class="btn btn-yellow disabled">2021-10-28</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-------- Modal end---------->
+              <div class="modal-footer">
+                <a href="#" class="btn btn-yellow disabled">2022-02-22</a>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      <!-------------------- 主打商品 ---------------------->
-      <section class="container ">
-        <div class="row justify-content-around">
-        <div class="col-12 col-md-4  position-relative">
-          <div class="bg-yellow rectangle"></div>
-          <img src="./img/news/Rectangle 39.png" class="img-fluid position-absolute top-50 start-75 translate-middle">
+        <!-- Modal 2 -->
+        <div class="myModal modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-width">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="./img/news/coupon 1.jpg" class="img-fluid" alt="">
+                <p class="mt-3 lightBlack text-center">
+                  五倍券也可以買家具！<br>12月10日森活木工正式啟用五倍券啦！<br>歡迎來參觀中古家具、新品批發零售、OA辦公家具、萬物皆收
+                </p>
+              </div>
+              <div class="modal-footer">
+                <a href="#" class="btn btn-yellow disabled">2021-12-10</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-12 col-md-4 position-relative">
-          <div class="bg-gray gray-square"></div>
-          <div class="bg-white new-product position-absolute top-50 start-75 translate-middle p-5">
-            <h3>The Eye Concentrate</h3>
-              <h3>羅丹辦公桌</h3>
-            <p class="describe">在起居室或臥室等緊湊空間內，被精心挑選的物品包圍著的高挑大人書桌。考慮到電源線的佈線，建議將此桌子用於 PC 工作。</p>
-            <a class="btn btn-yellow position-absolute bottom-20 pb-3 text-center" href="product_in.html">前往查看</a>
+        <!-- Modal 3 -->
+        <div class="myModal modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-width">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="./img/news/1864_101_l.jpg" class="img-fluid" alt="">
+                <p class="mt-3 lightBlack text-center">
+                  想要營造出舒適環境<br>
+                  沙發是你不可獲缺的<br>
+                  從L型、3人座、沙發床<br>
+                  無論是牛皮、貓抓皮、涼感布、實木<br>
+                  您想要的體驗我們都能給你<br>
+                  眾多商品限量販售中<br>
+                  就找個時間來好好感受一下<br>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <a href="#" class="btn btn-yellow disabled">2021-10-14</a>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+
+
+  </div>
+  </section>
+
+
+  <!-------------------- 優惠活動 ---------------------->
+  <section class="container mb-5">
+
+    <h2 class="m-5" data-aos="zoom-in" data-aos-duration="2000">優惠活動</h2>
+
+
+    <div class="swiper mySwiper container">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="card swiper-slide card h-100 news_card bg-primary">
+            <img src="./img/news/1.jpeg.jpg" class="card-img-top p-3 img-fluid">
+            <div class="card-body">
+              <p class="card-text">全館滿額 折現又贈紅利點<br>消費滿2500...</p>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#modal4">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="card swiper-slide card h-100 news_card bg-primary">
+            <img src="./img/news/2.jpeg.jpg" class="card-img-top p-3 img-fluid">
+            <div class="card-body">
+              <p class="card-text">雙11光棍節 森活木工<br>推出「狂歡購物季」..</p>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#modal5">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="card swiper-slide card h-100 news_card bg-primary">
+            <img src="./img/news/3.jpeg" class="card-img-top p-3 img-fluid">
+            <div class="card-body">
+              <p class="card-text">想要營造出舒適環境<br>沙發是你不可獲缺的...</p>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#modal6">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="card swiper-slide card h-100 news_card bg-primary">
+            <img src="./img/news/1.jpeg.jpg" class="card-img-top p-3 img-fluid">
+            <div class="card-body">
+              <p class="card-text">全館滿額 折現又贈紅利點<br>消費滿2500...</p>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#modal4">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card swiper-slide card h-100 news_card bg-primary">
+            <img src="./img/news/2.jpeg.jpg" class="card-img-top p-3 img-fluid">
+            <div class="card-body">
+              <p class="card-text">雙11光棍節 森活木工<br>推出「狂歡購物季」..</p>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#modal5">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card swiper-slide card h-100 news_card bg-primary">
+            <img src="./img/news/3.jpeg" class="card-img-top p-3 img-fluid">
+            <div class="card-body">
+              <p class="card-text">想要營造出舒適環境<br>沙發是你不可獲缺的...</p>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#modal6">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div class="myModal modal fade" id="modal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-width">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="./img/news/1.jpeg" class="img-fluid" alt="">
+            <p class="mt-3 lightBlack text-center">
+              全館滿額 折現又贈紅利點<br>
+              消費滿2500 現折50、再送50點<br>
+              消費滿4000 現折100、再送100點<br>
+              消費滿6000 現折150、再送150點<br>
+              提醒您，請先加入會員，紅利點數才有辦法歸戶唷!
+            </p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-yellow disabled">2022-03-22</a>
           </div>
         </div>
       </div>
-      
-      </section>
+    </div>
+    <!-- Modal 5 -->
+    <div class="myModal modal fade" id="modal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-width">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="./img/news/2.jpeg" class="img-fluid" alt="">
+            <p class="mt-3 lightBlack text-center">
+              雙11光棍節 森活木工推出「居家狂歡購物季」<br>
+              精選台韓同步熱銷傢俱<br>
+              店長加碼<br>
+              【 11/1 ~ 11/12 全館限時免運】<br>
+              把握機會，要搶要快!<br>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-yellow disabled">2021-10-30</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal 6 -->
+    <div class="myModal modal fade" id="modal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-width">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="./img/news/3.jpeg" class="img-fluid" alt="">
+            <p class="mt-3 lightBlack text-center">
+              超殺優惠6折起<br>
+              滿3000折100、滿6000折200 → 買越多折越多!<br>
+              讓愛家的你，把喜歡的傢俱帶回家!!<br>
+              整個11月都是購物季~<br>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-yellow disabled">2021-10-28</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    </div>
+  </section>
+
+  <!-------------------- 主打商品 ---------------------->
+  <section class="container ">
+    <div class="row justify-content-around">
+      <div class="col-12 col-md-4  position-relative" data-aos="fade-right" data-aos-duration="2000">
+        <div class="bg-yellow rectangle"></div>
+        <img src="./img/news/Rectangle 39.png" class="img-fluid position-absolute top-50 start-75 translate-middle">
+      </div>
+      <div class="col-12 col-md-4 position-relative" data-aos="fade-left" data-aos-duration="3000">
+        <div class="bg-gray gray-square"></div>
+        <div class="bg-white new-product position-absolute top-50 start-75 translate-middle p-5">
+          <h3>The Eye Concentrate</h3>
+          <h3>羅丹辦公桌</h3>
+          <p class="describe">在起居室或臥室等緊湊空間內，被精心挑選的物品包圍著的高挑大人書桌。考慮到電源線的佈線，建議將此桌子用於 PC 工作。</p>
+          <a class="btn btn-yellow position-absolute bottom-20 pb-3 text-center" href="product_in.html">前往查看</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
 
 
 
 
-    </main>
-    @@include('layout/footer.html')
+  </main>
+  @@include('layout/footer.html')
   </div>
   <script src="./js/main.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      autoplayDisableOnInteraction: false,
+      loopFillGroupWithBlank: true,
+      // pagination: {
+      //     el: ".swiper-pagination",
+      //     clickable: true,
+      // },
+
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
+      },
+    });
+  </script>
+
 </body>
 
 </html>
