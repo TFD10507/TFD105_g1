@@ -23,6 +23,7 @@
 </head>
 
 <body class="faq">
+    @@include('layout/top.html')
     <div class="wrapper">
         @@include('layout/login.html')
         @@include('layout/nav.html')
@@ -30,24 +31,24 @@
         <main class="container">
             <section class="justify-content-center title">
                 <h1 class="p-3">常見問題 Q&A</h1>
-                <img src="./img/faq/1.png" class="img-fluid" style="width: 100%;">
+                <img src="./img/faq/1.png" class="img-fluid" data-aos="zoom-in" data-aos-duration="2000" style="width: 100%;">
             </section>
 
-            <section class="container">
+            <section class="container" data-aos="zoom-in" data-aos-duration="2000">
                 <ul class="nav nav-pills m-3 justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active my-4 ms-3 " id="pills-home-tab"
-                            data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">常見問題</button>
+                        <button class="nav-link active my-4 ms-3 " id="pills-home-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                            aria-selected="true">常見問題</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link my-4 ms-3 " id="pills-shopping-tab"
-                            data-bs-toggle="pill" data-bs-target="#pills-shopping" type="button"
-                            role="tab" aria-controls="pills-profile" aria-selected="false">購物問題</button>
+                        <button class="nav-link my-4 ms-3 " id="pills-shopping-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-shopping" type="button" role="tab" aria-controls="pills-profile"
+                            aria-selected="false">購物問題</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link my-4 ms-3 " id="pills-product-tab"
-                            data-bs-toggle="pill" data-bs-target="#pills-product" type="button"
-                            aria-selected="false">商品問題</button>
+                        <button class="nav-link my-4 ms-3 " id="pills-product-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-product" type="button" aria-selected="false">商品問題</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link my-4 ms-3 " id="pills-fix-tab" data-bs-toggle="pill"
@@ -58,9 +59,9 @@
 
                 <div class="tab-content" id="pills-tabContent">
                     <!------------------------- 常見問題 --------------->
-                    <div class="tab-pane fade show active" id="pills-home">
+                    <div class="tab-pane fade show active"  id="pills-home">
                         <div class="accordion" id="accordionExample">
-                            <div class="accordion-item mb-4">
+                            <div class="accordion-item mb-4" >
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button faq-button bg-white text-primary " type="button"
                                         data-bs-toggle="collapse" data-bs-target="#faq1">
@@ -69,7 +70,7 @@
                                 </h2>
                                 <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                                     data-bs-parent="#accordionExample">
-                                    <div class="accordion-body bg-gray" >
+                                    <div class="accordion-body bg-gray">
                                         <p>A1：
                                             一般商品詳細頁會註明該商品有無庫存, 無現貨商品可點擊補貨後通知。
                                             客製化商品一律接單後製作。</p>
@@ -163,8 +164,8 @@
                             </div>
                             <div class="accordion-item mb-4">
                                 <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed faq-button bg-white text-primary " type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <button class="accordion-button collapsed faq-button bg-white text-primary "
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
                                         Q2 鑑賞期限及定義？是否有7天鑑賞期？
                                     </button>
                                 </h2>
@@ -179,8 +180,8 @@
                             </div>
                             <div class="accordion-item mb-4">
                                 <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed faq-button bg-white text-primary " type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <button class="accordion-button collapsed faq-button bg-white text-primary "
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
                                         Q3 是否有訂做服務？
                                     </button>
                                 </h2>
@@ -364,10 +365,11 @@
             </section>
 
             <!------------- banner ------------->
-            <div class="conainer p-5">
+            <div class="conainer p-5" data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-6">
-                            <h3 class="bg-yellow p-5 banner text-center">新風格的締造者，給您最好的家具</h3>
+                        <h3 class="bg-yellow p-5 banner text-center">新風格的締造者，給您最好的家具</h3>
                     </div>
                 </div>
             </div>
