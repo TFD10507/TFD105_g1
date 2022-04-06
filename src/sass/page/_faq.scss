@@ -21,5 +21,19 @@
         background-image: url('../../img/faq/plus-solid.svg');
     }
 
-    
+    .js-back-to-top{
+        width: 45px;
+        z-index: 5;
+        cursor: pointer;
+        position: fixed;
+        right: 14px;
+        bottom: 30px;
+        opacity: .5;
+        &:hover{
+            opacity: .8;
+        }
+        img{
+            max-width: 100%;
+        }
+    }
 }
