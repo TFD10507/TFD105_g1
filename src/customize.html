@@ -2,17 +2,13 @@
 <html lang="en">
   <head>
     @@include('layout/head.html')
-    <!-- 字型 google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap"
-      rel="stylesheet"/>
   </head>
+
   <body id="customize">
+    @@include('layout/top.html')
     @@include('layout/login.html') 
     @@include('layout/nav.html')
-    @@include('layout/top.html')
+
     <main class="container margin_top_70">
       <!-- sec1 客製一張家具 -->
       <section id="sec1" class="row text-center justify-content-center">
@@ -24,8 +20,9 @@
         <div class="icon-scroll"></div>
       </section>
 
-      <!-- sec2 桌椅櫃 -->
+      
       <section class="row no-gutters text-center">
+        <!-- sec2 桌 -->
         <div class="sec2 col-sm-12 col-lg-4">
           <h1>原木圓桌</h1>
           <span class="maring_top_50">
@@ -33,7 +30,7 @@
             由職人打造出簡單流線的設計，請務必參考看看 </span><br />
             <a class="btn_style" href="customizeItem.html?tab=1">前往客製</a>
         </div>
-
+        <!-- sec3 櫃子 -->
         <div class="sec3 col-sm-12 col-lg-4">
           <h1>原木收納櫃</h1>
           <span class="maring_top_50">
@@ -41,7 +38,7 @@
             輕鬆營造出自然的居家品味 </span><br />
             <a class="btn_style" href="customizeItem.html?tab=2">前往客製</a>
         </div>
-
+        <!-- sec4 椅子 -->
         <div class="sec4 col-sm-12 col-lg-4">
           <h1>原木餐椅</h1>
           <span class="maring_top_50">
