@@ -7,10 +7,17 @@ const {
 } = require('gulp');
 
 // 搬檔案
+// 搬圖片
 function package() {
    return src(['src/img/**/*.*' , 'src/img/*.*']).pipe(dest('dist/img'))
 }
 const rename = require('gulp-rename');
+
+// 搬php
+// function package() {
+//    return src(['src/img/**/*.*' , 'src/img/*.*']).pipe(dest('dist/img'))
+// }
+// const movephp = require('gulp-rename');
 
 // css minify
 const cleanCSS = require('gulp-clean-css');
@@ -133,6 +140,8 @@ function min_images(){
     .pipe(imagemin())
     .pipe(dest('dist/img'))
 }
+
+exports.minimg = min_images
 
  // js 瀏覽器適應 babel es6 -> es5
 

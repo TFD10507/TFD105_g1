@@ -9,10 +9,8 @@
     <div class="roulette button">
         <img src="./img/index/lucky-wheel.png">
     </div>
-    <div class="pop-up">
-        
-    </div>
-    
+    <!-- 輪盤小遊戲彈跳視窗 -->
+
     <!-- 共用的top鍵 -->
     @@include('layout/top.html')
     <div class="wrapper">
@@ -52,52 +50,41 @@
                 </div>
             </section>
 
-            <div class="circle_position parallax-bg" data-aos="fade-up">
+            <!-- <div class="circle_position parallax-bg" data-aos="fade-up">
                 <span class="circle bg_2_1"></span>
                 <span class="circle bg_2_2"></span>
-            </div>
+            </div> -->
 
             <!-- 商品呈現 -->
-            <section class="section3 mt-5 pb-5 row">
+            <section class="section3 mt-5 pb-5 row" id="index">
                 <!-- 小商品圖 -->
-                <div class="slides-wrapper col-12 col-md-4 mx-auto" data-aos="fade-right" data-aos-duration="3000">
-                    <div class="small chair">
-                        <img src="./img/index/sample_small.jpg" class="img-fluid">
+                <div class="small_position col-12 col-md-4 mx-auto" data-aos="fade-right" data-aos-duration="3000">
+                    <div v-for="(item ,index) in smallImgs" :index="index" class="slides-wrapper">
+                        <div class="small" :class="{'-active':active_index === index}">
+                            <img :src="item.img" class="img-fluid">
+                        </div>
+                        <!-- 商品名 -->
                     </div>
-                    <div class="small cabinet">
-                        <img src="./img/index/shelf_small.jpg" class="img-fluid">
-                    </div>
-                    <div class="small">
-                        <img src="./img/index/table_small.jpg" class="img-fluid">
-                    </div>
-
-                    <!-- 前一張按鈕 -->
-                    <div class="controller prev">
-                        <span>PREV</span>
-                    </div>
-                    <!-- 商品名 -->
                     <div class="product-name">
-                        <div class="slide-mask">
-                            <p class="shifting-slide-title">CHAIR</p>
-                            <p class="shifting-slide-title">CABINET</p>
-                            <p class="shifting-slide-title">DESK</p>
+                        <div class="slide-mask" v-for="(item ,index) in productName" :index="index">
+                            <p class="shifting-slide-title" :class="{'-active':active_index === index}">{{item.text}}</p>
                         </div>
                     </div>
+                    <!-- 前一張按鈕 -->
+                    <div class="controller prev" @click="prev">
+                        <span>PREV</span>
+                    </div>
                     <!-- 後一張按鈕 -->
-                    <div class="controller next">
+                    <div class="controller next" @click="next">
                         <span>NEXT</span>
                     </div>
                 </div>
                 <!-- 大商品圖 -->
-                <div class="slides-wrapper-2 col-12 col-md-6 mx-auto" data-aos="fade-left" data-aos-duration="3000">
-                    <div class="large">
-                        <img src="./img/index/sample_large.jpg" class="img-fluid">
-                    </div>
-                    <div class="large">
-                        <img src="./img/index/shelf_large2.jpg" class="img-fluid">
-                    </div>
-                    <div class="large">
-                        <img src="./img/index/table_large.jpg" class="img-fluid">
+                <div class="large_position col-12 col-md-6 mx-auto" data-aos="fade-left" data-aos-duration="3000">
+                    <div v-for="(item ,index) in largeImgs" :index="index" class="slides-wrapper-2">
+                        <div class="large" :class="{'-active':active_index === index}">
+                            <img :src="item.img" class="img-fluid">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -118,39 +105,39 @@
                         </div>
                         <div class="news_item me-2">
                             <a href="news.html">
-                                <img src="./img/news/main.jpg" alt="">
-                                <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                                <img src="./img/news/img_flag-01.png" alt="">
+                                <p>五倍券也可以買家具！<br>12/10正式啟用五倍券...
                                 </p>
                             </a>
                         </div>
                         <div class="news_item me-2">
                             <a href="news.html">
-                                <img src="./img/news/main.jpg" alt="">
-                                <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                                <img src="./img/news/1864_101_l.jpg.png">
+                                <p>想要營造出舒適環境沙發是你不可獲缺的...
                                 </p>
                             </a>
                         </div>
                         <div class="news_item me-2">
                             <a href="news.html">
-                                <img src="./img/news/main.jpg" alt="">
-                                <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                                <img src="./img/news/1.jpeg.jpg" alt="">
+                                <p>全館滿額 折現又贈紅利點消費滿2500...
                                 </p>
                             </a>
                         </div>
                         <div class="news_item me-2">
                             <a href="news.html">
-                                <img src="./img/news/main.jpg" alt="">
-                                <p>身處都市中的叢林~誰說辦公室只能一成不變...
+                                <img src="./img/news/2.jpeg.jpg" alt="">
+                                <p>雙11光棍節 森活木工推出「狂歡購物季」...
                                 </p>
                             </a>
                         </div>
-                        <div class="news_item me-2">
+                        <!-- <div class="news_item me-2">
                             <a href="news.html">
                                 <img src="./img/news/main.jpg" alt="">
                                 <p>身處都市中的叢林~誰說辦公室只能一成不變...
                                 </p>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <i class="fa-solid fa-angle-right"></i>
                 </div>
@@ -211,13 +198,47 @@
         });
 
         $(function () {
-            // ==== 右下輪盤彈窗 ====
-            $('button').click(function () {
-                $('.pop-up').addClass('open');
-            });
+            // ==== 輪盤彈窗 ====
+            // ==== 右下輪盤JS ====
+            var degree = 1800;
+            var clicks = 0;
 
-            $('.pop-up .close').click(function () {
-                $('.pop-up').removeClass('open');
+            $(document).ready(function () {
+                $('#spin').click(function () {
+
+                    clicks++;
+                    var newDegree = degree * clicks;
+                    var extraDegree = Math.floor(Math.random() * (360 - 1 + 1)) + 1;
+                    totalDegree = newDegree + extraDegree;
+
+                    $('#wheel .sec').each(function () {
+                        var t = $(this);
+                        var noY = 0;
+
+                        var c = 0;
+                        var n = 700;
+                        var interval = setInterval(function () {
+                            c++;
+                            if (c === n) {
+                                clearInterval(interval);
+                            }
+
+                            var aoY = t.offset().top;
+                            $('#txt').html(aoY);
+
+                            if (aoY < 23.89) {
+                                $('#spin').addClass('spin');
+                                setTimeout(function () {
+                                    $("#spin").removeClass('spin');
+                                }, 100);
+                            }
+                        }, 10);
+
+                        $('#inner-wheel').css({ 'transform': 'rotate(' + totalDegree + 'deg)' });
+
+                        noY = t.offset().top;
+                    });
+                });
             });
             // ==== 輪播按鈕控制 ====
             $(window).resize(function () {
@@ -238,58 +259,58 @@
 
 
             // ==== 商品展示 ====
-            let count = 0;
-            $('.small').eq(0).addClass('-active'); //將第一張圖顯示出來
-            $('.shifting-slide-title').eq(0).addClass('-active');
-            $('.large').eq(0).addClass('-active');
-            $(document).on('click', '.next', function (e) {
-                count++;
-                $('.small').each(function (index) {
-                    $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
-                    $('.small').eq(count).addClass('-active');
-                    if (count == 3) {
-                        count = 0;
-                    }
-                })
-                $('.shifting-slide-title').each(function (index) {
-                    $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
-                    $('.shifting-slide-title').eq(count).addClass('-active');
-                    if (count == 3) {
-                        count = 0;
-                    }
-                })
-                $('.large').each(function (index) {
-                    $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
-                    $('.large').eq(count).addClass('-active');
-                    if (count == 3) {
-                        count = 0;
-                    }
-                })
-            })
-            $(document).on('click', '.prev', function (e) {
-                count--;
-                $('.small').each(function (index) {
-                    $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
-                    $('.small').eq(count).addClass('-active');
-                    if (count == -1) {
-                        count = 2;
-                    }
-                })
-                $('.shifting-slide-title').each(function (index) {
-                    $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
-                    $('.shifting-slide-title').eq(count).addClass('-active');
-                    if (count == -1) {
-                        count = 2;
-                    }
-                })
-                $('.large').each(function (index) {
-                    $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
-                    $('.large').eq(count).addClass('-active');
-                    if (count == -1) {
-                        count = 2;
-                    }
-                })
-            })
+            // let count = 0;
+            // $('.small').eq(0).addClass('-active'); //將第一張圖顯示出來
+            // $('.shifting-slide-title').eq(0).addClass('-active');
+            // $('.large').eq(0).addClass('-active');
+            // $(document).on('click', '.next', function (e) {
+            //     count++;
+            //     $('.small').each(function (index) {
+            //         $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
+            //         $('.small').eq(count).addClass('-active');
+            //         if (count == 3) {
+            //             count = 0;
+            //         }
+            //     })
+            //     $('.shifting-slide-title').each(function (index) {
+            //         $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
+            //         $('.shifting-slide-title').eq(count).addClass('-active');
+            //         if (count == 3) {
+            //             count = 0;
+            //         }
+            //     })
+            //     $('.large').each(function (index) {
+            //         $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
+            //         $('.large').eq(count).addClass('-active');
+            //         if (count == 3) {
+            //             count = 0;
+            //         }
+            //     })
+            // })
+            // $(document).on('click', '.prev', function (e) {
+            //     count--;
+            //     $('.small').each(function (index) {
+            //         $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
+            //         $('.small').eq(count).addClass('-active');
+            //         if (count == -1) {
+            //             count = 2;
+            //         }
+            //     })
+            //     $('.shifting-slide-title').each(function (index) {
+            //         $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
+            //         $('.shifting-slide-title').eq(count).addClass('-active');
+            //         if (count == -1) {
+            //             count = 2;
+            //         }
+            //     })
+            //     $('.large').each(function (index) {
+            //         $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
+            //         $('.large').eq(count).addClass('-active');
+            //         if (count == -1) {
+            //             count = 2;
+            //         }
+            //     })
+            // })
 
 
         });
@@ -298,6 +319,7 @@
 
 
     </script>
+    <script src="./js/index.min.js"></script>
 </body>
 
 </html>
