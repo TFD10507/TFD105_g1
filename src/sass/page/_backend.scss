@@ -79,6 +79,7 @@
 
           textarea {
             resize: none;
+            max-width: 100px;
           }
         }
       }
@@ -104,11 +105,34 @@
     // 彈窗區 結束
     // bootstrap區 結束
 
-    // DATATABLE區 開始
-    // 新增標題區 開始
+    // TABLE區 開始
+    table{
+      width: 100%;
+
+      // 新增標題區 結束
+      thead {
+        background-color: #6b6262;
+        
+        tr > th {
+          color: white;
+          padding: 10px 0;
+        }
+      }
+
+      tbody{
+
+        td{
+          padding: 10px 0;
+          background-color: white;
+          border-bottom: 1px solid #DDDDDD;
+        }
+      }
+
+    }
+    
     section {
       text-align: left;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
 
       .h2 {
         font-size: $h2;
@@ -123,21 +147,6 @@
         }
       }
     }
-    // 新增標題區 結束
-    thead {
-      background-color: #6b6262;
-      tr > th {
-        color: white;
-      }
-    }
-
-    table.dataTable tbody td {
-      padding: 10px;
-    }
-
-    li textarea{
-      max-width: 100px;
-    }
-    // DATATABLE區 結束
+    
   }
 }
