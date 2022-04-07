@@ -63,20 +63,11 @@
                         <div class="small" :class="{'-active':active_index === index}">
                             <img :src="item.img" class="img-fluid">
                         </div>
-                        <!-- <div class="small cabinet" :class="{'-active':active_index === index}">
-                            <img src="./img/index/shelf_small.jpg" class="img-fluid">
-                        </div>
-                        <div class="small">
-                            <img src="./img/index/table_small.jpg" class="img-fluid" :class="{'-active':active_index === index}">
-                        </div> -->
-    
                         <!-- 商品名 -->
-                        <div class="product-name">
-                            <div class="slide-mask">
-                                <p class="shifting-slide-title">CHAIR</p>
-                                <p class="shifting-slide-title">CABINET</p>
-                                <p class="shifting-slide-title">DESK</p>
-                            </div>
+                    </div>
+                    <div class="product-name">
+                        <div class="slide-mask" v-for="(item ,index) in productName" :index="index">
+                            <p class="shifting-slide-title" :class="{'-active':active_index === index}">{{item.text}}</p>
                         </div>
                     </div>
                     <!-- 前一張按鈕 -->
@@ -89,16 +80,12 @@
                     </div>
                 </div>
                 <!-- 大商品圖 -->
-                <div class="slides-wrapper-2 col-12 col-md-6 mx-auto" data-aos="fade-left" data-aos-duration="3000">
-                    <div class="large">
-                        <img src="./img/index/sample_large.jpg" class="img-fluid">
+                <div class="large_position col-12 col-md-6 mx-auto" data-aos="fade-left" data-aos-duration="3000">
+                    <div v-for="(item ,index) in largeImgs" :index="index" class="slides-wrapper-2">
+                        <div class="large" :class="{'-active':active_index === index}">
+                            <img :src="item.img" class="img-fluid">
+                        </div>
                     </div>
-                    <!-- <div class="large">
-                        <img src="./img/index/shelf_large2.jpg" class="img-fluid">
-                    </div>
-                    <div class="large">
-                        <img src="./img/index/table_large.jpg" class="img-fluid">
-                    </div> -->
                 </div>
             </section>
 
