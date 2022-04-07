@@ -3,6 +3,8 @@
 
 <head>
     @@include('layout/head.html')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 </head>
 
 <body class="index">
@@ -60,7 +62,7 @@
                 <!-- 小商品圖 -->
                 <div class="small_position col-12 col-md-4 mx-auto" data-aos="fade-right" data-aos-duration="3000">
                     <div class="inview-scale">
-                        <div v-for="(item ,index) in smallImgs" :index="index" class="slides-wrapper">
+                        <div v-for="(item ,index) in smallImgs" :index="index" class="slides-wrapper wow fadeInUp" data-wow-offset="100" data-wow-delay="1s">
                             <div class="small" :class="{'-active':active_index === index}">
                                 <img :src="item.img" class="img-fluid">
                             </div>
@@ -69,7 +71,8 @@
                     <!-- 商品名 -->
                     <div class="product-name">
                         <div class="slide-mask" v-for="(item ,index) in productName" :index="index">
-                            <p class="shifting-slide-title" :class="{'-active':active_index === index}">{{item.text}}</p>
+                            <p class="shifting-slide-title" :class="{'-active':active_index === index}">{{item.text}}
+                            </p>
                         </div>
                     </div>
                     <!-- 前一張按鈕 -->
@@ -154,6 +157,8 @@
 
     <script>
         AOS.init();
+
+        new WOW().init();
         // gsap
         gsap.to(".parallax-bg", {
             scrollTrigger: {
@@ -258,63 +263,6 @@
             $('.fa-angle-left').on("click", function () {
                 $('.slick-prev').click();
             });
-
-
-            // ==== 商品展示 ====
-            // let count = 0;
-            // $('.small').eq(0).addClass('-active'); //將第一張圖顯示出來
-            // $('.shifting-slide-title').eq(0).addClass('-active');
-            // $('.large').eq(0).addClass('-active');
-            // $(document).on('click', '.next', function (e) {
-            //     count++;
-            //     $('.small').each(function (index) {
-            //         $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
-            //         $('.small').eq(count).addClass('-active');
-            //         if (count == 3) {
-            //             count = 0;
-            //         }
-            //     })
-            //     $('.shifting-slide-title').each(function (index) {
-            //         $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
-            //         $('.shifting-slide-title').eq(count).addClass('-active');
-            //         if (count == 3) {
-            //             count = 0;
-            //         }
-            //     })
-            //     $('.large').each(function (index) {
-            //         $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
-            //         $('.large').eq(count).addClass('-active');
-            //         if (count == 3) {
-            //             count = 0;
-            //         }
-            //     })
-            // })
-            // $(document).on('click', '.prev', function (e) {
-            //     count--;
-            //     $('.small').each(function (index) {
-            //         $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
-            //         $('.small').eq(count).addClass('-active');
-            //         if (count == -1) {
-            //             count = 2;
-            //         }
-            //     })
-            //     $('.shifting-slide-title').each(function (index) {
-            //         $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
-            //         $('.shifting-slide-title').eq(count).addClass('-active');
-            //         if (count == -1) {
-            //             count = 2;
-            //         }
-            //     })
-            //     $('.large').each(function (index) {
-            //         $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
-            //         $('.large').eq(count).addClass('-active');
-            //         if (count == -1) {
-            //             count = 2;
-            //         }
-            //     })
-            // })
-
-
         });
 
 
