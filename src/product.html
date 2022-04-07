@@ -14,7 +14,7 @@
   <main class="container" id="app">
     <section class="title">
       <h1 class="p-3">產品總覽
-        <div v-html="cart2"></div>
+        <!-- <div v-html="cart2"></div> -->
       </h1>
       <img src="./img/product/all_bn001.jpg" class="img-fluid" data-aos="zoom-in" data-aos-duration="2000">
     </section>
@@ -56,23 +56,29 @@
           </a>
         </div>
       </div>
+    </section>
   </main>
-  </section>
 
-  </main>
+  
   @@include('layout/footer.html')
   <script>
 
     let smallNav = document.querySelectorAll(".smallNav");
+    console.log(smallNav);
 
     // console.log(smallNav[0].src);
     smallNav[0].src = "./img/product/nav_nav_all_hover.svg";
-    // console.log(smallNav);
-    smallNav.addEventListener("click",function(){
-      for (let i = 0; i < smallNav.length; i++){
+    for(let i =0; i<smallNav.length; i++) {
+      smallNav[i].addEventListener('click', function() {
         console.log(smallNav[i].src);
-      }
+      })
     }
+    // smallNav.addEventListener("click",function(){
+    //   for (let i = 0; i < smallNav.length; i++){
+    //     console.log(smallNav[i].src);
+    //   }
+    // })
+
      // for (let i = 0; i < smallNav.length; i++) {
         // console.log(smallNav);
         // console.log(smallNav[i].src);
@@ -124,7 +130,7 @@
 
   </script>
   <script>
-      var app = new Vue({
+      new Vue({
         el: '#app',
         data: {
           text: 'ss',
@@ -133,73 +139,73 @@
             [
               {
                 "id": 2,
-                "image": "/img/product/chair_001.jpg",
+                "image": "img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": '1,000'
               },
               {
                 "id": 3,
-                "image": "/img/product/shelf_001.jpg",
+                "image": "img/product/shelf_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 4,
-                "image": "/img/product/chair_001.jpg",
+                "image": "img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 5,
-                "image": "/img/product/chair_001.jpg",
+                "image": "img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 6,
-                "image": "/img/product/table_001.jpg",
+                "image": "img/product/table_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 7,
-                "image": "/img/product/chair_001.jpg",
+                "image": "img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 8,
-                "image": "/img/product/shelf_001.jpg",
+                "image": "img/product/shelf_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 9,
-                "image": "/img/product/table_001.jpg",
+                "image": "img/product/table_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 10,
-                "image": "/img/product/chair_001.jpg",
+                "image": "img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 11,
-                "image": "/img/product/shelf_001.jpg",
+                "image": "img/product/shelf_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 12,
-                "image": "/img/product/table_001.jpg",
+                "image": "img/product/table_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 13,
-                "image": "/img/product/chair_001.jpg",
+                "image": "img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
@@ -207,7 +213,7 @@
           // <div class="col-sm-6 col-md-4 col-xl-3">
           //   <a href="./product_in.html">
           //     <div class="product tumbnail thumbnail-3">
-          //       <img src="./img/product/chair_001.jpg" alt="">
+          //       img src="./img/product/chair_001.jpg" alt="">
           //       <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
           //         @click.stop.prevent="add_cart()">
           //       <div class="caption">
@@ -224,20 +230,22 @@
   </script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-  <!-- <script>
-    let productArr = [{
-      name: "",
-      prize: 0,
-      content: "",
-      photo: ""
-    }];
-    for (let i = 0; i <= 10; i++) {
-      let counter = 0;
-      counter++;
-      console.log(counter);
+  // <!-- <script>
+  //   let productArr = [{
+  //     name: "",
+  //     prize: 0,
+  //     content: "",
+  //     photo: ""
+  //   }];
+  //   for (let i = 0; i <= 10; i++) {
+  //     let counter = 0;
+  //     counter++;
+  //     console.log(counter);
 
-    }
-  </script> -->
+  //   }
+  // </script> -->
+
+  
 </body>
 
 </html>
