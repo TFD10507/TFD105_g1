@@ -154,49 +154,66 @@
             div {
                 // width: 50%;
                 a {
+                    position: relative;
                     &::before {
+                        position: absolute;
                         content: "";
                         display: inline-block;
                         width: 100px;
                         height: 0.5px;
                         background: $p_color;
                         // transform: rotate(0deg) translateX(210px) translateY(-5px);
+                        // transform: rotate(0deg) translateX(270px) translateY(-5px);
+                        // right: -100px;
+                        // top: 14px;
                         animation: fade3 2s linear infinite;
                     }
                     @keyframes fade3 {
                         0% {
-                            transform: rotate(0deg) translateX(210px) translateY(-5px);
+                            // transform: rotate(0deg) translateX(210px) translateY(-5px);
+                            right: -100px;
+                            top: 14px;
                             opacity: 0;
                         }
                         50% {
-                            transform: rotate(0deg) translateX(243px) translateY(-5px);
+                            // transform: rotate(0deg) translateX(243px) translateY(-5px);
+                            right: -150px;
+                            top: 14px;
                             opacity: 1;
                         }
                         100% {
-                            transform: rotate(0deg) translateX(270px) translateY(-5px);
+                            // transform: rotate(0deg) translateX(270px) translateY(-5px);
+                            right: -200px;
+                            top: 14px;
                             opacity: 0;
                         }
                     }
                     &::after {
+                        position: absolute;
                         content: "";
                         display: inline-block;
                         width: 25px;
                         height: 0.5px;
                         background: $p_color;
-                        // transform: rotate(30deg) translateX(67px) translateY(-50px);
+
+                        // transform: rotate(30deg) translateX(70px) translateY(-32px);
+                        // right: -24px;
                         animation: fade4 2s linear infinite;
                     }
                     @keyframes fade4 {
                         0% {
-                            transform: rotate(30deg) translateX(73px) translateY(-54px);
+                            transform: rotate(30deg) translateX(70px) translateY(-32px);
+                            right: -24px;
                             opacity: 0;
                         }
                         50% {
-                            transform: rotate(30deg) translateX(98px) translateY(-70px);
+                            transform: rotate(30deg) translateX(70px) translateY(-32px);
+                            right: -74px;
                             opacity: 1;
                         }
                         100% {
-                            transform: rotate(30deg) translateX(120px) translateY(-83px);
+                            transform: rotate(30deg) translateX(70px) translateY(-32px);
+                            right: -124px;
                             opacity: 0;
                         }
                     }
