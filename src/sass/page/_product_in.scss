@@ -44,8 +44,6 @@ body.product_in {
             display: flex;
             justify-content: flex-start;
             padding: 10px;
-
-
         }
 
         button {
@@ -58,6 +56,10 @@ body.product_in {
 
         input.product-qty {
             text-align: center;
+        }
+
+        .cart .content {
+            box-shadow: none;
         }
 
         // ul.showbar{

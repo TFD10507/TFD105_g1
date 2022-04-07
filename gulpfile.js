@@ -141,6 +141,8 @@ function min_images(){
     .pipe(dest('dist/img'))
 }
 
+exports.minimg = min_images
+
  // js 瀏覽器適應 babel es6 -> es5
 
  const babel = require('gulp-babel');

@@ -47,7 +47,7 @@ new Vue({
      let products = [
       {
        id: 0001,
-       img: "../img/index/sample_small.jpg",
+       img: "./img/index/sample_small.jpg",
        name: "SEOTO-EX 機能椅",
        type: "白橡木",
        price: 3370,
@@ -55,7 +55,7 @@ new Vue({
       },
       {
        id: 0002,
-       img: "../img/index/table_small.jpg",
+       img: "./img/index/table_small.jpg",
        name: "SEOTO-EX 機能桌",
        type: "白橡木",
        price: 4970,
