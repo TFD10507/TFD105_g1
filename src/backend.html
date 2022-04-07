@@ -20,11 +20,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <!-- css -->
     <link rel="stylesheet" href="./css/style.css">
-    <!-- dataTable css.js CDN
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script> -->
-
     <title>backend</title>
 </head>
 
@@ -80,12 +75,12 @@
                             </thead>
                             <tbody>
                                 <!-- 假資料示意區 -->
-                                <tr>
-                                    <td>MB-001</td>
-                                    <td>Chaos00</td>
-                                    <td>Lee</td>
-                                    <td>正常</td>
-                                    <td>2020.1.1</td>
+                                <tr v-for="(member,index) in members">
+                                    <td>{{member.id}}</td>
+                                    <td>{{member.account}}</td>
+                                    <td>{{member.name}}</td>
+                                    <td>{{member.status}}</td>
+                                    <td>{{member.jointime}}</td>
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -109,14 +104,6 @@
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#addproductedit">
                                     <i class="bi bi-bag-plus-fill add"></i>點擊新增商品
-                                </button>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#addkindedit">
-                                    <i class="bi bi-bookmark-plus-fill add"></i>點擊新增種類
-                                </button>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#addcoloredit">
-                                    <i class="bi bi-paint-bucket add"></i>點擊新增材質
                                 </button>
                             </section>
                             <!-- 表單顯示區塊起始 -->
@@ -172,8 +159,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- 假資料示意區 -->
-                                <tr>
+                                <!-- orders -->
+                                <tr v-for="(order,index) in orders">
                                     <td>MB01</td>
                                     <td>FOD01</td>
                                     <td>Chaos00</td>
@@ -200,6 +187,14 @@
                             <!-- 標題.新增資料區塊 -->
                             <section>
                                 <h2 class="h2">客製化管理</h2>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#addkindedit">
+                                    <i class="bi bi-bookmark-plus-fill add"></i>點擊新增種類
+                                </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#addcoloredit">
+                                    <i class="bi bi-paint-bucket add"></i>點擊新增材質
+                                </button>
                             </section>
                             <!-- 表單顯示區塊起始 -->
                             <thead>
@@ -253,7 +248,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- 假資料示意區 -->
+                                <!-- coupons -->
                                 <tr v-for="(coupon,index) in coupons">
                                     <td>{{coupon.id}}</td>
                                     <td>{{coupon.price}}</td>
@@ -812,8 +807,6 @@
         <!-- Modal 結束-->
     </main>
 
-    <!-- TataTable 啟動.翻譯引入 -->
-    <!-- <Script src="./js/vendors/datatable.min.js"></Script> -->
     <!-- Vus,js cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script> 
     <!-- VUE.JS -->
@@ -821,6 +814,15 @@
         new Vue({
             el: '#app',
             data: {
+                members:[
+                    {
+                        id:'1',
+                        account:'0000',
+                        name:'Lee',
+                        status:'正常',
+                        jointime:'2020-01-01',
+                    }
+                ],
                 fakes: [
                     {
                         couid:'1',
