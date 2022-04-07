@@ -1,11 +1,15 @@
 /*
     * @subsection Shop
     */
+
+
+
 body.product {
 
   div.box {
     width: 1200px;
     margin: 0 auto;
+
   }
 
   // section.productslider {
@@ -100,7 +104,7 @@ body.product {
   }
 
   p.price::before {
-    content: "NT$";
+    content: "價格：NT$";
   }
 
 
