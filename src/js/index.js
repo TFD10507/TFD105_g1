@@ -6,24 +6,24 @@ new Vue({
     data: {
         smallImgs: [
             {
-                img: '../img/index/sample_small.jpg'
+                img: './img/index/sample_small.jpg'
             },
             {
-                img: '../img/index/shelf_small.jpg'
+                img: './img/index/shelf_small.jpg'
             },
             {
-                img: '../img/index/table_small.jpg'
+                img: './img/index/table_small.jpg'
             },
         ],
         largeImgs: [
             {
-                img: '../img/index/sample_large.jpg'
+                img: './img/index/sample_large.jpg'
             },
             {
-                img: '../img/index/shelf_large2.jpg'
+                img: './img/index/shelf_large2.jpg'
             },
             {
-                img: '../img/index/table_large.jpg'
+                img: './img/index/table_large.jpg'
             },
         ],
         productName: [
