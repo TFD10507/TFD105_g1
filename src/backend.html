@@ -75,12 +75,12 @@
                             </thead>
                             <tbody>
                                 <!-- 假資料示意區 -->
-                                <tr>
-                                    <td>MB-001</td>
-                                    <td>Chaos00</td>
-                                    <td>Lee</td>
-                                    <td>正常</td>
-                                    <td>2020.1.1</td>
+                                <tr v-for="(member,index) in members">
+                                    <td>{{member.id}}</td>
+                                    <td>{{member.account}}</td>
+                                    <td>{{member.name}}</td>
+                                    <td>{{member.status}}</td>
+                                    <td>{{member.jointime}}</td>
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -159,8 +159,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- 假資料示意區 -->
-                                <tr>
+                                <!-- orders -->
+                                <tr v-for="(order,index) in orders">
                                     <td>MB01</td>
                                     <td>FOD01</td>
                                     <td>Chaos00</td>
@@ -248,7 +248,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- 假資料示意區 -->
+                                <!-- coupons -->
                                 <tr v-for="(coupon,index) in coupons">
                                     <td>{{coupon.id}}</td>
                                     <td>{{coupon.price}}</td>
@@ -814,6 +814,15 @@
         new Vue({
             el: '#app',
             data: {
+                members:[
+                    {
+                        id:'1',
+                        account:'0000',
+                        name:'Lee',
+                        status:'正常',
+                        jointime:'2020-01-01',
+                    }
+                ],
                 fakes: [
                     {
                         couid:'1',
