@@ -10,56 +10,6 @@
         <img src="./img/index/lucky-wheel.png">
     </div>
     <!-- 輪盤小遊戲彈跳視窗 -->
-<<<<<<< HEAD
-    <!-- <div class="wheel-pop-up">
-        <h2 class="pop-up-title">幸運輪盤</h2>
-        <div class="wheel-inner-pop-up">
-            <div class="wheel-outter"></div>
-
-            <div id="wheel">
-                <div id="inner-wheel">
-                    <div class="sec">
-                        <span class="fa">
-                            <img src="./bath-solid.svg" alt="">
-                        </span>
-                    </div>
-                    <div class="sec">
-                        <span class="fa">
-                            <img src="./bed-solid.svg" alt="">
-                        </span>
-                    </div>
-                    <div class="sec">
-                        <span class="fa">
-                            <img src="./img/index/wheel/bath-solid.svg" alt="">
-                        </span>
-                    </div>
-                    <div class="sec">
-                        <span class="fa">
-                            <img class="wheel-ing" src="./chair-solid.svg" alt="">
-                        </span>
-                    </div>
-                    <div class="sec">
-                        <span class="fa">
-                            <img src="./bomb-solid.svg" alt="">
-                        </span>
-                    </div>
-                    <div class="sec">
-                        <span class="fa">
-                            <img src="door-closed-solid.svg" alt="">
-                        </span>
-                    </div>
-                </div>
-
-                <div id="spin">
-                    <div id="inner-spin"></div>
-                </div>
-
-                <div id="shine"></div>
-            </div>
-        </div>
-    </div> -->
-=======
->>>>>>> fa706145e75d4c176e3ae7638ccb1c8de772a81a
 
     <!-- 共用的top鍵 -->
     @@include('layout/top.html')
@@ -106,33 +56,35 @@
             </div> -->
 
             <!-- 商品呈現 -->
-            <section class="section3 mt-5 pb-5 row">
+            <section class="section3 mt-5 pb-5 row" id="index">
                 <!-- 小商品圖 -->
-                <div class="slides-wrapper col-12 col-md-4 mx-auto" data-aos="fade-right" data-aos-duration="3000">
-                    <div class="small chair">
-                        <img src="./img/index/sample_small.jpg" class="img-fluid">
-                    </div>
-                    <div class="small cabinet">
-                        <img src="./img/index/shelf_small.jpg" class="img-fluid">
-                    </div>
-                    <div class="small">
-                        <img src="./img/index/table_small.jpg" class="img-fluid">
-                    </div>
-
-                    <!-- 前一張按鈕 -->
-                    <div class="controller prev">
-                        <span>PREV</span>
-                    </div>
-                    <!-- 商品名 -->
-                    <div class="product-name">
-                        <div class="slide-mask">
-                            <p class="shifting-slide-title">CHAIR</p>
-                            <p class="shifting-slide-title">CABINET</p>
-                            <p class="shifting-slide-title">DESK</p>
+                <div class="small_position col-12 col-md-4 mx-auto" data-aos="fade-right" data-aos-duration="3000">
+                    <div v-for="(item ,index) in smallImgs" :index="index" class="slides-wrapper">
+                        <div class="small" :class="{'-active':active_index === index}">
+                            <img :src="item.img" class="img-fluid">
+                        </div>
+                        <!-- <div class="small cabinet" :class="{'-active':active_index === index}">
+                            <img src="./img/index/shelf_small.jpg" class="img-fluid">
+                        </div>
+                        <div class="small">
+                            <img src="./img/index/table_small.jpg" class="img-fluid" :class="{'-active':active_index === index}">
+                        </div> -->
+    
+                        <!-- 商品名 -->
+                        <div class="product-name">
+                            <div class="slide-mask">
+                                <p class="shifting-slide-title">CHAIR</p>
+                                <p class="shifting-slide-title">CABINET</p>
+                                <p class="shifting-slide-title">DESK</p>
+                            </div>
                         </div>
                     </div>
+                    <!-- 前一張按鈕 -->
+                    <div class="controller prev" @click="prev">
+                        <span>PREV</span>
+                    </div>
                     <!-- 後一張按鈕 -->
-                    <div class="controller next">
+                    <div class="controller next" @click="next">
                         <span>NEXT</span>
                     </div>
                 </div>
@@ -141,12 +93,12 @@
                     <div class="large">
                         <img src="./img/index/sample_large.jpg" class="img-fluid">
                     </div>
-                    <div class="large">
+                    <!-- <div class="large">
                         <img src="./img/index/shelf_large2.jpg" class="img-fluid">
                     </div>
                     <div class="large">
                         <img src="./img/index/table_large.jpg" class="img-fluid">
-                    </div>
+                    </div> -->
                 </div>
             </section>
 
@@ -320,58 +272,58 @@
 
 
             // ==== 商品展示 ====
-            let count = 0;
-            $('.small').eq(0).addClass('-active'); //將第一張圖顯示出來
-            $('.shifting-slide-title').eq(0).addClass('-active');
-            $('.large').eq(0).addClass('-active');
-            $(document).on('click', '.next', function (e) {
-                count++;
-                $('.small').each(function (index) {
-                    $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
-                    $('.small').eq(count).addClass('-active');
-                    if (count == 3) {
-                        count = 0;
-                    }
-                })
-                $('.shifting-slide-title').each(function (index) {
-                    $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
-                    $('.shifting-slide-title').eq(count).addClass('-active');
-                    if (count == 3) {
-                        count = 0;
-                    }
-                })
-                $('.large').each(function (index) {
-                    $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
-                    $('.large').eq(count).addClass('-active');
-                    if (count == 3) {
-                        count = 0;
-                    }
-                })
-            })
-            $(document).on('click', '.prev', function (e) {
-                count--;
-                $('.small').each(function (index) {
-                    $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
-                    $('.small').eq(count).addClass('-active');
-                    if (count == -1) {
-                        count = 2;
-                    }
-                })
-                $('.shifting-slide-title').each(function (index) {
-                    $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
-                    $('.shifting-slide-title').eq(count).addClass('-active');
-                    if (count == -1) {
-                        count = 2;
-                    }
-                })
-                $('.large').each(function (index) {
-                    $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
-                    $('.large').eq(count).addClass('-active');
-                    if (count == -1) {
-                        count = 2;
-                    }
-                })
-            })
+            // let count = 0;
+            // $('.small').eq(0).addClass('-active'); //將第一張圖顯示出來
+            // $('.shifting-slide-title').eq(0).addClass('-active');
+            // $('.large').eq(0).addClass('-active');
+            // $(document).on('click', '.next', function (e) {
+            //     count++;
+            //     $('.small').each(function (index) {
+            //         $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
+            //         $('.small').eq(count).addClass('-active');
+            //         if (count == 3) {
+            //             count = 0;
+            //         }
+            //     })
+            //     $('.shifting-slide-title').each(function (index) {
+            //         $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
+            //         $('.shifting-slide-title').eq(count).addClass('-active');
+            //         if (count == 3) {
+            //             count = 0;
+            //         }
+            //     })
+            //     $('.large').each(function (index) {
+            //         $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
+            //         $('.large').eq(count).addClass('-active');
+            //         if (count == 3) {
+            //             count = 0;
+            //         }
+            //     })
+            // })
+            // $(document).on('click', '.prev', function (e) {
+            //     count--;
+            //     $('.small').each(function (index) {
+            //         $('.small').eq(index).removeClass('-active'); //將所有圖片都不顯示
+            //         $('.small').eq(count).addClass('-active');
+            //         if (count == -1) {
+            //             count = 2;
+            //         }
+            //     })
+            //     $('.shifting-slide-title').each(function (index) {
+            //         $('.shifting-slide-title').eq(index).removeClass('-active'); //將所有圖片都不顯示
+            //         $('.shifting-slide-title').eq(count).addClass('-active');
+            //         if (count == -1) {
+            //             count = 2;
+            //         }
+            //     })
+            //     $('.large').each(function (index) {
+            //         $('.large').eq(index).removeClass('-active'); //將所有圖片都不顯示
+            //         $('.large').eq(count).addClass('-active');
+            //         if (count == -1) {
+            //             count = 2;
+            //         }
+            //     })
+            // })
 
 
         });
@@ -380,6 +332,7 @@
 
 
     </script>
+    <script src="./js/index.min.js"></script>
 </body>
 
 </html>
