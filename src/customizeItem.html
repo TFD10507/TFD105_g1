@@ -18,6 +18,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
   <body id="customizeItem">
     @@include('layout/login.html')
@@ -27,8 +28,8 @@
       <section class="container product-detail">
         <div class="row justify-content-between">
           
-          <div data-tab-content class="imagery col-lg-6" style="background-image: url('/img/customize/color/brown.jpg')">
-            <img src="/img/customize/image/xr-brown.png" class="type-image" />
+          <div data-tab-content class="imagery col-lg-6" style="background-image: url('./img/customize/color/brown.jpg')">
+            <img src="./img/customize/image/xr-brown.png" class="type-image" />
           </div>
 
           <!-- <div data-tab-content class="imagery col-lg-6" style="background-image: url('/img/customize/color/brown.jpg')">
@@ -42,9 +43,9 @@
           <div class="col-lg-6">
             <form class="detail margin_top_30">
               <ul class="tabs catagory">
-                <li id="tab1" data-tab-target="#table" class="tab padding_10" value="1">原木圓桌</li>
-                <li id="tab2" data-tab-target="#cabinet" class="tab padding_10" value="2">原木收納櫃</li>
-                <li id="tab3" data-tab-target="#chai" class="tab padding_10" value="3">原木餐椅</li>
+                <li id="tab1" data-tab-target="#table" class="active tab padding_10" v-if="active_index === 1" :class="{'-active' : active_index === 1}">原木圓桌</li>
+                <li id="tab2" data-tab-target="#cabinet" class="tab padding_10" v-if="active_index === 2" :class="{'-active' : active_index === 2}">原木收納櫃</li>
+                <li id="tab3" data-tab-target="#chai" class="tab padding_10" v-if="active_index === 3" :class="{'-active' : active_index === 3}">原木餐椅</li>
               </ul>
               <!-- <div class="catagory">
                 <button  data-catagory="table" class="active catagory-btn">原木圓桌</button>
@@ -122,10 +123,10 @@
 
             // 產品圖片邊更
             image_el.src =
-              "/img/customize/image/xr-" + this.dataset.name + ".png";
+              "./img/customize/image/xr-" + this.dataset.name + ".png";
 
             // 背景圖變更
-            imagery_el.style.backgroundImage = `url('/img/customize/color/${this.dataset.name}.jpg')`;
+            imagery_el.style.backgroundImage = `url('./img/customize/color/${this.dataset.name}.jpg')`;
             // console.log(imagery_el);
             // console.log(this.dataset.name);
           });
@@ -138,28 +139,30 @@
         let chairBtn = document.querySelector("#tab3");
 
         tableBtn.addEventListener('click', () => {
-        img.src = '/img/customize/image/xr-brown.png';
+        img.src = './img/customize/image/xr-brown.png';
         })
         
         cabinetBtn.addEventListener('click', () => {
-        img.src = '/img/customize/image/cb-brown.png';
+        img.src = './img/customize/image/cb-brown.png';
         })
           
         chairBtn.addEventListener('click', () => {
-        img.src = '/img/customize/image/ch-brown.png';
+        img.src = './img/customize/image/ch-brown.png';
         })
 
-        //由customize.html進入, tab顯示active
+        //由customize.html進入, 對應tab加 class active
         var search_obj = new URLSearchParams(location.search);
         var catagory_btn = document.querySelectorAll('li.tab');
-        console.log(search_obj.get("tab"));
-        console.log(catagory_btn);
+        console.log(search_obj.get("tab")); // 1, 2, 3
+        console.log(catagory_btn); // 陣列
         
-        for(let i = 0; i < catagory_btn.length; i++){
-          if(catagory_btn.values(catagory_btn) === search_obj.get("tab")){
-            this.classList.add('active')
-          }
-        }
+        // for (let i = 0; i < catagory_btn.length; i++){
+        //   if ( this.dataset.value === search_obj.get("tab")){
+        //     this.classList.add('active')
+        //   }else{
+        //     catagory_btn.classList.remove('active')
+        //   }
+        // }
 
         // 款式btn切換class
         var catagory_btn = document.querySelectorAll('li.tab');
