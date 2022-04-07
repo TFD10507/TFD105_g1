@@ -59,12 +59,14 @@
             <section class="section3 mt-5 pb-5 row" id="index">
                 <!-- 小商品圖 -->
                 <div class="small_position col-12 col-md-4 mx-auto" data-aos="fade-right" data-aos-duration="3000">
-                    <div v-for="(item ,index) in smallImgs" :index="index" class="slides-wrapper">
-                        <div class="small" :class="{'-active':active_index === index}">
-                            <img :src="item.img" class="img-fluid">
+                    <div class="inview-scale">
+                        <div v-for="(item ,index) in smallImgs" :index="index" class="slides-wrapper">
+                            <div class="small" :class="{'-active':active_index === index}">
+                                <img :src="item.img" class="img-fluid">
+                            </div>
                         </div>
-                        <!-- 商品名 -->
                     </div>
+                    <!-- 商品名 -->
                     <div class="product-name">
                         <div class="slide-mask" v-for="(item ,index) in productName" :index="index">
                             <p class="shifting-slide-title" :class="{'-active':active_index === index}">{{item.text}}</p>

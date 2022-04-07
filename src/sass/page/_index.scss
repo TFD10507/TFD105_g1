@@ -213,18 +213,32 @@
             // padding-top: 70px;
             .small_position {
                 position: relative;
-                .small {
-                    display: none;
-                    transform: scale(1.5) translateY(20px);
-                    img {
-                        max-width: 100%;
+                .inview-scale {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    .slides-wrapper {
+                        // position: absolute;
+                        // width: 100%;
+                        .small {
+                            // position: absolute;
+                            // width: 100%;
+                            display: none;
+                            // overflow: hidden;
+                            transform: scale(1.5) translateY(100px);
+                            img {
+                                max-width: 100%;
+                            }
+                        }
+                        // 商品展示控制
+                        .-active {
+                            z-index: 1;
+                            display: block;
+                            transform: scale(1) translateY(0);
+                            transition: transform 1.5s;
+                        }
                     }
-                }
-                // 商品展示控制
-                .-active {
-                    display: block;
-                    transform: scale(1) translateY(0);
-                    transition: transform 1.5s;
                 }
                 .controller {
                     position: absolute;
@@ -239,17 +253,27 @@
                     left: calc(50% - 30px);
                 }
                 .product-name {
-                    position: absolute;
-                    left: -25px;
-                    top: calc(50% - 100px);
-                    writing-mode: vertical-lr;
-                    font-size: 50px;
+                    // z-index: 2;
+                    // position: relative;
+                    // width: 100%;
+                    // height: 100%;
                     .shifting-slide-title {
+                        z-index: -5;
+                        position: absolute;
+                        left: -25px;
+                        top: calc(50% - 100px);
+                        // top: -240px;
+                        writing-mode: vertical-lr;
+                        font-size: 50px;
                         display: none;
+                        transform: translateX(-100px);
                     }
                     // 商品展示控制
                     .-active {
+                        z-index: 5;
                         display: block;
+                        transform: translateX(0px);
+                        transition: transform 1.5s;
                     }
                 }
                 @media (max-width: 768.98px) {
@@ -259,11 +283,11 @@
                     }
                 }
             }
-            @media (max-width:768.98px) {
-                .small_position{
+            @media (max-width: 768.98px) {
+                .small_position {
                     max-width: 300px;
                 }
-                .large_position{
+                .large_position {
                     margin-top: 60px;
                 }
             }
