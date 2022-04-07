@@ -1,0 +1,21 @@
+diff a/src/product.html b/src/product.html	(rejected hunks)
+@@ -21,14 +21,14 @@
+     <!-- <div class="box">
+       <section class="productslider"></section>
+     </div> -->
+-    <section class="slide">
++    <section class="slidebar">
+ 
+       <section class="smallicon">
+         <div class="smallicon_case">
+-          <a href=""><img class="smallNav" src="./img/product/nav_nav_all.svg" alt=""></a>
+-          <a href=""><img class="smallNav" src="./img/product/nav_nav_chair.svg" alt=""></a>
+-          <a href=""><img class="smallNav" src="./img/product/nav_nav_table.svg" alt=""></a>
+-          <a href=""><img class="smallNav" src="./img/product/nav_nav_self.svg" alt=""></a>
++          <a class="smallNav" ><img src="./img/product/nav_nav_all.svg" alt=""></a>
++          <a class="smallNav" ><img src="./img/product/nav_nav_chair.svg" alt=""></a>
++          <a class="smallNav" ><img src="./img/product/nav_nav_table.svg" alt=""></a>
++          <a class="smallNav" ><img src="./img/product/nav_nav_self.svg" alt=""></a>
+         </div>
+       </section>
+ 
