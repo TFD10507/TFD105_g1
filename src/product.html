@@ -21,14 +21,14 @@
     <!-- <div class="box">
       <section class="productslider"></section>
     </div> -->
-    <section class="slide">
+    <section class="slidebar">
 
       <section class="smallicon">
         <div class="smallicon_case">
-          <a href=""><img class="smallNav" src="./img/product/nav_nav_all.svg" alt=""></a>
-          <a href=""><img class="smallNav" src="./img/product/nav_nav_chair.svg" alt=""></a>
-          <a href=""><img class="smallNav" src="./img/product/nav_nav_table.svg" alt=""></a>
-          <a href=""><img class="smallNav" src="./img/product/nav_nav_self.svg" alt=""></a>
+          <a class="smallNav" ><img src="./img/product/nav_nav_all.svg" alt=""></a>
+          <a class="smallNav" ><img src="./img/product/nav_nav_chair.svg" alt=""></a>
+          <a class="smallNav" ><img src="./img/product/nav_nav_table.svg" alt=""></a>
+          <a class="smallNav" ><img src="./img/product/nav_nav_self.svg" alt=""></a>
         </div>
       </section>
 
@@ -63,21 +63,23 @@
   @@include('layout/footer.html')
   <script>
 
+   
+   
+
+    let smallicon = document.querySelector(".smallicon"); 
     let smallNav = document.querySelectorAll(".smallNav");
     console.log(smallNav);
 
-    // console.log(smallNav[0].src);
-    smallNav[0].src = "./img/product/nav_nav_all_hover.svg";
-    for(let i =0; i<smallNav.length; i++) {
-      smallNav[i].addEventListener('click', function() {
-        console.log(smallNav[i].src);
-      })
-    }
+    // for(let i = 0 ; i < smallNav.length; i++){
+    //   // console.log(smallNav[i]);
+    // }
+
+
     // smallNav.addEventListener("click",function(){
     //   for (let i = 0; i < smallNav.length; i++){
-    //     console.log(smallNav[i].src);
+    //     // console.log(smallNav[i]);
     //   }
-    // })
+    // }
 
      // for (let i = 0; i < smallNav.length; i++) {
         // console.log(smallNav);
@@ -139,73 +141,73 @@
             [
               {
                 "id": 2,
-                "image": "img/product/chair_001.jpg",
+                "image": "./img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": '1,000'
               },
               {
                 "id": 3,
-                "image": "img/product/shelf_001.jpg",
+                "image": "./img/product/shelf_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 4,
-                "image": "img/product/chair_001.jpg",
+                "image": "./img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 5,
-                "image": "img/product/chair_001.jpg",
+                "image": "./img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 6,
-                "image": "img/product/table_001.jpg",
+                "image": "./img/product/table_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 7,
-                "image": "img/product/chair_001.jpg",
+                "image": "./img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 8,
-                "image": "img/product/shelf_001.jpg",
+                "image": "./img/product/shelf_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 9,
-                "image": "img/product/table_001.jpg",
+                "image": "./img/product/table_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 10,
-                "image": "img/product/chair_001.jpg",
+                "image": "./img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 11,
-                "image": "img/product/shelf_001.jpg",
+                "image": "./img/product/shelf_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 12,
-                "image": "img/product/table_001.jpg",
+                "image": "./img/product/table_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
               {
                 "id": 13,
-                "image": "img/product/chair_001.jpg",
+                "image": "./img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 100
               },
