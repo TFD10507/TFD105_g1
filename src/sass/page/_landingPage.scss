@@ -1,0 +1,57 @@
+.landing_page {
+    .logo {
+        width: 100px;
+        position: fixed;
+        top: 50%;
+        right: calc(50% - 50px);
+        img {
+            max-width: 100%;
+        }
+    }
+    button {
+        border: none;
+        text-decoration: none;
+        color: rgba(white, 0.95);
+        cursor: pointer;
+    }
+    .button {
+        background: white;
+        text-align: center;
+        display: inline-block;
+        font-size: 1.7rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        position: relative;
+        will-change: transform;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    .button-mat {
+        color: #5533ff;
+        border: 0px transparent;
+        border-radius: 0.3rem;
+        transition: 0.3s ease-in-out;
+        transition-delay: 0.35s;
+        overflow: hidden;
+
+        &:before {
+            content: "";
+            display: block;
+            background: $deeper;
+            position: absolute;
+            width: 200%;
+            height: 500%;
+            border-radius: 100%;
+            transition: 0.36s cubic-bezier(0.4, 0, 1, 1);
+        }
+
+        &:hover .psuedo-text {
+            color: white;
+        }
+
+        &:hover {
+            color: transparent;
+        }
+    }
+}
