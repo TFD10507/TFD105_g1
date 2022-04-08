@@ -50,7 +50,7 @@ new Vue({
        img: "./img/product/chair_001.jpg",
        name: "SEOTO-EX 機能椅",
        type: "白橡木",
-       price: 1000,
+       price: 300,
        quantity: 1,
       },
     //   {
