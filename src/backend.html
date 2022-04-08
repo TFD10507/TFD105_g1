@@ -74,7 +74,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- 假資料示意區 -->
+                                <!-- members -->
                                 <tr v-for="(member,index) in members">
                                     <td>{{member.id}}</td>
                                     <td>{{member.account}}</td>
@@ -206,7 +206,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- 假資料示意區 -->
+                                <!-- customization -->
                                 <tr v-for="(fake,i) in fakes">
                                     <td>{{fake.couid}}</td>
                                     <td>{{fake.couaccount}}</td>
@@ -388,13 +388,13 @@
                                         <option value="">椅子</option>
                                     </select>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <label>商品顏色</label>
                                     <select name="" id="">
                                         <option value="">檜木褐</option>
                                         <option value="">桃花粉</option>
                                     </select>
-                                </li>
+                                </li> -->
                                 <li>
                                     <label>商品狀態</label>
                                     <select name="" id="">
@@ -462,13 +462,13 @@
                                         <option value="">椅子</option>
                                     </select>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <label>商品顏色</label>
                                     <select name="" id="">
                                         <option value="">檜木褐</option>
                                         <option value="">桃花粉</option>
                                     </select>
-                                </li>
+                                </li> -->
                                 <li>
                                     <label>商品狀態</label>
                                     <select name="" id="">
@@ -681,7 +681,7 @@
                                 </li>
                                 <li>
                                     <label for="">可使用時間</label>
-                                    <input type="text" id="coupon_day">
+                                    <input type="text" id="coupon_day">天
                                 </li>
                             </ul>
                         </div>
@@ -849,19 +849,23 @@
             },
             methods: {
                 ADDcoupon(){
-                    let coupon_price = $('#coupon_price').val()
-                    let coupon_day = $('#coupon_day').val()
-                    if (coupon_price == '') {
-                        alert("請輸入折扣價錢")
+                    let coupon_price = this.coupon_price
+                    let coupon_day = this.coupon_day
+                    if (coupon_price== '') {
+                        alert("價錢未填寫")
+                        return
+                    }else if (coupon_day == '') {
+                        alert("使用期限未填寫")
                         return
                     }
-                    if (coupon_day == '') {
-                        alert("請輸入折扣可使用天數")
-                        return
+                    else{
+                        alert('新增成功')
+                        this.coupon_price = ''
+                        this.coupon_day =''
                     }
-                    alert('新增折扣成功')
-                },
-                
+                    
+                }
+
             },
         })
     </script>
