@@ -677,17 +677,17 @@
                             <ul class="half">
                                 <li>
                                     <label for="">折扣金額</label>
-                                    <input type="text">
+                                    <input type="text" id="coupon_price">
                                 </li>
                                 <li>
                                     <label for="">可使用時間</label>
-                                    <input type="text">
+                                    <input type="text" id="coupon_day">
                                 </li>
                             </ul>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">更新</button>
+                            <button type="button" class="btn btn-primary" @click="ADDcoupon">新增</button>
                         </div>
                     </form>
                 </div>
@@ -728,7 +728,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">新增</button>
+                            <button type="button" class="btn btn-primary">更新</button>
                         </div>
                     </form>
                 </div>
@@ -843,10 +843,26 @@
                         time:'30',
                     }
                 ]
-
+            },
+            mounted () {
                 
             },
-
+            methods: {
+                ADDcoupon(){
+                    let coupon_price = $('#coupon_price').val()
+                    let coupon_day = $('#coupon_day').val()
+                    if (coupon_price == '') {
+                        alert("請輸入折扣價錢")
+                        return
+                    }
+                    if (coupon_day == '') {
+                        alert("請輸入折扣可使用天數")
+                        return
+                    }
+                    alert('新增折扣成功')
+                },
+                
+            },
         })
     </script>
 </body>
