@@ -677,11 +677,11 @@
                             <ul class="half">
                                 <li>
                                     <label for="">折扣金額</label>
-                                    <input type="text" id="coupon_price">
+                                    <input type="text" id="coupon_price" v-model="coupon_price">
                                 </li>
                                 <li>
                                     <label for="">可使用時間</label>
-                                    <input type="text" id="coupon_day">天
+                                    <input type="text" id="coupon_day" v-model="coupon_day">天
                                 </li>
                             </ul>
                         </div>
@@ -814,6 +814,8 @@
         new Vue({
             el: '#app',
             data: {
+                coupon_price:'',
+                coupon_day:'',
                 members:[
                     {
                         id:'1',
