@@ -15,7 +15,9 @@
                     <li>
                         <a href="member.html">會員中心</a>
                     </li>
-                    <li>會員登入</li>
+                    <li>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#register" onclick="openModal(this,'login')" style="color: white;">會員登入</button>
+                    </li>
                 </ul>
                 <div class="icon btn_cart_open">
                     <i class="fas fa-shopping-cart"></i>
@@ -110,6 +112,10 @@
         </div>
     </nav>
 </header>
+
+<!-- 彈跳視窗js -->
+<script src="../js/jquery.js"></script>
+<script src="../js/pop-up-common.js"></script>
 
 <script>
     $(function () {
