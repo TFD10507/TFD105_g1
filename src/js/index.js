@@ -48,15 +48,17 @@ new Vue({
             }
         },
         prev() {
-
+            // 如果index < 3 而且 index > -1
             if ((this.active_index < (this.smallImgs.length)) && (this.active_index > -1)) {
                 this.active_index--
                 if(this.active_index == -1) {
                     this.active_index = 2
                 }
-            } else{
-                this.active_index = 2
             }
+            // 這段應該是不用寫的
+            // else{ 
+            //     this.active_index = 2
+            // }
 
 
         }

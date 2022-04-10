@@ -44,7 +44,7 @@
             position: relative;
             margin-bottom: 200px;
             padding-bottom: 50px;
-            background-image: url('../img/index/pic_slider01.jpg');
+            background-image: url("../img/index/pic_slider01.jpg");
             background-size: cover;
             background-position: center top;
 
@@ -228,78 +228,122 @@
         .section3 {
             max-width: 1100px;
             margin: 0 auto;
-            // display: flex;
-            // justify-content: space-between;
-            // padding-top: 70px;
+
+            // 小商品圖
             .small_position {
                 position: relative;
                 .inview-scale {
                     position: relative;
-                    width: 100%;
-                    height: 100%;
+                    width: auto;
+                    height: 340px;
                     overflow: hidden;
                     .slides-wrapper {
-                        // position: absolute;
-                        // width: 100%;
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
                         .small {
-                            // position: absolute;
-                            // width: 100%;
-                            display: none;
-                            // overflow: hidden;
-                            transform: scale(1.5) translateY(100px);
-                            img {
-                                max-width: 100%;
-                            }
+                            position: absolute;
+                            height: 100%;
+                            // display: none;
+                            overflow: hidden;
+                            // 控制縮放及推開未顯示的圖片
+                            transform: scale(1.5) translateY(100%);
                         }
                         // 商品展示控制
                         .-active {
+                            // margin-top: 0;
                             z-index: 1;
+                            // height: 100%;
+                            max-width: 100%;
+                            max-height: 100%;
                             display: block;
                             transform: scale(1) translateY(0);
                             transition: transform 1.5s;
                         }
                     }
                 }
+                // 控制前後張
                 .controller {
                     position: absolute;
                     cursor: pointer;
                 }
                 .prev {
-                    top: -30px;
+                    top: -40px;
                     left: calc(50% - 30px);
                 }
                 .next {
-                    bottom: -30px;
+                    bottom: -40px;
                     left: calc(50% - 30px);
                 }
-                .product-name {
-                    // z-index: 2;
-                    // position: relative;
-                    // width: 100%;
-                    // height: 100%;
-                    .shifting-slide-title {
-                        z-index: -5;
-                        position: absolute;
-                        left: -25px;
-                        top: calc(50% - 100px);
-                        // top: -240px;
-                        writing-mode: vertical-lr;
-                        font-size: 50px;
-                        display: none;
-                        transform: translateX(-100px);
+                @media (max-width: 768.98px) {
+                    // 小商品圖控制高度
+                    .inview-scale {
+                        height: 300px;
                     }
-                    // 商品展示控制
-                    .-active {
-                        z-index: 5;
-                        display: block;
-                        transform: translateX(0px);
-                        transition: transform 1.5s;
+                    .next {
+                        bottom: -20px;
+                    }
+                }
+
+                // 商品名稱
+                .product-name {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 50px;
+                    left: -25px;
+                    overflow: hidden;
+                    .slide-mask {
+                        .shifting-slide-title {
+                            position: absolute;
+                            // top: calc(50% - 100px);
+                            // top: -240px;
+                            writing-mode: vertical-lr;
+                            font-size: 50px;
+                            transform: translateX(-100%);
+                        }
+                        // 商品展示控制
+                        .-active {
+                            z-index: 5;
+                            display: block;
+                            transform: translateX(0px);
+                            transition: transform 1s;
+                        }
                     }
                 }
                 @media (max-width: 768.98px) {
-                    .slides-wrapper {
-                        max-width: 300px;
-                        // margin-bottom: 50px;
+                    .product-name {
+                        top: 10px;
+                    }
+                }
+            }
+            .large_position {
+                position: relative;
+                padding: 0;
+                // width: auto;
+                // height: 340px;
+                overflow: hidden;
+                .slides-wrapper-2 {
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    .large {
+                        position: absolute;
+                        // height: 100%;
+                        // display: none;
+                        overflow: hidden;
+                        transform: scale(1) translateX(-100%);
+                    }
+                    // 商品展示控制
+                    .-active {
+                        z-index: 1;
+                        display: block;
+                        max-width: 100%;
+                        max-height: 100%;
+                        transform: scale(1) translateX(0);
+                        transition: transform 1.5s;
                     }
                 }
             }
@@ -309,18 +353,8 @@
                 }
                 .large_position {
                     margin-top: 60px;
-                }
-            }
-            .slides-wrapper-2 {
-                .large {
-                    display: none;
-                    transform: scale(1.5) translateY(20px);
-                }
-                // 商品展示控制
-                .-active {
-                    display: block;
-                    transform: scale(1) translateY(0);
-                    transition: transform 1.5s;
+                    height: 100vh;
+                    width: 80%;
                 }
             }
         }

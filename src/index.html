@@ -86,9 +86,11 @@
                 </div>
                 <!-- 大商品圖 -->
                 <div class="large_position col-12 col-md-6 mx-auto" data-aos="fade-left" data-aos-duration="3000">
-                    <div v-for="(item ,index) in largeImgs" :index="index" class="slides-wrapper-2">
-                        <div class="large" :class="{'-active':active_index === index}">
-                            <img :src="item.img" class="img-fluid">
+                    <div class="inview-scale2">
+                        <div v-for="(item ,index) in largeImgs" :index="index" class="slides-wrapper-2">
+                            <div class="large" :class="{'-active':active_index === index}">
+                                <img :src="item.img" class="img-fluid">
+                            </div>
                         </div>
                     </div>
                 </div>
