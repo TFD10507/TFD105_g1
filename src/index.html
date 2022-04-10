@@ -22,18 +22,18 @@
         <main>
             <!-- banner -->
             <section class="banner bg-yellow row">
-                <div class="pt-5 px-5 col-12 col-md-6" data-aos="fade-up" data-aos-duration="3000">
+                <div class="pt-5 px-5 col-12 col-md-6 mx-auto" data-aos="fade-up" data-aos-duration="3000">
                     <h1 class="text">森活木工</h1>
                     <h1>Mori Furniture</h1>
                     <p class="mt-3">堅持不過度濫砍森林樹木，不大量製造量產，在使用樹木的同時也還給森林呼吸的生活空間，感謝森林給予我們的，為我們的生活帶來方便舒適的環境。</p>
                 </div>
-                <div class="banner_img col-12 col-md-6 parallax-bg" data-aos="fade-up">
+                <!-- <div class="banner_img col-12 col-md-6 parallax-bg" data-aos="fade-up">
                     <div class="bg_1">
                         <img src="./img/index/1.jpg" alt="" class="img-fluid">
                     </div>
 
                     <p class="vertical" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="300">SCROLL</p>
-                </div>
+                </div> -->
             </section>
 
             <!-- 關於我們 -->
@@ -62,7 +62,7 @@
                 <!-- 小商品圖 -->
                 <div class="small_position col-12 col-md-4 mx-auto" data-aos="fade-right" data-aos-duration="3000">
                     <div class="inview-scale">
-                        <div v-for="(item ,index) in smallImgs" :index="index" class="slides-wrapper wow fadeInUp" data-wow-offset="100" data-wow-delay="1s">
+                        <div v-for="(item ,index) in smallImgs" :index="index" class="slides-wrapper">
                             <div class="small" :class="{'-active':active_index === index}">
                                 <img :src="item.img" class="img-fluid">
                             </div>
