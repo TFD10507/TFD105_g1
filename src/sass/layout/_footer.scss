@@ -15,6 +15,16 @@ footer {
                 }
             }
         }
+        .link_icon{
+            display: flex;
+            li{
+                width: 50px;
+                margin-right: 20px;
+                img{
+                    max-width: 100%;
+                }
+            }
+        }
     }
     hr.oneheight{
         height: 1px;
