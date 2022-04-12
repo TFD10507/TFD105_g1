@@ -15,8 +15,101 @@
         @@include('layout/login.html')
         @@include('layout/nav.html')
         <!-- 登入註冊 -->
+        <main class="container ">
+            <div class="card mb-3 mt-5 login" style="max-width: 700px; ">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="./img/index/Group216.png" class="img-fluid" alt="...">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body ">
+                            <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                        aria-selected="true">登入</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-profile" type="button" role="tab"
+                                        aria-controls="pills-profile" aria-selected="false">註冊</button>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content " id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
+                                    <form action="">
+                                        帳號：<br><input type="text" value="" placeholder="請輸入 Email">
+                                        <br>
+                                        <br>
+                                        密碼：<br><input type="text" value="" placeholder="請輸入密碼" class="mb-3">
+                                        <br>
+                                        <br>
+                                        <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
+                                            <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
+                                                <input class="btn btn-warning " type="submit" value="登入"></input>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade" id="pills-profile" role="tabpanel">
+                                    <form action="">
+                                        <label>會員帳號：<br><input type="email" name="email" placeholder="請輸入 Email"
+                                                class="mb-2" required="required" /></label>
+                                        <br>
+                                        <label for="floatingPassword">密碼：<br><input type="password" value=""
+                                                id="floatingPassword" placeholder="請輸入7位以上的英文及數字" class="mb-2"
+                                                pattern="[a-zA-Z0-9]{7,}" required="required">
+                                            <i id="checkEye" class="fas fa-eye"></i>
+                                        </label>
+                                        <br>
+                                        <label>確認密碼：<br><input type="password" value="" placeholder="請再次輸入密碼"
+                                                class="mb-2" pattern="[a-zA-Z0-9]{7,}" required="required">
+                                        </label>
+                                        <br>
+                                        <label>地址：<br><input type="text" value="" placeholder="請輸入地址" class="mb-2"
+                                                required="required">
+                                        </label>
+                                        <br>
+                                        <label>生日：<br><input type="date" min="1950-01-01" max="2021-01-01"
+                                                required="required" class="mb-4">
+                                        </label>
+                                        <br>
+                                        <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
+                                            <input class="btn btn-warning " type="submit" value="註冊"></input>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+
+
+
+
+
+
+        @@include('layout/footer.html')
     </div>
     <script src="./js/main.min.js"></script>
+    <script src="./js/login.js"></script>
+    <script>
+        $("#checkEye").click(function () {
+            if ($(this).hasClass('fa-eye')) {
+                $("#floatingPassword").attr('type', 'text');
+            } else {
+                $("#floatingPassword").attr('type', 'password');
+            }
+            $(this).toggleClass('fa-eye').toggleClass('fa-eye-slash');
+        });
+
+    </script>
 </body>
 
 </html>
