@@ -5,6 +5,16 @@
     main {
         padding-top: 0;
     }
+    @media (max-width:767.98px) {
+        main{
+            max-width: 500px;
+        }
+    }
+    @media (max-width:575.98px) {
+        main{
+            max-width: 350px;
+        }
+    }
     .step {
         display: flex;
         align-items: center;
@@ -128,6 +138,12 @@
     .coupon_content {
         li {
             display: flex;
+            button{
+                min-width: 80px;
+            }
+            input{
+                width: 80%;
+            }
         }
     }
     // 訂單資訊區塊
@@ -151,6 +167,16 @@
     margin: 0 auto;
     main {
         padding-top: 0;
+    }
+    @media (max-width:767.98px) {
+        main{
+            max-width: 500px;
+        }
+    }
+    @media (max-width:575.98px) {
+        main{
+            max-width: 350px;
+        }
     }
     .step {
         display: flex;
@@ -218,7 +244,11 @@
             &:nth-child(2n) {
                 padding-bottom: 20px;
             }
+            input{
+                max-width: 250px;
+            }
             textarea {
+                max-width: 250px;
                 resize: none;
             }
         }
@@ -266,7 +296,16 @@
             width: auto;
         }
     }
-
+    @media (max-width:767.98px) {
+        main{
+            max-width: 500px;
+        }
+    }
+    @media (max-width:575.98px) {
+        main{
+            max-width: 350px;
+        }
+    }
     .step {
         display: flex;
         align-items: center;

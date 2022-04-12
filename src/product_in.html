@@ -8,7 +8,7 @@
     <div class="wrapper">
         
         @@include('layout/login.html')
-        <!-- @@include('layout/nav.html') -->
+        @@include('layout/nav.html')
         <!-- 首頁 -->
         <section class="cart">
             <main class="cart">
@@ -55,13 +55,13 @@
                               
                               <div class="product__buy pr-0">
                                 <div class="product__buy-container">
-                                  <h2 class="product__price"><p class="subtotal__price price">19.99</p></h2>
+                                  <span class="product__price">價格</p><p class="subtotal__price price">300</p></span>
                                 </div>
                               </div>
                             <!-- <p class="price">99,999</p> -->
                             <!-- 與下面對應，這裡是椅子的材質 -->
                             <div class="type_item">
-                                <ul>
+                                <ul style="padding-left: 0px;">
                                     <li><img class="type" src="./img/product/treasure_001.png" alt=""
                                             srcset=""></button></li>
                                     <li><img class="type" src="./img/product/treasure_002.png" alt=""
@@ -99,6 +99,12 @@
     </div>
     <script>  
 
+
+        //  加入購物車鍵
+        $('.submit').on("click",function(){
+            alert("已加入購物車");
+        });
+  
         let main_img = document.querySelector('#mainImg');
         let type = document.querySelectorAll('img.type');
         let chair_style = document.querySelectorAll('img.chair_style');
@@ -173,7 +179,7 @@
             ++input.value;
          }
   
-        res.textContent= (19.99*input.value).toFixed(2);
+        res.textContent= (300*input.value);
 });
 
 

@@ -2,56 +2,37 @@
 <html lang="en">
   <head>
     @@include('layout/head.html')
-    <!-- 字型 google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <!-- lightSlider & fancybox css -->
-    <link
+    <!-- lightSlider & fancybox css 研究中 先註解 -->
+    <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.css"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"
-    />
+    /> -->
   </head>
+
   <body id="customizeItem">
+    @@include('layout/top.html')
     @@include('layout/login.html')
     @@include('layout/nav.html')
-    @@include('layout/top.html')
+    
     <main>
       <section class="container product-detail">
         <div class="row justify-content-between">
           
-          <div data-tab-content class="imagery col-lg-6" style="background-image: url('/img/customize/color/brown.jpg')">
-            <img src="/img/customize/image/xr-brown.png" class="type-image" />
+          <div data-tab-content class="imagery col-lg-6" style="background-image: url('./img/customize/color/brown.jpg')">
+            <img src="./img/customize/image/xr-brown.png" class="type-image" />
           </div>
-
-          <!-- <div data-tab-content class="imagery col-lg-6" style="background-image: url('/img/customize/color/brown.jpg')">
-            <img src="/img/customize/image/cb-brown.png" class="type-image" />
-          </div>
-
-          <div data-tab-content class="imagery col-lg-6" style="background-image: url('/img/customize/color/brown.jpg')">
-            <img src="/img/customize/image/ch-brown.png" class="type-image" />
-          </div> -->
 
           <div class="col-lg-6">
             <form class="detail margin_top_30">
               <ul class="tabs catagory">
-                <li id="tab1" data-tab-target="#table" class="tab padding_10" value="1">原木圓桌</li>
-                <li id="tab2" data-tab-target="#cabinet" class="tab padding_10" value="2">原木收納櫃</li>
-                <li id="tab3" data-tab-target="#chai" class="tab padding_10" value="3">原木餐椅</li>
+                <li id="tab1" data-tab-target="#table" class="tab padding_10" v-if="active_index === 1" :class="{'-active' : active_index === 1}">原木圓桌</li>
+                <li id="tab2" data-tab-target="#cabinet" class="tab padding_10" v-if="active_index === 2" :class="{'-active' : active_index === 2}">原木收納櫃</li>
+                <li id="tab3" data-tab-target="#chai" class="tab padding_10" v-if="active_index === 3" :class="{'-active' : active_index === 3}">原木餐椅</li>
               </ul>
-              <!-- <div class="catagory">
-                <button  data-catagory="table" class="active catagory-btn">原木圓桌</button>
-                <button  data-catagory="cabinet" class="catagory-btn">原木收納櫃</button>
-                <button id="chair" data-catagory="chair" class="catagory-btn">原木餐椅</button>
-              </div> -->
-
               <div class="options">
                 <p class="margin_top_20">請選擇木材</p>
                 <div class="colors btn_grid margin_top_20">
@@ -81,14 +62,12 @@
                     </button>
                   </div>
                 </div>
-
                 <div class="qty margin_top_20">
                   數量<br /><input type="number" value="1" />
                 </div>
                 <div class="comment margin_top_20">
                   其他需求<br /><textarea></textarea>
                 </div>
-
                 <button type="submit" class="submit margin_top_10 btn_style">
                   送出訂製單
                 </button>
@@ -112,6 +91,8 @@
         // console.log(imagery_el);
         const image_el = document.querySelector(".imagery .type-image");
         // console.log(image_el);
+        const search_obj = new URLSearchParams(location.search);
+        // console.log(search_obj.get("tab")); // 1, 2, 3
 
         for (let i = 0; i < color_btn_el.length; i++) {
           let btn = color_btn_el[i];
@@ -120,46 +101,50 @@
             document.querySelector(".colors .color.selected").classList.remove("selected");
             this.classList.add("selected");
 
-            // 產品圖片邊更
-            image_el.src =
-              "/img/customize/image/xr-" + this.dataset.name + ".png";
+            // 產品圖片變更
+            image_el.src = "./img/customize/image/xr-" + this.dataset.name + ".png";
+            // image_el.src = "./img/customize/image/cb-" + this.dataset.name + ".png"; // 待調整
+            // image_el.src = "./img/customize/image/ch-" + this.dataset.name + ".png";
 
             // 背景圖變更
-            imagery_el.style.backgroundImage = `url('/img/customize/color/${this.dataset.name}.jpg')`;
+            imagery_el.style.backgroundImage = `url('./img/customize/color/${this.dataset.name}.jpg')`;
             // console.log(imagery_el);
             // console.log(this.dataset.name);
           });
         }
 
-        // 款式圖片切換
-        let img = document.querySelector(".type-image");
-        let tableBtn = document.querySelector("#tab1");
-        let cabinetBtn = document.querySelector("#tab2");
-        let chairBtn = document.querySelector("#tab3");
+        // 點擊按鈕, 款式圖片切換
+        var img = document.querySelector(".type-image");
+        var tableBtn = document.querySelector("#tab1");
+        var cabinetBtn = document.querySelector("#tab2");
+        var chairBtn = document.querySelector("#tab3");
 
         tableBtn.addEventListener('click', () => {
-        img.src = '/img/customize/image/xr-brown.png';
+        img.src = './img/customize/image/xr-brown.png';
         })
         
         cabinetBtn.addEventListener('click', () => {
-        img.src = '/img/customize/image/cb-brown.png';
+        img.src = './img/customize/image/cb-brown.png';
         })
           
         chairBtn.addEventListener('click', () => {
-        img.src = '/img/customize/image/ch-brown.png';
+        img.src = './img/customize/image/ch-brown.png';
         })
 
-        //由customize.html進入, tab顯示active
-        var search_obj = new URLSearchParams(location.search);
+        //由customize.html進入, 對應tab的class加active
         var catagory_btn = document.querySelectorAll('li.tab');
-        console.log(search_obj.get("tab"));
-        console.log(catagory_btn);
+        // console.log(catagory_btn); // 陣列
         
-        for(let i = 0; i < catagory_btn.length; i++){
-          if(catagory_btn.values(catagory_btn) === search_obj.get("tab")){
-            this.classList.add('active')
+          if ( search_obj.get("tab") == 1 ){
+            catagory_btn[0].classList.add('active'); //對應tab的class加active
+            image_el.src = "./img/customize/image/xr-brown.png"; //對應的圖片
+          }else if( search_obj.get("tab") == 2 ){
+            catagory_btn[1].classList.add('active');
+            image_el.src = "./img/customize/image/cb-brown.png";
+          }else{
+            catagory_btn[2].classList.add('active');
+            image_el.src = "./img/customize/image/ch-brown.png";
           }
-        }
 
         // 款式btn切換class
         var catagory_btn = document.querySelectorAll('li.tab');

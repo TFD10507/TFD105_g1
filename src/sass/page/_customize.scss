@@ -140,7 +140,7 @@
     max-width: 100%;
 
     .imagery {
-      background-image: url(/img/customize/color/brown.jpg);
+      background-image: url(./img/customize/color/brown.jpg);
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -202,7 +202,6 @@
         }
         .colors .btn_wrap .black.selected {
           background-image: url(../img/customize/color/black.jpg);
-          // background-color: #081c15;
           color: $p_color2;
         }
         .colors .btn_wrap .green.selected {
