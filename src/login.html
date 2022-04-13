@@ -16,8 +16,6 @@
         @@include('layout/nav.html')
         <!-- 登入註冊 -->
         <main class="container" id="login">
-            <!-- 
-            <span v-if="switch">abc</span> -->
 
             <div class="card mb-3 mt-5 login" style="max-width: 700px; ">
                 <div class="row">
@@ -45,7 +43,10 @@
                                         帳號：<br><input type="text" value="" placeholder="請輸入 Email">
                                         <br>
                                         <br>
-                                        密碼：<br><input type="text" value="" placeholder="請輸入密碼" class="mb-3">
+                                        密碼：<br><input type="text" value="" placeholder="請輸入密碼" class="mb-3 password">
+                                        <i class="fas fa-eye eye1" @click="eyeToggle='open'" :class="openEye"></i>
+                                        <i class="fa-solid fa-eye-slash eye-slash1" @click="eyeToggle='close'"
+                                            :class="closeEye" style="display: none"></i>
                                         <br>
                                         <br>
                                         <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
@@ -65,18 +66,22 @@
                                                 pattern="09\d{2}-\d{6}" /></label>
                                         <br>
                                         <label for="floatingPassword">密碼：<br><input type="password" value=""
-                                                id="floatingPassword" placeholder="請輸入7位以上的英文及數字" class="mb-2"
+                                                id="floatingPassword" placeholder="請輸入7位以上的英文及數字" class="password mb-2"
                                                 pattern="[a-zA-Z0-9]{7,}" required="required">
                                         </label>
-                                        <i id="checkEye" class="fas fa-eye" @click="eyeToggle='open'"></i>
-                                        <i class="fas fa-eye" @click="eyeToggle='close'"></i>
+                                        <i class="fas fa-eye eye1" @click="eyeToggle='open'" :class="openEye"></i>
+                                        <i class="fa-solid fa-eye-slash eye-slash1" @click="eyeToggle='close'"
+                                            :class="closeEye" style="display: none"></i>
                                         <!-- class="fas fa-eye" -->
 
                                         <br>
-                                        <label>確認密碼：<br><input type="password" value="" placeholder="請再次輸入密碼"
-                                                class="mb-2" pattern="[a-zA-Z0-9]{7,}" required="required">
-                                        </label>
-                                        <br>
+                                        <!-- <label>確認密碼：<br><input type="password" value="" placeholder="請再次輸入密碼"
+                                                class="mb-2 password" pattern="[a-zA-Z0-9]{7,}" required="required">
+                                        </label> -->
+                                        <!-- <i class="fas fa-eye eye1" @click="eyeToggle='open'" :class="openEye"></i>
+                                        <i class="fa-solid fa-eye-slash eye-slash1" @click="eyeToggle='close'"
+                                            :class="closeEye" style="display: none"></i> -->
+
                                         <label>地址：<br><input type="text" value="" placeholder="請輸入地址" class="mb-2"
                                                 required="required">
                                         </label>
@@ -99,30 +104,43 @@
                 </div>
             </div>
         </main>
-
-
-
-
-
-
-
-
         @@include('layout/footer.html')
     </div>
     <script src="./js/main.min.js"></script>
-    <!-- <script src="./js/login.js"></script> -->
-    <!-- <script>
-        $("#checkEye").click(function () {
-            if ($(this).hasClass('fa-eye')) {
-                $("#floatingPassword").attr('type', 'text');
-            } else {
-                $("#floatingPassword").attr('type', 'password');
-            }
-            $(this).toggleClass('fa-eye').toggleClass('fa-eye-slash');
-        });
 
-    </script> -->
-    <script src="./js/test.min.js"></script>
+    <script>
+        new Vue({
+            el: '#login',
+            data() {
+                return {
+                    // className: "fas fa-eye",
+                    eyeToggle: 'close',
+                    eyeToggle2: 'close',
+                }
+            },
+            mounted() {
+
+            },
+            computed: {
+                openEye() {
+                    if (this.eyeToggle == 'open') {
+                        $(".eye-slash1").attr("style", "display:inline")
+                        $('.password').attr('type', 'text');
+                        $(".eye1").attr("style", "display:none")
+                    }
+                },
+
+                closeEye() {
+                    if (this.eyeToggle == 'close') {
+                        $(".eye1").attr("style", "display:inline")
+                        $('.password').attr('type', 'password');
+                        $(".eye-slash1").attr("style", "display:none")
+                    }
+                }
+            }
+
+        })
+    </script>
 </body>
 
 </html>
