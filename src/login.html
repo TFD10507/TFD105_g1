@@ -15,7 +15,10 @@
         @@include('layout/login.html')
         @@include('layout/nav.html')
         <!-- 登入註冊 -->
-        <main class="container ">
+        <main class="container" id="login">
+            <!-- 
+            <span v-if="switch">abc</span> -->
+
             <div class="card mb-3 mt-5 login" style="max-width: 700px; ">
                 <div class="row">
                     <div class="col-md-6">
@@ -57,11 +60,18 @@
                                         <label>會員帳號：<br><input type="email" name="email" placeholder="請輸入 Email"
                                                 class="mb-2" required="required" /></label>
                                         <br>
+                                        <label>手機：<br><input type="text" onkeyup="value=value.replace(/[^\d]/g,'')"
+                                                maxlength=10 placeholder="09xx-xxx-xxx" class="mb-2" required="required"
+                                                pattern="09\d{2}-\d{6}" /></label>
+                                        <br>
                                         <label for="floatingPassword">密碼：<br><input type="password" value=""
                                                 id="floatingPassword" placeholder="請輸入7位以上的英文及數字" class="mb-2"
                                                 pattern="[a-zA-Z0-9]{7,}" required="required">
-                                            <i id="checkEye" class="fas fa-eye"></i>
                                         </label>
+                                        <i id="checkEye" class="fas fa-eye" @click="eyeToggle='open'"></i>
+                                        <i class="fas fa-eye" @click="eyeToggle='close'"></i>
+                                        <!-- class="fas fa-eye" -->
+
                                         <br>
                                         <label>確認密碼：<br><input type="password" value="" placeholder="請再次輸入密碼"
                                                 class="mb-2" pattern="[a-zA-Z0-9]{7,}" required="required">
@@ -71,8 +81,10 @@
                                                 required="required">
                                         </label>
                                         <br>
-                                        <label>生日：<br><input type="date" min="1950-01-01" max="2021-01-01"
-                                                required="required" class="mb-4">
+                                        <label>性別：<br><input type="radio" required="required" class="mb-4" name="gender"
+                                                value="0">男
+                                            <input type="radio" required="required" class="mb-4" name="gender"
+                                                value="1">女
                                         </label>
                                         <br>
                                         <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
@@ -99,7 +111,7 @@
     </div>
     <script src="./js/main.min.js"></script>
     <script src="./js/login.js"></script>
-    <script>
+    <!-- <script>
         $("#checkEye").click(function () {
             if ($(this).hasClass('fa-eye')) {
                 $("#floatingPassword").attr('type', 'text');
@@ -109,7 +121,8 @@
             $(this).toggleClass('fa-eye').toggleClass('fa-eye-slash');
         });
 
-    </script>
+    </script> -->
+    <script src="./js/test.min.js"></script>
 </body>
 
 </html>
