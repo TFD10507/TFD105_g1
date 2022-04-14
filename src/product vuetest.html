@@ -45,27 +45,27 @@
             <a href=""><img src="./img/product/nav_nav_self.svg" alt=""></a>
           </div>
         </section> -->
-      <div class="row flow-offset-1" >
-        <div class="col-sm-6 col-md-4 col-xl-3 aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000"
-          v-for="(product,i) in products">
+
+            <!-- <row-component class="row flow-offset-1" v-for="(item,key) in data" :product-item="item" :key="key"></row-component> -->
+       <div is="row-component" class="row flow-offset-1" v-for="(item,key) in data" :product-item="item" :key="key" >
+        <!-- <div is="row-component"  class="row flow-offset-1" v-for="(item,key) in data" :product-item="item" :key="key"></div>  -->
+        <!-- <row-component class="row flow-offset-1" v-for="(product,i) in products" :product-item="product" :i="i"></row-Component>       -->
+         <div data-aos="fade-up" data-aos-duration="3000"
+          v-for="(product,i) in data" class="col-sm-6 col-md-4 col-xl-3 aos-init aos-animate" >
           <a :href="'./product_in.html?id='+product.id">
             <div class="product tumbnail thumbnail-3">
               <img :src="product.image" alt="">
-              <!-- <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="" @click.stop.prevent="add_cart()"> -->
+              
               <div class="caption">
                 <h6>{{product.productname}}</h6>
                 <p class="price">{{product.price}}</p>
-                </div>
-            </div>
           </a>
-        </div>
-      </div> 
+        </div> 
+      </div>
   </main>
   @@include('layout/footer.html')
-  <script>
-
-   
-   
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>  
 
     let smallicon = document.querySelector(".smallicon"); 
     let smallNav = document.querySelectorAll(".smallNav");
@@ -128,85 +128,104 @@
     // });
     // let a = localStorage.getItem("id");
 
-
+  </script>
+  <script type = "text/x-template" id="rowComponentTemplate">
+    <div class="col-sm-6 col-md-4 col-xl-3 aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000">
+        <a :href="'./product_in.html?id='+productItem.id">
+          <div class="product tumbnail thumbnail-3">
+            <img :src="productItem.image" alt="">
+              <!-- <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="" @click.stop.prevent="add_cart()"> -->
+              <div class="caption" >
+                <h6>{{productItem.productname}}</h6>
+                <p class="price">{{productItem.price}}</p>
+              </div>
+          </div>
+        </a>      
+    </div>
   </script>
   <script>
+    
+    Vue.component("row-component",{
+      props:["productItem"],
+      template:"#rowComponentTemplate"
+    })
+  
       new Vue({
         el: '#app',
         data: {
-          text: 'ss',
+          // text: 'ss',
           // cart2: '<div>asdadx</div>',
-          products:
+          data:
             [
               {
                 "id": 2,
-                "image": "./img/product/chair_001.jpg",
+                "image": "/img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 300
               },
               {
                 "id": 3,
-                "image": "./img/product/shelf_001.jpg",
+                "image": "/img/product/shelf_001.jpg",
                 "productname": "shelf",
                 "price": 500
               },
               {
                 "id": 3,
-                "image": "./img/product/shelf_001.jpg",
+                "image": "/img/product/shelf_001.jpg",
                 "productname": "chair",
                 "price": 500
               },
               {
                 "id": 3,
-                "image": "./img/product/shelf_001.jpg",
+                "image": "/img/product/shelf_001.jpg",
                 "productname": "shelf",
                 "price": 500
               },
               {
                 "id": 3,
-                "image": "./img/product/shelf_001.jpg",
+                "image": "/img/product/shelf_001.jpg",
                 "productname": "shelf",
                 "price": 500
               },
               {
                 "id": 2,
-                "image": "./img/product/chair_001.jpg",
+                "image": "/img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 300
               },
               {
                 "id": 3,
-                "image": "./img/product/shelf_001.jpg",
+                "image": "/img/product/shelf_001.jpg",
                 "productname": "shelf",
                 "price": 500
               },
               {
                 "id": 1,
-                "image": "./img/product/table_001.jpg",
+                "image": "/img/product/table_001.jpg",
                 "productname": "table",
                 "price": 100
               },
               {
                 "id": 2,
-                "image": "./img/product/chair_001.jpg",
+                "image": "/img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 300
               },
               {
                 "id": 3,
-                "image": "./img/product/shelf_001.jpg",
+                "image": "/img/product/shelf_001.jpg",
                 "productname": "shelf",
                 "price": 500
               },
               {
                 "id": 1,
-                "image": "./img/product/table_001.jpg",
+                "image": "/img/product/table_001.jpg",
                 "productname": "table",
                 "price": 100
               },
               {
                 "id": 2,
-                "image": "./img/product/chair_001.jpg",
+                "image": "/img/product/chair_001.jpg",
                 "productname": "chair",
                 "price": 300
               },
@@ -222,16 +241,17 @@
           //         <p class="price">$24.99</p>
 
         },
-        methods: {
-          add_cart() {
-            alert(123);
-          }
-        }
+        // methods: {
+        //   add_cart() {
+        //     alert(123);
+        //   }
+        // }
       })
+      
   </script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
 
-  // <!-- <script>
+   <!-- <script>
   //   let productArr = [{
   //     name: "",
   //     prize: 0,
@@ -245,8 +265,6 @@
 
   //   }
   // </script> -->
-
-  
 </body>
 
 </html>
