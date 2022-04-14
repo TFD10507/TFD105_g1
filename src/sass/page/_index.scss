@@ -1,5 +1,5 @@
 .index {
-    // 輪盤
+    // 輪盤按鈕定位
     .roulette {
         width: 50px;
         padding: 0;
@@ -18,6 +18,27 @@
             max-width: 100%;
         }
     }
+    //輪盤樣式設定
+    .modal-content{
+        margin: 0 auto;
+    }
+    .modal-title{
+        font-size: $h2;
+        color: $p_color1;
+        margin: 0 auto;
+        letter-spacing: 5px;
+        margin-top: 30px;
+    }
+    .sec span{
+        position: relative;
+    }
+    .wheel-inner-img{
+        position: absolute;
+        bottom: 45px;
+        right: -50px;
+        width: 70px;
+    }
+
 
     .wrapper {
         overflow-x: hidden;
