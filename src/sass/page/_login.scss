@@ -1,0 +1,12 @@
+.login {
+
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+        background-color: $p_color1;
+        color: $s_color1;
+    }
+    .login{
+        margin: 0 auto;
+    }
+
+}

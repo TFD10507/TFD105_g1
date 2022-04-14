@@ -2,12 +2,15 @@
     // 輪盤
     .roulette {
         width: 50px;
+        padding: 0;
         z-index: 5;
         cursor: pointer;
         position: fixed;
-        right: 10px;
+        right: 12px;
         bottom: 100px;
         opacity: 0.5;
+        background: none;
+        border: 0;
         &:hover {
             opacity: 1;
         }
