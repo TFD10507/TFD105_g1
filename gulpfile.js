@@ -14,10 +14,10 @@ function package() {
 const rename = require('gulp-rename');
 
 // 搬php
-// function package() {
-//    return src(['src/img/**/*.*' , 'src/img/*.*']).pipe(dest('dist/img'))
-// }
-// const movephp = require('gulp-rename');
+function move() {
+   return src(['src/php/*.*' , 'src/php/**/*.*']).pipe(dest('dist/php'))
+}
+const movephp = require('gulp-rename');
 
 // css minify
 const cleanCSS = require('gulp-clean-css');
