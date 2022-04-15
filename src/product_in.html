@@ -10,7 +10,7 @@
         @@include('layout/login.html')
         @@include('layout/nav.html')
         <!-- 首頁 -->
-        <section class="cart">
+        <section class="cart" id="productInfo">
             <main class="cart">
                 <section class="main">
                     <ul class="cart">
@@ -89,17 +89,14 @@
                             <button class="submit" type="submit">加入購物車</button>
                         </li>
                     </ul>
-
                 </section>
-
             </main>
         </section>
         @@include('layout/top.html')
         @@include('layout/footer.html')
     </div>
+
     <script>  
-
-
         //  加入購物車鍵
         $('.submit').on("click",function(){
             alert("已加入購物車");
@@ -138,22 +135,61 @@
                 fabtn[1].classList.remove('-on');
             })
         })
-        </script>
-    <script>
-        var app = new Vue({
-            el: '#app',
+
+
+        // counter
+        var wrapper= document.querySelector('.count__wrapper'),
+        res= document.querySelector('.subtotal__price'),
+        input= wrapper.querySelector('input[class*=input]');
+
+        wrapper.addEventListener('click', e=>{
+            var t= e.target;
+  
+            input.value= +input.value;
+    
+            if(t.closest('button[class*=--minus]')){
+                --input.value;
+            }
+            else if(t.closest('button[class*=--add]')){
+                ++input.value;
+            }
+            res.textContent= (300*input.value);
+        });
+
+
+        var productInfo = new Vue({
+            el: '#productInfo',
             data: {
-                text: 'ss',
-                cart2: '<div>asdadx</div>',
-                products:
-                    [
-                        {  
-                            "id": 2,
-                            "image": "/img/product/chair_001.jpg",
-                            "productname": "chair",
-                            "price": '1,000'
-                        },
-                    ]
+                product: {
+                    DETAIL: "",
+                    FEATURES: "./images/shopping/1-1.jpg",
+                    IMG: "./images/shopping/1-1.jpg",
+                    INFO: "",
+                    NAME: "",
+                    ONSALE: "",
+                    PRICE: "",
+                    PSN: "",
+                    SOLD: "",
+                    TYPE: "",
+                },
+                content: 'detail',
+                itemNum: 1,
+            },
+            beforeCreate() {
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        productInfo.product = JSON.parse(xhr.responseText)[0];
+                    } else {
+                        alert(xhr.status);
+                    }
+                };
+                let searchURL = window.location.search.split("=");
+                console.log(searchURL);
+                let id = searchURL[searchURL.length - 1];
+                let url = `php/getproductInfo.php?id=${id}`;
+                xhr.open("Get", url, true);
+                // xhr.send(null);
             },
             methods: {
                 add_cart() {
@@ -162,25 +198,7 @@
             }
         })
 
-        // counter
-        var wrapper= document.querySelector('.count__wrapper'),
-        res= document.querySelector('.subtotal__price'),
-        input= wrapper.querySelector('input[class*=input]');
 
-        wrapper.addEventListener('click', e=>{
-        var t= e.target;
-  
-        input.value= +input.value;
-  
-        if(t.closest('button[class*=--minus]')){
-    --input.value;
-        }
-        else if(t.closest('button[class*=--add]')){
-            ++input.value;
-         }
-  
-        res.textContent= (300*input.value);
-});
 
 
 
