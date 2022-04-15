@@ -1,18 +1,21 @@
 <style>
-    img{
-      width: 60px;
-      transform: translate(-25%, -25%);
+  img {
+    width: 60px;
+    transform: translate(-25%, -25%);
 
   }
+
   #wheel-wrapper {
     margin: 40px auto 0;
     width: 266px;
     position: relative;
     padding-left: 10px;
   }
+
   #txt {
     /* color: #eaeaea; */
   }
+
   #wheel {
     width: 250px;
     height: 250px;
@@ -23,6 +26,7 @@
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px, rgba(0, 0, 0, 0.05) 0px 3px 0px;
     transform: rotate(0deg);
   }
+
   #wheel:before {
     content: '';
     position: absolute;
@@ -32,11 +36,13 @@
     border-radius: 50%;
     z-index: 1000;
   }
+
   #inner-wheel {
     width: 100%;
     height: 100%;
     transition: all 6s cubic-bezier(0, .99, .44, .99);
   }
+
   #wheel .sec {
     position: absolute;
     width: 0;
@@ -49,30 +55,37 @@
     top: -10px;
     opacity: 1;
   }
+
   #wheel .sec:nth-child(1) {
     transform: rotate(60deg);
     border-color: #F2F5F4 transparent;
   }
+
   #wheel .sec:nth-child(2) {
     transform: rotate(120deg);
     border-color: #A0643E transparent;
   }
+
   #wheel .sec:nth-child(3) {
     transform: rotate(180deg);
     border-color: #F2F5F4 transparent;
   }
+
   #wheel .sec:nth-child(4) {
     transform: rotate(240deg);
     border-color: #A0643E transparent;
   }
+
   #wheel .sec:nth-child(5) {
     transform: rotate(300deg);
     border-color: #F2F5F4 transparent;
   }
+
   #wheel .sec:nth-child(6) {
     transform: rotate(360deg);
     border-color: #A0643E transparent;
   }
+
   #wheel .sec .fa {
     margin-top: -100px;
     color: rgba(0, 0, 0, 0.2);
@@ -84,7 +97,8 @@
     margin-left: -15px;
     text-shadow: rgba(255, 255, 255, 0.1) 0px -1px 0px, rgba(0, 0, 0, 0.2) 0px 1px 0px;
   }
-  .spinGrp{
+
+  .spinGrp {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -96,6 +110,7 @@
     justify-content: center;
     align-items: center;
   }
+
   #spin {
     width: 68px;
     height: 68px;
@@ -118,6 +133,7 @@
     
      */
   }
+
   #spin:after {
     content: 'START';
     text-align: center;
@@ -132,17 +148,19 @@
     height: 68px;
     display: block;
   }
+
   #spin:before {
     content: '';
     position: absolute;
     width: 0;
     height: 0;
-    border-style:  solid;
+    border-style: solid;
     border-width: 0 20px 28px 20px;
     border-color: transparent transparent #fff transparent;
     top: -12px;
     left: 14px;
   }
+
   #inner-spin {
     width: 54px;
     height: 54px;
@@ -153,15 +171,18 @@
     border-radius: 50%;
     z-index: 999;
     /* box-shadow: rgba(255, 255, 255, 1) 0px -2px 0px inset, rgba(255, 255, 255, 1) 0px 2px 0px inset, rgba(0, 0, 0, 0.4) 0px 0px 5px; */
-    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0% , rgba(234, 234, 234, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr = '#ffffff', endColorstr='#eaeaea', GradientType=1);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(234, 234, 234, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eaeaea', GradientType=1);
   }
+
   #spin:active #inner-spin {
     /* box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 5px inset; */
   }
+
   #spin:active:after {
     font-size: 15px;
   }
+
   #shine {
     width: 250px;
     height: 250px;
@@ -169,95 +190,234 @@
     top: 0;
     left: 0;
     background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.99) 1%, rgba(255, 255, 255, 0.91) 9%, rgba(255, 255, 255, 0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr = '#ffffff', endColorstr='#00ffffff', GradientType=1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=1);
     opacity: 0.1;
   }
+
   @keyframes hh {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: rotate(0deg);
     }
+
     50% {
       transform: rotate(7deg);
     }
   }
+
   .spin {
     animation: hh 0.1s;
   }
-    .alert{
-        position: relative;
-        padding: 1rem 1rem;
-        margin-bottom: 1rem;
-        border: 1px solid transparent;
-        border-radius: 0.25rem;
-    }
-    .alert-primary{
-        color: #664d03;
-        background-color: #fff3cd;
-        border-color: #ffecb5;
-    }
-    .myAlert{
-        width: 200px;
-        position: absolute;
-        top: calc( 100% - 100px ) / 2;
-        left: calc( 100% - 200px ) / 2;
-    }
-    .myAlert .btnClose{
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        cursor: pointer;
-    }
-    .myAlert .btnClose:hover{color: coral;}
-    #alertMsg{display: none;font-size: 0.8rem;}
+
+  .alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+  }
+
+  .alert-primary {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+  }
+
+  .myAlert {
+    width: 200px;
+    position: absolute;
+    top: calc(100% - 100px) / 2;
+    left: calc(100% - 200px) / 2;
+  }
+
+  .myAlert .btnClose {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+
+  .myAlert .btnClose:hover {
+    color: coral;
+  }
+
+  #alertMsg {
+    display: none;
+    font-size: 0.8rem;
+  }
 </style>
 
 <div id="wheel-wrapper">
-    <div id="wheel">
-        <div id="inner-wheel">
-            <div class="sec" saleTitle="享有25%折扣！趕快到結帳頁面看看吧！" rotate="60">
-                <span>
-                    <img class="wheel-inner-img" src="../img/index/wheel/brown-1.svg" alt="">
-                </span>
-            </div>
-            <div class="sec" saleTitle="享有90元折扣！趕快到結帳頁面看看吧！" rotate="120">
-                <span>
-                    <img class="wheel-inner-img" src="../img/index/wheel/white-1.svg" alt="">
-                </span>
-            </div>
-            <div class="sec" saleTitle="享有20%折扣！趕快到結帳頁面看看吧！" rotate="180">
-                <span>
-                    <img class="wheel-inner-img" src="../img/index/wheel/brown-2.svg" alt="">
-                </span>
-            </div>
-            <div class="sec" saleTitle="享有70元折扣！趕快到結帳頁面看看吧！" rotate="240">
-                <span>
-                    <img class="wheel-inner-img" src="../img/index/wheel/white-2.svg" alt="">
-                </span>
-            </div>
-            <div class="sec" saleTitle="享有15%折扣！趕快到結帳頁面看看吧！" rotate="300">
-                <span>
-                    <img class="wheel-inner-img" src="../img/index/wheel/brown-3.svg" alt="">
-                </span>
-            </div>
-            <div class="sec" saleTitle="享有50元折扣！趕快到結帳頁面看看吧！" rotate="360">
-                <span>
-                    <img class="wheel-inner-img" src="../img/index/wheel/white-3.svg" alt="">
-                </span>
-            </div>
-        </div>
-        <!-- 輪盤ㄉ針 -->
-        <div class="spinGrp">
-            <div id="spin">
-                <div id="inner-spin"></div>
-            </div>
-        </div>
-
-        <div id="shine"></div>
+  <div id="wheel">
+    <div id="inner-wheel">
+      <div class="sec" saleTitle="享有25%折扣！趕快到結帳頁面看看吧！" rotate="60">
+        <span>
+          <img class="wheel-inner-img" src="../img/index/wheel/brown-1.svg" alt="">
+        </span>
+      </div>
+      <div class="sec" saleTitle="享有90元折扣！趕快到結帳頁面看看吧！" rotate="120">
+        <span>
+          <img class="wheel-inner-img" src="../img/index/wheel/white-1.svg" alt="">
+        </span>
+      </div>
+      <div class="sec" saleTitle="享有20%折扣！趕快到結帳頁面看看吧！" rotate="180">
+        <span>
+          <img class="wheel-inner-img" src="../img/index/wheel/brown-2.svg" alt="">
+        </span>
+      </div>
+      <div class="sec" saleTitle="享有70元折扣！趕快到結帳頁面看看吧！" rotate="240">
+        <span>
+          <img class="wheel-inner-img" src="../img/index/wheel/white-2.svg" alt="">
+        </span>
+      </div>
+      <div class="sec" saleTitle="享有15%折扣！趕快到結帳頁面看看吧！" rotate="300">
+        <span>
+          <img class="wheel-inner-img" src="../img/index/wheel/brown-3.svg" alt="">
+        </span>
+      </div>
+      <div class="sec" saleTitle="享有50元折扣！趕快到結帳頁面看看吧！" rotate="360">
+        <span>
+          <img class="wheel-inner-img" src="../img/index/wheel/white-3.svg" alt="">
+        </span>
+      </div>
     </div>
-    <!-- <div id="txt"></div> -->
+    <!-- 輪盤ㄉ針 -->
+    <div class="spinGrp">
+      <div id="spin">
+        <div id="inner-spin"></div>
+      </div>
+    </div>
+
+    <div id="shine"></div>
+  </div>
+  <!-- <div id="txt"></div> -->
 </div>
 
 <div class="alert alert-primary myAlert" role="alert" id="alertMsg">
-    <i class="material-icons btnClose" onclick="closeReload()">close</i>
-    <div></div>
-</div> 
+  <i class="material-icons btnClose" onclick="closeReload()">close</i>
+  <div></div>
+</div>
+
+<script>
+  var degree = 1800;
+  var clicks = 0;
+  var clicks1 = 0; //計算連按滑鼠的次數，等待秒數用（轉盤旋轉時需要等待時間）
+
+  $(document).ready(function () {
+
+    // console.log("t--",$('#wheel .sec').eq(5).attr("rotate"))
+    //  console.log("t--4",$('#wheel .sec').eq(4).offset().top)
+    //  console.log("t--0",$('#wheel .sec').eq(0).offset().top)
+
+    var pubed = "notPub"; //判別是否發布過抽獎訊息 預設-未發布
+
+    $('#spin').click(function () {
+      clicks++;
+
+      clicks1++;
+      pubed = "notPub"
+      var newDegree = degree * clicks;
+      var extraDegree = Math.floor(Math.random() * (360 - 1 + 1)) + 1;
+      totalDegree = newDegree + extraDegree;
+
+      var secondCnt = 1000 + (300 * clicks1)  //計算連按滑鼠的次數累加的等待時間
+
+      var arrTemp = [] //排序用
+      var arrObj = [] //抽獎群組內容說明
+
+      $('#wheel .sec').each(function () {
+        var t = $(this);
+        var noY = 0;
+
+        var c = 0;
+        var n = 700;
+        var aoY = 0;
+        var aoL = 0;
+
+        var interval = setInterval(function () {
+          c++;
+          if (c === n) {
+            clearInterval(interval);
+          }
+
+          aoY = t.offset().top;
+          aoL = t.offset().left;
+
+
+          $('#txt').html(aoY);
+
+          // if(aoY < 23.89) {
+          //   $('#spin').addClass('spin');
+          //   setTimeout(function () {
+          //     $("#spin").removeClass('spin');
+          //   }, 100);
+          // }
+        }, 10);
+
+        $('#inner-wheel').css({ 'transform': 'rotate(' + totalDegree + 'deg)' });
+
+        setTimeout(function () {
+
+          noY = t.offset().top;
+          // var imgTop = noY - 250;
+          // let imgTopABS = Math.abs( imgTop );
+
+          // if(minCnt <= aoY){
+          //   minCnt = aoY 
+          //   console.log("minCnt--",minCnt)
+          // }
+
+          var obj = {
+            noY: noY,
+            saleTitle: t.attr("saleTitle"),
+            rotate: t.attr("rotate")
+          }
+          arrTemp.push(noY);
+          arrObj.push(obj);
+
+          // console.log("aoY--",aoY)
+          // console.log("noY--",noY)
+          //console.log("saleTitle--",t.attr("saleTitle"))
+
+
+        }, 5000 + secondCnt); //等待時間，等待動畫轉完後，執行上列程式，抓取最後轉盤的位置
+
+
+      });
+
+
+      setTimeout(function () {
+        arrTemp = arrTemp.sort(); //由小到大排序，找出陣列在1的位置(對應一開始免運費的位置)
+        //arrTemp.reverse();  //反向排序
+
+        //console.log(secondCnt)
+        $.each(arrObj, function (index) {
+          //console.log(`${index}: ${value}`);
+          if (this.noY == arrTemp[1]) {  //找出陣列在1的位置(對應一開始免運費的位置)
+            //console.log(this);
+            if (pubed == "notPub") {
+              // console.log("arrTemp--",arrTemp)
+              // console.log("arrObj--",arrObj)
+              //alert("恭喜抽到 - " + this.saleTitle);
+              var msg = "恭喜您抽到 - " + this.saleTitle
+              $('#alertMsg div').html(msg);
+              $("#alertMsg").slideDown();
+              pubed = "isPub";
+            }
+          }
+        })
+        clicks1 = 0; //抽獎訊息後重計算連按滑鼠次數
+
+      }, 5000 + 1000 + secondCnt) //等待時間，等待動畫轉完後也抓取到最後轉盤的位置後，執行上列程式
+
+
+    });
+  });
+
+  //抽獎訊息
+  function closeReload() {
+    $("#alertMsg").hide();
+
+  }
+</script>

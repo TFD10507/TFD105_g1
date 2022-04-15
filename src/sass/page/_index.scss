@@ -24,10 +24,12 @@
     }
     .modal-title{
         font-size: $h2;
-        color: $p_color1;
+        font-weight: 800;
+        color: $btn_color;
         margin: 0 auto;
-        letter-spacing: 5px;
-        margin-top: 30px;
+        // letter-spacing: 5px;
+        margin-top: 10px;
+        display: inline-block;
     }
     .sec span{
         position: relative;
@@ -38,7 +40,26 @@
         right: -50px;
         width: 70px;
     }
-
+    .coupon-text{
+        text-align: center;
+        font-size: $p;
+        margin-bottom: 0px;
+    }
+    .modal-body{
+        margin-top: -25px;
+        padding-bottom: 50px;
+    }
+    .modal-footer{
+        height: 60px;
+        background-color: $btn_color;
+        
+    }
+    .modal-footer span{
+        color: $p_color2;
+        font-size: $p;
+        font-weight: 600;
+        
+    }
 
     .wrapper {
         overflow-x: hidden;
