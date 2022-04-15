@@ -2,7 +2,7 @@
 #customize {
   width: 100%;
 
-  .btn_style{
+  .btn_style {
     cursor: pointer;
     background-color: $btn_color;
     border-radius: 2px;
@@ -131,7 +131,6 @@
 
 // 客製化內頁
 #customizeItem {
-
   footer {
     margin-top: 0;
   }
@@ -169,11 +168,11 @@
       .tab {
         cursor: pointer;
       }
-      
+
       .tab.active {
         border-bottom: 5px solid $btn_color;
       }
-      
+
       .tab:hover {
         background-color: $btn_color;
         color: $p_color2;
@@ -183,18 +182,17 @@
     .detail {
       text-align: center;
 
-      .catagory{
-
+      .catagory {
         .tab.active {
           border-bottom: 3px solid $btn_color;
         }
-  
+
         .tab:hover {
           background-color: $btn_color;
           color: $p_color2;
         }
       }
-    
+
       .options {
         p {
           color: $p_color;
@@ -228,7 +226,7 @@
           .btn_wrap {
             flex: 1 1 50%;
             width: 50%;
-            button {
+            input {
               display: block;
               width: 100%;
               appearance: none;
@@ -237,13 +235,13 @@
               cursor: pointer;
               border: 1px solid $btn_color;
               border-radius: 2px;
-
               color: $p_color;
               font-size: $p;
               font-weight: 700;
               transition: 0.4s;
             }
-            button:hover {
+
+            input:hover {
               box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
             }
           }
@@ -255,6 +253,34 @@
           height: 30px;
         }
 
+        // .count {
+        //   display: flex;
+        //   padding-bottom: 10px;
+
+        //   div {
+        //     font-size: 20px;
+
+        //     .num-jian,
+        //     .input-num,
+        //     .num-jia {
+        //       text-align: center;
+        //       display: inline-block;
+        //       font-size: 20px;
+        //       width: 30px;
+        //       height: 30px;
+        //       line-height: 30px;
+        //       color: #999;
+        //       cursor: pointer;
+        //       border: 1px solid #e6e6e6;
+        //     }
+
+        //     .input-num {
+        //       width: 48px;
+        //       height: 30px;
+        //     }
+        //   }
+        // }
+
         .comment textarea {
           border: 1px solid $btn_color;
           width: 300px;
@@ -262,33 +288,15 @@
           resize: none;
         }
 
-        .submit {
+        .btn_style {
           cursor: pointer;
           width: 150px;
           border: 1px solid $btn_color;
           background-color: $btn_color;
           border-radius: 2px;
           color: $p_color2;
-          // background-image: linear-gradient(
-          //   to right,
-          //   transparent 50%,
-          //   #76706a 50%,
-          //   #a0643e 100%
-          // );
-          // transition: 0.8s;
-          // background-size: 200%;
-          // background-position: 0% 50%;
-          // width: 150px;
-          // height: 50px;
-          // border: 1px solid $btn_color;
-          // border-radius: 2px;
           margin-bottom: 20px;
         }
-
-        // .submit:hover {
-        //   color: #fff;
-        //   background-position: 100% 50%;
-        // }
 
         @keyframes fadein {
           0% {
@@ -296,6 +304,44 @@
           }
           100% {
             opacity: 1;
+          }
+        }
+
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+          text-align: right;
+
+          .modal-content {
+            background-color: $s_color1;
+            margin: 20% auto;
+            border: 1px solid $p_color1;
+            width: 80%;
+
+            p {
+              text-align: center;
+            }
+
+            .close {
+              color: $p_color;
+              float: right;
+              font-size: $h2;
+              font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+              color: $p_color;
+              text-decoration: none;
+              cursor: pointer;
+            }
           }
         }
       }
