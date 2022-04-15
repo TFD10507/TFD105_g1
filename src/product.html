@@ -53,8 +53,8 @@
               <img :src="product.image" alt="">
               <!-- <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="" @click.stop.prevent="add_cart()"> -->
               <div class="caption">
-                <h6>{{product.productname}}</h6>
-                <p class="price">{{product.price}}</p>
+                <h6 style="margin: 0;">{{product.productname}}</h6>
+                <p style="margin: 0;" class="price">{{product.price}}</p>
                 </div>
             </div>
           </a>
@@ -138,79 +138,81 @@
           // cart2: '<div>asdadx</div>',
           products:
             [
-              {
-                "id": 2,
-                "image": "./img/product/chair_001.jpg",
-                "productname": "chair",
-                "price": 300
-              },
-              {
-                "id": 3,
-                "image": "./img/product/shelf_001.jpg",
-                "productname": "shelf",
-                "price": 500
-              },
-              {
-                "id": 3,
-                "image": "./img/product/shelf_001.jpg",
-                "productname": "chair",
-                "price": 500
-              },
-              {
-                "id": 3,
-                "image": "./img/product/shelf_001.jpg",
-                "productname": "shelf",
-                "price": 500
-              },
-              {
-                "id": 3,
-                "image": "./img/product/shelf_001.jpg",
-                "productname": "shelf",
-                "price": 500
-              },
-              {
-                "id": 2,
-                "image": "./img/product/chair_001.jpg",
-                "productname": "chair",
-                "price": 300
-              },
-              {
-                "id": 3,
-                "image": "./img/product/shelf_001.jpg",
-                "productname": "shelf",
-                "price": 500
-              },
-              {
-                "id": 1,
-                "image": "./img/product/table_001.jpg",
-                "productname": "table",
-                "price": 100
-              },
-              {
-                "id": 2,
-                "image": "./img/product/chair_001.jpg",
-                "productname": "chair",
-                "price": 300
-              },
-              {
-                "id": 3,
-                "image": "./img/product/shelf_001.jpg",
-                "productname": "shelf",
-                "price": 500
-              },
-              {
-                "id": 1,
-                "image": "./img/product/table_001.jpg",
-                "productname": "table",
-                "price": 100
-              },
-              {
-                "id": 2,
-                "image": "./img/product/chair_001.jpg",
-                "productname": "chair",
-                "price": 300
-              },
+              // {
+              //   "id": 2,
+              //   "image": "./img/product/chair01_01.jpg",
+              //   "productname": "羅丹辦公椅",
+              //   "price": 300
+
+              // },
+              // {
+              //   "id": 3,
+              //   "image": "./img/product/shelf01_01.jpg",
+              //   "productname": "SEOTO-EX 機櫃",
+              //   "price": 500
+              // },
+              // {
+              //   "id": 3,
+              //   "image": "./img/product/table01_01.jpg",
+              //   "productname": "chair",
+              //   "price": 500
+              // },
+              // {
+              //   "id": 3,
+              //   "image": "./img/product/shelf_001.jpg",
+              //   "productname": "shelf",
+              //   "price": 500
+              // },
+              // {
+              //   "id": 3,
+              //   "image": "./img/product/shelf_001.jpg",
+              //   "productname": "shelf",
+              //   "price": 500
+              // },
+              // {
+              //    "id": 2,
+              //   "image": "./img/product/chair01_01.jpg",
+              //   "productname": "羅丹辦公椅",
+              //   "price": 300
+              // },
+              // {
+              //   "id": 3,
+              //   "image": "./img/product/shelf_001.jpg",
+              //   "productname": "shelf",
+              //   "price": 500
+              // },
+              // {
+              //   "id": 1,
+              //   "image": "./img/product/table_001.jpg",
+              //   "productname": "table",
+              //   "price": 100
+              // },
+              // {
+              //    "id": 2,
+              //   "image": "./img/product/chair01_01.jpg",
+              //   "productname": "羅丹辦公椅",
+              //   "price": 300
+              // },
+              // {
+              //   "id": 3,
+              //   "image": "./img/product/shelf_001.jpg",
+              //   "productname": "shelf",
+              //   "price": 500
+              // },
+              // {
+              //   "id": 1,
+              //   "image": "./img/product/table_001.jpg",
+              //   "productname": "table",
+              //   "price": 100
+              // },
+              // {
+              //  "id": 2,
+              //   "image": "./img/product/chair01_01.jpg",
+              //   "productname": "羅丹辦公椅",
+              //   "price": 300
+              // },
             ]
+          },
           // <div class="col-sm-6 col-md-4 col-xl-3">
           //   <a href="./product_in.html">
           //     <div class="product tumbnail thumbnail-3">
@@ -221,17 +223,37 @@
           //         <h6>Short Sleeve T-Shirt</h6>
           //         <p class="price">$24.99</p>
 
-        },
+        
         methods: {
           add_cart() {
             alert(123);
           }
-        }
-      })
+          fetch('./')
+                    .then(res => res.json())
+                    .then(res => {
+                        this.members = res
+                    })
+        },
+      // mounted() {    
+      //   const url = 'product.php';    
+      //   fetch(url)
+      //     .then( res => {
+      //       return res.json();
+      //       // alert("成功");
+      //     })
+      //     .then(data => {
+      //       console.log(data);
+      //     })              
+      //     // .catch(err => {
+      //     //   alert("失敗");
+      //     // });
+      //   }      
+      })     
+    
   </script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-  // <!-- <script>
+   <!-- <script>
   //   let productArr = [{
   //     name: "",
   //     prize: 0,
