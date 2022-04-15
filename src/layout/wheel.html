@@ -1,292 +1,424 @@
 <style>
-    * {
-        margin: 0;
-        padding: 0;
+  img {
+    width: 60px;
+    transform: translate(-25%, -25%);
+
+  }
+
+  #wheel-wrapper {
+    margin: 40px auto 0;
+    width: 266px;
+    position: relative;
+    padding-left: 10px;
+  }
+
+  #txt {
+    /* color: #eaeaea; */
+  }
+
+  #wheel {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 8px solid #fff;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px, rgba(0, 0, 0, 0.05) 0px 3px 0px;
+    transform: rotate(0deg);
+  }
+
+  #wheel:before {
+    content: '';
+    position: absolute;
+    /* border: 4px solid rgba(0, 0, 0, 0.1); */
+    width: 242px;
+    height: 242px;
+    border-radius: 50%;
+    z-index: 1000;
+  }
+
+  #inner-wheel {
+    width: 100%;
+    height: 100%;
+    transition: all 6s cubic-bezier(0, .99, .44, .99);
+  }
+
+  #wheel .sec {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 130px 75px 0;
+    border-color: #F2F5F4 transparent;
+    transform-origin: 75px 129px;
+    left: 40px;
+    top: -10px;
+    opacity: 1;
+  }
+
+  #wheel .sec:nth-child(1) {
+    transform: rotate(60deg);
+    border-color: #F2F5F4 transparent;
+  }
+
+  #wheel .sec:nth-child(2) {
+    transform: rotate(120deg);
+    border-color: #A0643E transparent;
+  }
+
+  #wheel .sec:nth-child(3) {
+    transform: rotate(180deg);
+    border-color: #F2F5F4 transparent;
+  }
+
+  #wheel .sec:nth-child(4) {
+    transform: rotate(240deg);
+    border-color: #A0643E transparent;
+  }
+
+  #wheel .sec:nth-child(5) {
+    transform: rotate(300deg);
+    border-color: #F2F5F4 transparent;
+  }
+
+  #wheel .sec:nth-child(6) {
+    transform: rotate(360deg);
+    border-color: #A0643E transparent;
+  }
+
+  #wheel .sec .fa {
+    margin-top: -100px;
+    color: rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1000000;
+    display: block;
+    text-align: center;
+    font-size: 36px;
+    margin-left: -15px;
+    text-shadow: rgba(255, 255, 255, 0.1) 0px -1px 0px, rgba(0, 0, 0, 0.2) 0px 1px 0px;
+  }
+
+  .spinGrp {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #spin {
+    width: 68px;
+    height: 68px;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 0px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-family: "Exo 2", sans-serif;
+    user-select: none;
+    position: relative;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -34px 0 0 -34px;
+    
+    
+    z-index: 1000;
+    
+    
+    
+     */
+  }
+
+  #spin:after {
+    content: 'START';
+    text-align: center;
+    line-height: 68px;
+    color: rgb(27, 27, 27);
+    font-size: 14px;
+    font-weight: 800;
+    /* text-shadow: 0 2px 0 #fff, 0 -2px 0 rgba(0, 0, 0, 0.3); */
+    position: relative;
+    z-index: 100000;
+    width: 68px;
+    height: 68px;
+    display: block;
+  }
+
+  #spin:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 28px 20px;
+    border-color: transparent transparent #fff transparent;
+    top: -12px;
+    left: 14px;
+  }
+
+  #inner-spin {
+    width: 54px;
+    height: 54px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -27px 0 0 -27px;
+    border-radius: 50%;
+    z-index: 999;
+    /* box-shadow: rgba(255, 255, 255, 1) 0px -2px 0px inset, rgba(255, 255, 255, 1) 0px 2px 0px inset, rgba(0, 0, 0, 0.4) 0px 0px 5px; */
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(234, 234, 234, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eaeaea', GradientType=1);
+  }
+
+  #spin:active #inner-spin {
+    /* box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 5px inset; */
+  }
+
+  #spin:active:after {
+    font-size: 15px;
+  }
+
+  #shine {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.99) 1%, rgba(255, 255, 255, 0.91) 9%, rgba(255, 255, 255, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=1);
+    opacity: 0.1;
+  }
+
+  @keyframes hh {
+
+    0%,
+    100% {
+      transform: rotate(0deg);
     }
 
-    body {
-        background: #FBF8EA;
-        color: #fff;
-        font-size: 18px;
-        font-family: "Exo 2", sans-serif;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    50% {
+      transform: rotate(7deg);
     }
+  }
 
-    img {
-        width: 60px;
-        transform: translate(-25%, -25%);
+  .spin {
+    animation: hh 0.1s;
+  }
 
-    }
+  .alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+  }
 
-    #wrapper {
-        margin: 40px auto 0;
-        width: 266px;
-        position: relative;
-    }
+  .alert-primary {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+  }
 
-    #txt {
-        color: #eaeaea;
-    }
+  .myAlert {
+    width: 200px;
+    position: absolute;
+    top: calc(100% - 100px) / 2;
+    left: calc(100% - 200px) / 2;
+  }
 
-    #wheel {
-        width: 250px;
-        height: 250px;
-        border-radius: 50%;
-        position: relative;
-        overflow: hidden;
-        border: 8px solid #fff;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px, rgba(0, 0, 0, 0.05) 0px 3px 0px;
-        transform: rotate(0deg);
-    }
+  .myAlert .btnClose {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
 
-    #wheel:before {
-        content: '';
-        position: absolute;
-        border: 4px solid rgba(0, 0, 0, 0.1);
-        width: 242px;
-        height: 242px;
-        border-radius: 50%;
-        z-index: 1000;
-    }
+  .myAlert .btnClose:hover {
+    color: coral;
+  }
 
-    #inner-wheel {
-        width: 100%;
-        height: 100%;
-        transition: all 6s cubic-bezier(0, .99, .44, .99);
-    }
-
-    #wheel .sec {
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 130px 75px 0;
-        border-color: #F2F5F4 transparent;
-        transform-origin: 75px 129px;
-        left: 50px;
-        top: -4px;
-        opacity: 1;
-    }
-
-    #wheel .sec:nth-child(1) {
-        transform: rotate(60deg);
-        border-color: #F2F5F4 transparent;
-    }
-
-    #wheel .sec:nth-child(2) {
-        transform: rotate(120deg);
-        border-color: #A0643E transparent;
-    }
-
-    #wheel .sec:nth-child(3) {
-        transform: rotate(180deg);
-        border-color: #F2F5F4 transparent;
-    }
-
-    #wheel .sec:nth-child(4) {
-        transform: rotate(240deg);
-        border-color: #A0643E transparent;
-    }
-
-    #wheel .sec:nth-child(5) {
-        transform: rotate(300deg);
-        border-color: #F2F5F4 transparent;
-    }
-
-    #wheel .sec:nth-child(6) {
-        transform: rotate(360deg);
-        border-color: #A0643E transparent;
-    }
-
-    #wheel .sec .fa {
-        margin-top: -100px;
-        color: rgba(0, 0, 0, 0.2);
-        position: relative;
-        z-index: 1000000;
-        display: block;
-        text-align: center;
-        font-size: 36px;
-        margin-left: -15px;
-        text-shadow: rgba(255, 255, 255, 0.1) 0px -1px 0px, rgba(0, 0, 0, 0.2) 0px 1px 0px;
-    }
-
-    #spin {
-        width: 68px;
-        height: 68px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin: -34px 0 0 -34px;
-        border-radius: 50%;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 0px;
-        z-index: 1000;
-        background: #fff;
-        cursor: pointer;
-        font-family: "Exo 2", sans-serif;
-        user-select: none;
-    }
-
-    #spin:after {
-        content: 'START';
-        text-align: center;
-        line-height: 68px;
-        color: rgb(27, 27, 27);
-        font-size: 14px;
-        font-weight: 800;
-        /* text-shadow: 0 2px 0 #fff, 0 -2px 0 rgba(0, 0, 0, 0.3); */
-        position: relative;
-        z-index: 100000;
-        width: 68px;
-        height: 68px;
-        display: block;
-    }
-
-    #spin:before {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 20px 28px 20px;
-        border-color: transparent transparent #fff transparent;
-        top: -12px;
-        left: 14px;
-    }
-
-    #inner-spin {
-        width: 54px;
-        height: 54px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin: -27px 0 0 -27px;
-        border-radius: 50%;
-        z-index: 999;
-        /* box-shadow: rgba(255, 255, 255, 1) 0px -2px 0px inset, rgba(255, 255, 255, 1) 0px 2px 0px inset, rgba(0, 0, 0, 0.4) 0px 0px 5px; */
-        background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(234, 234, 234, 1) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eaeaea', GradientType=1);
-    }
-
-    #spin:active #inner-spin {
-        /* box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 5px inset; */
-    }
-
-    #spin:active:after {
-        font-size: 15px;
-    }
-
-    #shine {
-        width: 250px;
-        height: 250px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.99) 1%, rgba(255, 255, 255, 0.91) 9%, rgba(255, 255, 255, 0) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=1);
-        opacity: 0.1;
-    }
-
-    @keyframes hh {
-
-        0%,
-        100% {
-            transform: rotate(0deg);
-        }
-
-        50% {
-            transform: rotate(7deg);
-        }
-    }
-
-    .spin {
-        animation: hh 0.1s;
-    }
+  #alertMsg {
+    display: none;
+    font-size: 0.8rem;
+  }
 </style>
-<div id="wrapper">
-    <div id="wheel">
-        <div id="inner-wheel">
-            <div class="sec">
-                <span class="fa fa-bell-o">
-                    <img src="../img/index/wheel/bath-solid.svg" alt="">
-                </span>
-            </div>
-            <div class="sec">
-                <span class="fa fa-comment-o">
-                    <img src="../img/index/wheel/bed-solid.svg" alt="">
-                </span>
-            </div>
-            <div class="sec">
-                <span class="fa fa-smile-o">
-                    <img src="../img/index/wheel/bomb-solid.svg" alt="">
-                </span>
-            </div>
-            <div class="sec">
-                <span class="fa fa-heart-o">
-                    <img src="../img/index/wheel/chair-solid.svg" alt="">
-                </span>
-            </div>
-            <div class="sec">
-                <span class="fa fa-star-o">
-                    <img src="../img/index/wheel/cup-solid.svg" alt="">
-                </span>
-            </div>
-            <div class="sec">
-                <span class="fa fa-lightbulb-o">
-                    <img src="../img/index/wheel/door-closed-solid.svg" alt="">
-                </span>
-            </div>
-        </div>
 
-        <div id="spin">
-            <div id="inner-spin"></div>
-        </div>
-
-        <div id="shine"></div>
+<div id="wheel-wrapper">
+  <div id="wheel">
+    <div id="inner-wheel">
+      <div class="sec" saleTitle="享有25%折扣！趕快到結帳頁面看看吧！" rotate="60">
+        <span>
+          <img class="wheel-inner-img" src="../img/index/wheel/brown-1.svg" alt="">
+        </span>
+      </div>
+      <div class="sec" saleTitle="享有90元折扣！趕快到結帳頁面看看吧！" rotate="120">
+        <span>
+          <img class="wheel-inner-img" src="../img/index/wheel/white-1.svg" alt="">
+        </span>
+      </div>
+      <div class="sec" saleTitle="享有20%折扣！趕快到結帳頁面看看吧！" rotate="180">
+        <span>
+          <img class="wheel-inner-img" src="../img/index/wheel/brown-2.svg" alt="">
+        </span>
+      </div>
+      <div class="sec" saleTitle="享有70元折扣！趕快到結帳頁面看看吧！" rotate="240">
+        <span>
+          <img class="wheel-inner-img" src="../img/index/wheel/white-2.svg" alt="">
+        </span>
+      </div>
+      <div class="sec" saleTitle="享有15%折扣！趕快到結帳頁面看看吧！" rotate="300">
+        <span>
+          <img class="wheel-inner-img" src="../img/index/wheel/brown-3.svg" alt="">
+        </span>
+      </div>
+      <div class="sec" saleTitle="享有50元折扣！趕快到結帳頁面看看吧！" rotate="360">
+        <span>
+          <img class="wheel-inner-img" src="../img/index/wheel/white-3.svg" alt="">
+        </span>
+      </div>
     </div>
-    <!-- <div id="txt"></div> -->
+    <!-- 輪盤ㄉ針 -->
+    <div class="spinGrp">
+      <div id="spin">
+        <div id="inner-spin"></div>
+      </div>
+    </div>
+
+    <div id="shine"></div>
+  </div>
+  <!-- <div id="txt"></div> -->
 </div>
+
+<div class="alert alert-primary myAlert" role="alert" id="alertMsg">
+  <i class="material-icons btnClose" onclick="closeReload()">close</i>
+  <div></div>
+</div>
+
 <script>
-    var degree = 1800;
-    var clicks = 0;
+  var degree = 1800;
+  var clicks = 0;
+  var clicks1 = 0; //計算連按滑鼠的次數，等待秒數用（轉盤旋轉時需要等待時間）
 
-    $(document).ready(function () {
-        $('#spin').click(function () {
+  $(document).ready(function () {
 
-            clicks++;
-            var newDegree = degree * clicks;
-            var extraDegree = Math.floor(Math.random() * (360 - 1 + 1)) + 1;
-            totalDegree = newDegree + extraDegree;
+    // console.log("t--",$('#wheel .sec').eq(5).attr("rotate"))
+    //  console.log("t--4",$('#wheel .sec').eq(4).offset().top)
+    //  console.log("t--0",$('#wheel .sec').eq(0).offset().top)
 
-            $('#wheel .sec').each(function () {
-                var t = $(this);
-                var noY = 0;
+    var pubed = "notPub"; //判別是否發布過抽獎訊息 預設-未發布
 
-                var c = 0;
-                var n = 700;
-                var interval = setInterval(function () {
-                    c++;
-                    if (c === n) {
-                        clearInterval(interval);
-                    }
+    $('#spin').click(function () {
+      clicks++;
 
-                    var aoY = t.offset().top;
-                    $('#txt').html(aoY);
+      clicks1++;
+      pubed = "notPub"
+      var newDegree = degree * clicks;
+      var extraDegree = Math.floor(Math.random() * (360 - 1 + 1)) + 1;
+      totalDegree = newDegree + extraDegree;
 
-                    if (aoY < 23.89) {
-                        $('#spin').addClass('spin');
-                        setTimeout(function () {
-                            $("#spin").removeClass('spin');
-                        }, 100);
-                    }
-                }, 10);
+      var secondCnt = 1000 + (300 * clicks1)  //計算連按滑鼠的次數累加的等待時間
 
-                $('#inner-wheel').css({ 'transform': 'rotate(' + totalDegree + 'deg)' });
+      var arrTemp = [] //排序用
+      var arrObj = [] //抽獎群組內容說明
 
-                noY = t.offset().top;
-            });
-        });
+      $('#wheel .sec').each(function () {
+        var t = $(this);
+        var noY = 0;
+
+        var c = 0;
+        var n = 700;
+        var aoY = 0;
+        var aoL = 0;
+
+        var interval = setInterval(function () {
+          c++;
+          if (c === n) {
+            clearInterval(interval);
+          }
+
+          aoY = t.offset().top;
+          aoL = t.offset().left;
+
+
+          $('#txt').html(aoY);
+
+          // if(aoY < 23.89) {
+          //   $('#spin').addClass('spin');
+          //   setTimeout(function () {
+          //     $("#spin").removeClass('spin');
+          //   }, 100);
+          // }
+        }, 10);
+
+        $('#inner-wheel').css({ 'transform': 'rotate(' + totalDegree + 'deg)' });
+
+        setTimeout(function () {
+
+          noY = t.offset().top;
+          // var imgTop = noY - 250;
+          // let imgTopABS = Math.abs( imgTop );
+
+          // if(minCnt <= aoY){
+          //   minCnt = aoY 
+          //   console.log("minCnt--",minCnt)
+          // }
+
+          var obj = {
+            noY: noY,
+            saleTitle: t.attr("saleTitle"),
+            rotate: t.attr("rotate")
+          }
+          arrTemp.push(noY);
+          arrObj.push(obj);
+
+          // console.log("aoY--",aoY)
+          // console.log("noY--",noY)
+          //console.log("saleTitle--",t.attr("saleTitle"))
+
+
+        }, 5000 + secondCnt); //等待時間，等待動畫轉完後，執行上列程式，抓取最後轉盤的位置
+
+
+      });
+
+
+      setTimeout(function () {
+        arrTemp = arrTemp.sort(); //由小到大排序，找出陣列在1的位置(對應一開始免運費的位置)
+        //arrTemp.reverse();  //反向排序
+
+        //console.log(secondCnt)
+        $.each(arrObj, function (index) {
+          //console.log(`${index}: ${value}`);
+          if (this.noY == arrTemp[1]) {  //找出陣列在1的位置(對應一開始免運費的位置)
+            //console.log(this);
+            if (pubed == "notPub") {
+              // console.log("arrTemp--",arrTemp)
+              // console.log("arrObj--",arrObj)
+              //alert("恭喜抽到 - " + this.saleTitle);
+              var msg = "恭喜您抽到 - " + this.saleTitle
+              $('#wheel-message').html(msg);
+              // $("#alertMsg").slideDown();
+              pubed = "isPub";
+            }
+          }
+        })
+        clicks1 = 0; //抽獎訊息後重計算連按滑鼠次數
+
+      }, 5000 + 1000 + secondCnt) //等待時間，等待動畫轉完後也抓取到最後轉盤的位置後，執行上列程式
+
+
     });
+  });
+
+  //抽獎訊息
+  function closeReload() {
+    $("#alertMsg").hide();
+
+  }
+  
 </script>

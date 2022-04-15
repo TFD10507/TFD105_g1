@@ -20,11 +20,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <!-- css -->
     <link rel="stylesheet" href="./css/style.css">
-    <!-- dataTable css.js CDN
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script> -->
-
     <title>backend</title>
 </head>
 
@@ -53,7 +48,7 @@
                     <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
                         href="#list-settings" role="tab" aria-controls="settings">客製化管理</a>
                     <a class="list-group-item list-group-item-action" id="list-coupon-list" data-toggle="list"
-                        href="#list-coupon" role="tab" aria-controls="coupon">折扣碼管理</a>
+                        href="#list-coupon" role="tab" aria-controls="coupon" @click="call_coupon">折扣碼管理</a>
                 </div>
             </div>
             <!-- 右半邊內容區塊 -->
@@ -80,16 +75,17 @@
                             </thead>
                             <tbody>
                                 <!-- 假資料示意區 -->
-                                <tr>
-                                    <td>MB-001</td>
-                                    <td>Chaos00</td>
-                                    <td>Lee</td>
-                                    <td>正常</td>
-                                    <td>2020.1.1</td>
+                                <tr v-for="(member,index) in members">
+                                    <td>{{member.id}}</td>
+                                    <td>{{member.account}}</td>
+                                    <td>{{member.name}}</td>
+                                    <td>{{member.text}}</td>
+                                    <td>{{member.jointime}}</td>
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#memberedit">
+                                            data-target="#memberedit" :id="'member_'+member.id"
+                                            @click="member_edit(member.id)">
                                             編輯
                                         </button>
                                     </td>
@@ -109,14 +105,6 @@
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#addproductedit">
                                     <i class="bi bi-bag-plus-fill add"></i>點擊新增商品
-                                </button>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#addkindedit">
-                                    <i class="bi bi-bookmark-plus-fill add"></i>點擊新增種類
-                                </button>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#addcoloredit">
-                                    <i class="bi bi-paint-bucket add"></i>點擊新增材質
                                 </button>
                             </section>
                             <!-- 表單顯示區塊起始 -->
@@ -200,6 +188,14 @@
                             <!-- 標題.新增資料區塊 -->
                             <section>
                                 <h2 class="h2">客製化管理</h2>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#addkindedit">
+                                    <i class="bi bi-bookmark-plus-fill add"></i>點擊新增種類
+                                </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#addcoloredit">
+                                    <i class="bi bi-paint-bucket add"></i>點擊新增顏色
+                                </button>
                             </section>
                             <!-- 表單顯示區塊起始 -->
                             <thead>
@@ -229,7 +225,7 @@
                         </table>
                     </div>
                     <!-- 客製區結束 -->
-                    
+
                     <!-- 折扣區開始 -->
                     <div class="tab-pane fade" id="list-coupon" role="tabpanel" aria-labelledby="list-coupon-list">
                         <table id="table_id" class="display table_id">
@@ -253,16 +249,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- 假資料示意區 -->
-                                <tr v-for="(coupon,index) in coupons">
+                                <!-- coupon -->
+                                <tr v-for="(coupon,c) in coupons">
                                     <td>{{coupon.id}}</td>
                                     <td>{{coupon.price}}</td>
                                     <td>{{coupon.date}}</td>
-                                    <td>{{coupon.time}}</td>
+                                    <td>{{coupon.period}}天</td>
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#couponedit" :id="'coupon_'+coupon.id">
+                                            data-target="#couponedit" :id="'coupon_'+coupon.id"
+                                            @click="coupon_edit(coupon.id)">
                                             編輯
                                         </button>
                                     </td>
@@ -293,59 +290,50 @@
                             <ul class="half">
                                 <li>
                                     <label>會員帳號</label>
-                                    <input type="text" disabled>
+                                    <input type="text" disabled v-model="member.account">
                                 </li>
                                 <li>
                                     <label>會員名稱</label>
-                                    <input type="text">
-                                </li>
-                                <li>
-                                    <label>出生日期</label>
-                                    <input type="text">
+                                    <input type="text" v-model="member.name">
                                 </li>
                                 <li>
                                     <label>連絡電話</label>
-                                    <input type="text">
+                                    <input type="text" v-model="member.phone">
                                 </li>
                                 <li>
                                     <label>收貨地址</label>
-                                    <input type="text">
+                                    <input type="text" v-model="member.address">
                                 </li>
                             </ul>
                             <ul class="half">
                                 <li>
                                     <label>會員編號</label>
-                                    <input type="text" disabled>
+                                    <input type="text" disabled v-model="member.id">
                                 </li>
                                 <li>
                                     <label> 密碼</label>
-                                    <input type="text">
+                                    <input type="text" v-model="member.password">
                                 </li>
                                 <li>
                                     <label>性別</label>
-                                    <h6>男</h6>
-                                    <input type="radio" name="gender">
-                                    <h6>女</h6>
-                                    <input type="radio" name="gender">
-                                    <h6>第三性</h6>
-                                    <input type="radio" name="gender">
+                                    <input type="text" disabled v-model="member.gender">
                                 </li>
                                 <li>
                                     <label>註冊日期</label>
-                                    <input type="text" disabled>
+                                    <input type="text" disabled v-model="member.jointime">
                                 </li>
                                 <li>
                                     <label>會員狀態</label>
-                                    <select name="" id="">
-                                        <option value="">正常</option>
-                                        <option value="">凍結</option>
+                                    <select name="member_status" id="member_status">
+                                        <option value="0">正常</option>
+                                        <option value="1">凍結</option>
                                     </select>
                                 </li>
                             </ul>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">更新</button>
+                            <button type="button" class="btn btn-primary" @click="UpdateMember">更新</button>
                         </div>
                     </form>
                 </div>
@@ -358,7 +346,7 @@
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form action="">
+                    <form id="ADD_product">
                         <div class="modal-header">
                             <h5 class="modal-title" id="addproducteditLabel">商品資訊</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -369,42 +357,35 @@
                             <ul class="half">
                                 <li>
                                     <label>商品名稱</label>
-                                    <input type="text">
+                                    <input type="text" v-model.trim="product_name">
                                 </li>
                                 <li>
                                     <label>商品庫存</label>
-                                    <input type="text">
+                                    <input type="text" v-model="product_stock">
                                 </li>
                                 <li>
                                     <label>商品金額</label>
-                                    <input type="text">
+                                    <input type="text" v-model="product_price">
                                 </li>
                                 <li>
                                     <label>商品內容</label>
-                                    <textarea name="" id="" cols="35" rows="6"></textarea>
+                                    <textarea name="" id="" cols="35" rows="6" v-model="product_detail"></textarea>
                                 </li>
                             </ul>
                             <ul class="half">
                                 <li>
                                     <label>商品種類</label>
                                     <select name="" id="">
-                                        <option value="">桌子</option>
-                                        <option value="">櫃子</option>
-                                        <option value="">椅子</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <label>商品顏色</label>
-                                    <select name="" id="">
-                                        <option value="">檜木褐</option>
-                                        <option value="">桃花粉</option>
+                                        <option value="0">桌子</option>
+                                        <option value="1">櫃子</option>
+                                        <option value="2">椅子</option>
                                     </select>
                                 </li>
                                 <li>
                                     <label>商品狀態</label>
                                     <select name="" id="">
-                                        <option value="">正常</option>
-                                        <option value="">停售</option>
+                                        <option value="0">正常</option>
+                                        <option value="1">停售</option>
                                     </select>
                                 </li>
                                 <li>
@@ -415,7 +396,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">新增</button>
+                            <button type="button" class="btn btn-primary" @click="ADDproduct">新增</button>
                         </div>
                     </form>
                 </div>
@@ -439,46 +420,39 @@
                             <ul class="half">
                                 <li>
                                     <label>商品編號</label>
-                                    <input type="text" disabled>
+                                    <input type="text" disabled ">
                                 </li>
                                 <li>
                                     <label>商品名稱</label>
-                                    <input type="text">
+                                    <input type=" text" ">
                                 </li>
                                 <li>
                                     <label>商品庫存</label>
-                                    <input type="text">
+                                    <input type=" text" ">
                                 </li>
                                 <li>
                                     <label>商品金額</label>
-                                    <input type="text">
+                                    <input type=" text" ">
                                 </li>
                                 <li>
                                     <label>商品內容</label>
-                                    <textarea name="" id="" cols="35" rows="6"></textarea>
+                                    <textarea name="" id="" cols=" 35" rows="6">{{}}</textarea>
                                 </li>
                             </ul>
                             <ul class="half">
                                 <li>
                                     <label>商品種類</label>
                                     <select name="" id="">
-                                        <option value="">桌子</option>
-                                        <option value="">櫃子</option>
-                                        <option value="">椅子</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <label>商品顏色</label>
-                                    <select name="" id="">
-                                        <option value="">檜木褐</option>
-                                        <option value="">桃花粉</option>
+                                        <option value="1">桌子</option>
+                                        <option value="2">櫃子</option>
+                                        <option value="3">椅子</option>
                                     </select>
                                 </li>
                                 <li>
                                     <label>商品狀態</label>
                                     <select name="" id="">
-                                        <option value="">正常</option>
-                                        <option value="">停售</option>
+                                        <option value="0">上架</option>
+                                        <option value="1">下架</option>
                                     </select>
                                 </li>
                                 <li>
@@ -546,7 +520,7 @@
                                     <select name="" id="">
                                         <option value="">未付款</option>
                                         <option value="">付款完成</option>
-                                        <option value="">待出貨</option>
+                                        <option value="">已出貨</option>
                                     </select>
                                 </li>
                             </ul>
@@ -682,17 +656,17 @@
                             <ul class="half">
                                 <li>
                                     <label for="">折扣金額</label>
-                                    <input type="text">
+                                    <input type="text" value="" id="coupon_price" v-model.number.trim="coupon_price">
                                 </li>
                                 <li>
                                     <label for="">可使用時間</label>
-                                    <input type="text">
+                                    <input type="text" value="" id="coupon_day" v-model.number.trim="coupon_day">天
                                 </li>
                             </ul>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">更新</button>
+                            <button type="button" class="btn btn-primary" @click="ADDcoupon">新增</button>
                         </div>
                     </form>
                 </div>
@@ -716,24 +690,21 @@
                             <ul class="half">
                                 <li>
                                     <label for="">折扣碼編號</label>
-                                    <select name="" id="">
-                                        <option value="">CP500</option>
-                                        <option value="">CP100</option>
-                                    </select>
+                                    <input type="text" disabled v-model="coupon.id">
                                 </li>
                                 <li>
                                     <label for="">折扣金額</label>
-                                    <input type="text">
+                                    <input type="text" v-model="coupon.price">
                                 </li>
                                 <li>
                                     <label for="">可使用時間</label>
-                                    <input type="text">
+                                    <input type="text" v-model="coupon.period">
                                 </li>
                             </ul>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">新增</button>
+                            <button type="button" class="btn btn-primary">更新</button>
                         </div>
                     </form>
                 </div>
@@ -757,17 +728,17 @@
                             <ul class="half">
                                 <li>
                                     <label for="">種類名稱</label>
-                                    <input type="text">
+                                    <input type="text" v-model="kind_name">
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <label for="">種類照片</label>
                                     <input type="file">
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">新增</button>
+                            <button type="button" class="btn btn-primary" @click="ADDkind">新增</button>
                         </div>
                     </form>
                 </div>
@@ -775,14 +746,14 @@
         </div>
         <!-- 創建種類 結束 -->
 
-        <!-- 創建材質 開始 -->
+        <!-- 創建顏色 開始 -->
         <div class="modal fade" id="addcoloredit" tabindex="-1" role="dialog" aria-labelledby="addcoloreditLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form action="">
+                    <form id="Add_color">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="addcoloreditLabel">創建材質</h5>
+                            <h5 class="modal-title" id="addcoloreditLabel">創建顏色</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -790,18 +761,18 @@
                         <div class="modal-body">
                             <ul class="half">
                                 <li>
-                                    <label for="">材質名稱</label>
-                                    <input type="text">
+                                    <label for="">顏色名稱</label>
+                                    <input type="text" v-model.trim="color_name">
                                 </li>
                                 <li>
-                                    <label for="">種類照片</label>
-                                    <input type="file">
+                                    <label for="">顏色照片</label>
+                                    <input type="file" accept="image/*" name="colorpic" id="Add_color_pic">
                                 </li>
                             </ul>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">新增</button>
+                            <button type="submit" class="btn btn-primary" @click.prevent="ADDcolor">新增</button>
                         </div>
                     </form>
                 </div>
@@ -812,39 +783,234 @@
         <!-- Modal 結束-->
     </main>
 
-    <!-- TataTable 啟動.翻譯引入 -->
-    <!-- <Script src="./js/vendors/datatable.min.js"></Script> -->
     <!-- Vus,js cdn -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
     <!-- VUE.JS -->
     <script>
         new Vue({
             el: '#app',
             data: {
+                member: {
+                    id: '',
+                    account: '',
+                    phone: '',
+                    password: '',
+                    birthday: '',
+                    gender: '',
+                    jointime: '',
+                    name: '',
+                    address: '',
+                    status: 0,
+                },
+                coupon: {
+                    id: '',
+                    price: '',
+                    period: '',
+                },
+                coupon_price: '',
+                coupon_day: '',
+                color_name: '',
+                color_pic: '',
+                members: [],
                 fakes: [
                     {
-                        couid:'1',
-                        couaccount:'ooooo',
-                        coutime:'2020-1-1',
+                        couid: '1',
+                        couaccount: 'ooooo',
+                        coutime: '2020-1-1',
                     },
                     {
-                        couid:'2',
-                        couaccount:'rrrrrr',
-                        coutime:'2020-1-2',
+                        couid: '2',
+                        couaccount: 'rrrrrr',
+                        coutime: '2020-1-2',
                     },
                 ],
-                coupons:[
-                    {
-                        id:'1',
-                        price:'500',
-                        date:'2020-1-1',
-                        time:'30',
-                    }
-                ]
-
-                
+                coupons: [],
+                product_name: '',
+                product_price: '',
+                product_stock: '',
+                product_detail: '',
+                kind_name: '',
             },
+            mounted() {  //當網頁開啟時馬上執行以下內容
+                //撈出會員資料
+                fetch('./Select_member.php')
+                    .then(res => res.json())
+                    .then(res => {
+                        this.members = res
+                    })
+                //
+                const input = document.querySelector('input[type="file"]')
+            },
+            methods: {
+                member_edit(id) {
+                    // alert(id)
+                    fetch('./Select_member.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        mode: "cors",
+                        body: JSON.stringify({ memberid: id })
+                    })
+                        .then(res => res.json())
+                        .then(res => {
+                            // console.log(res[0]['id'])
+                            this.member.id = res[0]['id']
+                            this.member.name = res[0]['name']
+                            this.member.phone = res[0]['phone']
+                            this.member.address = res[0]['address']
+                            this.member.birthday = res[0]['birthday']
+                            this.member.password = res[0]['password']
+                            this.member.jointime = res[0]['jointime']
+                            this.member.gender = res[0]['gender']
+                            this.member.account = res[0]['account']
+                            this.member.status = res[0]['status']
+                            let status = this.member.status
+                            $("#member_status").find('option').removeAttr("selected");
+                            $(`#member_status option[ value = ${status}]`).attr("selected", true)
+                        })
+                },
+                coupon_edit(id) {
+                    // alert(id)  //已抓到
+                    fetch('./Select_coupon.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        mode: "cors",
+                        body: JSON.stringify({ couponid: id })
+                    })
+                        .then(res => res.json())
+                        .then(res => {
+                            this.coupon.id = res[0]['id']
+                            this.coupon.price = res[0]['price']
+                            this.coupon.period = res[0]['period']
+                        })
+                },
+                call_coupon() {   //點擊左邊頁籤撈出折扣資料
+                    fetch('./Select_coupon.php')
+                        .then(res => res.json())
+                        .then(res => this.coupons = res)
+                },
+                ADDcoupon() {   //新增折扣事件 開始
+                    let coupon_price = this.coupon_price
+                    let coupon_day = this.coupon_day
+                    if (coupon_price == '') {
+                        alert("價錢未填寫")
+                        return
+                    } else if (coupon_day == '') {
+                        alert("使用期限未填寫")
+                        return
+                    } else {
+                        fetch('./add_coupon.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            mode: "cors",
+                            body: JSON.stringify(
+                                {
+                                    newprice: coupon_price,
+                                    newperiod: coupon_day
+                                }
+                            ),
+                        })
+                            .then(res => res.json())
+                        // .then(res => console.log(res))
+                        alert('新增成功')
+                        this.coupon_price = ''
+                        this.coupon_day = ''
+                    }
+                },
+                //點擊新增折扣事件結尾
+                ADDkind() {
+                    let kind_name = this.kind_name
+                    alert(this.kind_name)
+                    if (this.kind_name == '') {
+                        alert("種類名稱未填寫")
+                        return
+                    } else {
+                        fetch('./add_kind.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            mode: "cors",
+                            body: JSON.stringify(
+                                {
+                                    newkindname: kind_name,
+                                }
+                            ),
+                        })
+                            .then(res => res.json())
+                        alert('新增成功')
+                        this.kind_name = ''
+                    }
+                },
+                ADDcolor() {      //點擊新增顏色 開始
+                    // let color_name = this.color_name
+                    // alert(color_name)
+                    if (this.color_name == '') {
+                        alert("不可以沒有顏色名稱")
+                        return
+                    } else {
+                        var form = new FormData(document.getElementById("Add_color"))
+                        form.append('Add_color', this.color_name)
+                        $.ajax({
+                            url: './add_color.php',
+                            type: 'POST',
+                            data: form,
+                            processData: false,
+                            contentType: false,
+                            success: function (data) {
 
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                if (textStatus == "error") {
+                                    alert('請依照格式上傳圖片')
+                                }
+                            }
+                        })
+                        alert('新增成功')
+                        this.color_name = ''
+                        // this.color_pic = ''
+                    }
+                },
+                //點擊新增顏色事件 結束
+                ADDproduct() {  //新增商品事件 開始
+                    alert(this.product_name),
+                        alert(this.product_price)
+                },
+                // 點擊新增商品事件 結束
+                UpdateMember(){     //更新會員資料 開頭
+                    let member_status=$('#member_status').val()
+                    fetch('./Update_member.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            mode: "cors",
+                            body: JSON.stringify(
+                                {
+                                    UPid:this.member.id,
+                                    UPpassword: this.member.password,
+                                    UPname: this.member.name,
+                                    UPaddress: this.member.address,
+                                    UPstatus: member_status,
+                                    UPphone: this.member.phone,
+                                }
+                            ),
+                        })
+                            .then(res => res.json())
+                        alert('更新成功')
+                },
+                // 更新會員資料 結尾
+            },
         })
     </script>
 </body>
