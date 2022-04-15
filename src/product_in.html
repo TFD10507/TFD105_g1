@@ -15,7 +15,7 @@
                 <section class="main">
                     <ul class="cart">
                         <li class="photo">
-                            <img id="mainImg" class="mainImg product" src="./img/product/chair_001.jpg" alt="">
+                            <img id="mainImg" class="mainImg product" src="./img/product/chair01_01.jpg" alt="">
                             
                             <!-- <ul class="showbar">
                                 <li><img class="smallImg" src="./img/product/chair_002.pg" alt="" srcset=""></li>
@@ -24,7 +24,7 @@
                             </ul> -->
                         </li>
                         <li class="content">                            
-                            <h3 data-prd_id="001">羅丹辦公椅</h3>
+                            <h3 data-prd_id="001" id="app">羅丹辦公椅</h3>
                             <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
                                 @click.stop.prevent="add_cart()">
                             <img class="favorite" src="./img/product/favorite_touch.svg" alt="" srcset=""
@@ -73,13 +73,13 @@
                             <!-- 與上面的對應，這裡是椅子款式 -->
                             <div class="chair_style" style="display: none;">
                                 <ul>
-                                    <li><img class="chair_style" src="./img/product/chair_001.jpg" alt=""
+                                    <li><img class="chair_style chair_img" src="./img/product/chair01_01.jpg" alt=""
                                             srcset=""></button>
                                     </li>
-                                    <li><img class="chair_style" src="./img/product/chair_002.jpg" alt=""
+                                    <li><img class="chair_style chair_img" src="./img/product/chair01_02.jpg" alt=""
                                             srcset=""></button>
                                     </li>
-                                    <li><img class="chair_style" src="./img/product/chair_003.jpg" alt=""
+                                    <li><img class="chair_style chair_img" src="./img/product/chair01_03.jpg" alt=""
                                             srcset=""></button>
                                     </li>
                                 </ul>
@@ -119,13 +119,22 @@
                     if (i == j) {
                         //設定黑框
                         type[i].style = 'outline: black 2px solid;'
+                        
+                        let storagedata = {
+                            product_img: $('.chair_img')[j].src,
+                            product_name: $('#app').text()
+                        }
+                        sessionStorage.setItem('collect', JSON.stringify(storagedata))
+
+
+
                     } else {
                         //如果沒選定則取消樣式
                         type[j].style = 'none;'
-                    }
-                }
+                    }                    
+                }               
             })
-        }        
+        }           
         let fabtn = document.querySelectorAll(".favorite");
             fabtn[0].addEventListener("click", function () {
                 fabtn[1].classList.toggle('-on')
@@ -197,13 +206,87 @@
                 }
             }
         })
+                    //空心變實心 
+        //   console.log(fabtn);
+                    fabtn[0].addEventListener("click", function (e) {
+                        fabtn[1].classList.add('-on')
+                        let a = JSON.parse(sessionStorage.getItem('collect'))
+                        // console.log(a);
+
+                        // let storagedata = {
+                        //     product_img: $('.chair_img')[0].src,
+                        //     product_name: $('#app').text()
+                        // }
+                        // sessionStorage.setItem('collect', JSON.stringify(storagedata))
+                        if( a == null) {
+                            let storagedata = {
+                                product_img: $('.chair_img')[0].src,
+                                product_name: $('#app').text()
+                            }
+                            sessionStorage.setItem('collect', JSON.stringify(storagedata))
+                        } else {
+                            sessionStorage.setItem('collect', JSON.stringify(a))
+                        }                       
+                        // console.log(a)
+                    })
+                    fabtn[1].addEventListener("click", function () {
+                        // console.log(fabtn[1]);
+                        fabtn[1].classList.remove('-on');
+                        sessionStorage.clear()
+                    })
+        
+
+
+        </script>
+    <script>
+        // var app = new Vue({
+        //     el: '#app',
+        //     data: {
+        //         text: 'ss',
+        //         cart2: '<div>asdadx</div>',
+        //         products:
+        //             [
+        //                 {  
+        //                     "id": 2,
+        //                     "image": "img/product/chair01_01.jpg",
+        //                     "productname": "chair",
+        //                     "price": '1,000'
+        //                 }, 
+        //                 {  
+        //                     "id": 3,
+        //                     "image": "img/product/chair01_01.jpg",
+        //                     "productname": "chair",
+        //                     "price": '1,000'
+        //                 },                         
+        //             ]
+        //     },
+        //     methods: {
+        //         add_cart() {
+        //             alert(123);
+        //         }
+        //     }
+        // })
 
 
 
 
 
 
-            // let fabtn = document.querySelectorAll(".favorite");
+        // let fabtn = document.querySelectorAll(".favorite");
+        wrapper.addEventListener('click', e=>{
+        var t= e.target;
+  
+        input.value= +input.value;
+  
+        if(t.closest('button[class*=--minus]')){
+            --input.value;
+        }
+        else if(t.closest('button[class*=--add]')){
+            ++input.value;
+         }
+        res.textContent= (300*input.value);
+});
+           // let fabtn = document.querySelectorAll(".favorite");
         // // console.log(fabtn);
         // for (let i = 0; i < 2; i++) {
         //     // console.log(fabtn[i]);
