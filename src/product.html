@@ -45,13 +45,13 @@
             <a href=""><img src="./img/product/nav_nav_self.svg" alt=""></a>
           </div>
         </section> -->
-      <div class="row flow-offset-1" >
+
+      <!-- <div class="row flow-offset-1" >
         <div class="col-sm-6 col-md-4 col-xl-3 aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000"
           v-for="(product,i) in products">
           <a :href="'./product_in.html?id='+product.id">
             <div class="product tumbnail thumbnail-3">
               <img :src="product.image" alt="">
-              <!-- <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="" @click.stop.prevent="add_cart()"> -->
               <div class="caption">
                 <h6 style="margin: 0;">{{product.productname}}</h6>
                 <p style="margin: 0;" class="price">{{product.price}}</p>
@@ -59,7 +59,23 @@
             </div>
           </a>
         </div>
-      </div> 
+      </div> -->
+
+      <div class="row flow-offset-1" >
+        <div class="col-sm-6 col-md-4 col-xl-3 aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000"
+          v-for="(product,i) in productArr">
+          <a :href="'./product_in.html?id='+product.id">
+            <div class="product tumbnail thumbnail-3">
+              <img :src="product.img" alt="">
+              <!-- <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="" @click.stop.prevent="add_cart()"> -->
+              <div class="caption">
+                <h6>{{product.name}}</h6>
+                <p class="price">{{product.price}}</p>
+                </div>
+            </div>
+          </a>
+        </div>
+      </div>
   </main>
   @@include('layout/footer.html')
   <script>
@@ -69,7 +85,7 @@
 
     let smallicon = document.querySelector(".smallicon"); 
     let smallNav = document.querySelectorAll(".smallNav");
-    console.log(smallNav);
+    // console.log(smallNav);
 
     // for(let i = 0 ; i < smallNav.length; i++){
     //   // console.log(smallNav[i]);
@@ -228,30 +244,28 @@
           add_cart() {
             alert(123);
           }
-          fetch('./')
-                    .then(res => res.json())
-                    .then(res => {
-                        this.members = res
-                    })
         },
-      // mounted() {    
-      //   const url = 'product.php';    
-      //   fetch(url)
-      //     .then( res => {
-      //       return res.json();
-      //       // alert("成功");
-      //     })
-      //     .then(data => {
-      //       console.log(data);
-      //     })              
-      //     // .catch(err => {
-      //     //   alert("失敗");
-      //     // });
-      //   }      
-      })     
-    
+        mounted() {
+
+          let allData = this.productArr
+          // let pPriceArr = this.productPrice
+          
+          $.getJSON('php/products.php', function(data){
+
+            for(let i = 0; i < data.length; i++) {
+              allData.push({
+                "id": i,
+                "name": data[i].names,
+                "price": data[i].price,
+                "img" : data[i].pic,
+              })
+
+            }
+
+          })
+        },
+      })
   </script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
    <!-- <script>
   //   let productArr = [{

@@ -1,5 +1,5 @@
 .index {
-    // 輪盤
+    // 輪盤按鈕定位
     .roulette {
         width: 50px;
         padding: 0;
@@ -17,6 +17,49 @@
         img {
             max-width: 100%;
         }
+    }
+    //輪盤樣式設定
+    .modal-content{
+        margin: 0 auto;
+    }
+    .modal-title{
+        font-size: $h2;
+        font-weight: 800;
+        color: $btn_color;
+        margin: 0 auto;
+        // letter-spacing: 5px;
+        margin-top: 10px;
+        display: inline-block;
+    }
+    .sec span{
+        position: relative;
+    }
+    .wheel-inner-img{
+        position: absolute;
+        bottom: 45px;
+        right: -50px;
+        width: 70px;
+    }
+    .coupon-text{
+        text-align: center;
+        font-size: $p;
+        margin-bottom: 0px;
+    }
+    .modal-body{
+        margin-top: -25px;
+        padding-bottom: 50px;
+    }
+    .modal-footer{
+        height: 60px;
+        background-color: $btn_color;
+        
+    }
+    .modal-footer span{
+        color: $p_color2;
+        font-size: $p;
+        font-weight: 600;
+        margin: 0 auto;
+        
     }
 
     .wrapper {
