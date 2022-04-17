@@ -5,7 +5,7 @@
 body.product_in {
     section.cart {
         ul.cart {
-            width: 70%;
+            max-width: 1200px;
             display: flex;
             margin: 0 auto;
             flex-wrap: wrap;
@@ -21,7 +21,7 @@ body.product_in {
             flex-basis: 300px;
             text-align: center;
             height: max-content;
-            padding: 20px 0;
+            // padding: 20px 0;
             position: relative;
         }
 

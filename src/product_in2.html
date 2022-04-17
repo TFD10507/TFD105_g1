@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    @@include('layout/head.html')
+</head>
+<body class="product_in">
+    <div class="wrapper">
+        
+        @@include('layout/login.html')
+        @@include('layout/nav.html')
+        <!-- 首頁 -->
+        <section class="cart" id="productInfo">
+            <main class="cart">
+                <section class="main">
+                    <ul class="cart" v-if="pro[0]">
+                        <li class="photo">
+                            <img id="mainImg" class="mainImg product" :src="pro[0].pic">
+                        </li>
+                        <li class="content">                            
+                            <!-- <h3 data-prd_id="001" id="app">1</h3> -->
+                            <h3 data-prd_id="001" id="app">{{pro[0].names}}</h3>
+                            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
+                                @click.stop.prevent="add_cart()">
+                            <img class="favorite" src="./img/product/favorite_touch.svg" alt="" srcset=""
+                                @click.stop.prevent="add_cart()">
+
+                            <hr>
+                            <p class="content">{{pro[0].detail}}</p>                   
+                            <p>※可選擇等級的產品價格因等級而異。</p>                         
+                            <p>尺寸/規格：</p>
+                            <!-- 到時候加一欄尺寸 -->
+                            <p>W159 x D45 x H83</p>
+
+                            <!-- counter -->
+                            <div class="count__wrapper count__wrapper--ml .count">
+                                <div class="qty-input">
+                                  <button class="qty-count qty-count--minus .count" data-action="minus" type="button">
+                                    <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M8 2L3 7L8 12L7 14L0 7L7 0L8 2Z" fill="black" />
+                                    </svg>
+                                  </button>
+                                  <input class="product-qty input" type="number" name="product-qty" min="0" max="10" value="1">
+                                  <button class="qty-count qty-count--add" data-action="add" type="button">
+                                    <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M0 2L5 7L0 12L1 14L8 7L1 0L0 2Z" fill="black" />
+                                    </svg>
+                                  </button>
+                                </div>
+                              </div> <!-- Counter || END -->
+                              
+                              <div class="product__buy pr-0">
+                                <div class="product__buy-container">
+                                  <p class="subtotal__price price">{{pro[0].price}}</p>
+                                </div>
+                              </div>
+                            <!-- <p class="price">99,999</p> -->
+                            <!-- 與下面對應，這裡是椅子的材質 -->
+                            <div class="type_item">
+                                <ul style="padding-left: 0px;">
+                                    <li><img class="type" src="./img/product/treasure_001.png" alt=""
+                                            srcset=""></button></li>
+                                    <li><img class="type" src="./img/product/treasure_002.png" alt=""
+                                            srcset=""></button></li>
+                                    <li><img class="type" src="./img/product/treasure_003.png" alt=""
+                                            srcset=""></button></li>
+                                </ul>
+                            </div>
+                            <!-- 與上面的對應，這裡是椅子款式 -->
+                            <div class="chair_style" style="display: none;">
+                                <ul>
+                                    <li><img class="chair_style chair_img" src="./img/product/chair01_01.jpg" alt=""
+                                            srcset=""></button>
+                                    </li>
+                                    <li><img class="chair_style chair_img" src="./img/product/chair01_02.jpg" alt=""
+                                            srcset=""></button>
+                                    </li>
+                                    <li><img class="chair_style chair_img" src="./img/product/chair01_03.jpg" alt=""
+                                            srcset=""></button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <br>
+                            <!-- <div class="buttom">加入購物車</div> -->
+                            <button class="submit" type="submit" @click="addcart">加入購物車</button>
+                        </li>
+                    </ul>
+                </section>
+            </main>
+        </section>
+        @@include('layout/top.html')
+        @@include('layout/footer.html')
+    </div>
+
+    <script>  
+  
+        // let main_img = document.querySelector('#mainImg');
+        // let type = document.querySelectorAll('img.type');
+        // let chair_style = document.querySelectorAll('img.chair_style');
+        
+        // //設定第一項為黑框樣式(初始值)
+        // type[0].style = 'outline: black 2px solid;'
+        // for (let i = 0; i < type.length; i++) {
+        //     // console.log(type[i]);
+        //     type[i].addEventListener("click", function () {
+        //         // console.log(type[i]);
+        //         //換主圖
+        //         main_img.src = chair_style[i].src;
+        //         // counter = 0; 
+        //         for (let j = 0; j < type.length; j++) {
+        //             if (i == j) {
+        //                 //設定黑框
+        //                 type[i].style = 'outline: black 2px solid;'
+                        
+        //                 let storagedata = {
+        //                     product_img: $('.chair_img')[j].src,
+        //                     product_name: $('#app').text()
+        //                 }
+        //                 sessionStorage.setItem('collect', JSON.stringify(storagedata))
+
+
+
+        //             } else {
+        //                 //如果沒選定則取消樣式
+        //                 type[j].style = 'none;'
+        //             }                    
+        //         }               
+        //     })
+        // }       
+
+        // let fabtn = document.querySelectorAll(".favorite");
+        //     fabtn[0].addEventListener("click", function () {
+        //         fabtn[1].classList.toggle('-on')
+            
+        //     fabtn[1].addEventListener("click", function () {
+        //         // console.log(fabtn[1]);
+        //         fabtn[1].classList.remove('-on');
+        //     })
+        // })
+
+
+        // // counter
+        // var wrapper= document.querySelector('.count__wrapper'),
+        // res= document.querySelector('.subtotal__price'),
+        // input= wrapper.querySelector('input[class*=input]');
+
+        // wrapper.addEventListener('click', e=>{
+        //     var t= e.target;
+  
+        //     input.value= +input.value;
+    
+        //     if(t.closest('button[class*=--minus]')){
+        //         --input.value;
+        //     }
+        //     else if(t.closest('button[class*=--add]')){
+        //         ++input.value;
+        //     }
+        //     res.textContent= (300*input.value);
+        // });
+
+        //空心變實心 
+        //   console.log(fabtn);
+                    // fabtn[0].addEventListener("click", function (e) {
+                    //     fabtn[1].classList.add('-on')
+                    //     let a = JSON.parse(sessionStorage.getItem('collect'))
+                    //     // console.log(a);
+
+                    //     // let storagedata = {
+                    //     //     product_img: $('.chair_img')[0].src,
+                    //     //     product_name: $('#app').text()
+                    //     // }
+                    //     // sessionStorage.setItem('collect', JSON.stringify(storagedata))
+                    //     if( a == null) {
+                    //         let storagedata = {
+                    //             product_img: $('.chair_img')[0].src,
+                    //             product_name: $('#app').text()
+                    //         }
+                    //         sessionStorage.setItem('collect', JSON.stringify(storagedata))
+                    //     } else {
+                    //         sessionStorage.setItem('collect', JSON.stringify(a))
+                    //     }                       
+                    //     // console.log(a)
+                    // })
+                    // fabtn[1].addEventListener("click", function () {
+                    //     // console.log(fabtn[1]);
+                    //     fabtn[1].classList.remove('-on');
+                    //     sessionStorage.clear()
+                    // })
+
+        // let fabtn = document.querySelectorAll(".favorite");
+        // wrapper.addEventListener('click', e=>{
+        // var t= e.target;
+  
+        // input.value= +input.value;
+  
+        // if(t.closest('button[class*=--minus]')){
+        //     --input.value;
+        // }
+        // else if(t.closest('button[class*=--add]')){
+        //     ++input.value;
+        //  }
+        // res.textContent= (300*input.value);
+        // });
+
+
+        var productInfo = new Vue({
+            el: '#productInfo',
+            data: {
+                product: {
+                    id: "",
+                },
+                pro: [],
+            },
+            beforeCreate() {
+                let urlParams = new URLSearchParams(window.location.search);
+                this.id = urlParams.get('id');
+            },
+            methods: {
+                addcart() {
+                    alert(123);
+                }
+            },
+            mounted() {
+                let that = this;
+                $.ajax({
+                    url: 'php/getproductInfo.php',
+                    type: "POST",
+                    data: {
+                        id: this.id,
+                    },
+                    success:function(resp){
+                        let getResp = JSON.parse(resp);
+                        that.pro = getResp;
+                    }
+                })
+            },
+        })
+
+    </script>
+
+</body>
+
+
+</html>

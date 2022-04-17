@@ -2,75 +2,169 @@
 <html lang="en">
   <head>
     @@include('layout/head.html')
-    <!-- lightSlider & fancybox css 研究中 先註解 -->
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"
-    /> -->
   </head>
 
   <body id="customizeItem">
-    @@include('layout/top.html')
-    @@include('layout/login.html')
+    @@include('layout/top.html') @@include('layout/login.html')
     @@include('layout/nav.html')
-    
+
     <main>
       <section class="container product-detail">
         <div class="row justify-content-between">
-          
-          <div data-tab-content class="imagery col-lg-6" style="background-image: url('./img/customize/color/brown.jpg')">
+          <div
+            data-tab-content
+            class="imagery col-lg-6"
+            style="background-image: url('./img/customize/color/brown.jpg')"
+          >
             <img src="./img/customize/image/xr-brown.png" class="type-image" />
           </div>
 
           <div class="col-lg-6">
-            <form class="detail margin_top_30">
+            <!-- action="customizeAdd.php" method="POST"-->
+            <form
+              id="orderDetail"
+              class="detail margin_top_30"
+              action=""
+              method=""
+            >
               <ul class="tabs catagory">
-                <li id="tab1" data-tab-target="#table" class="tab padding_10" v-if="active_index === 1" :class="{'-active' : active_index === 1}">原木圓桌</li>
-                <li id="tab2" data-tab-target="#cabinet" class="tab padding_10" v-if="active_index === 2" :class="{'-active' : active_index === 2}">原木收納櫃</li>
-                <li id="tab3" data-tab-target="#chai" class="tab padding_10" v-if="active_index === 3" :class="{'-active' : active_index === 3}">原木餐椅</li>
+                <li
+                  id="tab1"
+                  name="table"
+                  data-tab-target="#table"
+                  class="tab padding_10"
+                  value="1"
+                  onclick="kind.value=1"
+                >
+                  原木圓桌
+                </li>
+                <li
+                  id="tab2"
+                  name="cabinet"
+                  data-tab-target="#cabinet"
+                  class="tab padding_10"
+                  value="2"
+                  onclick="kind.value=2"
+                >
+                  原木收納櫃
+                </li>
+                <li
+                  id="tab3"
+                  name="chair"
+                  data-tab-target="#chair"
+                  class="tab padding_10"
+                  value="3"
+                  onclick="kind.value=3"
+                >
+                  原木餐椅
+                </li>
+                <!-- 隱藏的input 用來放種類 用於傳value到資料庫-->
+                <input type="hidden" id="kind" value="" name="kind" />
               </ul>
               <div class="options">
                 <p class="margin_top_20">請選擇木材</p>
                 <div class="colors btn_grid margin_top_20">
                   <div class="btn_wrap padding_10">
-                    <button type="button" class="color brown padding_10 selected" data-name="brown">
-                      胡桃木
-                    </button>
+                    <input
+                      type="button"
+                      class="color brown padding_10 selected"
+                      data-name="brown"
+                      name="brown"
+                      value="胡桃木"
+                      onclick="color.value=1"
+                    />
                   </div>
                   <div class="btn_wrap padding_10">
-                    <button type="button" class="color beige padding_10" data-name="beige">
-                      白梣木
-                    </button>
+                    <input
+                      type="button"
+                      class="color beige padding_10"
+                      data-name="beige"
+                      name="beige"
+                      value="白梣木"
+                      onclick="color.value=2"
+                    />
                   </div>
                   <div class="btn_wrap padding_10">
-                    <button type="button" class="color red padding_10" data-name="red">
-                      紅橡木
-                    </button>
+                    <input
+                      type="button"
+                      class="color red padding_10"
+                      data-name="red"
+                      name="red"
+                      value="紅橡木"
+                      onclick="color.value=3"
+                    />
                   </div>
                   <div class="btn_wrap padding_10">
-                    <button type="button" class="color green padding_10" data-name="green">
-                      綠橡木
-                    </button>
+                    <input
+                      type="button"
+                      class="color green padding_10"
+                      data-name="green"
+                      name="green"
+                      value="綠橡木"
+                      onclick="color.value=4"
+                    />
                   </div>
                   <div class="btn_wrap padding_10">
-                    <button type="button" class="color black padding_10" data-name="black">
-                      黑梣木
-                    </button>
+                    <input
+                      type="button"
+                      class="color black padding_10"
+                      data-name="black"
+                      name="black"
+                      value="黑梣木"
+                      onclick="color.value=5"
+                    />
                   </div>
+                  <!-- 隱藏的input 用來放木材顏色 用於傳value到資料庫-->
+                  <input type="hidden" id="color" value="" name="color" />
                 </div>
                 <div class="qty margin_top_20">
-                  數量<br /><input type="number" value="1" />
+                  數量<br /><input type="number" value="1" name="quantity" />
                 </div>
+
+                <!-- counter -->
+                <!-- <div class="count__wrapper count__wrapper--ml .count">
+                  <div class="qty-input">
+                    <button class="qty-count qty-count--minus .count" data-action="minus" type="button">
+                      <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 2L3 7L8 12L7 14L0 7L7 0L8 2Z" fill="black" />
+                      </svg>
+                    </button>
+                    <input class="product-qty input" type="number" name="product-qty" min="0" max="10" value="1">
+                    <button class="qty-count qty-count--add" data-action="add" type="button">
+                      <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 2L5 7L0 12L1 14L8 7L1 0L0 2Z" fill="black" />
+                      </svg>
+                    </button>
+                  </div>
+                </div> -->
+                <!-- Counter || END -->
+                
                 <div class="comment margin_top_20">
-                  其他需求<br /><textarea></textarea>
+                  其他需求<br /><textarea name="detail"></textarea>
                 </div>
-                <button type="submit" class="submit margin_top_10 btn_style">
-                  送出訂製單
-                </button>
+
+                <!-- Button trigger modal 按下送出訂製單出現彈窗 -->
+                <div class="form-group margin_top_30 submit-btn">
+                  <input
+                    id="submit"
+                    type="button"
+                    class="btn_style"
+                    value="送出訂製單"
+                    data-toggle="modal"
+                    data-target="#myModal"
+                  />
+
+                  <!-- Modal 彈窗 -->
+                  <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content padding_20">
+                      <span class="close">&times;</span>
+                      <p>
+                        已提交客製化清單，工作人員會盡快與您聯繫確認內容，謝謝‧
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
@@ -80,90 +174,156 @@
 
     @@include('layout/footer.html')
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script> -->
-    
     <script>
       window.onload = function () {
         const color_btn_el = document.querySelectorAll(".colors .color");
-        // console.log(color_btn_el);
+        // console.log(color_btn_el); // 材質按鈕
         const imagery_el = document.querySelector("div.imagery");
-        // console.log(imagery_el);
+        // console.log(imagery_el); // 圖片div
         const image_el = document.querySelector(".imagery .type-image");
-        // console.log(image_el);
+        // console.log(image_el); //產品圖片img
         const search_obj = new URLSearchParams(location.search);
         // console.log(search_obj.get("tab")); // 1, 2, 3
-
-        for (let i = 0; i < color_btn_el.length; i++) {
-          let btn = color_btn_el[i];
-
-          btn.addEventListener("click", function () {
-            document.querySelector(".colors .color.selected").classList.remove("selected");
-            this.classList.add("selected");
-
-            // 產品圖片變更
-            image_el.src = "./img/customize/image/xr-" + this.dataset.name + ".png";
-            // image_el.src = "./img/customize/image/cb-" + this.dataset.name + ".png"; // 待調整
-            // image_el.src = "./img/customize/image/ch-" + this.dataset.name + ".png";
-
-            // 背景圖變更
-            imagery_el.style.backgroundImage = `url('./img/customize/color/${this.dataset.name}.jpg')`;
-            // console.log(imagery_el);
-            // console.log(this.dataset.name);
-          });
-        }
-
-        // 點擊按鈕, 款式圖片切換
+        var catagory_btn = document.querySelectorAll("li.tab");
+        // console.log(catagory_btn); // 種類按鈕陣列
         var img = document.querySelector(".type-image");
         var tableBtn = document.querySelector("#tab1");
         var cabinetBtn = document.querySelector("#tab2");
         var chairBtn = document.querySelector("#tab3");
 
-        tableBtn.addEventListener('click', () => {
-        img.src = './img/customize/image/xr-brown.png';
-        })
-        
-        cabinetBtn.addEventListener('click', () => {
-        img.src = './img/customize/image/cb-brown.png';
-        })
-          
-        chairBtn.addEventListener('click', () => {
-        img.src = './img/customize/image/ch-brown.png';
-        })
+        for (let i = 0; i < color_btn_el.length; i++) {
+          let btn = color_btn_el[i];
+
+          btn.addEventListener("click", function () {
+            document
+              .querySelector(".colors .color.selected")
+              .classList.remove("selected");
+            this.classList.add("selected");
+
+            // 產品圖片變更
+            // image_el.src = "./img/customize/image/xr-" + this.dataset.name + ".png";
+
+            // 背景材質圖變更
+            imagery_el.style.backgroundImage = `url('./img/customize/color/${this.dataset.name}.jpg')`;
+            // console.log(imagery_el);
+            // console.log(this.dataset.name); //red, green, black, brown, beige
+          });
+        }
+
+        // 點擊按鈕, 款式圖片切換
+        tableBtn.addEventListener("click", () => {
+          img.src = "./img/customize/image/xr-brown.png";
+        });
+        cabinetBtn.addEventListener("click", () => {
+          img.src = "./img/customize/image/cb-brown.png";
+        });
+        chairBtn.addEventListener("click", () => {
+          img.src = "./img/customize/image/ch-brown.png";
+        });
 
         //由customize.html進入, 對應tab的class加active
-        var catagory_btn = document.querySelectorAll('li.tab');
-        // console.log(catagory_btn); // 陣列
-        
-          if ( search_obj.get("tab") == 1 ){
-            catagory_btn[0].classList.add('active'); //對應tab的class加active
-            image_el.src = "./img/customize/image/xr-brown.png"; //對應的圖片
-          }else if( search_obj.get("tab") == 2 ){
-            catagory_btn[1].classList.add('active');
-            image_el.src = "./img/customize/image/cb-brown.png";
-          }else{
-            catagory_btn[2].classList.add('active');
-            image_el.src = "./img/customize/image/ch-brown.png";
-          }
+        if (search_obj.get("tab") == 1) {
+          catagory_btn[0].classList.add("active"); //對應tab的class加active
+          image_el.src = "./img/customize/image/xr-brown.png"; //對應的圖片
+        } else if (search_obj.get("tab") == 2) {
+          catagory_btn[1].classList.add("active");
+          image_el.src = "./img/customize/image/cb-brown.png";
+        } else {
+          catagory_btn[2].classList.add("active");
+          image_el.src = "./img/customize/image/ch-brown.png";
+        }
 
         // 款式btn切換class
-        var catagory_btn = document.querySelectorAll('li.tab');
+        var catagory_btn = document.querySelectorAll("li.tab");
         var tabContents = document.querySelectorAll("[data-tab-content]");
 
         catagory_btn.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          tabContents.forEach((tabContent) => {
-            tabContent.classList.remove("active");           
+          tab.addEventListener("click", () => {
+            tabContents.forEach((tabContent) => {
+              tabContent.classList.remove("active");
+            });
+            catagory_btn.forEach((tab) => {
+              tab.classList.remove("active");
+            });
+            tab.classList.add("active");
           });
-          catagory_btn.forEach((tab) => {
-            tab.classList.remove("active");
-          });
-          tab.classList.add("active");
         });
-      });
 
-      };  
-      
+        // 隱藏的input 賦值種類value
+        function kind() {
+          var kind = document.getElementById("kind");
+          // alert(kind.value);
+        }
+
+        // 隱藏的input 賦值顏色value
+        function color() {
+          var color = document.getElementById("color");
+          // alert(color.value);
+        }
+
+        // 等php完成再打開
+        // 取input value, 賦值進mySQL database
+        // var submit = document.getElementById("submit");
+        // submit.addEventListener("click", function () {
+        //   var kind = document.getElementById("kind").value;
+        //   var color = document.getElementById("color").value;
+        //   var quantity = document.getElementById("quantity").value;
+        //   var detail = document.getElementById("detail").value;
+        //   // alert(detail);
+        //   // alert(kind);
+        //   // alert(color);
+        //   // console.log(detail);
+        //   // console.log(kind);
+        //   // console.log(color);
+        //   // console.log(quantity);
+
+        //   fetch("customizeAdd.php", {
+        //     method: "POST",
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       Accept: "application/json",
+        //     },
+        //     mode: "cors",
+        //     body: JSON.stringify({
+        //       kind: kind,
+        //       color: color,
+        //       quantity: quantity,
+        //       detail: detail,
+        //     }),
+        //   });
+        // });
+
+        // 按下送出訂製單後, 彈窗modal
+        var modal = document.getElementById("myModal");
+        var modalbBtn = document.getElementById("submit");
+        var span = document.getElementsByClassName("close")[0];
+
+        modalbBtn.onclick = function() {
+          modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+
+        // 按下送出訂製單後, 清空表單, 3秒後跳轉回customize.html
+        $('#submit').on('click', function(e){
+          // e.preventDefault();
+          $("#orderDetail")[0].reset();
+          setTimeout ("location.href='customize.html'", 3000);
+        });
+
+        // function clearForm() {
+        //   $("#orderDetail")[0].reset();
+        // };
+
+      };
     </script>
   </body>
 </html>
