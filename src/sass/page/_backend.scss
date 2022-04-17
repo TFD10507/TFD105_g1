@@ -30,6 +30,9 @@
     padding: 20px;
     background-color: #dddddd;
     text-align: center;
+    // 最小高度
+    min-height: 100vh;
+    
     ol,ul {
       padding-left: 0;
     }
