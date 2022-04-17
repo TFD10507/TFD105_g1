@@ -129,7 +129,8 @@
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#productedit" @click="product_edit(product.id)"  :id="'product_'+product.id">
+                                            data-target="#productedit" @click="product_edit(product.id)"
+                                            :id="'product_'+product.id">
                                             編輯
                                         </button>
                                     </td>
@@ -382,12 +383,12 @@
                                 <li>
                                     <label>商品種類</label>
                                     <select name="product_kind" id="product_kind" v-model="kind">
-                                        <option v-for="item in kinds" :value="item.id" >{{item.name}}</option>
+                                        <option v-for="item in kinds" :value="item.id">{{item.name}}</option>
                                     </select>
                                 </li>
                                 <li>
                                     <label>商品狀態</label>
-                                    <select >
+                                    <select>
                                         <option value="0">正常</option>
                                         <option value="1">停售</option>
                                     </select>
@@ -803,29 +804,29 @@
                     price: '',
                     period: '',
                 },
-                product:{
-                    id:'',
-                    name:'',
-                    price:'',
-                    stock:'',
-                    detail:'',
-                    status:0,
+                product: {
+                    id: '',
+                    name: '',
+                    price: '',
+                    stock: '',
+                    detail: '',
+                    status: 0,
                 },
                 coupon_price: '',
                 coupon_day: '',
                 color_name: '',
                 color_pic: '',
                 members: [],
-                products:[],
+                products: [],
                 fakes: [
                     {
-                        id:'1',
+                        id: '1',
                         couid: '1',
                         couaccount: 'ooooo',
                         coutime: '2020-1-1',
                     },
                     {
-                        id:'2',
+                        id: '2',
                         couid: '2',
                         couaccount: 'rrrrrr',
                         coutime: '2020-1-2',
@@ -836,7 +837,7 @@
                 product_price: '',
                 product_stock: '',
                 product_detail: '',
-                product_size:'',
+                product_size: '',
                 kind_name: '',
                 kinds: [],
                 kind: '',
@@ -848,13 +849,13 @@
                     .then(res => {
                         this.members = res
                     }),
-                // 撈出種類資料
-                fetch('./Select_kind.php')
-                    .then(res => res.json())
-                    .then(res => {
-                        // console.log(res);
-                        this.kinds = res
-                    })
+                    // 撈出種類資料
+                    fetch('./Select_kind.php')
+                        .then(res => res.json())
+                        .then(res => {
+                            // console.log(res);
+                            this.kinds = res
+                        })
                 //
                 const input = document.querySelector('input[type="file"]')
             },
@@ -931,12 +932,12 @@
                             $(`#product_status option[ value = ${status}]`).attr("selected", true)
                         })
                 },
-                cell_product(){  //撈商品資料 開始
+                cell_product() {  //撈商品資料 開始
                     fetch('./Select_product.php')
-                    .then(res => res.json())
-                    .then(res => {
-                        this.products = res
-                    })
+                        .then(res => res.json())
+                        .then(res => {
+                            this.products = res
+                        })
                 },
                 // 撈商品資料 結束
                 call_coupon() {   //撈出折扣資料
@@ -1035,7 +1036,7 @@
                     let product_status = $('#product_status').val()
                     // 撈資訊測試
                     // alert(product_status)
-                    if (this.product_name ==='' || this.product_price ==='' || this.kind ==='' || this.product_stock ===''|| this.product_size ==='' || this.product_detail ==='' ) {
+                    if (this.product_name === '' || this.product_price === '' || this.kind === '' || this.product_stock === '' || this.product_size === '' || this.product_detail === '') {
                         alert("請確認所有欄位都有填寫完成")
                     } else {
                         let form = new FormData(document.getElementById("Add_product"))
@@ -1112,8 +1113,8 @@
                     location.reload()
                 },
                 // 更新折扣 結束
-                UPproduct(){  // 更新
-                    
+                UPproduct() {  // 更新
+
                 },
                 // 更新商品 結束
             },
