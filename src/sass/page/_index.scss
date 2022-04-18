@@ -76,6 +76,11 @@
         margin: 0 auto;
         
     }
+    //未登入會員不能玩輪盤ㄛ！
+    .-disable{
+        pointer-events: none;
+        opacity: 0.3;
+    }
 
     .wrapper {
         overflow-x: hidden;
