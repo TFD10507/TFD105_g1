@@ -7,7 +7,7 @@
         cursor: pointer;
         position: fixed;
         right: 12px;
-        bottom: 200px;
+        bottom: 120px;
         opacity: 0.5;
         background: none;
         border: 0;
@@ -22,14 +22,14 @@
         -webkit-animation:box 3s infinite ;
         @-webkit-keyframes box{
             0%{
-              bottom:200px;
+              bottom:120px;
             }
             50%{
-            bottom:180px; 
+            bottom:100px; 
             //   border-bottom-right-radius:25px;
             }
             100%{
-            bottom:200px;
+            bottom:120px;
             }
           }
     }
