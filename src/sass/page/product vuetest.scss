@@ -4,6 +4,7 @@ body.product {
   div.box {
     width: 1200px;
     margin: 0 auto;
+
   }
 
   section.slidebar {
@@ -94,7 +95,7 @@ body.product {
   }
 
   .thumbnail-3 {
-    // margin: 10px 0;
+    margin: 10px 0;
     position: relative;
   }
 
@@ -113,14 +114,9 @@ body.product {
   div.caption {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    line-height: 1.5rem;
-    padding: 2rem;
-
 
     a {
       margin: 0 auto;
-
     }
   }
 

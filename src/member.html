@@ -25,29 +25,50 @@
         <div id="member" data-tab-content class="active">
             <h3>資料變更</h3>
             <div id="container">
-              <form action="#" method="post">
+
+              <form action="../memberUpdate.php" method="POST">
+                <fieldset disabled>
+                  <div class="row justify-content-center">
+                    <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                      <label for="disabledTextInput">會員帳號:</label>
+                      <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" name="userID">
+                    </div>
+                  </div>
+                </fieldset>
+                
                 <div class="row justify-content-center">
                   <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                     <label for="memberName">姓名:</label>
-                    <input type="text" class="form-control margin_top_10" id="memberName" placeholder="輸入姓名">
+                    <input type="text" class="form-control margin_top_10" id="memberName" placeholder="輸入姓名" name="userName">
                   </div>
                 </div>
                 <div class="row justify-content-center">
                   <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                     <label for="memberAdd">聯絡地址:</label>
-                    <input type="text" class="form-control margin_top_10" id="memberAdd" placeholder="輸入地址">
+                    <input type="text" class="form-control margin_top_10" id="memberAdd" placeholder="輸入地址" name="userAdd">
                   </div>
                 </div>
                 <div class="row justify-content-center">
                   <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                     <label for="memberPhone">電話:</label>
-                    <input type="text" class="form-control margin_top_10" id="memberPhone" placeholder="輸入電話">
+                    <input type="text" class="form-control margin_top_10" id="memberPhone" placeholder="輸入電話" name="userTel">
                   </div>
                 </div>
+                
+                <!-- <fieldset disabled>
+                  <div class="row justify-content-center">
+                    <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                      <label for="disabledTextInput">生日:</label>
+                      <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" name="userBD">
+                    </div>
+                  </div>
+                </fieldset> -->
+
                 <div class="form-group margin_top_30 member-btn">
-                  <button type="submit" class="btn btn-primary btn_style">確認修改</button>
+                  <input type="submit" class="btn_style">
                 </div>
               </form>
+
             </div>
         </div>
 
@@ -55,7 +76,8 @@
         <div id="password" data-tab-content>
             <h3>密碼變更</h3>
             <div id="container">
-              <form action="#" method="post">
+
+              <form action="../passwordUpdate.php" method="post">
                 <div class="row justify-content-center">
                   <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                     <label for="oldPassword">舊密碼:</label>
@@ -75,20 +97,24 @@
                   </div>
                 </div>
                 <div class="form-group margin_top_30 password-btn">
-                  <button type="submit" class="btn btn-primary btn_style">確認修改</button>
+                  <input type="submit" class="btn_style" value="修改密碼">
                 </div>
               </form>
+
             </div>
         </div>
 
         <!-- 訂單查詢內容 -->
         <div id="order" data-tab-content>
-          <div class="search padding_20">
-            <input class="search-bar" type="search" name="search" id="search" placeholder="  請輸入訂單編號"/>
-            <button class="search-btn" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
+          
+          <!-- 搜尋欄先隱藏 -->
+          <!-- <div class="input-group rounded padding_20">
+              <input type="search" class="form-control rounded" placeholder="訂單編號" aria-label="Search" aria-describedby="search-addon" />
+              <span class="input-group-text border-0" id="search-addon">
+                <i class="fas fa-search"></i>
+              </span>
+          </div> -->
+          
           <div class="clearFloat"></div>
 
           <ul class="order-title padding_10">
@@ -109,7 +135,7 @@
             </ul>
           </button>
           <div class="order-content padding_10">
-            <table class="order-details">
+            <table class="order-details table table-striped table-sm">
               <tr>
                 <th>商品名稱</th>
                 <th>材質</th>
@@ -141,7 +167,7 @@
             </ul>
           </button>
           <div class="order-content padding_10">
-            <table class="order-details">
+            <table class="order-details table table-striped table-sm">
               <tr>
                 <th>商品名稱</th>
                 <th>材質</th>
@@ -185,7 +211,7 @@
             </ul>
           </button>
           <div class="order-content padding_10">
-            <table class="order-details">
+            <table class="order-details table table-striped table-sm">
               <tr>
                 <th>商品名稱</th>
                 <th>材質</th>
@@ -301,6 +327,64 @@
         e.target.closest("div.liked_product").remove();
         });
       }
+
+      // 修改密碼
+      function alter() { 
+        // var username=document.getElementById("username").value; 
+        var oldpassword = document.getElementById("oldPassword").value; 
+        // console.log(oldpassword);
+        var newpassword = document.getElementById("newPassword").value; 
+        // console.log(newpassword);
+        var newPassword2 = document.getElementById("newPassword2").value; 
+        // console.log(newPassword2);
+        // var regex = /^[/s] $/; 
+
+        // 正規表示法
+        // "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+        // 最少八個字符，至少一個大寫字母，一個小寫字母和一個數字：
+        
+        // if(regex.test(username)||username.length==0){ 
+        //   alert("使用者名稱格式不對"); 
+        //   return false; 
+        // } 
+
+        // if(oldPassword.length==0){ 
+        //   alert("密碼格式不對"); 
+        //   return false; 
+        // } 
+        // if(newPassword.length==0) { 
+        //   alert("新密碼格式不對"); 
+        //   return false; 
+        // } 
+        if (newPassword2 !== newPassword || newPassword2==0) { 
+          alert("兩次密碼輸入不一致"); 
+          return false; 
+        } 
+          return true; 
+      } 
+
+        // 使用jQuery Ajax將mySQL data 資料fetch到html:會員資料
+        $(document).ready(function() {
+          $.ajax({
+            type: "POST",
+            url: "memberUpdate.php",
+            dataType: "html",
+            // async: false,
+            success: function(data) {
+                $('#member').html(data)
+            }
+          });
+        });
+
+        // 使用jQuery Ajax將mySQL data 資料fetch到html: 訂單資料
+
+
+        // 使用jQuery Ajax將mySQL data 資料fetch到html: 訂單明細
+
+        
+        // 讀localStorage顯示收藏清單
+        
+
     </script>
   </body>
 </html>

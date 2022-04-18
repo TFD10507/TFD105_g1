@@ -8,11 +8,31 @@
 </head>
 
 <body class="index">
-    <div class="roulette button">
+    <button class="roulette button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <img src="./img/index/lucky-wheel.png">
-    </div>
+    </button>
     <!-- 輪盤小遊戲彈跳視窗 -->
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h6 class="modal-title text-center" id="exampleModalLabel">SPIN TO<br>
+                  WIN FOR COUPON!</h6>
+            </div>
+            <p class="coupon-text">
+                登入會員即可參加輪盤遊戲，最大獎<b>300元折扣卷</b>等你拿！<br>
+                獲得的折價券會自動歸戶，可至結帳頁面查看，<br>
+                森活木工祝您購物愉快！
+            </p>
+            <div class="modal-body" >
+              @@include('layout/wheel.html')
+            </div>
+            <div class="modal-footer">
+                <span id="wheel-message"></span>
+            </div>
+          </div>
+        </div>
+      </div>
     <!-- 共用的top鍵 -->
     @@include('layout/top.html')
     <div class="wrapper">
