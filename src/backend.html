@@ -395,7 +395,11 @@
                                 </li>
                                 <li>
                                     <label>商品圖片</label>
-                                    <input type="file" name="productpic" id="add_product_pic" accept="image/*">
+                                    <input type="file" name="productpic" id="add_product_pic" accept="image/*"
+                                        @change="add_product_img">
+                                </li>
+                                <li>
+                                    <img :src="img" width="150"  v-if="img">
                                 </li>
                             </ul>
                         </div>
@@ -461,8 +465,12 @@
                                     </select>
                                 </li>
                                 <li>
-                                    <label>商品圖片</label>
-                                    <input type="file">
+                                    <label>商品尺寸</label>
+                                    <input type="text" v-model="product.size">
+                                </li>
+                                <li>
+                                    <label>商品原圖</label>
+                                    <img :src="product.pic" alt="" width="150">
                                 </li>
                             </ul>
                         </div>
@@ -811,6 +819,8 @@
                     stock: '',
                     detail: '',
                     status: 0,
+                    pic:'',
+                    size:'',
                 },
                 coupon_price: '',
                 coupon_day: '',
@@ -838,9 +848,11 @@
                 product_stock: '',
                 product_detail: '',
                 product_size: '',
+                // product_pic:'',
                 kind_name: '',
                 kinds: [],
                 kind: '',
+                img:'',
             },
             mounted() {  //當網頁開啟時馬上執行以下內容
                 //撈出會員資料
@@ -873,7 +885,6 @@
                     })
                         .then(res => res.json())
                         .then(res => {
-                            // console.log(res[0]['id'])
                             this.member.id = res[0]['id']
                             this.member.name = res[0]['name']
                             this.member.phone = res[0]['phone']
@@ -927,6 +938,8 @@
                             this.product.stock = res[0]['stock']
                             this.product.detail = res[0]['detail']
                             this.product.status = res[0]['status']
+                            this.product.pic = res[0]['pic']
+                            this.product.size = res[0]['size']
                             let status = this.product.status
                             $("#product_status").find('option').removeAttr("selected")
                             $(`#product_status option[ value = ${status}]`).attr("selected", true)
@@ -1114,9 +1127,20 @@
                 },
                 // 更新折扣 結束
                 UPproduct() {  // 更新
-
+                    
                 },
                 // 更新商品 結束
+                add_product_img(e) {   // 新增商品圖片預覽 開始
+                    const file = e.target.files.item(0)
+                    const reader = new FileReader()
+                    reader.addEventListener('load', this.imageLoaded)
+                    reader.readAsDataURL(file)
+                    console.log(this.imageLoaded)
+                },
+                imageLoaded(e) {
+                    this.img = e.target.result
+                },
+                // 新增商品圖片預覽 結束
             },
         })
     </script>
