@@ -27,10 +27,35 @@ $(function () {
 
     // 當user點擊按鈕時，通過動畫效果返回頭部
     $backToTop.on("click", function () {
-        $('html, body').animate({ scrollTop: 0 }, 700);
+        $('html, body').animate({
+            scrollTop: 0
+        }, 700);
     });
 
     // aos
     AOS.init();
 
+    //  判斷是否登入
+    let icon = document.querySelector(".fa-user-circle");
+    console.log(icon);
+    icon.addEventListener("click", function () {
+        console.log('aa');
+        if (sessionStorage.getItem('status') == null) {
+            // console.log(sessionStorage.getItem('status'));
+            location.href = "./login.html";
+        } else {
+            let result = sessionStorage.getItem('status');
+            console.log(result);
+            if (result == "true") {
+                location.href = "./member.html";
+
+                $(icon).css("color", "#A0643E");
+                // console.log(1);
+            } else {
+                location.href = "./login.html";
+                // console.log(2);
+            }
+
+        }
+    });
 });
