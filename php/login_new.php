@@ -1,6 +1,6 @@
 <?php
 
-include("Connection.php");
+include("connect.php");
 
 //---------------------------------------------------
 $member = json_decode(file_get_contents("php://input"), true);
