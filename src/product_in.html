@@ -1,364 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-<head>
+  <head>
     @@include('layout/head.html')
-</head>
-<body class="product_in">
-    <div class="wrapper">        
-        @@include('layout/login.html')
-        @@include('layout/nav.html')
-        <!-- 首頁 -->
-        <section class="cart" id="productInfo">
-            <main class="cart">
-                <section class="main">
-                    <ul class="cart">
-                        <li class="photo">
-                            <img id="mainImg" class="mainImg product chair_img" src="./img/product/chair01_01.jpg" alt="">
-                            <!-- <ul class="showbar">
-                                <li><img class="smallImg" src="./img/product/chair_002.pg" alt="" srcset=""></li>
-                                <li><img class="smallImg" src="./img/product/chair_003.jpg" alt="" srcset=""></li>
-                                <li><img class="smallImg" src="./style/img/product/LM/01/s2.jpg" alt="" srcset=""></li>
-                            </ul> -->
-                        </li>
-                        <li class="content">                            
-                            <h3 data-prd_id="001" id="app">羅丹辦公椅</h3>
-                            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
-                            <img class="favorite" src="./img/product/favorite_touch.svg" alt="" srcset="">
 
-                            <hr>
-                            <p class="content">在起居室或臥室等緊湊空間內，被精心挑選的物品包圍著的高挑大人書桌。考慮到電源線的佈線，建議將此桌子用於 PC 工作。</p>                   
-                            <p>※可選擇等級的產品價格因等級而異。</p>                         
-                            <p>尺寸/規格：</p>
-                            <p>W159 x D45 x H83</p>
+    <style>
+      #productInfo .count button.count_btn {
+        background-color: #fff;
+        border-radius: 1px;
+        padding: 0 10px;
+      }
 
-                            <!-- counter -->
-                            <div class="count__wrapper count__wrapper--ml .count">
-                                <div class="qty-input">
-                                  <button class="qty-count qty-count--minus .count" data-action="minus" type="button">
-                                    <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M8 2L3 7L8 12L7 14L0 7L7 0L8 2Z" fill="black" />
-                                    </svg>
-                                  </button>
-                                  <input class="product-qty input" type="number" name="product-qty" min="0" max="10" value="1">
-                                  <button class="qty-count qty-count--add" data-action="add" type="button">
-                                    <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M0 2L5 7L0 12L1 14L8 7L1 0L0 2Z" fill="black" />
-                                    </svg>
-                                  </button>
-                                </div>
-                              </div> <!-- Counter || END -->
+      #productInfo .count button.count_btn:first-child {
+        font-size: 20px;
+      }
 
-                              <div class="product__buy pr-0">
-                                <div class="product__buy-container">
-                                  <span class="product__price">價格</p><p class="subtotal__price price">300</p></span>
-                                </div>
-                              </div>
-                            <!-- 與下面對應，這裡是椅子的材質 -->
-                            <!-- <div class="type_item">
-                                <ul style="padding-left: 0px;">
-                                    <li><img class="type" src="./img/product/treasure_001.png" alt=""
-                                            srcset=""></button></li>
-                                    <li><img class="type" src="./img/product/treasure_002.png" alt=""
-                                            srcset=""></button></li>
-                                    <li><img class="type" src="./img/product/treasure_003.png" alt=""
-                                            srcset=""></button></li>
-                                </ul>
-                            </div> -->
-                            <!-- 與上面的對應，這裡是椅子款式 -->
-                            <!-- <div class="chair_style" style="display: none;">
-                                <ul>
-                                    <li><img class="chair_style chair_img" src="./img/product/chair01_01.jpg" alt=""
-                                            srcset=""></button>
-                                    </li>
-                                    <li><img class="chair_style chair_img" src="./img/product/chair01_02.jpg" alt=""
-                                            srcset=""></button>
-                                    </li>
-                                    <li><img class="chair_style chair_img" src="./img/product/chair01_03.jpg" alt=""
-                                            srcset=""></button>
-                                    </li>
-                                </ul>
-                            </div> -->
-                            <br>
-                            <!-- <div class="buttom">加入購物車</div> -->
-                            <button class="submit" type="submit">加入購物車</button>
-                        </li>
-                    </ul>
-                </section>
-            </main>
-        </section>
-        @@include('layout/top.html')
-        @@include('layout/footer.html')
+      #productInfo .count span {
+        margin: 0 10px;
+      }
+    </style>
+  </head>
+
+  <body class="product_in">
+    <div class="wrapper">
+      @@include('layout/login.html') @@include('layout/nav.html')
+      <!-- 首頁 -->
+      <section class="cart" id="productInfo">
+        <main class="cart">
+          <section class="main">
+            <ul class="cart" v-if="pro[0]">
+              <li class="photo">
+                <img id="mainImg" class="mainImg product" :src="pro[0].pic" />
+              </li>
+              <li class="content">
+                <h3 data-prd_id="001">{{pro[0].names}}</h3>
+                <img
+                  class="favorite"
+                  src="./img/product/favorite.svg"
+                  alt=""
+                  srcset=""
+                  @click.stop.prevent="add_love()"
+                />
+                <img
+                  class="favorite"
+                  src="./img/product/favorite_touch.svg"
+                  alt=""
+                  srcset=""
+                  @click.stop.prevent="remove_love()"
+                />
+
+                <hr />
+                <p class="content">{{pro[0].detail}}</p>
+                <p>※可選擇等級的產品價格因等級而異。</p>
+                <p>尺寸/規格：</p>
+                <!-- 到時候加一欄尺寸 -->
+                <!-- <p>{{pro[0].size}}</p> -->
+                <p>W159 x D45 x H83</p>
+
+                <div class="count">
+                  <button class="count_btn" @click="sub_btn">-</button>
+                  <span>{{count}}</span>
+                  <button class="count_btn" @click="add_btn">+</button>
+                </div>
+
+                <div class="product__buy pr-0">
+                  <div class="product__buy-container">
+                    <p class="subtotal__price price">
+                      {{pro[0].price * count}}
+                    </p>
+                  </div>
+                </div>
+                <br />
+                <button class="submit" type="submit" @click="addcart">
+                  加入購物車
+                </button>
+              </li>
+            </ul>
+          </section>
+        </main>
+      </section>
+      @@include('layout/top.html') @@include('layout/footer.html')
     </div>
 
-    <script>       
-  
-          //空心變實心 
-        //   console.log(fabtn);
+    <script>
+      var productInfo = new Vue({
+        el: "#productInfo",
+        data: {
+          product: {
+            id: "",
+          },
+          pro: [],
+          image: "",
+          name: "",
+        },
+        beforeCreate() {
+          let urlParams = new URLSearchParams(window.location.search);
+          this.id = urlParams.get("id");
+        },
+        methods: {
+          addcart() {
+            alert(123);
+          },
+          add_love() {
+            // alert("wsdaf");
+            let fabtn = document.querySelectorAll(".favorite");
+            fabtn[1].classList.toggle("-on");
+            // console.log(fabtn);
+            let proimg = document.querySelector("#mainImg");
+            // console.log(proimg.src);
+            // 先設定一個物件;
+            // let storagedata={
+            // product_img: $('pro[0].pic')[0].src,
+            // product_name: $('#app').text(),
+            // }
 
-        // fabtn[0].addEventListener("click", function (e) {
-        //                 fabtn[1].classList.add('-on')
-        //                 let a = JSON.parse(sessionStorage.getItem('collect'))
-        //                 // console.log(a);
-        //                 // let storagedata = {
-        //                 //     product_img: $('.chair_img')[0].src,
-        //                 //     product_name: $('#app').text()
-        //                 // }
-        //                 // sessionStorage.setItem('collect', JSON.stringify(storagedata))
-        //                 if( a == null) {
-        //                     let storagedata = {
-        //                         product_img: $('.chair_img')[0].src,
-        //                         product_name: $('#app').text()
-        //                     }
-        //                     sessionStorage.setItem('collect', JSON.stringify(storagedata))
-        //                 } else {
-        //                     sessionStorage.setItem('collect', JSON.stringify(a))
-        //                 }                       
-        //                 // console.log(a)
-        //             })
-        //             fabtn[1].addEventListener("click", function () {
-        //                 // console.log(fabtn[1]);
-        //                 fabtn[1].classList.remove('-on');
-        //                 sessionStorage.clear()
-        //             })
+            // console.log(img.src);
+            // 先設定一個物件
+            // let storagedata={
+            // product_img: $('pro[0].pic')[0].src,
+            // product_name: $('#app').text(),
+            // }
+            // let storagedata={
+            //     product_img:
+            //     product_name:
+            // }
 
-
-        // type[0].style = 'outline: black 2px solid;'    
-        // for (let i = 0; i < type.length; i++) {
-        //     // console.log(type[i]);
-        //     type[i].addEventListener("click", function () {
-        //         // console.log(type[i]);
-        //         //換主圖
-        //         main_img.src = chair_style[i].src;
-        //         // counter = 0; 
-        //         for (let j = 0; j < type.length; j++) {
-        //             if (i == j) {
-        //                 //設定黑框
-        //                 type[i].style = 'outline: black 2px solid;'
-                        
-        //                 let storagedata = {
-        //                     product_img: $('.chair_img')[j].src,
-        //                     product_name: $('#app').text()
-        //                 }
-        //                 sessionStorage.setItem('collect', JSON.stringify(storagedata))
-
-        //             } else {
-        //                 //如果沒選定則取消樣式
-        //                 type[j].style = 'none;'
-        //             }                    
-        //         }               
-        //     })
-        // }           
-        // let fabtn = document.querySelectorAll(".favorite");
-        //     fabtn[0].addEventListener("click", function () {
-        //         fabtn[1].classList.toggle('-on')
-            
-        //     fabtn[1].addEventListener("click", function () {
-        //         // console.log(fabtn[1]);
-        //         fabtn[1].classList.remove('-on');
-        //     })
-        // })
-        // counter
-        var wrapper= document.querySelector('.count__wrapper'),
-        res= document.querySelector('.subtotal__price'),
-        input= wrapper.querySelector('input[class*=input]');
-
-        wrapper.addEventListener('click', e=>{ONSALE
-            var t= e.target;
-  
-            input.value= +input.value;
-    
-            if(t.closest('button[class*=--minus]')){
-                --input.value;
-            }
-            else if(t.closest('button[class*=--add]')){
-                ++input.value;
-            }
-            res.textContent= (300*input.value);
-        });
-        var productInfo = new Vue({
-            el: '#productInfo',
+            // 設定條件式,為了讓下面的值設為null
+            // let myList = sessionStorage.getItem("collect");
+            // console.log(myList);
+            // fabtn[0].addEventListener("click", function () {
+            //   fabtn[1].classList.add("-on");
+            // });
+            // //藉由click觸發下列事件
+            // fabtn[0].addEventListener("click", function () {
+            //   //         if(myList == null ){
+            //   //             // console.log(storagedata);
+            //   //             sessionStorage.setItem("collect", JSON.stringify([storagedata]));
+            //   //             // console.log(storagedata);
+            //   //             fabtn[1].classList.toggle("-on");
+            //   //         }else{
+            //   //             let myListArr = JSON.parse('collect')
+            //   //             // console.log(JSON.stringify(myList));
+            //   //             sessionStorage.setItem("collect", JSON.stringify(myList));
+            //   //             storagedata.push(myList);
+            //   //             console.log(storagedata);
+            //   // }
+            // });
+          },
+        },
+        mounted() {
+          let that = this;
+          $.ajax({
+            url: "php/getproductInfo.php",
+            type: "POST",
             data: {
-                product: {
-                    DETAIL: "",
-                    FEATURES: "./images/shopping/1-1.jpg",
-                    IMG: "./images/shopping/1-1.jpg",
-                    INFO: "",
-                    NAME: "",
-                    ONSALE: "",
-                    PRICE: "",
-                    PSN: "",
-                    SOLD: "",
-                    TYPE: "",
-                },
-                content: 'detail',
-                itemNum: 1,
+              id: this.id,
             },
-            beforeCreate() {
-                var xhr = new XMLHttpRequest();
-                xhr.onload = function () {
-                    if (xhr.status == 200) {
-                        productInfo.product = JSON.parse(xhr.responseText)[0];
-                    } else {
-                        alert(xhr.status);
-                    }
-                };
-                let searchURL = window.location.search.split("=");
-                // console.log(searchURL);
-                let id = searchURL[searchURL.length - 1];
-                let url = `php/getproductInfo.php?id=${id}`;
-                xhr.open("Get", url, true);
-                // xhr.send(null);
+            success: function (resp) {
+              let getResp = JSON.parse(resp);
+              that.pro = getResp;
             },
-            methods: {
-                add_cart() {
-                    alert(123);
-                }
-            }
-        })
-                  
+          });
+        },
+      });
+
+      // let main_img = document.querySelector('#mainImg');
+      // let type = document.querySelectorAll('img.type');
+      // let chair_style = document.querySelectorAll('img.chair_style');
+
+      // //設定第一項為黑框樣式(初始值)
+      // type[0].style = 'outline: black 2px solid;'
+      // for (let i = 0; i < type.length; i++) {
+      //     // console.log(type[i]);
+      //     type[i].addEventListener("click", function () {
+      //         // console.log(type[i]);
+      //         //換主圖
+      //         main_img.src = chair_style[i].src;
+      //         // counter = 0;
+      //         for (let j = 0; j < type.length; j++) {
+      //             if (i == j) {
+      //                 //設定黑框
+      //                 type[i].style = 'outline: black 2px solid;'
+
+      //                 let storagedata = {
+      //                     product_img: $('.chair_img')[j].src,
+      //                     product_name: $('#app').text()
+      //                 }
+      //                 sessionStorage.setItem('collect', JSON.stringify(storagedata))
+
+      //             } else {
+      //                 //如果沒選定則取消樣式
+      //                 type[j].style = 'none;'
+      //             }
+      //         }
+      //     })
+      // }
+
+      // let fabtn = document.querySelectorAll(".favorite");
+      //     fabtn[0].addEventListener("click", function () {
+      //         fabtn[1].classList.toggle('-on')
+
+      //     fabtn[1].addEventListener("click", function () {
+      //         // console.log(fabtn[1]);
+      //         fabtn[1].classList.remove('-on');
+      //     })
+      // })
+
+      // // counter
+      // var wrapper= document.querySelector('.count__wrapper'),
+      // res= document.querySelector('.subtotal__price'),
+      // input= wrapper.querySelector('input[class*=input]');
+
+      // wrapper.addEventListener('click', e=>{
+      //     var t= e.target;
+
+      //     input.value= +input.value;
+
+      //     if(t.closest('button[class*=--minus]')){
+      //         --input.value;
+      //     }
+      //     else if(t.closest('button[class*=--add]')){
+      //         ++input.value;
+      //     }
+      //     res.textContent= (300*input.value);
+      // });
+
+      //空心變實心
+      //   console.log(fabtn);
+      // fabtn[0].addEventListener("click", function (e) {
+      //     fabtn[1].classList.add('-on')
+      //     let a = JSON.parse(sessionStorage.getItem('collect'))
+      //     // console.log(a);
+
+      //     // let storagedata = {
+      //     //     product_img: $('.chair_img')[0].src,
+      //     //     product_name: $('#app').text()
+      //     // }
+      //     // sessionStorage.setItem('collect', JSON.stringify(storagedata))
+      //     if( a == null) {
+      //         let storagedata = {
+      //             product_img: $('.chair_img')[0].src,
+      //             product_name: $('#app').text()
+      //         }
+      //         sessionStorage.setItem('collect', JSON.stringify(storagedata))
+      //     } else {
+      //         sessionStorage.setItem('collect', JSON.stringify(a))
+      //     }
+      //     // console.log(a)
+      // })
+      // fabtn[1].addEventListener("click", function () {
+      //     // console.log(fabtn[1]);
+      //     fabtn[1].classList.remove('-on');
+      //     sessionStorage.clear()
+      // })
+
+      // let fabtn = document.querySelectorAll(".favorite");
+      // wrapper.addEventListener('click', e=>{
+      // var t= e.target;
+
+      // input.value= +input.value;
+
+      // if(t.closest('button[class*=--minus]')){
+      //     --input.value;
+      // }
+      // else if(t.closest('button[class*=--add]')){
+      //     ++input.value;
+      //  }
+      // res.textContent= (300*input.value);
+      // });
     </script>
-    <script>
-        
-         //  加入購物車鍵
-         $('.submit').on("click",function(){
-            alert("已加入購物車");
-        });       
-        // let main_img = document.querySelector('#mainImg');
-        // let type = document.querySelectorAll('img.type');
-        // let chair_style = document.querySelectorAll('img.chair_style');        
-        // 設定第一項為黑框樣式(初始值)
-
-
-         // type[0].style = 'outline: black 2px solid;'    
-        // for (let i = 0; i < type.length; i++) {
-        //     // console.log(type[i]);
-        //     type[i].addEventListener("click", function () {
-        //         // console.log(type[i]);
-        //         //換主圖
-        //         main_img.src = chair_style[i].src;
-        //         // counter = 0; 
-        //         for (let j = 0; j < type.length; j++) {
-        //             if (i == j) {
-        //                 //設定黑框
-        //                 type[i].style = 'outline: black 2px solid;'
-                        
-        //                 let storagedata = {
-        //                     product_img: $('.chair_img')[j].src,
-        //                     product_name: $('#app').text()
-        //                 }
-        //                 sessionStorage.setItem('collect', JSON.stringify(storagedata))
-
-        //             } else {
-        //                 //如果沒選定則取消樣式
-        //                 type[j].style = 'none;'
-        //             }                    
-        //         }               
-        //     })
-        // }           
-
-        let fabtn = document.querySelectorAll(".favorite");
-        console.log(fabtn);  
-
-        // 先設定一個物件
-        let storagedata={
-                product_img: $('.chair_img')[0].src,
-                product_name: $('#app').text(),
-                }      
-        // 設定條件式,為了讓下面的值設為null    
-        let myList = sessionStorage.getItem("collect");   
-            console.log(myList);       
-            
-            fabtn[0].addEventListener("click",function(){  
-            fabtn[1].classList.add("-on");
-        })  
-        //藉由click觸發下列事件
-        fabtn[0].addEventListener("click",function(){
-            if(myList == null ){
-                // console.log(storagedata);                
-                sessionStorage.setItem("collect", JSON.stringify([storagedata]));   
-                // console.log(storagedata);
-                fabtn[1].classList.toggle("-on");
-            }else{
-                let myListArr = JSON.parse('collect')             
-                // console.log(JSON.stringify(myList));
-                sessionStorage.setItem("collect", JSON.stringify(myList));
-                storagedata.push(myList);      
-                console.log(storagedata);
-            }
-        })
-            
-        
-
-
-        // fabtn.onclick=function(){
-        //         fabtn[0].classList.remove("-on");
-        //         }
-
-
-            // else
-            // {
-            //     fabtn[1].classList.remove("-on");
-            //     let productList={
-            //     product_img: $('.chair_img')[0].src,
-            //     product_name: $('#app').text()
-            //     }        
-            // }                      
-            
-            // fabtn[i].addEventListener("click", function () {              
-            // fabtn_ho[i].classList.add('-on')                
-            //             // console.log(a);
-            //             // 把資料化為物件
-                    
-            //             // console.log(storagedata);             
-            //             // 定義mylist =抓取sessionstorage裡面的key'collect'。
-            //             let myList = sessionStorage.getItem("collect"); //將mylist設為變數=抓取localstorage的key"list"式。                              
-            //             if(myList == null  //因為一開始表單都沒資料所以為null
-            //                 ){                             
-            //                 let storagedata = {
-            //                 product_img: $('.chair_img')[0].src,
-            //                 product_name: $('#app').text()
-            //                 }  
-                            
-            //             sessionStorage.setItem("collect", JSON.stringify([storagedata]));
-            //             // let myListArr = JSON.parse('collect');    
-                        
-            //             } else //如果裡面有存資料，則將推進下列資料。
-            //             {                            
-            //                 sessionStorage.setItem("collect", JSON.stringify(mylist))
-            //                 // storagedata.push(mylist);
-            //             }                       
-            //             // console.log(a)
-            //         })
-            //         fabtn_ho[i].addEventListener("click", function () {
-            //             // console.log(fabtn[1]);
-            //             fabtn_ho[i].classList.remove('-on');
-            //             sessionStorage.clear()
-            //         })
-            //         // let myListArray = JSON.parse(myList); //物件化
-            //         // myListArray.push(myTodo); //將物件化的資料推進陣列中
-            //         //  localStorage.setItem("list",JSON.stringify(myListArray));    
-        
-    </script>
-    <script>
-   
-        wrapper.addEventListener('click', e=>{
-        var t= e.target;
-  
-        input.value= +input.value;
-  
-        if(t.closest('button[class*=--minus]')){
-            --input.value;
-        }
-        else if(t.closest('button[class*=--add]')){
-            ++input.value;
-         }
-        res.textContent= (300*input.value);
-});
- 
-    </script>
-
-</body>
-
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </body>
 </html>
