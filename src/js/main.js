@@ -92,15 +92,13 @@ $(function () {
     if (result == "true") {
         
         $(icon).css("color", "#A0643E");
-
-        let wheel = document.querySelector('#wheel-login');
-        $(wheel).removeClass('-disable');
-        // console.log(1);
+        $('#wheel-login').removeClass('-disable');
     }else{
-        let wheelButton = document.querySelector("#wheel-outter-button")
-        wheelButton.addEventListener("click", function(){
+
+        $('#wheel-outter-button').on('click', function() {
             loginMember('<strong>請先登入會員<br>即可獲得轉盤機會</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
         })
+
 
     }
 
