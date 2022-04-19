@@ -143,7 +143,7 @@
                         <button type="button" class="btn btn-info" style="color: white;" data-toggle="modal"
                             data-target="#register" onclick="openModal(this,'login')">會員登入</button>
                     </li>
-                </ul>
+                </ul> -->
 
                 <div>
                     <!-- 購物車 -->
@@ -159,33 +159,25 @@
                                 <span></span>
                             </li>
                         </ul>
+                        <!-- 購物車迴圈內容 -->
                         <ul class="cart_content px-3" id="cart_side_list">
-                            <li class="detail" :data-id="item.id" v-for="item in carts">
+                            <li class="detail" :data-id="item.id" v-for="(item,index) in carts">
                                 <div class="img">
                                     <img :src="item.pic">
                                 </div>
                                 <div class="info ps-5">
                                     <div class="pname">{{item.names}}</div>
+                                    <!-- 數量鍵 -->
                                     <div class="count">
-                                        <div><span class="num-jian">-</span></div>
-                                        <div><input type="text" class="input-num" :value="item.count" /></div>
-                                        <div><span class="num-jia">+</span></div>
-                                    </div>
-
-                                    <!-- <div class="count">
-                                        <button class="count_btn" @click="sub_btn">-</button>
+                                        <button class="count_btn" @click="reduce(item)">-</button>
                                         <span>{{item.count}}</span>
-                                        <button class="count_btn" @click="add_btn">+</button>
-                                    </div> -->
-
+                                        <button class="count_btn" @click="add(item)">+</button>
+                                    </div>
                                     <div class="price">{{item.price * item.count}}</div>
                                     <div class="operate">
-                                        <a href="#" class="del">
+                                        <button href="#" class="del" @click="del(index)">
                                             <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                        <a href="#" class="heart">
-                                            <i class="far fa-heart"></i>
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </li>
@@ -217,23 +209,6 @@
                         <li class="padding_10 nav-item">
                             <a href="product.html" class="nav-link">所有商品</a>
                         </li>
-                        <!-- <li class="padding_10 nav-item dropdown">
-                            <a class="dropdown-toggle padding_10" href="product.html" id="navbarDropdownMenuLink"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                所有商品
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li>
-                                    <a class="dropdown-item nav-link" href="product.html">桌子</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item nav-link" href="product.html">櫃子</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item nav-link" href="product.html">椅子</a>
-                                </li>
-                            </ul>
-                        </li> -->
                         <li class="padding_10 nav-item">
                             <a href="customize.html" class="nav-link">客製化專區</a>
                         </li>
@@ -379,16 +354,5 @@
 </script>
 
 
-<!-- 購物車js -->
-<script>
-    $(function () {
-        $('.btn_cart_open').on('click', function () {
-            $(".cart_side").animate({ right: '0' }, 1200);
-        });
-        $('.btn_cart_close').on('click', function () {
-            $(".cart_side").animate({ right: '-100%' }, 1200);
-        });
-    });
-</script>
-
+<!-- 購物車側邊欄js -->
 <script src="./js/getproduct.min.js"></script>

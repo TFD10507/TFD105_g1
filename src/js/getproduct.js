@@ -1,8 +1,9 @@
 
-// 當點擊加入購物車
+// 當在頁面上點擊加入購物車時，讓側邊欄裡的值會跟著變動
 $(document).on("click", function (e) {
     if ($(e.target).hasClass('submit')) {
         $('#cart_side_list').find('li').remove();
+        // 強迫再跑一次start_cart
         getproduct.start_cart();
     }
 });
@@ -12,24 +13,12 @@ let getproduct = new Vue({
     el: '#cart_side_list',
     data() {
         return {
-            carts:[],
+            carts: [],
         }
     },
     methods: {
-        // 頁面上的數量控制鍵 -> 減
-        sub_btn() {
-            if (this.count < 2) {
-                this.count = 1;
-            } else {
-                this.count--;
-            }
-        },
-        // 頁面上的數量控制鍵 -> 加
-        add_btn() {
-            this.count++;
-        },
         start_cart() {
-            const self = this
+            const self = this;
             let cart = JSON.parse(sessionStorage.getItem("cart"));
             if (cart) {
                 for (let i = 0; i < cart.length; i++) {
@@ -47,41 +36,46 @@ let getproduct = new Vue({
                         },
                         dataType: 'json',
                         success: function (res) {
-                            goods.pic=res[0].pic
-                            goods.price=res[0].price
-                            goods.names=res[0].names
+                            goods.pic = res[0].pic
+                            goods.price = res[0].price
+                            goods.names = res[0].names
                             self.carts.push(goods)
-
                             // console.log(self.carts);
-
-                        //     $('#cart_side_list').prepend(`
-                        //     <li class="detail" data-id="${cart[i].id}">
-                        //         <div class="img">
-                        //             <img src="${res[0].pic}">
-                        //         </div>
-                        //         <div class="info ps-5">
-                        //             <div class="pname">${res[0].names}</div>
-                        //             <div class="count">
-                        //                 <div><span class="num-jian">-</span></div>
-                        //                 <div><input type="text" class="input-num" value="${cart[i].count}"/></div>
-                        //                 <div><span class="num-jia">+</span></div>
-                        //             </div>
-                        //             <div class="price">${res[0].price * cart[i].count}</div>
-                        //             <div class="operate">
-                        //                 <a href="#" class="del">
-                        //                     <i class="fas fa-trash-alt"></i>
-                        //                 </a>
-                        //                 <a href="#" class="heart">
-                        //                     <i class="far fa-heart"></i>
-                        //                 </a>
-                        //             </div>
-                        //         </div>
-                        //     </li>
-                        // `)
                         },
                     })
                 }
             }
+        },
+        add(item) {
+            item.count++;
+            this.updated_session(item);
+        },
+        reduce(item) {
+            if (item.count > 1) {
+                item.count--;
+                this.updated_session(item);
+            }
+        },
+        del(index) {
+            // 畫面的carts刪除
+            this.carts.splice(index, 1);
+            // sessionStorage 的 cart 刪除
+            let cart = JSON.parse(sessionStorage.getItem("cart"));
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[0].id == cart[i].id) {
+                    cart.splice(i, 1);
+                }
+            }
+            sessionStorage.setItem('cart', JSON.stringify(cart))
+        },
+        updated_session(item) {
+            let cart = JSON.parse(sessionStorage.getItem("cart"));
+            for (let i = 0; i < cart.length; i++) {
+                if (item.id == cart[i].id) {
+                    cart[i].count = item.count
+                }
+            }
+            sessionStorage.setItem("cart", JSON.stringify(cart));
         },
     },
     created() {
@@ -90,12 +84,4 @@ let getproduct = new Vue({
 })
 
 
-
-// $(document).on("click", function (e) {
-//     let getId = $(e.target).closest('li').data('id');
-//     let getData = JSON.parse(sessionStorage.getItem('cart'));
-//     if ($(e.target).hasClass('del') || $(e.target).hasClass('fa-trash-alt')) {
-        
-//     }
-// });
 

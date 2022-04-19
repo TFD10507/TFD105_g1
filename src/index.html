@@ -3,12 +3,11 @@
 
 <head>
     @@include('layout/head.html')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 </head>
 
 <body class="index">
-    <button class="roulette button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="wheel-outter-button">
+    <button class="roulette button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        id="wheel-outter-button">
         <img src="./img/index/lucky-wheel.png">
     </button>
     <!-- 輪盤小遊戲彈跳視窗 -->
@@ -160,13 +159,6 @@
                                 </p>
                             </a>
                         </div>
-                        <!-- <div class="news_item me-2">
-                            <a href="news.html">
-                                <img src="./img/news/main.jpg" alt="">
-                                <p>身處都市中的叢林~誰說辦公室只能一成不變...
-                                </p>
-                            </a>
-                        </div> -->
                     </div>
                     <i class="fa-solid fa-angle-right"></i>
                 </div>
@@ -175,22 +167,22 @@
     </div>
     @@include('layout/footer.html')
     <!-- gsap -->
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?r=5426"></script>
+    <!-- <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?r=5426"></script>
 
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js?v=7"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js?v=7"></script> -->
 
     <script>
         AOS.init();
 
         new WOW().init();
         // gsap
-        gsap.to(".parallax-bg", {
-            scrollTrigger: {
-                scrub: true
-            },
-            y: (i, target) => -ScrollTrigger.maxScroll(window) * target.dataset.speed,
-            ease: "none"
-        });
+        // gsap.to(".parallax-bg", {
+        //     scrollTrigger: {
+        //         scrub: true
+        //     },
+        //     y: (i, target) => -ScrollTrigger.maxScroll(window) * target.dataset.speed,
+        //     ease: "none"
+        // });
 
         // 最新消息的輪播
         $('.responsive').slick({
@@ -293,7 +285,7 @@
 
 
     </script>
-    <script src="./js/index.min.js"></script>
+    <script src="./js/index_ctrl_product.min.js"></script>
 </body>
 
 </html>
