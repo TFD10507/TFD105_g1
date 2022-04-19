@@ -14,7 +14,7 @@
                 <section class="main">
                     <ul class="cart">
                         <li class="photo">
-                            <img id="mainImg" class="mainImg product" src="./img/product/chair01_01.jpg" alt="">
+                            <img id="mainImg" class="mainImg product chair_img" src="./img/product/chair01_01.jpg" alt="">
                             <!-- <ul class="showbar">
                                 <li><img class="smallImg" src="./img/product/chair_002.pg" alt="" srcset=""></li>
                                 <li><img class="smallImg" src="./img/product/chair_003.jpg" alt="" srcset=""></li>
@@ -23,10 +23,8 @@
                         </li>
                         <li class="content">                            
                             <h3 data-prd_id="001" id="app">羅丹辦公椅</h3>
-                            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
-                                @click.stop.prevent>
-                            <img class="favorite" src="./img/product/favorite_touch.svg" alt="" srcset=""
-                                @click.stop.prevent>
+                            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="">
+                            <img class="favorite" src="./img/product/favorite_touch.svg" alt="" srcset="">
 
                             <hr>
                             <p class="content">在起居室或臥室等緊湊空間內，被精心挑選的物品包圍著的高挑大人書桌。考慮到電源線的佈線，建議將此桌子用於 PC 工作。</p>                   
@@ -93,28 +91,8 @@
         @@include('layout/footer.html')
     </div>
 
-    <script>  
-      
-        //  加入購物車鍵
-        $('.submit').on("click",function(){
-            alert("已加入購物車");
-        });
-       
-        let main_img = document.querySelector('#mainImg');
-        let type = document.querySelectorAll('img.type');
-        let chair_style = document.querySelectorAll('img.chair_style');        
-        // 設定第一項為黑框樣式(初始值)
-        let fabtn = document.querySelectorAll("img.favorite");
-        console.log(fabtn);        
-            fabtn[0].addEventListener("click",function(){
-              let productList={
-                product_img: $('.chair_img')[j].src,
-                product_name: $('#app').text()
-                // product_img: $('.chair_img')[j].src,
-                // product_name: $('#app').text()
-              }
-              console.log(productList);
-            })
+    <script>       
+  
           //空心變實心 
         //   console.log(fabtn);
 
@@ -180,20 +158,12 @@
         //         fabtn[1].classList.remove('-on');
         //     })
         // })
-
-
-
-
-
-
-
-
         // counter
         var wrapper= document.querySelector('.count__wrapper'),
         res= document.querySelector('.subtotal__price'),
         input= wrapper.querySelector('input[class*=input]');
 
-        wrapper.addEventListener('click', e=>{
+        wrapper.addEventListener('click', e=>{ONSALE
             var t= e.target;
   
             input.value= +input.value;
@@ -234,7 +204,7 @@
                     }
                 };
                 let searchURL = window.location.search.split("=");
-                console.log(searchURL);
+                // console.log(searchURL);
                 let id = searchURL[searchURL.length - 1];
                 let url = `php/getproductInfo.php?id=${id}`;
                 xhr.open("Get", url, true);
@@ -249,40 +219,129 @@
                   
     </script>
     <script>
-        // var app = new Vue({
-        //     el: '#app',
-        //     data: {
-        //         text: 'ss',
-        //         cart2: '<div>asdadx</div>',
-        //         products:
-        //             [
-        //                 {  
-        //                     "id": 2,
-        //                     "image": "img/product/chair01_01.jpg",
-        //                     "productname": "chair",
-        //                     "price": '1,000'
-        //                 }, 
-        //                 {  
-        //                     "id": 3,
-        //                     "image": "img/product/chair01_01.jpg",
-        //                     "productname": "chair",
-        //                     "price": '1,000'
-        //                 },                         
-        //             ]
-        //     },
-        //     methods: {
-        //         add_cart() {
-        //             alert(123);
+        
+         //  加入購物車鍵
+         $('.submit').on("click",function(){
+            alert("已加入購物車");
+        });       
+        // let main_img = document.querySelector('#mainImg');
+        // let type = document.querySelectorAll('img.type');
+        // let chair_style = document.querySelectorAll('img.chair_style');        
+        // 設定第一項為黑框樣式(初始值)
+
+
+         // type[0].style = 'outline: black 2px solid;'    
+        // for (let i = 0; i < type.length; i++) {
+        //     // console.log(type[i]);
+        //     type[i].addEventListener("click", function () {
+        //         // console.log(type[i]);
+        //         //換主圖
+        //         main_img.src = chair_style[i].src;
+        //         // counter = 0; 
+        //         for (let j = 0; j < type.length; j++) {
+        //             if (i == j) {
+        //                 //設定黑框
+        //                 type[i].style = 'outline: black 2px solid;'
+                        
+        //                 let storagedata = {
+        //                     product_img: $('.chair_img')[j].src,
+        //                     product_name: $('#app').text()
+        //                 }
+        //                 sessionStorage.setItem('collect', JSON.stringify(storagedata))
+
+        //             } else {
+        //                 //如果沒選定則取消樣式
+        //                 type[j].style = 'none;'
+        //             }                    
+        //         }               
+        //     })
+        // }           
+
+        let fabtn = document.querySelectorAll(".favorite");
+        console.log(fabtn);  
+
+        // 先設定一個物件
+        let storagedata={
+                product_img: $('.chair_img')[0].src,
+                product_name: $('#app').text(),
+                }      
+        // 設定條件式,為了讓下面的值設為null    
+        let myList = sessionStorage.getItem("collect");   
+            console.log(myList);       
+            
+            fabtn[0].addEventListener("click",function(){  
+            fabtn[1].classList.add("-on");
+        })  
+        //藉由click觸發下列事件
+        fabtn[0].addEventListener("click",function(){
+            if(myList == null ){
+                // console.log(storagedata);                
+                sessionStorage.setItem("collect", JSON.stringify([storagedata]));   
+                // console.log(storagedata);
+                fabtn[1].classList.toggle("-on");
+            }else{
+                let myListArr = JSON.parse('collect')             
+                // console.log(JSON.stringify(myList));
+                sessionStorage.setItem("collect", JSON.stringify(myList));
+                storagedata.push(myList);      
+                console.log(storagedata);
+            }
+        })
+            
+        
+
+
+        // fabtn.onclick=function(){
+        //         fabtn[0].classList.remove("-on");
         //         }
-        //     }
-        // })
 
 
-
-
-
-
-        // let fabtn = document.querySelectorAll(".favorite");
+            // else
+            // {
+            //     fabtn[1].classList.remove("-on");
+            //     let productList={
+            //     product_img: $('.chair_img')[0].src,
+            //     product_name: $('#app').text()
+            //     }        
+            // }                      
+            
+            // fabtn[i].addEventListener("click", function () {              
+            // fabtn_ho[i].classList.add('-on')                
+            //             // console.log(a);
+            //             // 把資料化為物件
+                    
+            //             // console.log(storagedata);             
+            //             // 定義mylist =抓取sessionstorage裡面的key'collect'。
+            //             let myList = sessionStorage.getItem("collect"); //將mylist設為變數=抓取localstorage的key"list"式。                              
+            //             if(myList == null  //因為一開始表單都沒資料所以為null
+            //                 ){                             
+            //                 let storagedata = {
+            //                 product_img: $('.chair_img')[0].src,
+            //                 product_name: $('#app').text()
+            //                 }  
+                            
+            //             sessionStorage.setItem("collect", JSON.stringify([storagedata]));
+            //             // let myListArr = JSON.parse('collect');    
+                        
+            //             } else //如果裡面有存資料，則將推進下列資料。
+            //             {                            
+            //                 sessionStorage.setItem("collect", JSON.stringify(mylist))
+            //                 // storagedata.push(mylist);
+            //             }                       
+            //             // console.log(a)
+            //         })
+            //         fabtn_ho[i].addEventListener("click", function () {
+            //             // console.log(fabtn[1]);
+            //             fabtn_ho[i].classList.remove('-on');
+            //             sessionStorage.clear()
+            //         })
+            //         // let myListArray = JSON.parse(myList); //物件化
+            //         // myListArray.push(myTodo); //將物件化的資料推進陣列中
+            //         //  localStorage.setItem("list",JSON.stringify(myListArray));    
+        
+    </script>
+    <script>
+   
         wrapper.addEventListener('click', e=>{
         var t= e.target;
   
@@ -296,91 +355,7 @@
          }
         res.textContent= (300*input.value);
 });
-           // let fabtn = document.querySelectorAll(".favorite");
-        // // console.log(fabtn);
-        // for (let i = 0; i < 2; i++) {
-        //     // console.log(fabtn[i]);
-        //     fabtn[i].addEventListener("click", function () {
-        //         // console.log(fabtn[i]);
-        //         // cog(e.classlist.src.target);onsole.l
-        //         // e.src= chair_style[i].src
-        //     }
-
-
-
-
-
-
-            // console.log(choice[i]);
-
-            // main_img.src = chair_style[i].src;
-            // choice[i].style = 'outline: black 2px solid;'
-
-            // choice[0].style = 'outline: black 2px solid;'
-            // for (let i = 0; i <= 5; i++) {
-            //     counter = 0;
-            //     for (let j = 0; j <= 5; j++) {
-            //         if (i = j) {
-            //             choice[j].style = 'none';
-            //         }
-            //     }
-            //     // console.log(choice[i]);
-            //     choice[i].addEventListener("click", function () {
-            //         main_img.src = chair_style[i].src;
-            //         choice[i].style = 'outline: black 2px solid;'
-
-
-            //     choice[i].style = 'outline: black 2px solid;'
-            // } else {
-            //     choice[i].style = 'outline: black 2px solid;'
-            // }
-            // choice.forEach(function () {
-            //     choice[i].style = 'outline: black 2px solid;'
-            // })
-            // console.log(choice[i]);
-            // if (i === [i]) {
-            //     choice[i].style = 'none;'
-            // } else {
-            //     choice[i].style = 'outline: black 2px solid;'
-            // }
-
-
-            // chair_style[i].classList.toggle('-active');
-
-
-            // console.log(chair_style[i].classList.toggle('-active'));
-            // console.log(chair_style[i] = chair_style[i].classList.add('-active'));
-            // console.log(main_img.src)
-            // console.log(i)
-
-
-
-            // function () {
-            //     console.log("main_img.src" + main_img.src);
-            //     main_img.src = choice[i].src;
-            //     console.log(i);
-            // }
-        
-
-
-
-        // let mainImg = document.getElementById("mainImg");
-        //     let smallImg = document.getElementsByClassName("smallImg");
-        //     smallImg[0].onclick = function(){
-        //         mainImg.src = smallImg[0].src;
-        //     }
-        //     smallImg[1].onclick = function(){
-        //         mainImg.src  = smallImg[1].src;
-        //     }
-        //     smallImg[2].onclick = function(){
-        //         mainImg.src  = smallImg[2].src;
-        //     }
-        //     smallImg[3].onclick = function(){
-        //         mainImg.src  = smallImg[3].src;
-        //     } 
-
-   
-
+ 
     </script>
 
 </body>
