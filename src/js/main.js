@@ -1,11 +1,11 @@
 $(function () {
 
     // ===== 導覽列的會員中心子選單 ======
-    $('.member_ul').on("click", function (e) {
-        e.preventDefault();
-        // $('.member_list').toggleClass("active");
-        $('.member_list').toggle(500);
-    });
+    // $('.member_ul').on("click", function (e) {
+    //     e.preventDefault();
+    //     // $('.member_list').toggleClass("active");
+    //     $('.member_list').toggle(500);
+    // });
 
     // 購物車側邊欄的出現控制
     $('.btn_cart_open').on('click', function () {
@@ -44,11 +44,12 @@ $(function () {
     AOS.init();
 
     function loginMember(msg, icon, html) {
+
         Swal.fire({
             title: msg,
             icon: icon,
             html: html,
-
+            
             showConfirmButton: false, // 確認按鈕（預設會顯示不用設定）
             confirmButtonText: '參加活動', //　按鈕顯示文字
             confirmButtonAriaLabel: '參加活動', // 網頁無障礙用
@@ -65,22 +66,6 @@ $(function () {
     let result = sessionStorage.getItem('status');
     // console.log(result);
     let icon = document.querySelector(".fa-user-circle");
-
-    if (result == "true") {
-        
-        $(icon).css("color", "#A0643E");
-
-        let wheel = document.querySelector('#wheel-login');
-        $(wheel).removeClass('-disable');
-        // console.log(1);
-    }else{
-        let wheelButton = document.querySelector("#wheel-outter-button")
-        wheelButton.addEventListener("click", function(){
-            loginMember('<strong>請先登入會員<br>即可獲得轉盤機會</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
-        })
-
-    }
-
     //  判斷是否登入
     // console.log(icon);
     icon.addEventListener("click", function () {
@@ -103,4 +88,20 @@ $(function () {
 
         }
     });
+    
+    if (result == "true") {
+        
+        $(icon).css("color", "#A0643E");
+
+        let wheel = document.querySelector('#wheel-login');
+        $(wheel).removeClass('-disable');
+        // console.log(1);
+    }else{
+        let wheelButton = document.querySelector("#wheel-outter-button")
+        wheelButton.addEventListener("click", function(){
+            loginMember('<strong>請先登入會員<br>即可獲得轉盤機會</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
+        })
+
+    }
+
 });
