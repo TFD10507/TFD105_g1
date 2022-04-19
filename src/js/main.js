@@ -7,6 +7,13 @@ $(function () {
         $('.member_list').toggle(500);
     });
 
+    // 購物車側邊欄的出現控制
+    $('.btn_cart_open').on('click', function () {
+        $(".cart_side").animate({ right: '0' }, 1200);
+    });
+    $('.btn_cart_close').on('click', function () {
+        $(".cart_side").animate({ right: '-100%' }, 1200);
+    });
 
     // ======== go to top ========
     var $win = $(window);
