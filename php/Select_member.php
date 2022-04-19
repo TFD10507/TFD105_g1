@@ -7,7 +7,7 @@
        
        //如果html有傳值,先找值對應的ID
        if(isset($member)){    
-              $sql = "SELECT * FROM G1.member WHERE id = :id";
+              $sql = "SELECT * FROM member WHERE id = :id";
               $statement = $link->prepare($sql);
               $statement->bindValue(":id", $member->memberid);
               $statement->execute();

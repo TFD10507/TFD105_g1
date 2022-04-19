@@ -4,7 +4,7 @@
        //---------------------------------------------------
        $coupon = json_decode(file_get_contents("php://input"));
        if(isset($coupon)){
-              $sql = "SELECT * FROM G1.coupon WHERE id = :id";
+              $sql = "SELECT * FROM coupon WHERE id = :id";
               // 包裝起來才可以使PHP 用bindValue
               $statement = $link->prepare($sql);  
               // 自定義變數
