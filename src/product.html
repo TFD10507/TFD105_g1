@@ -7,78 +7,7 @@
 <body class="product">
 
   @@include('layout/login.html')
-  @@include('layout/nav.html')
-  
-    <!-- 彈跳視窗js -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/pop-up-common.min.js"></script>
-    <script>
-      const togglePassword = document.querySelector("#togglePassword");
-      const password = document.querySelector("#password");
-      const togglePassword1 = document.querySelector("#togglePassword1");
-      const password1 = document.querySelector("#password1");
-      const toggleConformPassword = document.querySelector(
-        "#toggleConformPassword"
-      );
-      const conformPassword = document.querySelector("#conformPassword");
-
-      togglePassword1.addEventListener("click", function () {
-        // toggle the type attribute
-        const type =
-          password1.getAttribute("type") === "password" ? "text" : "password";
-        password1.setAttribute("type", type);
-
-        // toggle the icon
-        this.classList.toggle("bi-eye");
-      });
-      togglePassword.addEventListener("click", function () {
-        // toggle the type attribute
-        const type =
-          password.getAttribute("type") === "password" ? "text" : "password";
-        password.setAttribute("type", type);
-
-        // toggle the icon
-        this.classList.toggle("bi-eye");
-      });
-
-      toggleConformPassword.addEventListener("click", function () {
-        // toggle the type attribute
-        const type =
-          conformPassword.getAttribute("type") === "password"
-            ? "text"
-            : "password";
-        conformPassword.setAttribute("type", type);
-
-        // toggle the icon
-        this.classList.toggle("bi-eye");
-      });
-      // prevent form submit
-      const form = document.querySelector("form");
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-      });
-    </script>
-
-    <!-- 購物車js -->
-    <script>
-      $(function () {
-        $(".btn_cart_open").on("click", function () {
-          $(".cart_side").animate({ right: "0" }, 1500);
-        });
-        $(".btn_cart_close").on("click", function () {
-          $(".cart_side").animate({ right: "-100%" }, 1500);
-        });
-      });
-    </script>
+  @@include('layout/nav.html')  
     <!-- <div class="wrapper"></div>   -->
     <section class="productslider"></section>
     <main class="container" id="app" v-cloak>
@@ -139,60 +68,6 @@
         </div>
       </div>
     </main>
-<div id="footer"></div>
-</div>
-    <script>     
-      // global component
-      // Vue.component('組件名稱',{
-      //     template: ``, //用來定義視覺元件
-      // });
-      Vue.component("footer-list", {
-        template: `
-        <ul>
-            <li class="pb-2">森活木工</li>
-            <li class="pb-2">FACTORY 埼玉県川口市安行領家945-1</li>
-            <li class="pb-2">morifurniture@gmail.com</li>
-            <li>04-8278-3324</li>
-        </ul>
-        `, //用來定義視覺元件
-      });
-      Vue.component("footer-link", {
-        template: `
-        <ul class="link_icon">
-            <li>
-                <a href="https://www.facebook.com/" class="pb-2">
-                    <img src="./img/index/facebook.png"></img>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/">
-                    <img src="./img/index/instagram.png"></img>
-                </a>
-            </li>
-        </ul>
-            `, //用來定義視覺元件
-      });
-
-      new Vue({
-        el: "#footer",
-        data: {},
-        methods: {},
-
-        // 在template 必須要有一個父元素(一個root)把他們包住
-        template: `
-        <footer class="padding_30 margin_top_50">
-            <div class="footer_info">
-                <footer-list></footer-list>
-                <footer-link></footer-link>
-            </div>
-            <hr class="oneheight">
-            <div class="pt-4 mx-auto">
-                本網站為緯育TibaMe前端設計工程師班第74期第1組學員專題成果作品，本平台僅供學習、展示之用。參考資源：https://sinrafurniture.com/
-            </div>
-        </footer>
-        `,
-      });
-    </script>
     <script>
       let smallicon = document.querySelector(".smallicon");
       let smallNav = document.querySelectorAll(".smallNav");
@@ -301,5 +176,8 @@
         },
       });  
     </script>
+     @@include('layout/footer.html')
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </body>
 </html>
