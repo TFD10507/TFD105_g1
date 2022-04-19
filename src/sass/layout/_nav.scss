@@ -56,6 +56,7 @@ header {
                 width: 600px;
                 height: 100vh;
                 position: absolute;
+                overflow-y: auto;
                 top: 0;
                 right: -200%;
                 .cart_title {
@@ -88,7 +89,9 @@ header {
                 // 購物車內容
                 .cart_content {
                     font-size: 16px;
+                    margin-bottom: 0;
                     .detail {
+                        padding-top: 20px;
                         display: flex;
                         width: 100%;
                         border-bottom: 1px solid #e3e3e3;
@@ -157,7 +160,7 @@ header {
                     height: 50px;
                     text-align: center;
                     line-height: 40px;
-                    position: absolute;
+                    position: relative;
                     bottom: 0;
                     color: $p_color2;
                 }

@@ -1,160 +1,660 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>森活木工</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- 頁籤上圖示 -->
+    <link rel="icon" href="./img/mori_logo.ico" type="image/x-icon" />
 
-<head>
-  @@include('layout/head.html')
-</head>
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-<body class="product">
+    <!-- aos -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-  @@include('layout/login.html')
-  @@include('layout/nav.html')
-  <!-- <div class="wrapper"></div>   -->
-  <section class="productslider"></section>
-  <main class="container" id="app">
-    <section class="title">
-      <h1 class="p-3">產品總覽
-        <!-- <div v-html="cart2"></div> -->
-      </h1>
-      <img src="./img/product/all_bn001.jpg" class="img-fluid" data-aos="zoom-in" data-aos-duration="2000">
-    </section>
-    <!-- <div class="box">
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/10f319606c.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- jquery -->
+    <script src="./js/vendors/jquery-3.6.0.min.js"></script>
+
+    <!-- vue -->
+    <script src="./js/vendors/vue.min.js"></script>
+
+    <!-- bootstrap -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- slick輪播 -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+
+    <!-- gsap -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js"></script> -->
+
+    <!-- 自己的main.js -->
+    <script src="./js/main.min.js"></script>
+
+    <!-- 會員彈跳視窗js -->
+    <!-- <script src="../js/jquery.js"></script>
+<script src="../js/pop-up-common.js"></script> -->
+  </head>
+
+  <body class="product">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> -->
+
+    <!-- 彈跳視窗CSS -->
+    <style>
+      a {
+        color: #75706b;
+        display: inline-block;
+      }
+
+      a:hover {
+        letter-spacing: none;
+        text-decoration: none;
+        /* color: tomato; */
+      }
+
+      input.form-control::placeholder {
+        color: rgb(172, 172, 172);
+        font-size: 0.9rem;
+      }
+      /* .label{
+        margin-bottom: 20px;
+    } */
+      .container-body {
+        display: block;
+        height: calc(100vh - 60px - 100px);
+      }
+
+      .my-modal .modal-header {
+        border-bottom: 0;
+      }
+
+      .my-modal .modal-body {
+        display: block;
+        margin: auto;
+        padding: 0rem 1rem 3rem 1rem;
+      }
+
+      .my-modal .modal-img img {
+        display: block;
+        margin: auto;
+      }
+
+      .my-modal .modal-title .title {
+        text-align: center;
+        margin-bottom: 0;
+        margin-top: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .my-modal .modal-title .note {
+        text-align: center;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .my-modal .modal-btn {
+        display: flex;
+        justify-content: center;
+      }
+
+      .my-modal.modal-register .modal-header {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-register a.register-title {
+        flex: 1;
+        background: #75706b;
+        padding: 1.1rem 0;
+        color: #fff;
+        text-align: center;
+      }
+
+      .modal-register a.register-title:hover {
+        background: rgba(117, 112, 107, 0.8);
+      }
+
+      .modal-register a.register-title.active {
+        background: #fff;
+        color: #75706b;
+      }
+
+      .my-modal.modal-register .modal-body {
+        padding: 2rem;
+      }
+
+      .my-modal .modal-title .cost {
+        color: #986645;
+        font-size: 1.7rem;
+      }
+
+      .btn-coffee {
+        background: #986645;
+        color: #fff;
+        border-radius: 0;
+        padding: 0.1rem 0.5rem;
+        margin: 20px;
+        min-width: 100px;
+      }
+
+      .btn-coffee:hover {
+        color: #fff;
+        background: rgba(152, 102, 69, 0.8);
+      }
+
+      .my-form .form-control {
+        display: inline-block;
+        border: 1px solid gray;
+        margin-bottom: 20px;
+      }
+
+      .my-form i.bi-eye-slash {
+        margin-left: -30px;
+        cursor: pointer;
+      }
+
+      .my-form .form-group.forget-password {
+        text-align: center;
+      }
+    </style>
+
+    <header>
+      <nav class="navbar fixed-top navbar-expand-xs padding_10">
+        <div class="container-fluid">
+          <div class="navLogo">
+            <a class="navbar-brand" href="index.html">
+              <img src="./img/mori_logo.png" alt="" />
+            </a>
+          </div>
+
+          <div class="navIcon">
+            <div class="icon member_ul">
+              <i class="fas fa-user-circle"></i>
+            </div>
+            <ul class="member_list bg-primary p-3 btn">
+              <li>
+                <a href="member.html">會員中心</a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  style="color: white"
+                  data-toggle="modal"
+                  data-target="#register"
+                  onclick="openModal(this,'login')"
+                >
+                  會員登入
+                </button>
+              </li>
+            </ul>
+            <div class="icon btn_cart_open">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="cart_side bg-gray">
+              <ul class="cart_title bg-primary mb-0 p-3">
+                <li>購物車</li>
+                <li class="btn_cart_close">
+                  <span></span>
+                  <span></span>
+                </li>
+              </ul>
+              <ul class="cart_content p-3">
+                <li class="detail">
+                  <div class="img">
+                    <!-- <img src="./img/product/chair_001.jpg" /> -->
+                  </div>
+                  <div class="info ps-5">
+                    <div class="pname">SEOTO-EX 機櫃</div>
+                    <div class="ptype">白橡木</div>
+                    <div class="count">
+                      <div><span class="num-jian">-</span></div>
+                      <div>
+                        <input type="text" class="input-num" value="1" />
+                      </div>
+                      <div><span class="num-jia">+</span></div>
+                    </div>
+                    <div class="price">300</div>
+                    <div class="operate">
+                      <a href="#" class="del">
+                        <i class="fas fa-trash-alt"></i>
+                      </a>
+                      <a href="#" class="heart">
+                        <i class="far fa-heart"></i>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <a href="cart.html" class="link_cart btn-warning btn">前往結帳</a>
+            </div>
+            <!-- 漢堡checkbox -->
+            <input type="checkbox" id="meun_control" />
+            <!-- 漢堡 -->
+            <div class="hamburger">
+              <label for="meun_control" class="meun_btn">
+                <span></span>
+                <span></span>
+                <span></span>
+              </label>
+            </div>
+            <!-- 漢堡出現介面 = 主選單內容 -->
+            <div class="mainSel">
+              <div class="mainImg"></div>
+              <ul class="mainList">
+                <li class="padding_10 nav-item">
+                  <a href="about.html" class="nav-link">關於我們</a>
+                </li>
+                <!-- <li class="padding_10 dropdown-menu">
+                            <a href="product.html" class="nav-link">所有商品</a>
+                        </li> -->
+                <li class="padding_10 nav-item dropdown">
+                  <a
+                    class="dropdown-toggle padding_10"
+                    href="product.html"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    所有商品
+                  </a>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <li>
+                      <a class="dropdown-item nav-link"" href="product.html"
+                        >桌子</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item nav-link" href="product.html"
+                        >櫃子</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item nav-link"  href="product.html"
+                        >椅子</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li class="padding_10 nav-item">
+                  <a href="customize.html" class="nav-link">客製化專區</a>
+                </li>
+                <li class="padding_10 nav-item">
+                  <a href="news.html" class="nav-link">最新消息</a>
+                </li>
+                <li class="padding_10 nav-item">
+                  <a href="faq.html" class="nav-link">常見問題</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 彈跳視窗modle -->
+    <div
+      class="modal fade my-modal modal-register"
+      id="register"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <a type="button" class="register-title login" no="login">
+              會員登入
+            </a>
+            <a
+              type="button"
+              class="register-title register active"
+              no="register"
+            >
+              會員註冊
+            </a>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+          </div>
+          <div class="modal-body">
+            <div class="modal-img">
+              <!-- <img src="images/icon_home.png" alt=""> -->
+            </div>
+            <div id="formrRegister">
+              <form class="my-form mt-3">
+                <div class="form-group">
+                  <label>會員帳號</label>
+                  <input
+                    type="email"
+                    class="form-control form-control-sm"
+                    placeholder="請輸入會員E-Mail"
+                    required/>
+                </div>
+                <div class="form-group">
+                  <label for="">密碼</label>
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control form-control-sm"
+                    placeholder="請輸入密碼"
+                    required
+                  />
+                  <i class="bi bi-eye-slash" id="togglePassword"></i>
+                </div>
+                <div class="form-group">
+                  <label for="">確認密碼</label>
+                  <input
+                    type="password"
+                    id="conformPassword"
+                    class="form-control form-control-sm"
+                    placeholder="請輸入確認密碼"
+                    required
+                  />
+                  <i class="bi bi-eye-slash" id="toggleConformPassword"></i>
+                </div>
+                <div class="form-group">
+                  <label for="">地址</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    placeholder="請輸入地址"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">生日</label>
+                  <input
+                    type="date"
+                    class="form-control form-control-sm"
+                    placeholder="請輸入生日"
+                  />
+                </div>
+                <div class="modal-btn mt-5">
+                  <button
+                    type="button"
+                    class="btn btn-coffee"
+                    data-dismiss="modal"
+                  >
+                    返回
+                  </button>
+                  <button type="submit" class="btn btn-coffee ml-5">
+                    註冊
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div id="formrLogin">
+              <form class="my-form mt-3">
+                <div class="form-group">
+                  <label>會員帳號</label>
+                  <input
+                    type="email"
+                    class="form-control form-control-sm"
+                    placeholder="請輸入會員E-Mail"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="">密碼</label>
+                  <input
+                    type="password"
+                    id="password1"
+                    class="form-control form-control-sm"
+                    placeholder="請輸入密碼"
+                    required
+                  />
+                  <i class="bi bi-eye-slash" id="togglePassword1"></i>
+                </div>
+                <div class="form-group forget-password">
+                  <a href="#" class="a2">忘記密碼</a>
+                </div>
+                <div class="modal-btn mt-5">
+                  <button
+                    type="button"
+                    class="btn btn-coffee"
+                    data-dismiss="modal"
+                  >
+                    返回
+                  </button>
+                  <button type="submit" class="btn btn-coffee ml-5">
+                    送出
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 彈跳視窗js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/pop-up-common.min.js"></script>
+    <script>
+      const togglePassword = document.querySelector("#togglePassword");
+      const password = document.querySelector("#password");
+      const togglePassword1 = document.querySelector("#togglePassword1");
+      const password1 = document.querySelector("#password1");
+      const toggleConformPassword = document.querySelector(
+        "#toggleConformPassword"
+      );
+      const conformPassword = document.querySelector("#conformPassword");
+
+      togglePassword1.addEventListener("click", function () {
+        // toggle the type attribute
+        const type =
+          password1.getAttribute("type") === "password" ? "text" : "password";
+        password1.setAttribute("type", type);
+
+        // toggle the icon
+        this.classList.toggle("bi-eye");
+      });
+      togglePassword.addEventListener("click", function () {
+        // toggle the type attribute
+        const type =
+          password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+
+        // toggle the icon
+        this.classList.toggle("bi-eye");
+      });
+
+      toggleConformPassword.addEventListener("click", function () {
+        // toggle the type attribute
+        const type =
+          conformPassword.getAttribute("type") === "password"
+            ? "text"
+            : "password";
+        conformPassword.setAttribute("type", type);
+
+        // toggle the icon
+        this.classList.toggle("bi-eye");
+      });
+      // prevent form submit
+      const form = document.querySelector("form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+      });
+    </script>
+
+    <!-- 購物車js -->
+    <script>
+      $(function () {
+        $(".btn_cart_open").on("click", function () {
+          $(".cart_side").animate({ right: "0" }, 1500);
+        });
+        $(".btn_cart_close").on("click", function () {
+          $(".cart_side").animate({ right: "-100%" }, 1500);
+        });
+      });
+    </script>
+    <!-- <div class="wrapper"></div>   -->
+    <section class="productslider"></section>
+    <main class="container" id="app" v-cloak>
+      <section class="title">
+        <h1 class="p-3">
+          {{text}}
+          <!-- <div v-html="cart2"></div> -->
+        </h1>
+        <!-- 要使用修改資料要加入":" (v-bind) -->
+        <img        
+          :src="'./img/product/'+abc"
+          class="img-fluid"
+          data-aos="zoom-in"
+          data-aos-duration="2000"
+        />
+      </section>
+      <!-- <div class="box">
       <section class="productslider"></section>
     </div> -->
-    
-    <section class="slidebar">
-      <section class="smallicon">
-        <div class="smallicon_case">
-          <a class="smallNav" ><img src="./img/product/nav_nav_all.svg" alt=""></a>
-          <a class="smallNav" ><img src="./img/product/nav_nav_chair.svg" alt=""></a>
-          <a class="smallNav" ><img src="./img/product/nav_nav_table.svg" alt=""></a>
-          <a class="smallNav" ><img src="./img/product/nav_nav_self.svg" alt=""></a>
-        </div>
-      </section>
-    </section>
-    
 
-      <!-- <section class="product">
-      <main class="product_container bootstrap snipets">
-        <h1 class="text-center text-muted"></h1>
+      <section class="slidebar" id="nav">
         <section class="smallicon">
-          <div class="smallicon_case">
-            <a href=""><img src="./img/product/nav_nav_all.svg" alt=""></a>
-            <a href=""><img src="./img/product/nav_nav_chair.svg" alt=""></a>
-            <a href=""><img src="./img/product/nav_nav_table.svg" alt=""></a>
-            <a href=""><img src="./img/product/nav_nav_self.svg" alt=""></a>
+          <div class="smallicon_case" >
+            <a class="smallNav" @click="all(a)"><img src="./img/product/nav_nav_all.svg" alt=""
+            /></a>
+            <!-- 設定三個參數，分別對應三個值，並在下面的methods與mounted設定個別傳入的函式 -->
+            <a class="smallNav"  @click="test(1,'椅子系列','chair_bn001.jpg')"
+              ><img src="./img/product/nav_nav_chair.svg" alt=""
+            /></a>
+            <a class="smallNav"  @click="test(3,'桌子系列','table_bn001.jpg')"
+              ><img src="./img/product/nav_nav_table.svg" alt="" 
+            /></a>
+            <a class="smallNav"  @click="test(2,'櫃子系列','shelf_bn001.jpg')"
+              ><img src="./img/product/nav_nav_self.svg" alt="" 
+            /></a>
           </div>
-        </section> -->
-
-      <!-- <div class="row flow-offset-1" >
-        <div class="col-sm-6 col-md-4 col-xl-3 aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000"
-          v-for="(product,i) in products">
-          <a :href="'./product_in.html?id='+product.id">
-            <div class="product tumbnail thumbnail-3">
-              <img :src="product.image" alt="">
-              <div class="caption">
-                <h6>{{product.name}}</h6>
-                <p class="price">{{product.price}}</p>
-                </div>
-            </div>
-          </a>
-        </div>
-      </div> -->
-
-      <div class="row flow-offset-1" >
-        <div class="col-sm-6 col-md-4 col-xl-3 aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000"
-          v-for="(product,i) in productArr">
+        </section>
+      </section>
+     
+      <div class="row flow-offset-1" id="productItem" >
+        <div
+          class="col-sm-6 col-md-4 col-xl-3 aos-init aos-animate"
+          data-aos="fade-up"
+          data-aos-duration="3000"
+          v-for="(product,i) in productArr"          
+        >
           <!-- <a :href="'./product_in.html?id='+product.id"> -->
           <a :href="'./product_in2.html?id='+product.id">
             <div class="product tumbnail thumbnail-3">
-              <img :src="product.img" alt="">
+              <img :src="product.img" alt="" />
               <!-- <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="" @click.stop.prevent="add_cart()"> -->
               <div class="caption">
                 <h6>{{product.name}}</h6>
                 <p class="price">{{product.price}}</p>
-                </div>
+              </div>
             </div>
           </a>
         </div>
       </div>
-  </main>
-  @@include('layout/footer.html')
-  <script>
+    </main>
+<div id="footer"></div>
+</div>
+    <script>     
+      // global component
+      // Vue.component('組件名稱',{
+      //     template: ``, //用來定義視覺元件
+      // });
+      Vue.component("footer-list", {
+        template: `
+        <ul>
+            <li class="pb-2">森活木工</li>
+            <li class="pb-2">FACTORY 埼玉県川口市安行領家945-1</li>
+            <li class="pb-2">morifurniture@gmail.com</li>
+            <li>04-8278-3324</li>
+        </ul>
+        `, //用來定義視覺元件
+      });
+      Vue.component("footer-link", {
+        template: `
+        <ul class="link_icon">
+            <li>
+                <a href="https://www.facebook.com/" class="pb-2">
+                    <img src="./img/index/facebook.png"></img>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/">
+                    <img src="./img/index/instagram.png"></img>
+                </a>
+            </li>
+        </ul>
+            `, //用來定義視覺元件
+      });
 
-   
-   
-
-    let smallicon = document.querySelector(".smallicon"); 
-    let smallNav = document.querySelectorAll(".smallNav");
-    // console.log(smallNav);
-
-    // for(let i = 0 ; i < smallNav.length; i++){
-    //   // console.log(smallNav[i]);
-    // }
-
-
-    // smallNav.addEventListener("click",function(){
-    //   for (let i = 0; i < smallNav.length; i++){
-    //     // console.log(smallNav[i]);
-    //   }
-    // }
-
-     // for (let i = 0; i < smallNav.length; i++) {
-        // console.log(smallNav);
-        // console.log(smallNav[i].src);
-
-
-        // console.log(e.target);
-        // console.log(smallNav[i]);      
-      
-
-
-
-
-
-    // document.addEventListener("DOMContentLoaded", function () {
-    //   let smallicon = document.querySelector(".smallicon");
-      // console.log(smallicon);
-      // let blocktop = document.querySelector(".img-fluid");
-      // console.log(blocktop);
-      // console.log(blocktop.offsetTop);
-      // console.log(blocktop.offsetTop - smallicon.scrollTop);
-      // console.log(smallicon.style.top = blocktop.offsetHeight + blocktop.offsetTop + "px");
-      // console.log(smallicon.style.top);
-      // smallicon.addEventListener("scroll", function (e) {
-        // smallicon.style.top;
-        // smallicon.style.top = blocktop.offsetHeight + blocktop.offsetTop + "px";
-        //
-        // smallicon.style.top = blocktop.offsetTop
-        // console.log("scrollX: " + window.scrollX);
-        // smallicon.window.scrollX(300);
-        // console.log("scrollY: " + window.scrollY);
-        // blocktop.offsetTop - smallicon.scrollTop;
-        // console.log(blocktop.offsetTop - smallicon.scrollTop);
-        // blocktop.offsetTop - smallicon.scrollTop;
-    //   });
-    // })
-    // console.log(smallicon.style.top);
-    // window.addEventListener("scroll", function (e) {
-    //   console.log("scrollX: " + window.scrollX);
-    //   console.log("scrollY: " + window.scrollY);
-    // });
-    // smallicon.addEventListener("scroll", function () {
-    //   console.log("smallicon: " + window.scrollX);
-    //   console.log("smallicon: " + window.scrollX);
-    // });
-    // let a = localStorage.getItem("id");
-
-
-  </script>
-  <script>
       new Vue({
-        el: '#app',
+        el: "#footer",
+        data: {},
+        methods: {},
+
+        // 在template 必須要有一個父元素(一個root)把他們包住
+        template: `
+        <footer class="padding_30 margin_top_50">
+            <div class="footer_info">
+                <footer-list></footer-list>
+                <footer-link></footer-link>
+            </div>
+            <hr class="oneheight">
+            <div class="pt-4 mx-auto">
+                本網站為緯育TibaMe前端設計工程師班第74期第1組學員專題成果作品，本平台僅供學習、展示之用。參考資源：https://sinrafurniture.com/
+            </div>
+        </footer>
+        `,
+      });
+    </script>
+    <script>
+      let smallicon = document.querySelector(".smallicon");
+      let smallNav = document.querySelectorAll(".smallNav");
+    </script>
+    <script>
+      new Vue({
+        el: "#app",
         data: {
-          text: 'ss',
+          text: "ss",
           // cart2: '<div>asdadx</div>',
           productArr: [],
-
+          a:'',
+          b:'',  
+          abc:'',      
           // products:
           //   [
           //     {
@@ -175,115 +675,80 @@
           //       "productname": "chair",
           //       "price": 500
           //     },
-          //     {
-          //       "id": 3,
-          //       "image": "./img/product/shelf_001.jpg",
-          //       "productname": "shelf",
-          //       "price": 500
-          //     },
-          //     {
-          //       "id": 3,
-          //       "image": "./img/product/shelf_001.jpg",
-          //       "productname": "shelf",
-          //       "price": 500
-          //     },
-          //     {
-          //       "id": 2,
-          //       "image": "./img/product/chair_001.jpg",
-          //       "productname": "chair",
-          //       "price": 300
-          //     },
-          //     {
-          //       "id": 3,
-          //       "image": "./img/product/shelf_001.jpg",
-          //       "productname": "shelf",
-          //       "price": 500
-          //     },
-          //     {
-          //       "id": 1,
-          //       "image": "./img/product/table_001.jpg",
-          //       "productname": "table",
-          //       "price": 100
-          //     },
-          //     {
-          //       "id": 2,
-          //       "image": "./img/product/chair_001.jpg",
-          //       "productname": "chair",
-          //       "price": 300
-          //     },
-          //     {
-          //       "id": 3,
-          //       "image": "./img/product/shelf_001.jpg",
-          //       "productname": "shelf",
-          //       "price": 500
-          //     },
-          //     {
-          //       "id": 1,
-          //       "image": "./img/product/table_001.jpg",
-          //       "productname": "table",
-          //       "price": 100
-          //     },
-          //     {
-          //       "id": 2,
-          //       "image": "./img/product/chair_001.jpg",
-          //       "productname": "chair",
-          //       "price": 300
-          //     },
-          //   ]
-          // <div class="col-sm-6 col-md-4 col-xl-3">
-          //   <a href="./product_in.html">
-          //     <div class="product tumbnail thumbnail-3">
-          //       img src="./img/product/chair_001.jpg" alt="">
-          //       <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
-          //         @click.stop.prevent="add_cart()">
-          //       <div class="caption">
-          //         <h6>Short Sleeve T-Shirt</h6>
-          //         <p class="price">$24.99</p>
-
+          //   ]        
         },
         methods: {
-          add_cart() {
-            alert(123);
-          }
-        },
-        mounted() {
-
-          let allData = this.productArr
-          // let pPriceArr = this.productPrice
-          
-          $.getJSON('php/products.php', function(data){
-
-            for(let i = 0; i < data.length; i++) {
-              allData.push({
-                "id": data[i].id,
-                "name": data[i].names,
-                "price": data[i].price,
-                "img" : data[i].pic,
-              })
-
+         //定義參數回傳的值(PHP)、參數的名稱、參數的圖片
+          test(a,name,img){
+              this.text=name;
+              this.abc= img;
+              let allData = this.productArr;              
+              // this.productArr=[];
+             // console.log(a);
+              $.ajax({
+                url: 'php/products_kind.php',
+                type: 'POST',
+                data: {
+                  kind: a
+                },
+                success: function(data) {
+                  $('#productItem').children().hide();
+                 
+                  let getData = JSON.parse(data)
+                  for (let i = 0; i < getData.length; i++) {
+                  allData.push({
+                  id: getData[i].id,
+                  name: getData[i].name,
+                  price: getData[i].price,
+                  img: getData[i].pic,
+                  kind: getData[i].kind,
+              });
             }
+              this.productArr=getData;
+              console.log(getData);
+              }
+            })     
+          }, 
+          /*設定點擊所有商品(小icon)帶入的函式*/all(){            
+            //將abc的參數改為all_bn001.jpg
+            this.abc="all_bn001.jpg"
+            this.text="產品總覽";
+            // alert("aaaa");
+            this.productArr=[]
+            let allData = this.productArr;
+          // let pPriceArr = this.productPrice
 
-          })
+          $.getJSON("php/products.php", function (data) {
+            for (let i = 0; i < data.length; i++) {
+              allData.push({
+                id: data[i].id,
+                name: data[i].name,
+                price: data[i].price,
+                img: data[i].pic,
+                kind: data[i].kind,
+              });
+            }
+          });
+          }     
         },
-      })
-  </script>
-
-   <!-- <script>
-  //   let productArr = [{
-  //     name: "",
-  //     prize: 0,
-  //     content: "",
-  //     photo: ""
-  //   }];
-  //   for (let i = 0; i <= 10; i++) {
-  //     let counter = 0;
-  //     counter++;
-  //     console.log(counter);
-
-  //   }
-  // </script> -->
-
-  
-</body>
-
+        /*在生命週期為mounted(模板掛載完成時)，調用屬性or方法*/mounted() {
+          let allData = this.productArr;
+          this.text="產品總覽";
+          this.abc="all_bn001.jpg"
+          // let pPriceArr = this.productPrice
+          $.getJSON("php/products.php", function (data) {
+            for (let i = 0; i < data.length; i++) {
+            allData.push({
+                id: data[i].id,
+                name: data[i].name,
+                price: data[i].price,
+                img: data[i].pic,
+                kind: data[i].kind,                
+              });
+            }
+          });
+        },
+      });  
+    </script>
+  </body>
 </html>
