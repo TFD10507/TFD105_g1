@@ -44,7 +44,7 @@
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
                         href="#list-profile" role="tab" aria-controls="profile" @click="cell_product">商品管理</a>
                     <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
-                        href="#list-messages" role="tab" aria-controls="messages">訂單管理</a>
+                        href="#list-messages" role="tab" aria-controls="messages" @click="cell_order">訂單管理</a>
                     <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
                         href="#list-settings" role="tab" aria-controls="settings">客製化管理</a>
                     <a class="list-group-item list-group-item-action" id="list-coupon-list" data-toggle="list"
@@ -152,9 +152,9 @@
                             <!-- 表單顯示區塊起始 -->
                             <thead>
                                 <tr>
+                                    <th>訂單流水</th>
                                     <th>會員編號</th>
                                     <th>訂單編號</th>
-                                    <th>會員帳號</th>
                                     <th>訂單狀態</th>
                                     <th>下訂日期</th>
                                     <th>編輯</th>
@@ -162,16 +162,16 @@
                             </thead>
                             <tbody>
                                 <!-- 假資料示意區 -->
-                                <tr>
-                                    <td>MB01</td>
-                                    <td>FOD01</td>
-                                    <td>Chaos00</td>
-                                    <td>未付款</td>
-                                    <td>2022/1/10</td>
+                                <tr v-for="(order,index) in orders">
+                                    <td>{{order.id}}</td>
+                                    <td>{{order.member_id}}</td>
+                                    <td>{{order.ID_order}}</td>
+                                    <td>{{order.status}}</td>
+                                    <td>{{order.date}}</td>
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#orderedit">
+                                            data-target="#orderedit" @click="order_edit(order.id)">
                                             編輯
                                         </button>
                                     </td>
@@ -381,16 +381,9 @@
                                     <input type="text" v-model="product_size">
                                 </li>
                                 <li>
-                                    <label>商品種類</label>
-                                    <select name="product_kind" id="product_kind" v-model="kind">
+                                    <label>商品種類</label> 
+                                    <select name="product_kind" id="product_kind" selected="selected" v-model="kind">
                                         <option v-for="item in kinds" :value="item.id">{{item.name}}</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <label>商品狀態</label>
-                                    <select>
-                                        <option value="0">正常</option>
-                                        <option value="1">停售</option>
                                     </select>
                                 </li>
                                 <li>
@@ -451,10 +444,9 @@
                             <ul class="half">
                                 <li>
                                     <label>商品種類</label>
-                                    <select name="" id="">
-                                        <option value="1">桌子</option>
-                                        <option value="2">櫃子</option>
-                                        <option value="3">椅子</option>
+                                    <!-- <input type="text" disabled> -->
+                                    <select name="product_kind"  v-model="product.kind">
+                                        <option v-for="item in kinds" :value="item.id">{{item.name}}</option>
                                     </select>
                                 </li>
                                 <li>
@@ -821,6 +813,7 @@
                     status: 0,
                     pic:'',
                     size:'',
+                    kind:'1',
                 },
                 coupon_price: '',
                 coupon_day: '',
@@ -828,6 +821,17 @@
                 color_pic: '',
                 members: [],
                 products: [],
+                orders:[],
+                order:{
+                    id:'',
+                    member_id:'',
+                    date:'',
+                    price:'',
+                    ID_order:'',
+                    phone:'',
+                    address:'',
+                    status:'',
+                },
                 fakes: [
                     {
                         id: '1',
@@ -848,21 +852,22 @@
                 product_stock: '',
                 product_detail: '',
                 product_size: '',
-                // product_pic:'',
+                product_kind:'',
                 kind_name: '',
                 kinds: [],
                 kind: '',
                 img:'',
             },
             mounted() {  //當網頁開啟時馬上執行以下內容
+
                 //撈出會員資料
-                fetch('./Select_member.php')
+                fetch('php/Select_member.php')
                     .then(res => res.json())
                     .then(res => {
                         this.members = res
                     }),
                     // 撈出種類資料
-                    fetch('./Select_kind.php')
+                    fetch('php/Select_kind.php')
                         .then(res => res.json())
                         .then(res => {
                             // console.log(res);
@@ -872,9 +877,9 @@
                 const input = document.querySelector('input[type="file"]')
             },
             methods: {
-                member_edit(id) {
+                member_edit(id) {  // 撈單筆會員資料 開始
                     // alert(id)
-                    fetch('./Select_member.php', {
+                    fetch('php/Select_member.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -900,9 +905,10 @@
                             $(`#member_status option[ value = ${status}]`).attr("selected", true)
                         })
                 },
+                // 撈單筆會員資料 結束
                 coupon_edit(id) {  //撈單筆會員資料 開始
                     // alert(id)  //已抓到
-                    fetch('./Select_coupon.php', {
+                    fetch('php/Select_coupon.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -918,10 +924,10 @@
                             this.coupon.period = res[0]['period']
                         })
                 },
-                // 撈單筆會員資料 結尾
-                product_edit(id) {
+                // 撈單筆會員資料 結束
+                product_edit(id) {  //撈單筆商品資料 開始
                     // alert(id)
-                    fetch('./Select_product.php', {
+                    fetch('php/Select_product.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -940,13 +946,36 @@
                             this.product.status = res[0]['status']
                             this.product.pic = res[0]['pic']
                             this.product.size = res[0]['size']
+                            this.product.kind = res[0]['kind_id']
                             let status = this.product.status
                             $("#product_status").find('option').removeAttr("selected")
                             $(`#product_status option[ value = ${status}]`).attr("selected", true)
+                            let kind = this.product.kind
+                            $("#product_kind").find('option').removeAttr("selected")
+                            $(`#product_kind option[ value = ${kind}]`).attr("selected", true)
                         })
                 },
+                //  撈單筆商品資料 結束
+                order_edit(id){   //撈單筆訂單資料 開始
+                    fetch('php/Select_order.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        mode: "cors",
+                        body: JSON.stringify({ orderid: id })
+                    })
+                        .then(res => res.json())
+                        .then(res => {
+                            this.order.id = res[0]['id']
+                            this.order.price = res[0]['price']
+                            this.order.period = res[0]['period']
+                        })
+                },
+                // 撈單筆訂單資料 結束
                 cell_product() {  //撈商品資料 開始
-                    fetch('./Select_product.php')
+                    fetch('php/Select_product.php')
                         .then(res => res.json())
                         .then(res => {
                             this.products = res
@@ -954,11 +983,16 @@
                 },
                 // 撈商品資料 結束
                 call_coupon() {   //撈出折扣資料
-                    fetch('./Select_coupon.php')
+                    fetch('php/Select_coupon.php')
                         .then(res => res.json())
                         .then(res => this.coupons = res)
                 },
                 // 撈折扣資料 結束
+                cell_order(){
+                    fetch('php/Select_order.php')
+                        .then(res => res.json())
+                        .then(res => this.orders = res)
+                },
                 ADDcoupon() {   //新增折扣事件 開始
                     let coupon_price = this.coupon_price
                     let coupon_day = this.coupon_day
@@ -970,7 +1004,7 @@
                         alert("使用期限未填寫")
                         return
                     } else {
-                        fetch('./add_coupon.php', {
+                        fetch('php/add_coupon.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -999,7 +1033,7 @@
                         alert("種類名稱未填寫")
                         return
                     } else {
-                        fetch('./add_kind.php', {
+                        fetch('php/add_kind.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -1025,13 +1059,13 @@
                         var form = new FormData(document.getElementById("Add_color"))
                         form.append('Add_color', this.color_name)
                         $.ajax({
-                            url: './add_color.php',
+                            url: 'php/add_color.php',
                             type: 'POST',
                             data: form,
                             processData: false,
                             contentType: false,
                             success: function (data) {
-
+                                alert('新增成功')
                             },
                             error: function (jqXHR, textStatus, errorThrown) {
                                 if (textStatus == "error") {
@@ -1039,8 +1073,6 @@
                                 }
                             }
                         })
-                        alert('新增成功')
-                        this.color_name = ''
                         location.reload()
                     }
                 },
@@ -1048,9 +1080,9 @@
                 ADDproduct() {  //新增商品事件 開始
                     let product_status = $('#product_status').val()
                     // 撈資訊測試
-                    // alert(product_status)
+                    // alert(this.kind)
                     if (this.product_name === '' || this.product_price === '' || this.kind === '' || this.product_stock === '' || this.product_size === '' || this.product_detail === '') {
-                        alert("請確認所有欄位都有填寫完成")
+                        // alert("請確認所有欄位都有填寫完成")
                     } else {
                         let form = new FormData(document.getElementById("Add_product"))
                         form.append('Add_name', this.product_name)
@@ -1061,13 +1093,13 @@
                         form.append('Add_status', product_status)
                         form.append('Add_stock', this.product_stock)
                         $.ajax({
-                            url: './add_product.php',
+                            url: 'php/add_product.php',
                             type: 'POST',
                             data: form,
                             processData: false,
                             contentType: false,
                             success: function (data) {
-
+                                alert('新增成功')
                             },
                             error: function (jqXHR, textStatus, errorThrown) {
                                 if (textStatus == "error") {
@@ -1075,14 +1107,14 @@
                                 }
                             }
                         })
-                        alert('新增成功')
-                        location.reload()
+                        location.reload() 
                     }
                 },
                 // 點擊新增商品事件 結束
                 UpdateMember() {     //更新會員資料 開頭
                     let member_status = $('#member_status').val()
-                    fetch('./Update_member.php', {
+                    // alert(member_status)
+                    fetch('php/Update_member.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -1107,7 +1139,7 @@
                 },
                 // 更新會員資料 結尾
                 UpdateCoupon() {    //更新折扣 開始
-                    fetch('./Update_coupon.php', {
+                    fetch('php/Update_coupon.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -1127,7 +1159,30 @@
                 },
                 // 更新折扣 結束
                 UPproduct() {  // 更新
-                    
+                    let product_status = $('#product_status').val()
+                    // alert(this.product.kind)
+                    fetch('php/Update_product.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        mode: "cors",
+                        body: JSON.stringify(
+                            {
+                                UPid: this.product.id,
+                                UPname: this.product.name,
+                                UPstatus: product_status,
+                                UPprice: this.product.price,
+                                UPstock: this.product.stock,
+                                UPsize: this.product.size,
+                                UPdetail: this.product.detail,
+                                UPkind: this.product.kind, 
+                            }
+                        ),
+                    })
+                    alert('更新成功')
+                    location.reload()
                 },
                 // 更新商品 結束
                 add_product_img(e) {   // 新增商品圖片預覽 開始
