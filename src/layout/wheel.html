@@ -258,7 +258,7 @@
       </div>
       <div class="sec" saleTitle="90元折扣！趕快到結帳頁面看看吧！" rotate="120" data-value="90">
         <span>
-          <img class="wheel-inner-img" src="../img/index/wheel/white-1.svg" alt="" v-model="123">
+          <img class="wheel-inner-img" src="../img/index/wheel/white-1.svg" alt="">
         </span>
       </div>
       <div class="sec" saleTitle="200元折扣！趕快到結帳頁面看看吧！" rotate="180" data-value="20">
@@ -404,6 +404,7 @@
               $('#wheel-message').html(msg);
               // $("#alertMsg").slideDown();
               pubed = "isPub";
+              console.log(object);
             }
           }
         })
@@ -419,17 +420,17 @@
   function closeReload() {
     $("#alertMsg").hide();
   }
-  
+
 </script>
 <script>
   new Vue({
-    el:'#wheel-wrapper',
-    data:{
+    el: '#wheel-wrapper',
+    data: {
 
-      123:'',
+      123: '',
     },
     methods: {
-      abc(){
+      abc() {
         alert('123')
       }
     },

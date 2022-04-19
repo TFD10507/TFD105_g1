@@ -7,16 +7,31 @@
         cursor: pointer;
         position: fixed;
         right: 12px;
-        bottom: 100px;
+        bottom: 120px;
         opacity: 0.5;
         background: none;
         border: 0;
+        
         &:hover {
             opacity: 1;
         }
         img {
             max-width: 100%;
         }
+        // 跳動動畫
+        -webkit-animation:box 3s infinite ;
+        @-webkit-keyframes box{
+            0%{
+              bottom:120px;
+            }
+            50%{
+            bottom:100px; 
+            //   border-bottom-right-radius:25px;
+            }
+            100%{
+            bottom:120px;
+            }
+          }
     }
     //輪盤樣式設定
     .modal-content{
@@ -60,6 +75,11 @@
         font-weight: 600;
         margin: 0 auto;
         
+    }
+    //未登入會員不能玩輪盤ㄛ！
+    .-disable{
+        pointer-events: none;
+        opacity: 0.3;
     }
 
     .wrapper {

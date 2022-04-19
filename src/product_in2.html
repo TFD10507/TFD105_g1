@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     @@include('layout/head.html')
+
+    <style>
+        #productInfo .count button.count_btn {
+            background-color: #fff;
+            border-radius: 1px;
+            padding: 0 10px;
+        }
+
+        #productInfo .count button.count_btn:first-child {
+            font-size: 20px;
+        }
+
+        #productInfo .count span {
+            margin: 0 10px;
+        }
+    </style>
 </head>
+
 <body class="product_in">
     <div class="wrapper">
-        
+
         @@include('layout/login.html')
         @@include('layout/nav.html')
         <!-- 首頁 -->
@@ -17,71 +34,33 @@
                         <li class="photo">
                             <img id="mainImg" class="mainImg product" :src="pro[0].pic">
                         </li>
-                        <li class="content">                            
-                            <!-- <h3 data-prd_id="001" id="app">1</h3> -->
-                            <h3 data-prd_id="001" id="app">{{pro[0].names}}</h3>
+                        <li class="content">
+                            <h3 data-prd_id="001">{{pro[0].names}}</h3>
                             <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
                                 @click.stop.prevent="add_love()">
                             <img class="favorite" src="./img/product/favorite_touch.svg" alt="" srcset=""
                                 @click.stop.prevent="add_love()">
 
                             <hr>
-                            <p class="content">{{pro[0].detail}}</p>                   
-                            <p>※可選擇等級的產品價格因等級而異。</p>                         
+                            <p class="content">{{pro[0].detail}}</p>
+                            <p>※可選擇等級的產品價格因等級而異。</p>
                             <p>尺寸/規格：</p>
                             <!-- 到時候加一欄尺寸 -->
+                            <!-- <p>{{pro[0].size}}</p> -->
                             <p>W159 x D45 x H83</p>
 
-                            <!-- counter -->
-                            <div class="count__wrapper count__wrapper--ml .count">
-                                <div class="qty-input">
-                                  <button class="qty-count qty-count--minus .count" data-action="minus" type="button">
-                                    <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M8 2L3 7L8 12L7 14L0 7L7 0L8 2Z" fill="black" />
-                                    </svg>
-                                  </button>
-                                  <input class="product-qty input" type="number" name="product-qty" min="0" max="10" value="1">
-                                  <button class="qty-count qty-count--add" data-action="add" type="button">
-                                    <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M0 2L5 7L0 12L1 14L8 7L1 0L0 2Z" fill="black" />
-                                    </svg>
-                                  </button>
-                                </div>
-                              </div> <!-- Counter || END -->
-                              
-                              <div class="product__buy pr-0">
-                                <div class="product__buy-container">
-                                  <p class="subtotal__price price">{{pro[0].price}}</p>
-                                </div>
-                              </div>
-                            <!-- <p class="price">99,999</p> -->
-                            <!-- 與下面對應，這裡是椅子的材質 -->
-                            <div class="type_item">
-                                <ul style="padding-left: 0px;">
-                                    <li><img class="type" src="./img/product/treasure_001.png" alt=""
-                                            srcset=""></button></li>
-                                    <li><img class="type" src="./img/product/treasure_002.png" alt=""
-                                            srcset=""></button></li>
-                                    <li><img class="type" src="./img/product/treasure_003.png" alt=""
-                                            srcset=""></button></li>
-                                </ul>
+                            <div class="count">
+                                <button class="count_btn" @click="sub_btn">-</button>
+                                <span>{{count}}</span>
+                                <button class="count_btn" @click="add_btn">+</button>
                             </div>
-                            <!-- 與上面的對應，這裡是椅子款式 -->
-                            <div class="chair_style" style="display: none;">
-                                <ul>
-                                    <li><img class="chair_style chair_img" src="./img/product/chair01_01.jpg" alt=""
-                                            srcset=""></button>
-                                    </li>
-                                    <li><img class="chair_style chair_img" src="./img/product/chair01_02.jpg" alt=""
-                                            srcset=""></button>
-                                    </li>
-                                    <li><img class="chair_style chair_img" src="./img/product/chair01_03.jpg" alt=""
-                                            srcset=""></button>
-                                    </li>
-                                </ul>
+
+                            <div class="product__buy pr-0">
+                                <div class="product__buy-container">
+                                    <p class="subtotal__price price">{{pro[0].price * count}}</p>
+                                </div>
                             </div>
                             <br>
-                            <!-- <div class="buttom">加入購物車</div> -->
                             <button class="submit" type="submit" @click="addcart">加入購物車</button>
                         </li>
                     </ul>
@@ -92,6 +71,7 @@
         @@include('layout/footer.html')
     </div>
 
+<<<<<<< HEAD
     <script>  
       var productInfo = new Vue({
             el: '#productInfo',
@@ -285,6 +265,9 @@
     <script>
          
     </script>
+=======
+    <script src="./js/addcart.min.js"></script>
+>>>>>>> 21ac0e5e4c50ca926b8ba4258f3038db422cef21
 
 </body>
 

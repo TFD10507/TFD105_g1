@@ -1,4 +1,5 @@
 $(function () {
+
     // ===== 導覽列的會員中心子選單 ======
     $('.member_ul').on("click", function (e) {
         e.preventDefault();
@@ -35,17 +36,54 @@ $(function () {
     // aos
     AOS.init();
 
-    //  判斷是否登入
+    function loginMember(msg, icon, html) {
+        Swal.fire({
+            title: msg,
+            icon: icon,
+            html: html,
+
+            showConfirmButton: false, // 確認按鈕（預設會顯示不用設定）
+            confirmButtonText: '參加活動', //　按鈕顯示文字
+            confirmButtonAriaLabel: '參加活動', // 網頁無障礙用
+            confirmButtonColor: '#75706b', // 修改按鈕色碼
+
+            // 使用同確認按鈕
+            // showDenyButton: true, // 否定按鈕
+            showCancelButton: false, // 取消按鈕
+
+            buttonsStyling: false, // 是否使用sweetalert按鈕樣式（預設為true）
+        })
+    }
+
+    let result = sessionStorage.getItem('status');
+    // console.log(result);
     let icon = document.querySelector(".fa-user-circle");
-    console.log(icon);
+
+    if (result == "true") {
+        
+        $(icon).css("color", "#A0643E");
+
+        let wheel = document.querySelector('#wheel-login');
+        $(wheel).removeClass('-disable');
+        // console.log(1);
+    }else{
+        let wheelButton = document.querySelector("#wheel-outter-button")
+        wheelButton.addEventListener("click", function(){
+            loginMember('<strong>請先登入會員<br>即可獲得轉盤機會</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
+        })
+
+    }
+
+    //  判斷是否登入
+    // console.log(icon);
     icon.addEventListener("click", function () {
-        console.log('aa');
+        // console.log('aa');
         if (sessionStorage.getItem('status') == null) {
             // console.log(sessionStorage.getItem('status'));
             location.href = "./login.html";
         } else {
             let result = sessionStorage.getItem('status');
-            console.log(result);
+            // console.log(result);
             if (result == "true") {
                 location.href = "./member.html";
 
