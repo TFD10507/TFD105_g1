@@ -184,7 +184,18 @@ body.product {
     height: 7%;
     top: 5%;
     right: 5%;
-  }
+  }  
+  img.favorite_ho {
+    display: none;
+   }
+   img.favorite_ho.-on {
+    display: block;
+   }
+
+
+
+
+
 
   @media (max-width: 991px) {
     .single-product .caption .share span.small {
