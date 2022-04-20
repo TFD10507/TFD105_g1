@@ -39,11 +39,13 @@
                             </ul>
                             <div class="tab-content " id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
-                                    <form action="">
-                                        帳號：<br><input type="text" value="" placeholder="請輸入 Email">
+                                    <form class="login_reset">
+                                        帳號：<br><input type="text" value="" placeholder="請輸入 Email"
+                                            v-model="login_account">
                                         <br>
                                         <br>
-                                        密碼：<br><input type="text" value="" placeholder="請輸入密碼" class="mb-3 password">
+                                        密碼：<br><input type="password" value="" placeholder="請輸入密碼" class="mb-3 password"
+                                            v-model="login_password">
                                         <i class="fas fa-eye eye1" @click="eyeToggle='open'" :class="openEye"></i>
                                         <i class="fa-solid fa-eye-slash eye-slash1" @click="eyeToggle='close'"
                                             :class="closeEye" style="display: none"></i>
@@ -51,28 +53,28 @@
                                         <br>
                                         <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
                                             <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
-                                                <input class="btn btn-warning " type="submit" value="登入"></input>
+                                                <input class="btn btn-warning " type="button" value="登入"
+                                                    @click="member_login"></input>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel">
-                                    <form action="">
+                                    <form class="reset">
                                         <label>會員帳號：<br><input type="email" name="email" placeholder="請輸入 Email"
-                                                class="mb-2" required="required" /></label>
+                                                class="mb-2" required="required" v-model="account" /></label>
                                         <br>
                                         <label>手機：<br><input type="text" onkeyup="value=value.replace(/[^\d]/g,'')"
                                                 maxlength=10 placeholder="09xx-xxx-xxx" class="mb-2" required="required"
-                                                pattern="09\d{2}-\d{6}" /></label>
+                                                v-model="phone" /></label>
                                         <br>
                                         <label for="floatingPassword">密碼：<br><input type="password" value=""
-                                                id="floatingPassword" placeholder="請輸入7位以上的英文及數字" class="password mb-2"
-                                                pattern="[a-zA-Z0-9]{7,}" required="required">
+                                                id="floatingPassword" placeholder="請輸入7位以上的英文或數字" class="password mb-2"
+                                                pattern="[a-zA-Z0-9]{7,}" required="required" v-model="password">
                                         </label>
                                         <i class="fas fa-eye eye1" @click="eyeToggle='open'" :class="openEye"></i>
                                         <i class="fa-solid fa-eye-slash eye-slash1" @click="eyeToggle='close'"
                                             :class="closeEye" style="display: none"></i>
-                                        <!-- class="fas fa-eye" -->
 
                                         <br>
                                         <!-- <label>確認密碼：<br><input type="password" value="" placeholder="請再次輸入密碼"
@@ -83,18 +85,20 @@
                                             :class="closeEye" style="display: none"></i> -->
 
                                         <label>地址：<br><input type="text" value="" placeholder="請輸入地址" class="mb-2"
-                                                required="required">
+                                                required="required" v-model="address">
                                         </label>
                                         <br>
                                         <label>性別：<br><input type="radio" required="required" class="mb-4" name="gender"
-                                                value="0">男
-                                            <input type="radio" required="required" class="mb-4" name="gender"
-                                                value="1">女
+                                                value="男" v-model="gender">男
+                                            <input type="radio" required="required" class="mb-4" name="gender" value="女"
+                                                v-model="gender">女
                                         </label>
                                         <br>
                                         <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
-                                            <input class="btn btn-warning " type="submit" value="註冊"></input>
+                                            <input class="btn btn-warning " type="button" value="註冊"
+                                                @click="new_member">
                                         </div>
+
                                     </form>
                                 </div>
 
@@ -107,6 +111,26 @@
         @@include('layout/footer.html')
     </div>
     <script src="./js/main.min.js"></script>
+    <script>
+        function loginMember(msg, icon, html) {
+            Swal.fire({
+                title: msg,
+                icon: icon,
+                html: html,
+
+                showConfirmButton: false, // 確認按鈕（預設會顯示不用設定）
+                confirmButtonText: '參加活動', //　按鈕顯示文字
+                confirmButtonAriaLabel: '參加活動', // 網頁無障礙用
+                confirmButtonColor: '#75706b', // 修改按鈕色碼
+
+                // 使用同確認按鈕
+                // showDenyButton: true, // 否定按鈕
+                showCancelButton: false, // 取消按鈕
+
+                buttonsStyling: false, // 是否使用sweetalert按鈕樣式（預設為true）
+            })
+        }
+    </script>
 
     <script>
         new Vue({
@@ -116,9 +140,14 @@
                     // className: "fas fa-eye",
                     eyeToggle: 'close',
                     eyeToggle2: 'close',
+                    account: '',
+                    phone: '',
+                    password: '',
+                    address: '',
+                    gender: '',
+                    login_account: '',
+                    login_password: '',
                 }
-            },
-            mounted() {
 
             },
             computed: {
@@ -129,7 +158,6 @@
                         $(".eye1").attr("style", "display:none")
                     }
                 },
-
                 closeEye() {
                     if (this.eyeToggle == 'close') {
                         $(".eye1").attr("style", "display:inline")
@@ -137,8 +165,102 @@
                         $(".eye-slash1").attr("style", "display:none")
                     }
                 }
-            }
+            },
+            methods: {
+                member_login() {
+                    // alert(this.login_account)
+                    if (this.login_account != '' && this.login_password != '') {
+                        if (this.login_account.length < 10 || this.login_account.length > 40) {
+                            // alert("請輸入正確信箱格式")
+                            loginMember('<strong>請輸入正確信箱格式</strong>', 'error')
+                        } else if (this.login_password.length < 7) {
+                            // alert("密碼長度不足")
+                            loginMember('<strong>密碼長度不足</strong>', 'error')
+                        } else {
+                            // alert(this.login_account)
+                            fetch("../php/login_new.php", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    // "Accept": "application/json",
+                                },
+                                mode: "cors",
+                                body: JSON.stringify({
+                                    login_account: this.login_account,
+                                    login_password: this.login_password,
+                                }),
+                            })
+                            .then(resp => resp.json())
+                            .then((body) => {
+                                const { successful } = body;
+                                let status = {login: ''};
+                                // console.log(body);
+                                if (successful) {
+                                    loginMember('<strong>登入成功</strong>', 'success', '<button class="btn btn-warning m-3"><a href="./product.html" style="color: #fff">開始購物</a></button> ')
+                                    let login_reset = document.querySelector(".login_reset")
+                                    // login_reset.reset();
+                                    sessionStorage.setItem('status', true);
+                                    // if (sessionStorage.getItem('status') == null){
+                                    //     // let data = true;
+                                    
+                                        
+                                    //     console.log(sessionStorage.getItem('status'));
+                                    // }else{
+                                    //     console.log(sessionStorage.getItem('status'));
+                                    //     // let data = sessionStorage.getItem('status');
+                                    //     // data.login = 'false';
+                                    //     sessionStorage.setItem('status', false);
+                                    // }
 
+                                } else {
+                                    loginMember('<strong>登入失敗</strong>', 'error');
+                                    sessionStorage.setItem('status', false);
+                                }
+                            });
+
+                        }
+                    } else {
+                        // alert('請填寫完所有欄位再送出')
+                        loginMember('<strong>請填寫完所有欄位再送出</strong>', 'error')
+                    }
+                },
+                new_member() {
+                    if (this.account != '' && this.phone != '' && this.password != '' && this.address != '') {
+                        if (this.account.length < 10 || this.account.length > 40) {
+                            // alert("請輸入正確信箱格式")
+                            loginMember('<strong>請輸入正確信箱格式</strong>', 'error')
+                        } else if (this.phone.length != 10) {
+                            // alert("請輸入正確手機格式")
+                            loginMember('<strong>請輸入正確手機格式</strong>', 'error')
+                        } else if (this.password.length < 7) {
+                            // alert("密碼長度不足")
+                            loginMember('<strong>密碼長度不足</strong>', 'error')
+                        } else {
+                            fetch("../php/add_member.php", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                mode: "cors",
+                                body: JSON.stringify({
+                                    account: this.account,
+                                    phone: this.phone,
+                                    password: this.password,
+                                    address: this.address,
+                                    gender: this.gender
+                                }),
+                            })
+                                .then(resp => resp.json())
+                            loginMember("<strong>註冊成功</strong>", 'success', '<button class="btn btn-warning m-3"><a href="./product.html" style="color: #fff">開始購物</a></button> ')
+                            let reset = document.querySelector(".reset")
+                            reset.reset()
+                        }
+                    } else {
+                        // alert('請填寫完所有欄位再送出')
+                        loginMember('<strong>請填寫完所有欄位再送出</strong>', 'error')
+                    }
+                },
+            },
         })
     </script>
 </body>

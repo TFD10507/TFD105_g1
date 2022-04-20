@@ -1,252 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
   @@include('layout/head.html')
 </head>
 
 <body class="product">
 
   @@include('layout/login.html')
-  @@include('layout/nav.html')
-  <!-- <div class="wrapper"></div>   -->
-  <section class="productslider"></section>
-  <main class="container" id="app">
-    <section class="title">
-      <h1 class="p-3">產品總覽
-        <!-- <div v-html="cart2"></div> -->
-      </h1>
-      <img src="./img/product/all_bn001.jpg" class="img-fluid" data-aos="zoom-in" data-aos-duration="2000">
-    </section>
-    <!-- <div class="box">
+  @@include('layout/nav.html')  
+    <!-- <div class="wrapper"></div>   -->
+    <section class="productslider"></section>
+    <main class="container" id="app" v-cloak>
+      <section class="title">
+        <h1 class="p-3">
+          {{text}}
+          <!-- <div v-html="cart2"></div> -->
+        </h1>
+        <!-- 要使用修改資料要加入":" (v-bind) -->
+        <img        
+          :src="'./img/product/'+abc"
+          class="img-fluid"
+          data-aos="zoom-in"
+          data-aos-duration="2000"
+        />
+      </section>
+      <!-- <div class="box">
       <section class="productslider"></section>
     </div> -->
-    
-    <section class="slidebar">
-      <section class="smallicon">
-        <div class="smallicon_case">
-          <a class="smallNav" ><img src="./img/product/nav_nav_all.svg" alt=""></a>
-          <a class="smallNav" ><img src="./img/product/nav_nav_chair.svg" alt=""></a>
-          <a class="smallNav" ><img src="./img/product/nav_nav_table.svg" alt=""></a>
-          <a class="smallNav" ><img src="./img/product/nav_nav_self.svg" alt=""></a>
-        </div>
-      </section>
-    </section>
-    
 
-      <!-- <section class="product">
-      <main class="product_container bootstrap snipets">
-        <h1 class="text-center text-muted"></h1>
+      <section class="slidebar" id="nav">
         <section class="smallicon">
-          <div class="smallicon_case">
-            <a href=""><img src="./img/product/nav_nav_all.svg" alt=""></a>
-            <a href=""><img src="./img/product/nav_nav_chair.svg" alt=""></a>
-            <a href=""><img src="./img/product/nav_nav_table.svg" alt=""></a>
-            <a href=""><img src="./img/product/nav_nav_self.svg" alt=""></a>
+          <div class="smallicon_case" >
+            <a class="smallNav" @click="all(a)"><img src="./img/product/nav_nav_all.svg" alt=""
+            /></a>
+            <!-- 設定三個參數，分別對應三個值，並在下面的methods與mounted設定個別傳入的函式 -->
+            <a class="smallNav"  @click="test(1,'椅子系列','chair_bn001.jpg')"
+              ><img src="./img/product/nav_nav_chair.svg" alt=""
+            /></a>
+            <a class="smallNav"  @click="test(3,'桌子系列','table_bn001.jpg')"
+              ><img src="./img/product/nav_nav_table.svg" alt="" 
+            /></a>
+            <a class="smallNav"  @click="test(2,'櫃子系列','shelf_bn001.jpg')"
+              ><img src="./img/product/nav_nav_self.svg" alt="" 
+            /></a>
           </div>
-        </section> -->
-      <div class="row flow-offset-1" >
-        <div class="col-sm-6 col-md-4 col-xl-3 aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000"
-          v-for="(product,i) in products">
-          <a :href="'./product_in.html?id='+product.id">
+        </section>
+      </section>
+     
+      <div class="row flow-offset-1" id="productItem" >
+        <div
+          class="col-sm-6 col-md-4 col-xl-3 aos-init aos-animate"
+          data-aos="fade-up"
+          data-aos-duration="3000"
+          v-for="(product,i) in productArr"          
+        >
+          <!-- <a :href="'./product_in.html?id='+product.id"> -->
+          <a :href="'./product_in2.html?id='+product.id">
             <div class="product tumbnail thumbnail-3">
-              <img :src="product.image" alt="">
+              <img :src="product.img" alt="" />
               <!-- <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="" @click.stop.prevent="add_cart()"> -->
               <div class="caption">
-                <h6>{{product.productname}}</h6>
+                <h6>{{product.name}}</h6>
                 <p class="price">{{product.price}}</p>
-                </div>
+              </div>
             </div>
           </a>
         </div>
-      </div> 
-  </main>
-  @@include('layout/footer.html')
-  <script>
-
-   
-   
-
-    let smallicon = document.querySelector(".smallicon"); 
-    let smallNav = document.querySelectorAll(".smallNav");
-    console.log(smallNav);
-
-    // for(let i = 0 ; i < smallNav.length; i++){
-    //   // console.log(smallNav[i]);
-    // }
-
-
-    // smallNav.addEventListener("click",function(){
-    //   for (let i = 0; i < smallNav.length; i++){
-    //     // console.log(smallNav[i]);
-    //   }
-    // }
-
-     // for (let i = 0; i < smallNav.length; i++) {
-        // console.log(smallNav);
-        // console.log(smallNav[i].src);
-
-
-        // console.log(e.target);
-        // console.log(smallNav[i]);      
-      
-
-
-
-
-
-    // document.addEventListener("DOMContentLoaded", function () {
-    //   let smallicon = document.querySelector(".smallicon");
-      // console.log(smallicon);
-      // let blocktop = document.querySelector(".img-fluid");
-      // console.log(blocktop);
-      // console.log(blocktop.offsetTop);
-      // console.log(blocktop.offsetTop - smallicon.scrollTop);
-      // console.log(smallicon.style.top = blocktop.offsetHeight + blocktop.offsetTop + "px");
-      // console.log(smallicon.style.top);
-      // smallicon.addEventListener("scroll", function (e) {
-        // smallicon.style.top;
-        // smallicon.style.top = blocktop.offsetHeight + blocktop.offsetTop + "px";
-        //
-        // smallicon.style.top = blocktop.offsetTop
-        // console.log("scrollX: " + window.scrollX);
-        // smallicon.window.scrollX(300);
-        // console.log("scrollY: " + window.scrollY);
-        // blocktop.offsetTop - smallicon.scrollTop;
-        // console.log(blocktop.offsetTop - smallicon.scrollTop);
-        // blocktop.offsetTop - smallicon.scrollTop;
-    //   });
-    // })
-    // console.log(smallicon.style.top);
-    // window.addEventListener("scroll", function (e) {
-    //   console.log("scrollX: " + window.scrollX);
-    //   console.log("scrollY: " + window.scrollY);
-    // });
-    // smallicon.addEventListener("scroll", function () {
-    //   console.log("smallicon: " + window.scrollX);
-    //   console.log("smallicon: " + window.scrollX);
-    // });
-    // let a = localStorage.getItem("id");
-
-
-  </script>
-  <script>
+      </div>
+    </main>
+    <script>
+      let smallicon = document.querySelector(".smallicon");
+      let smallNav = document.querySelectorAll(".smallNav");
+    </script>
+    <script>
       new Vue({
-        el: '#app',
+        el: "#app",
         data: {
-          text: 'ss',
+          text: "ss",
           // cart2: '<div>asdadx</div>',
-          products:
-            [
-              {
-                "id": 2,
-                "image": "./img/product/chair_001.jpg",
-                "productname": "chair",
-                "price": 300
-              },
-              {
-                "id": 3,
-                "image": "./img/product/shelf_001.jpg",
-                "productname": "shelf",
-                "price": 500
-              },
-              {
-                "id": 3,
-                "image": "./img/product/shelf_001.jpg",
-                "productname": "chair",
-                "price": 500
-              },
-              {
-                "id": 3,
-                "image": "./img/product/shelf_001.jpg",
-                "productname": "shelf",
-                "price": 500
-              },
-              {
-                "id": 3,
-                "image": "./img/product/shelf_001.jpg",
-                "productname": "shelf",
-                "price": 500
-              },
-              {
-                "id": 2,
-                "image": "./img/product/chair_001.jpg",
-                "productname": "chair",
-                "price": 300
-              },
-              {
-                "id": 3,
-                "image": "./img/product/shelf_001.jpg",
-                "productname": "shelf",
-                "price": 500
-              },
-              {
-                "id": 1,
-                "image": "./img/product/table_001.jpg",
-                "productname": "table",
-                "price": 100
-              },
-              {
-                "id": 2,
-                "image": "./img/product/chair_001.jpg",
-                "productname": "chair",
-                "price": 300
-              },
-              {
-                "id": 3,
-                "image": "./img/product/shelf_001.jpg",
-                "productname": "shelf",
-                "price": 500
-              },
-              {
-                "id": 1,
-                "image": "./img/product/table_001.jpg",
-                "productname": "table",
-                "price": 100
-              },
-              {
-                "id": 2,
-                "image": "./img/product/chair_001.jpg",
-                "productname": "chair",
-                "price": 300
-              },
-            ]
-          // <div class="col-sm-6 col-md-4 col-xl-3">
-          //   <a href="./product_in.html">
-          //     <div class="product tumbnail thumbnail-3">
-          //       img src="./img/product/chair_001.jpg" alt="">
-          //       <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
-          //         @click.stop.prevent="add_cart()">
-          //       <div class="caption">
-          //         <h6>Short Sleeve T-Shirt</h6>
-          //         <p class="price">$24.99</p>
-
+          productArr: [],
+          a:'',
+          b:'',  
+          abc:'',      
+          // products:
+          //   [
+          //     {
+          //       "id": 2,
+          //       "image": "./img/product/chair_001.jpg",
+          //       "productname": "chair",
+          //       "price": 300
+          //     },
+          //     {
+          //       "id": 3,
+          //       "image": "./img/product/shelf_001.jpg",
+          //       "productname": "shelf",
+          //       "price": 500
+          //     },
+          //     {
+          //       "id": 3,
+          //       "image": "./img/product/shelf_001.jpg",
+          //       "productname": "chair",
+          //       "price": 500
+          //     },
+          //   ]        
         },
         methods: {
-          add_cart() {
-            alert(123);
-          }
-        }
-      })
-  </script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+         //定義參數回傳的值(PHP)、參數的名稱、參數的圖片
+          test(a,name,img){
+              this.text=name;
+              this.abc= img;
+              let allData = this.productArr;              
+              // this.productArr=[];
+             // console.log(a);
+              $.ajax({
+                url: 'php/products_kind.php',
+                type: 'POST',
+                data: {
+                  kind: a
+                },
+                success: function(data) {
+                  $('#productItem').children().hide();                 
+                  let getData = JSON.parse(data)
+                  for (let i = 0; i < getData.length; i++) {
+                  allData.push({
+                  id: getData[i].id,
+                  name: getData[i].name,
+                  price: getData[i].price,
+                  img: getData[i].pic,
+                  kind: getData[i].kind,
+              });
+            }
+              this.productArr=getData;
+              console.log(getData);
+              }
+            })     
+          }, 
+          /*設定點擊所有商品(小icon)帶入的函式*/all(){            
+            //將abc的參數改為all_bn001.jpg
+            this.abc="all_bn001.jpg"
+            this.text="產品總覽";
+            // alert("aaaa");
+            this.productArr=[]
+            let allData = this.productArr;
+          // let pPriceArr = this.productPrice
 
-  // <!-- <script>
-  //   let productArr = [{
-  //     name: "",
-  //     prize: 0,
-  //     content: "",
-  //     photo: ""
-  //   }];
-  //   for (let i = 0; i <= 10; i++) {
-  //     let counter = 0;
-  //     counter++;
-  //     console.log(counter);
-
-  //   }
-  // </script> -->
-
-  
-</body>
-
+          $.getJSON("php/products.php", function (data) {
+            for (let i = 0; i < data.length; i++) {
+              allData.push({
+                id: data[i].id,
+                name: data[i].name,
+                price: data[i].price,
+                img: data[i].pic,
+                kind: data[i].kind,
+              });
+            }
+          });
+          }     
+        },
+        /*在生命週期為mounted(模板掛載完成時)，調用屬性or方法*/mounted() {
+          let allData = this.productArr;
+          this.text="產品總覽";
+          this.abc="all_bn001.jpg"
+          // let pPriceArr = this.productPrice
+          $.getJSON("php/products.php", function (data) {
+            for (let i = 0; i < data.length; i++) {
+            allData.push({
+                id: data[i].id,
+                name: data[i].name,
+                price: data[i].price,
+                img: data[i].pic,
+                kind: data[i].kind,                
+              });
+            }
+          });
+        },
+      });  
+    </script>
+     @@include('layout/footer.html')
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </body>
 </html>

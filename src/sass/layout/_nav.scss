@@ -56,6 +56,7 @@ header {
                 width: 600px;
                 height: 100vh;
                 position: absolute;
+                overflow-y: auto;
                 top: 0;
                 right: -200%;
                 .cart_title {
@@ -88,7 +89,9 @@ header {
                 // 購物車內容
                 .cart_content {
                     font-size: 16px;
+                    margin-bottom: 0;
                     .detail {
+                        padding-top: 20px;
                         display: flex;
                         width: 100%;
                         border-bottom: 1px solid #e3e3e3;
@@ -120,26 +123,38 @@ header {
                         .count {
                             display: flex;
                             padding-bottom: 10px;
-                            div {
-                                font-size: 20px;
-                                .num-jian,
-                                .input-num,
-                                .num-jia {
-                                    text-align: center;
-                                    display: inline-block;
+                            .count_btn {
+                                background-color: #fff;
+                                border-radius: 1px;
+                                border: 1px solid #333;
+                                padding: 0 10px;
+                                &:first-child {
                                     font-size: 20px;
-                                    width: 30px;
-                                    height: 30px;
-                                    line-height: 30px;
-                                    color: #999;
-                                    cursor: pointer;
-                                    border: 1px solid #e6e6e6;
-                                }
-                                .input-num {
-                                    width: 48px;
-                                    height: 30px;
                                 }
                             }
+                            span {
+                                margin: 0 10px;
+                            }
+                            // div {
+                            //     font-size: 20px;
+                            //     .num-jian,
+                            //     .input-num,
+                            //     .num-jia {
+                            //         text-align: center;
+                            //         display: inline-block;
+                            //         font-size: 20px;
+                            //         width: 30px;
+                            //         height: 30px;
+                            //         line-height: 30px;
+                            //         color: #999;
+                            //         cursor: pointer;
+                            //         border: 1px solid #e6e6e6;
+                            //     }
+                            //     .input-num {
+                            //         width: 48px;
+                            //         height: 30px;
+                            //     }
+                            // }
                         }
                         .operate {
                             font-size: 30px;
@@ -147,6 +162,10 @@ header {
                             justify-content: flex-end;
                             .del {
                                 margin-right: 10px;
+                            }
+                            button {
+                                background: none;
+                                border: 0;
                             }
                         }
                     }
@@ -157,7 +176,7 @@ header {
                     height: 50px;
                     text-align: center;
                     line-height: 40px;
-                    position: absolute;
+                    position: relative;
                     bottom: 0;
                     color: $p_color2;
                 }

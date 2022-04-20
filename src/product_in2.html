@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('layout/head.html')
+
+    <style>
+        #productInfo .count button.count_btn {
+            background-color: #fff;
+            border-radius: 1px;
+            padding: 0 10px;
+        }
+
+        #productInfo .count button.count_btn:first-child {
+            font-size: 20px;
+        }
+
+        #productInfo .count span {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body class="product_in">
+    <div class="wrapper">
+
+        @@include('layout/login.html')
+        @@include('layout/nav.html')
+        <!-- 首頁 -->
+        <section class="cart" id="productInfo">
+            <main class="cart">
+                <section class="main">
+                    <ul class="cart" v-if="pro[0]">
+                        <li class="photo">
+                            <img id="mainImg" class="mainImg product" :src="pro[0].pic">
+                        </li>
+                        <li class="content">
+                            <h3 data-prd_id="001">{{pro[0].names}}</h3>
+                            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
+                                @click.stop.prevent="add_cart()">
+                            <img class="favorite" src="./img/product/favorite_touch.svg" alt="" srcset=""
+                                @click.stop.prevent="add_cart()">
+
+                            <hr>
+                            <p class="content">{{pro[0].detail}}</p>
+                            <p>※可選擇等級的產品價格因等級而異。</p>
+                            <p>尺寸/規格：</p>
+                            <!-- 到時候加一欄尺寸 -->
+                            <!-- <p>{{pro[0].size}}</p> -->
+                            <p>W159 x D45 x H83</p>
+
+                            <div class="count">
+                                <button class="count_btn" @click="sub_btn">-</button>
+                                <span>{{count}}</span>
+                                <button class="count_btn" @click="add_btn">+</button>
+                            </div>
+
+                            <div class="product__buy pr-0">
+                                <div class="product__buy-container">
+                                    <p class="subtotal__price price">{{pro[0].price * count}}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <button class="submit" type="submit" @click="addcart">加入購物車</button>
+                        </li>
+                    </ul>
+                </section>
+            </main>
+        </section>
+        @@include('layout/top.html')
+        @@include('layout/footer.html')
+    </div>
+
+    <script src="./js/addcart.min.js"></script>
+
+</body>
+
+
+</html>
