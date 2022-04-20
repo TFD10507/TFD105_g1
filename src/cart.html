@@ -25,45 +25,45 @@
                 <span></span>
                 <div class="trd_step bg-white">3</div>
             </div>
-    
+
             <!-- ========================== cart1 ========================== -->
             <main class="box mx-auto">
                 <div class="row">
                     <div class="col-12 col-lg-8 col-xs">
                         <p>※因超商包裹體積限制，森活木工一律只提供宅配寄送，敬請見諒。</p>
-    
+
                         <ul class="title cart_title bg-primary mb-0">
                             <li>購物車</li>
                         </ul>
-                        <ul v-for="(product, index) in products" class="content cart_content bg-gray p-3">
+                        <ul v-for="(item, index) in products" class="content cart_content bg-gray p-3">
                             <li class="detail">
                                 <div class="img">
-                                    <img :src="product.img">
+                                    <img :src="item.img">
                                 </div>
                                 <div class="info ps-5">
-                                    <div class="pname">{{product.name}}</div>
-                                    <div class="ptype">{{product.type}}</div>
+                                    <div class="pname">{{item.name}}</div>
+                                    <div class="ptype">{{item.type}}</div>
+                                
                                     <div class="count">
-                                        <div><span class="num-jian" @click="add(index, -1)">-</span></div>
-                                        <div><input type="text" class="input-num" value="1" v-model="product.quantity" /></div>
-                                        <div><span class="num-jia" @click="add(index, 1)">+</span></div>
+                                        <button class="count_btn" @click="add(index, -1)">-</button>
+                                        <span>{{item.count}}</span>
+                                        <button class="count_btn" @click="add(index, 1)">+</button>
                                     </div>
+
+
                                     <div class="price">
-                                        {{product.price}}
+                                        {{item.price}}
                                     </div>
                                     <div class="operate">
                                         <a href="#" class="del" @click="del(index)">
                                             <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                        <a href="#" class="heart">
-                                            <i class="far fa-heart"></i>
                                         </a>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
-    
+
                     <div class="col-12 col-lg-4 col-xs">
                         <!-- 折價券 -->
                         <ul class="title coupon_title bg-primary mb-0">
@@ -75,7 +75,7 @@
                                 <input type="text">
                             </li>
                         </ul>
-    
+
                         <!-- 訂單資訊 -->
                         <ul class="title order_title bg-primary mb-0">
                             <li>訂單資訊</li>
@@ -108,7 +108,7 @@
                 </div>
             </main>
         </div>
-    
+
         <!-- ========================= cart 2 ========================= -->
         <div class="wrapper cart2" v-else-if="step == 'B'">
             <div class="step pt-4 pb-4">
@@ -123,7 +123,7 @@
                 </span>
                 <div class="trd_step bg-white">3</div>
             </div>
-    
+
             <main class="box mx-auto">
                 <div class="row">
                     <div class="col-12 col-lg-6 col-xs">
@@ -142,7 +142,7 @@
                             <li><textarea cols="30" rows="10"></textarea></li>
                         </ul>
                     </div>
-    
+
                     <div class="col-12 col-lg-6 col-xs">
                         <!-- 付款方式 -->
                         <ul class="title bg-primary mb-0">
@@ -150,8 +150,9 @@
                         </ul>
                         <ul class="content payment_content bg-gray p-3">
                             <li>
-                                <input type="radio" id="pay">
-                                <label for="pay">線上信用卡付款 ( 支援以下信用卡 ) </label>
+                                <!-- <input type="radio" id="pay">
+                                <label for="pay">線上信用卡付款 ( 支援以下信用卡 ) </label> -->
+                                線上信用卡付款 ( 支援以下信用卡 )
                             </li>
                             <li>
                                 <img src="./img/cart/visa.png" alt="">
@@ -159,6 +160,23 @@
                                 <img src="./img/cart/jcb.png" alt="">
                                 <img src="./img/cart/union-pay.png" alt="">
                             </li>
+                            <li>信用卡卡號</li>
+                            <li>
+                                <input type="text" class="credit-card-num" placeholder="0000" maxlength="4">
+                                <input type="text" class="credit-card-num" placeholder="0000" maxlength="4">
+                                <input type="text" class="credit-card-num" placeholder="0000" maxlength="4">
+                                <input type="text" class="credit-card-num" placeholder="0000" maxlength="4">
+                            </li>
+                            <div class="flex-verify">
+                                <div class="verify">
+                                    <p>有效日期</p>
+                                    <input type="text" placeholder="MM/YY" maxlength="4">
+                                </div>
+                                <div class="verify">
+                                    <p>驗證碼</p>
+                                    <input type="text" placeholder="000" maxlength="3">
+                                </div>
+                            </div>
                             <li>
                                 <input type="checkbox" id="check">
                                 <label for="check">我已閱讀並同意本網站的
@@ -177,7 +195,7 @@
             </main>
         </div>
         <!-- ========================= cart 3 ========================= -->
-    
+
         <div class="wrapper cart3" v-else-if="step == 'C'">
             <div class="step pt-4 pb-4">
                 <div class="fst_step bg-white">1</div>
@@ -186,7 +204,7 @@
                 <span></span>
                 <div class="trd_step bg-primary">3</div>
             </div>
-    
+
             <main class="box mx-auto">
                 <div class="row">
                     <h2 class="mx-auto mb-4">恭喜您完成此次訂單，若要查詢訂單狀態，可至訂單紀錄查看！</h2>
@@ -211,7 +229,7 @@
                             </li>
                         </ul>
                     </div>
-    
+
                     <div class="gobuy mt-4">
                         <img src="./img/cart/dining.png">
                         <a href="product.html">繼續購物</a>

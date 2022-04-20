@@ -1,6 +1,6 @@
 <?php
 
-include("connect.php");
+include("connection.php");
 
 //---------------------------------------------------
 $member = json_decode(file_get_contents("php://input"), true);
@@ -11,7 +11,7 @@ $sql = "SELECT * FROM G1.member where account= :account and password = :password
 
 
 
-$statement = $link->prepare($sql);
+$statement = $pdo->prepare($sql);
 
 $statement->bindValue(":account", $member["login_account"]);
 $statement->bindValue(":password", $member["login_password"]);

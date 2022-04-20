@@ -1,5 +1,5 @@
 <?php
-include("connect.php");
+include("connection.php");
 //---------------------------------------------------
 $member = json_decode(file_get_contents("php://input"), true);
 // echo json_encode($member);
@@ -9,7 +9,7 @@ $sql = "insert into G1.member(account,password,name,phone,jointime,status,addres
 values (:account,:password,'',:phone,NOW(),0,:address,:gender);";
 
   // 包裝起來才可以使PHP 用bindValue
-$statement = $link->prepare($sql);
+$statement = $pdo->prepare($sql);
 
   // 下列都是自定義PHP變數  , 不然看面資料庫看不懂 :price
 // $statement->bindValue(":account", $member->account);
