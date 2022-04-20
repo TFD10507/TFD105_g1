@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     @@include('layout/head.html')
 
     <style>
-      #productInfo .count button.count_btn {
-        background-color: #fff;
-        border-radius: 1px;
-        padding: 0 10px;
-      }
+        #productInfo .count button.count_btn {
+            background-color: #fff;
+            border-radius: 1px;
+            padding: 0 10px;
+        }
 
-      #productInfo .count button.count_btn:first-child {
-        font-size: 20px;
-      }
+        #productInfo .count button.count_btn:first-child {
+            font-size: 20px;
+        }
 
-      #productInfo .count span {
-        margin: 0 10px;
-      }
+        #productInfo .count span {
+            margin: 0 10px;
+        }
     </style>
-  </head>
+</head>
 
-  <body class="product_in">
+<body class="product_in">
     <div class="wrapper">
+<<<<<<< HEAD
       @@include('layout/login.html') @@include('layout/nav.html')
       <!-- 首頁 -->
       <section class="cart" id="productInfo">
@@ -47,40 +49,57 @@
                   srcset=""
                   @click.stop.prevent="remove_love()"
                 />
+=======
+>>>>>>> 25b9a3739e64616ae7d0d38b8e7cdf64eee975a3
 
-                <hr />
-                <p class="content">{{pro[0].detail}}</p>
-                <p>※可選擇等級的產品價格因等級而異。</p>
-                <p>尺寸/規格：</p>
-                <!-- 到時候加一欄尺寸 -->
-                <!-- <p>{{pro[0].size}}</p> -->
-                <p>W159 x D45 x H83</p>
+        @@include('layout/login.html')
+        @@include('layout/nav.html')
+        <!-- 首頁 -->
+        <section class="cart" id="productInfo">
+            <main class="cart">
+                <section class="main">
+                    <ul class="cart" v-if="pro[0]">
+                        <li class="photo">
+                            <img id="mainImg" class="mainImg product" :src="pro[0].pic">
+                        </li>
+                        <li class="content">
+                            <h3 data-prd_id="001">{{pro[0].names}}</h3>
+                            <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
+                                @click.stop.prevent="add_cart()">
+                            <img class="favorite" src="./img/product/favorite_touch.svg" alt="" srcset=""
+                                @click.stop.prevent="add_cart()">
 
-                <div class="count">
-                  <button class="count_btn" @click="sub_btn">-</button>
-                  <span>{{count}}</span>
-                  <button class="count_btn" @click="add_btn">+</button>
-                </div>
+                            <hr>
+                            <p class="content">{{pro[0].detail}}</p>
+                            <p>※可選擇等級的產品價格因等級而異。</p>
+                            <p>尺寸/規格：</p>
+                            <!-- 到時候加一欄尺寸 -->
+                            <!-- <p>{{pro[0].size}}</p> -->
+                            <p>W159 x D45 x H83</p>
 
-                <div class="product__buy pr-0">
-                  <div class="product__buy-container">
-                    <p class="subtotal__price price">
-                      {{pro[0].price * count}}
-                    </p>
-                  </div>
-                </div>
-                <br />
-                <button class="submit" type="submit" @click="addcart">
-                  加入購物車
-                </button>
-              </li>
-            </ul>
-          </section>
-        </main>
-      </section>
-      @@include('layout/top.html') @@include('layout/footer.html')
+                            <div class="count">
+                                <button class="count_btn" @click="sub_btn">-</button>
+                                <span>{{count}}</span>
+                                <button class="count_btn" @click="add_btn">+</button>
+                            </div>
+
+                            <div class="product__buy pr-0">
+                                <div class="product__buy-container">
+                                    <p class="subtotal__price price">{{pro[0].price * count}}</p>
+                                </div>
+                            </div>
+                            <br>
+                            <button class="submit" type="submit" @click="addcart">加入購物車</button>
+                        </li>
+                    </ul>
+                </section>
+            </main>
+        </section>
+        @@include('layout/top.html')
+        @@include('layout/footer.html')
     </div>
 
+<<<<<<< HEAD
     <script>
       var productInfo = new Vue({
         el: "#productInfo",
@@ -112,18 +131,13 @@
             // product_img: $('pro[0].pic')[0].src,
             // product_name: $('#app').text(),
             // }
+=======
+    <script src="./js/addcart.min.js"></script>
+>>>>>>> 25b9a3739e64616ae7d0d38b8e7cdf64eee975a3
 
-            // console.log(img.src);
-            // 先設定一個物件
-            // let storagedata={
-            // product_img: $('pro[0].pic')[0].src,
-            // product_name: $('#app').text(),
-            // }
-            // let storagedata={
-            //     product_img:
-            //     product_name:
-            // }
+</body>
 
+<<<<<<< HEAD
             // 設定條件式,為了讓下面的值設為null
             // let myList = sessionStorage.getItem("collect");
             // console.log(myList);
@@ -271,3 +285,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </body>
 </html>
+=======
+
+</html>
+>>>>>>> 25b9a3739e64616ae7d0d38b8e7cdf64eee975a3

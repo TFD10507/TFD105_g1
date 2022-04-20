@@ -5,7 +5,7 @@ require("./Connection.php");
 $Ucoupon = json_decode(file_get_contents("php://input"));
 // echo json_encode($Ucoupon);
 // // SQL 語法
-$sql = "update G1.coupon
+$sql = "update coupon
               set 
                   price=:UPprice,
                   period=:UPperiod
