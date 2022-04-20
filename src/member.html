@@ -26,7 +26,7 @@
             <h3>資料變更</h3>
             <div id="container">
 
-              <div action="../memberUpdate.php" method="POST">
+              <div action="php/memberUpdate.php" method="POST">
                 <fieldset disabled>
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
@@ -251,12 +251,12 @@
             // $('#member').html(data)
             // $('#member').append(data)
             $("#disabledTextInput").val(data[0].account)
-            $("#memberName").val(data[0].user)
+            $("#memberName").val(data[0].name)
             $("#memberAdd").val(data[0].address)
             $("#memberPhone").val(data[0].phone)
-            }
-          });
+          }
         });
+      });
 
         // 更改的會員資料update進mySQL
         var memberSubmit = document.getElementById('memberSubmit');
@@ -265,7 +265,7 @@
           var address = document.getElementById("memberAdd").value
           var phone = document.getElementById("memberPhone").value
 
-          fetch("memberUpdate.php", {
+          fetch("php/memberUpdate.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -349,7 +349,20 @@
 
         
         // 讀localStorage顯示收藏清單
-      
+
+
+        // 取出資料：getItem()
+        // localStorage.getItem(key)
+        // var getData = localStorage.getItem('key')
+        // var car = JSON.parse(localStorage.getItem("car"));
+        // console.log(car);
+        
+        // .then((res) => {
+        // localStorage.setItem("apiData", JSON.stringify(res.data));
+        // });
+
+//////// THEN YOU CAN GET DATA BY
+var data = JSON.parse(localStorage.getItem("apiData"));
     </script>
     <script>
       // Vue for 訂單資料
@@ -385,11 +398,11 @@
           }
         },
         mounted() {
-          fetch('orderList.php')
+          fetch('php/orderList.php')
           .then(res => res.json())
           .then(res => this.lists = res)
 
-          fetch('orderDetail.php')
+          fetch('php/orderDetail.php')
           .then(res => res.json())
           .then(res => this.details = res)
         },

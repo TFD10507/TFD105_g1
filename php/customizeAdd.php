@@ -13,8 +13,8 @@ $cusID = date('YmdHis').rand(100,999);
 // echo $cusID;
 
 //建立SQL
-$sql = "insert into customization (member_id,kind, quantity, detail,color_id, date, customizeOrderID)
-      values (null,:kind,:quantity,:detail,:color,NOW(), $cusID);";
+$sql = "insert into customization ( member_id, color,  detail, date, quantity, customizeOrderID, kind, status )
+      values (1, :color, :detail, NOW(), :quantity, $cusID, :kind, '待處理');";
 
 //包裝起來才可以使PHP 用bindValue
 $statement = $link->prepare($sql);
@@ -30,5 +30,3 @@ $statement->execute();
 
 //  echo json_encode(['status'=> 'SUCCESS']);
 //  echo "新增成功!";
-
-?>

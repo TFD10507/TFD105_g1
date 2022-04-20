@@ -1,17 +1,17 @@
 <?php
 // 這支用來更新會員資料進去G1.member
 
-require("Connection.php");
+require("connection.php");
 //---------------------------------------------------
 // variable
 $member = json_decode(file_get_contents("php://input"));
-// print_r($member);
+print_r($member);
 // exit();
 
 //SQL語法
-$sql = "UPDATE G1.member 
+$sql = "UPDATE member 
             set 
-                user = :user,
+                name = :user,
                 address = :address,
                 phone = :phone
             WHERE id = 3;";
@@ -41,5 +41,3 @@ $mem["message"] = $result_count != 0 ? "更新成功" : "更新錯誤，請聯�
 // echo ($mem["message"]);
 
 echo json_encode($mem["message"]);
-
-?>
