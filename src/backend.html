@@ -306,7 +306,7 @@
                                     <input type="text" v-model="member.phone">
                                 </li>
                                 <li>
-                                    <label>收貨地址</label>
+                                    <label>聯絡地址</label>
                                     <input type="text" v-model="member.address">
                                 </li>
                             </ul>
@@ -440,7 +440,7 @@
                                 </li>
                                 <li>
                                     <label>商品內容</label>
-                                    <textarea name="" id="" cols=" 35" rows="6">{{product.detail}}</textarea>
+                                    <textarea name="" id="" cols=" 35" rows="6" v-model="product.detail"></textarea>
                                 </li>
                             </ul>
                             <ul class="half">
@@ -494,33 +494,33 @@
                             <ul class="half">
                                 <li>
                                     <label>訂單流水</label>
-                                    <input type="text" disabled>
+                                    <input type="text" disabled v-model="order.id">
                                 </li>
                                 <li>
                                     <label>會員編號</label>
-                                    <input type="text" disabled>
+                                    <input type="text" disabled v-model="order.member_id">
                                 </li>
                                 <li>
                                     <label>下單時間</label>
-                                    <input type="text" disabled>
+                                    <input type="text" disabled v-model="order.date">
                                 </li>
                                 <li>
                                     <label>訂單金額</label>
-                                    <input type="text" disabled>
+                                    <input type="text" disabled v-model="order.total_price">
                                 </li>
                             </ul>
                             <ul class="half">
                                 <li>
                                     <label>訂單編號</label>
-                                    <input type="text" disabled>
+                                    <input type="text" disabled v-model="order.ID_order">
                                 </li>
                                 <li>
                                     <label>連絡電話</label>
-                                    <input type="text">
+                                    <input type="text" v-model="order.phone">
                                 </li>
                                 <li>
-                                    <label>收貨地址</label>
-                                    <input type="text">
+                                    <label>聯絡地址</label>
+                                    <input type="text" v-model="order.address">
                                 </li>
                                 <li>
                                     <label>訂單狀態</label>
@@ -592,7 +592,7 @@
                             <ul class="half">
                                 <li>
                                     <label>訂單編號</label>
-                                    <input type="text" disabled v-model="customization.id">
+                                    <input type="text" disabled v-model="customization.customizeOrderID">
                                 </li>
                                 <li>
                                     <label>會員編號</label>
@@ -608,9 +608,9 @@
                                 </li>
                                 <li>
                                     <label>訂單狀態</label>
-                                    <select name="" id="">
+                                    <select name="" id="customization_status">
                                         <option value="待確認">待確認</option>
-                                        <option value="處理中">處理中</option>
+                                        <option value="已確認">已確認</option>
                                         <option value="已出貨">已出貨</option>
                                     </select>
                                 </li>
@@ -626,13 +626,13 @@
                                 </li>
                                 <li>
                                     <label>商品內容</label>
-                                    <textarea name="" id="" cols="35" rows="6">{{customization.detail}}</textarea >
+                                    <textarea name="" id="" cols="35" rows="6" disabled v-model="customization.detail"></textarea >
                                 </li>
                             </ul>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">更新</button>
+                            <button type="button" class="btn btn-primary" @click="UPcustomization">更新</button>
                         </div>
                     </form>
                 </div>
@@ -830,6 +830,7 @@
                     phone: '',
                     address: '',
                     status: '',
+                    total_price:'',
                 },
                 customizations: [],
                 customization: {
@@ -964,9 +965,15 @@
                     })
                         .then(res => res.json())
                         .then(res => {
+                            // console.log(res)
                             this.order.id = res[0]['id']
-                            this.order.price = res[0]['price']
-                            this.order.period = res[0]['period']
+                            this.order.ID_order = res[0]['ID_order']
+                            this.order.address = res[0]['address']
+                            this.order.phone = res[0]['phone']
+                            this.order.status = res[0]['status']
+                            this.order.total_price = res[0]['total_price']
+                            this.order.date = res[0]['date']
+                            this.order.member_id = res[0]['member_id']
                         })
                 },
                 // 撈單筆訂單資料 結束
@@ -991,6 +998,10 @@
                             this.customization.detail = res[0]['detail']
                             this.customization.quantity = res[0]['quantity']
                             this.customization.id = res[0]['id']
+                            this.customization.customizeOrderID = res[0]['customizeOrderID']
+                            let status = this.customization.status
+                            $("#customization_status").find('option').removeAttr("selected")
+                            $(`#customization_status option[ value = ${status}]`).attr("selected", true)
                         })
                 },
                 // 撈單筆客製化訂單資料 結束
@@ -1214,6 +1225,26 @@
                     location.reload()
                 },
                 // 更新商品 結束
+                UPcustomization(){  // 更新客製化訂單 開始
+                    let status = $('#customization_status').val()
+                    // alert(status)
+                    fetch('php/Update_customization.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        mode: "cors",
+                        body: JSON.stringify(
+                            {
+                                UPid: this.customization.id,
+                                UPstatus: status,
+                            }
+                        ),
+                    })
+                    alert('更新成功')
+                    location.reload()
+                },  // 更新客製化訂單 結束
                 add_product_img(e) {   // 新增商品圖片預覽 開始
                     const file = e.target.files.item(0)
                     const reader = new FileReader()
