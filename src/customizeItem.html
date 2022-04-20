@@ -21,7 +21,7 @@
 
           <div class="col-lg-6">
             <!-- action="customizeAdd.php" method="POST"-->
-            <form
+            <div
               id="orderDetail"
               class="detail margin_top_30"
               action=""
@@ -71,7 +71,7 @@
                       data-name="brown"
                       name="brown"
                       value="胡桃木"
-                      onclick="color.value=1"
+                      onclick="color.value='胡桃木'"
                     />
                   </div>
                   <div class="btn_wrap padding_10">
@@ -81,7 +81,7 @@
                       data-name="beige"
                       name="beige"
                       value="白梣木"
-                      onclick="color.value=2"
+                      onclick="color.value='白梣木'"
                     />
                   </div>
                   <div class="btn_wrap padding_10">
@@ -91,7 +91,7 @@
                       data-name="red"
                       name="red"
                       value="紅橡木"
-                      onclick="color.value=3"
+                      onclick="color.value='紅橡木'"
                     />
                   </div>
                   <div class="btn_wrap padding_10">
@@ -101,7 +101,7 @@
                       data-name="green"
                       name="green"
                       value="綠橡木"
-                      onclick="color.value=4"
+                      onclick="color.value='綠橡木'"
                     />
                   </div>
                   <div class="btn_wrap padding_10">
@@ -111,16 +111,20 @@
                       data-name="black"
                       name="black"
                       value="黑梣木"
-                      onclick="color.value=5"
+                      onclick="color.value='黑梣木'"
                     />
                   </div>
                   <!-- 隱藏的input 用來放木材顏色 用於傳value到資料庫-->
-                  <input type="hidden" id="color" value="" name="color" />
+                  <input type="hidden" id="color" value="1" name="color" />
                 </div>
                 <div class="qty margin_top_20">
-                  數量<br /><input type="number" value="1" name="quantity" />
+                  數量<br /><input
+                    id="quantity"
+                    type="number"
+                    value="1"
+                    name="quantity"
+                  />
                 </div>
-
                 <!-- counter -->
                 <!-- <div class="count__wrapper count__wrapper--ml .count">
                   <div class="qty-input">
@@ -138,35 +142,32 @@
                   </div>
                 </div> -->
                 <!-- Counter || END -->
-                
+
                 <div class="comment margin_top_20">
-                  其他需求<br /><textarea name="detail"></textarea>
+                  其他需求<br /><textarea id="detail" name="detail"></textarea>
                 </div>
 
                 <!-- Button trigger modal 按下送出訂製單出現彈窗 -->
                 <div class="form-group margin_top_30 submit-btn">
-                  <input
+                  <a
                     id="submit"
                     type="button"
                     class="btn_style"
-                    value="送出訂製單"
                     data-toggle="modal"
-                    data-target="#myModal"
-                  />
+                    >送出訂製單</a
+                  >
 
                   <!-- Modal 彈窗 -->
                   <div id="myModal" class="modal">
                     <!-- Modal content -->
                     <div class="modal-content padding_20">
                       <span class="close">&times;</span>
-                      <p>
-                        已提交客製化清單，工作人員會盡快與您聯繫確認內容，謝謝‧
-                      </p>
+                      <p>已提交客製化清單，工作人員會盡快與您聯繫確認，謝謝‧</p>
                     </div>
                   </div>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </section>
@@ -261,68 +262,55 @@
           // alert(color.value);
         }
 
-        // 等php完成再打開
-        // 取input value, 賦值進mySQL database
-        // var submit = document.getElementById("submit");
-        // submit.addEventListener("click", function () {
-        //   var kind = document.getElementById("kind").value;
-        //   var color = document.getElementById("color").value;
-        //   var quantity = document.getElementById("quantity").value;
-        //   var detail = document.getElementById("detail").value;
-        //   // alert(detail);
-        //   // alert(kind);
-        //   // alert(color);
-        //   // console.log(detail);
-        //   // console.log(kind);
-        //   // console.log(color);
-        //   // console.log(quantity);
+        // 取input value, 賦值進mySQL table
+        var submit = document.getElementById("submit");
+        submit.addEventListener("click", function () {
+          var kind = document.getElementById("kind").value;
+          var color = document.getElementById("color").value;
+          var quantity = document.getElementById("quantity").value;
+          var detail = document.getElementById("detail").value;
 
-        //   fetch("customizeAdd.php", {
-        //     method: "POST",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //       Accept: "application/json",
-        //     },
-        //     mode: "cors",
-        //     body: JSON.stringify({
-        //       kind: kind,
-        //       color: color,
-        //       quantity: quantity,
-        //       detail: detail,
-        //     }),
-        //   });
-        // });
+          fetch("php/customizeAdd.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            mode: "cors",
+            body: JSON.stringify({
+              kind: kind,
+              color: color,
+              quantity: quantity,
+              detail: detail,
+            }),
+          });
+        });
 
-        // 按下送出訂製單後, 彈窗modal
+        // 按下送出訂製單後彈出modal, 3秒後重整頁面
         var modal = document.getElementById("myModal");
         var modalbBtn = document.getElementById("submit");
         var span = document.getElementsByClassName("close")[0];
 
-        modalbBtn.onclick = function() {
+        function refreshPage() {
+          window.location.reload();
+        }
+
+        modalbBtn.onclick = function () {
           modal.style.display = "block";
-        }
+          setTimeout(refreshPage, 4000);
+        };
 
-        span.onclick = function() {
+        span.onclick = function () {
           modal.style.display = "none";
-        }
+          setTimeout(refreshPage, 4000);
+        };
 
-        window.onclick = function(event) {
+        window.onclick = function (event) {
           if (event.target == modal) {
             modal.style.display = "none";
+            setTimeout(refreshPage, 4000);
           }
-        }
-
-        // 按下送出訂製單後, 清空表單, 3秒後跳轉回customize.html
-        $('#submit').on('click', function(e){
-          // e.preventDefault();
-          $("#orderDetail")[0].reset();
-          setTimeout ("location.href='customize.html'", 3000);
-        });
-
-        // function clearForm() {
-        //   $("#orderDetail")[0].reset();
-        // };
-
+        };
       };
     </script>
   </body>

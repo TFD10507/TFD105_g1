@@ -42,7 +42,7 @@
       margin: 0 auto;
 
       #member,
-      #password {
+      #pwd {
         h3 {
           text-align: center;
         }
@@ -61,50 +61,22 @@
       }
 
       #order {
-        .input-group {
-          // width: 50%;
-          float: right;
-          width: 400px;
+        // 訂單表格
+        #table_id{
+          width: 100%;
+          text-align: center;
 
-          .input-group-text {
-            background-color: transparent;
+          .list-title{
+            color: $p_color2;
+            background-color: $p_color1;
+          }
+
+          .unclick,
+          .click{
+            color: $s_color1;
+            cursor: pointer;
           }
         }
-      }
-
-      .clearFloat {
-        clear: both;
-      }
-
-      .order-title {
-        display: flex;
-        justify-content: space-around;
-      }
-
-      .collapsible {
-        background-color: $p_color1;
-        color: $p_color2;
-        cursor: pointer;
-        width: 100%;
-        border: none;
-
-        .order-list {
-          display: flex;
-          justify-content: space-around;
-          margin: 0;
-          padding-left: 0;
-        }
-      }
-
-      .order-content {
-        // 訂單查詢 訂單明細表格
-        display: none;
-        overflow: hidden;
-        background-color: $s_color2;
-        max-height: 0;
-        width: 100%;
-        transition: max-height 0.2s ease-out;
-        text-align: center;
       }
 
       #favor {
