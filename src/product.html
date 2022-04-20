@@ -134,7 +134,8 @@
               }
             })     
           }, 
-          /*設定點擊所有商品(小icon)帶入的函式*/all(){            
+          /*設定點擊所有商品(小icon)帶入的函式*/
+          all(){            
             //將abc的參數改為all_bn001.jpg
             this.abc="all_bn001.jpg"
             this.text="產品總覽";
@@ -142,7 +143,6 @@
             this.productArr=[]
             let allData = this.productArr;
           // let pPriceArr = this.productPrice
-
           $.getJSON("php/products.php", function (data) {
             for (let i = 0; i < data.length; i++) {
               allData.push({
@@ -156,7 +156,8 @@
           });
           }     
         },
-        /*在生命週期為mounted(模板掛載完成時)，調用屬性or方法*/mounted() {
+        /*在生命週期為mounted(模板掛載完成時)，調用屬性or方法*/
+        mounted() {
           let allData = this.productArr;
           this.text="產品總覽";
           this.abc="all_bn001.jpg"
