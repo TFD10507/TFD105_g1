@@ -17,12 +17,12 @@
         <!-- 登入註冊 -->
         <main class="container" id="login">
 
-            <div class="card mb-3 mt-5 login" style="max-width: 700px; ">
+            <div class="card mb-3 mt-5 login" style="max-width: 900px; ">
                 <div class="row">
-                    <div class="col-md-6">
-                        <img src="./img/index/Group216.png" class="img-fluid" alt="...">
+                    <div class="col-md-7">
+                        <img src="img/logo.png" class="img-fluid" alt="...">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="card-body ">
                             <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
@@ -39,7 +39,7 @@
                             </ul>
                             <div class="tab-content " id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
-                                    <form class="login_reset">
+                                    <form class="login_reset" style="margin:20px;">
                                         帳號：<br><input type="text" value="" placeholder="請輸入 Email"
                                             v-model="login_account">
                                         <br>
@@ -60,7 +60,7 @@
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel">
-                                    <form class="reset">
+                                    <form class="reset" style="margin-left:20px;">
                                         <label>會員帳號：<br><input type="email" name="email" placeholder="請輸入 Email"
                                                 class="mb-2" required="required" v-model="account" /></label>
                                         <br>

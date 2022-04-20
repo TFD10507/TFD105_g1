@@ -6,7 +6,7 @@ $UPproduct = json_decode(file_get_contents("php://input"));
 echo json_encode($UPproduct);
 
 // // SQL 語法
-$sql = "update G1.product
+$sql = "update product
               set 
                   name=:name,
                   status=:status,

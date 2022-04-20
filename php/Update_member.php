@@ -6,7 +6,7 @@ $Umember = json_decode(file_get_contents("php://input"));
 echo json_encode($Umember);
 
 // // SQL 語法
-$sql = "update G1.member
+$sql = "update member
               set 
                   password=:password,
                   name=:name,

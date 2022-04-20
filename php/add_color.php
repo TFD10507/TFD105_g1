@@ -11,7 +11,7 @@ if (is_array($_FILES)) {
 }
 
 //建立SQL
-$sql = "insert into G1.color(name,pic)
+$sql = "insert into color(name,pic)
                 VALUES (:name,:pic);";
 
 // // 包裝起來才可以使PHP 用bindValue
