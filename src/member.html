@@ -15,7 +15,7 @@
         <!-- tab頁籤 -->
       <ul class="tabs margin_top_20">
         <li data-tab-target="#member" class="active tab padding_10">會員資料</li>
-        <li data-tab-target="#password" class="tab padding_10">密碼變更</li>
+        <li data-tab-target="#pwd" class="tab padding_10">密碼變更</li>
         <li data-tab-target="#order" class="tab padding_10">訂單查詢</li>
         <li data-tab-target="#favor" class="tab padding_10">收藏清單</li>
       </ul>
@@ -26,7 +26,7 @@
             <h3>資料變更</h3>
             <div id="container">
 
-              <form action="../memberUpdate.php" method="POST">
+              <div action="../memberUpdate.php" method="POST">
                 <fieldset disabled>
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
@@ -67,17 +67,17 @@
                 <div class="form-group margin_top_30 member-btn">
                   <input type="submit" class="btn_style">
                 </div>
-              </form>
+              </div>
 
             </div>
         </div>
 
         <!-- 密碼變更內容 -->
-        <div id="password" data-tab-content>
+        <div id="pwd" data-tab-content>
             <h3>密碼變更</h3>
             <div id="container">
-
-              <form action="../passwordUpdate.php" method="post">
+              <!-- <form action="../passwordUpdate.php" method="post"> -->
+              <form action="" method="">
                 <div class="row justify-content-center">
                   <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                     <label for="oldPassword">舊密碼:</label>
@@ -105,127 +105,51 @@
         </div>
 
         <!-- 訂單查詢內容 -->
-        <div id="order" data-tab-content>
-          
-          <!-- 搜尋欄先隱藏 -->
-          <!-- <div class="input-group rounded padding_20">
-              <input type="search" class="form-control rounded" placeholder="訂單編號" aria-label="Search" aria-describedby="search-addon" />
-              <span class="input-group-text border-0" id="search-addon">
-                <i class="fas fa-search"></i>
-              </span>
-          </div> -->
-          
-          <div class="clearFloat"></div>
-
-          <ul class="order-title padding_10">
-            <li>訂單編號</li>
-            <li>購買日期</li>
-            <li>訂單總額</li>
-            <li>訂單狀態</li>
-            <li>訂單明細</li>
-          </ul>
-
-          <button type="button" class="collapsible padding_10">
-            <ul class="order-list">
-              <li>22040101</li>
-              <li>2022-03-31</li>
-              <li>NT$38,888</li>
-              <li>已出貨</li>
-              <li style="outline: 1px solid #ffffff; border-radius: 2px; padding: 1px 5px;">查看</li>
-            </ul>
-          </button>
-          <div class="order-content padding_10">
-            <table class="order-details table table-striped table-sm">
+        <div id="order" data-tab-content>             
+          <table id="table_id" class="table table-striped table-sm">
+            <thead class="order-title padding_10">
               <tr>
-                <th>商品名稱</th>
-                <th>材質</th>
-                <th>數量</th>
-                <th>價錢</th>
+                <th>訂單編號</th>
+                <th>購買日期</th>
+                <th>訂單總額</th>
+                <th>訂單狀態</th>
+                <th>訂單詳情</th>
               </tr>
-              <tr>
-                <td>羅丹辦公桌</td>
-                <td>白橡木</td>
-                <td>1</td>
-                <td>NT$18,999</td>
+            </thead>
+            <tbody>
+              <!-- 訂單 -->
+              <tr class="list-title padding_10" v-for="(list,index) in lists">
+                <!-- 訂單編號	購買日期	訂單總額	訂單狀態 -->
+                <td>{{list.id}}</td> 
+                <td>{{list.ID_order}}</td>
+                <td>{{list.total}}</td>
+                <td>{{list.status}}</td>
+                <td class="detailPO unclick" data-type = "1">
+                  <!-- Button trigger -->
+                  <button type="button" class="btn btn-primary" @click="action(list.id)">
+                  點擊查看詳細
+                  </button>
+                </td>
               </tr>
-              <tr>
-                <td>羅丹辦公椅</td>
-                <td>白橡木</td>
-                <td>1</td>
-                <td>NT$20,000</td>
-              </tr>
-            </table>
-          </div>
-
-          <button type="button" class="collapsible padding_10">
-            <ul class="order-list">
-              <li>22033189</li>
-              <li>2022-04-01</li>
-              <li>NT$60,000</li>
-              <li>待出貨</li>
-              <li style="outline: 1px solid #ffffff; border-radius: 2px; padding: 1px 5px;">查看</li>
-            </ul>
-          </button>
-          <div class="order-content padding_10">
-            <table class="order-details table table-striped table-sm">
-              <tr>
-                <th>商品名稱</th>
-                <th>材質</th>
-                <th>數量</th>
-                <th>價錢</th>
-              </tr>
-              <tr>
-                <td>羅丹辦公桌</td>
-                <td>白橡木</td>
-                <td>1</td>
-                <td>NT$18,999</td>
-              </tr>
-              <tr>
-                <td>羅丹辦公桌</td>
-                <td>白橡木</td>
-                <td>1</td>
-                <td>NT$20,000</td>
-              </tr>
-              <tr>
-                <td>羅丹辦公桌</td>
-                <td>白橡木</td>
-                <td>1</td>
-                <td>NT$11,001</td>
-              </tr>
-              <tr>
-                <td>羅丹辦公桌</td>
-                <td>白橡木</td>
-                <td>1</td>
-                <td>NT$10,000</td>
-              </tr>
-            </table>
-          </div>
-
-          <button type="button" class="collapsible padding_10">
-            <ul class="order-list">
-              <li>22010133</li>
-              <li>2022-04-01</li>
-              <li>NT$1,450</li>
-              <li>已取消</li>
-              <li style="outline: 1px solid #ffffff; border-radius: 2px; padding: 1px 5px;">查看</li>
-            </ul>
-          </button>
-          <div class="order-content padding_10">
-            <table class="order-details table table-striped table-sm">
-              <tr>
-                <th>商品名稱</th>
-                <th>材質</th>
-                <th>數量</th>
-                <th>價錢</th>
-              </tr>
-              <tr>
-                <td>羅丹辦公桌</td>
-                <td>白橡木</td>
-                <td>1</td>
-                <td>NT$10,000</td>
-              </tr>
-            </table>
-          </div>
+            </tbody>
+            <!-- 訂單詳情內容 -->
+            <!-- <table id="poDetail" class="block" > -->
+              <thead id="orderDetail_id" class="order-title padding_10 poDetail" >
+                <tr class="detail1 hide .order-content" >
+                  <th style="text-align: center;">商品名稱</th>
+                  <th style="text-align: center;">數量</th>
+                  <th style="text-align: center;">單價</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="detail1 hide .order-content poDetail" v-for="(detail,index) in details" >
+                  <td style="text-align: center;">{{detail.product_id}}</td>
+                  <td style="text-align: center;">{{detail.quantity}}</td>
+                  <td style="text-align: center;">{{detail.price}}</td>
+                </tr>
+              </tbody>
+            <!-- </table> -->
+          </table> 
         </div>
 
         <!-- 收藏清單內容 -->
@@ -288,33 +212,17 @@
         });
       });
 
-      // 訂單查詢明細展開
-      var order = document.getElementsByClassName("collapsible");
-      var i;
-
-      for (let i = 0; i < order.length; i++) {
-        order[i].addEventListener("click", function () {
-          this.classList.toggle("active");
-          var content = this.nextElementSibling;
-          if (content.style.display === "block") {
-            content.style.display = "none";
-          } else {
-            content.style.display = "block";
-          }
-        });
-      }
-
-      for (i = 0; i < order.length; i++) {
-        order[i].addEventListener("click", function () {
-          this.classList.toggle("active");
-          var content = this.nextElementSibling;
-          if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-          } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-          }
-        });
-      }
+      // 訂單查詢明細展開   
+      // $(".detail").on('click', function(event) {
+      //   var type = $(this).attr("data-type");
+      //   $(".detail"+type).toggle();
+      //   var $this=$(this);
+      //   if($this.hasClass('unclick')){
+      //     $this.removeClass('unclick').addClass('click');
+      //   }else{
+      //     $this.removeClass('click').addClass('unclick');
+      //   }
+      // });
 
       // 收藏清單愛心點擊照片消失功能
       const heart_btn = document.querySelectorAll(".heart-like-button");
@@ -328,52 +236,110 @@
         });
       }
 
-      // 修改密碼
-      function alter() { 
-        // var username=document.getElementById("username").value; 
-        var oldpassword = document.getElementById("oldPassword").value; 
-        // console.log(oldpassword);
-        var newpassword = document.getElementById("newPassword").value; 
-        // console.log(newpassword);
-        var newPassword2 = document.getElementById("newPassword2").value; 
-        // console.log(newPassword2);
-        // var regex = /^[/s] $/; 
-
-        // 正規表示法
-        // "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
-        // 最少八個字符，至少一個大寫字母，一個小寫字母和一個數字：
-        
-        // if(regex.test(username)||username.length==0){ 
-        //   alert("使用者名稱格式不對"); 
-        //   return false; 
-        // } 
-
-        // if(oldPassword.length==0){ 
-        //   alert("密碼格式不對"); 
-        //   return false; 
-        // } 
-        // if(newPassword.length==0) { 
-        //   alert("新密碼格式不對"); 
-        //   return false; 
-        // } 
-        if (newPassword2 !== newPassword || newPassword2==0) { 
-          alert("兩次密碼輸入不一致"); 
-          return false; 
-        } 
-          return true; 
-      } 
-
-        // 使用jQuery Ajax將mySQL data 資料fetch到html:會員資料
-        $(document).ready(function() {
-          $.ajax({
-            type: "POST",
-            url: "memberUpdate.php",
-            dataType: "html",
-            // async: false,
-            success: function(data) {
-                $('#member').html(data)
+      // 使用jQuery Ajax將mySQL data 資料fetch到html:會員資料
+      $(document).ready(function() {
+        $.ajax({
+          type: "POST",
+          // 先撈原本的會員資料
+          url: "php/memberSelect.php",
+          data:{},
+          dataType: "html",
+          async: false,
+          success: function(data) {
+            var data = JSON.parse(data);
+            // console.log(data);
+            // $('#member').html(data)
+            // $('#member').append(data)
+            $("#disabledTextInput").val(data[0].account)
+            $("#memberName").val(data[0].user)
+            $("#memberAdd").val(data[0].address)
+            $("#memberPhone").val(data[0].phone)
             }
           });
+        });
+
+        // 更改的會員資料update進mySQL
+        var memberSubmit = document.getElementById('memberSubmit');
+        memberSubmit.addEventListener('click', function(){
+          var user = document.getElementById("memberName").value
+          var address = document.getElementById("memberAdd").value
+          var phone = document.getElementById("memberPhone").value
+
+          fetch("memberUpdate.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            mode: "cors",
+            body: JSON.stringify({    
+              user: user,  
+              address: address,
+              phone: phone,
+            }),
+          })
+
+          // 判定更新是否成功 成功: alert資料已更新
+          .then(response =>{
+            if(response.ok){
+              alert("資料已更新");
+            }else{
+              "error"
+            }
+          })
+        });
+
+        // 修改密碼
+        var pswUpdate = document.getElementById('pswUpdate');
+
+        // 取值
+        pswUpdate.addEventListener('click', function valid(){
+          var oldPassword = document.getElementById('oldPassword').value;
+          var newPassword = document.getElementById('newPassword').value;
+          var newPassword2 = document.getElementById('newPassword2').value;
+          // console.log(oldPassword);
+          // console.log(newPassword);
+          // console.log(newPassword2);
+
+          fetch("php/passwordUpdate.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            mode: "cors",
+            body: JSON.stringify({  
+
+              oldPassword: oldPassword,
+              newPassword: newPassword,
+              newPassword2: newPassword2
+              
+            }),
+          })
+
+          // 判定舊密碼 新密碼 確認新密碼是否為空值, 或一致
+          if(oldPassword==""){
+          alert("Old Password Filed is Empty !!");
+          document.getElementById('newPassword').focus();
+          return false;
+          }
+          else if(newPassword==""){
+          alert("New Password Filed is Empty !!");
+          document.getElementById('newPassword').focus();
+          return false;
+          }
+          else if(newPassword2==""){
+          alert("Confirm Password Filed is Empty !!");
+          document.getElementById('newPassword2').focus();
+          return false;
+          }
+          else if(newPassword != newPassword2){
+          alert("Password and Confirm Password Field do not match  !!");
+          document.getElementById('newPassword2').focus();
+          return false;
+          }
+          return true;
+
         });
 
         // 使用jQuery Ajax將mySQL data 資料fetch到html: 訂單資料
@@ -383,8 +349,54 @@
 
         
         // 讀localStorage顯示收藏清單
-        
-
+      
     </script>
+    <script>
+      // Vue for 訂單資料
+      new Vue({
+        el:'#table_id',
+        data:{
+          list:{
+            id:'',
+            ID_order: '',
+            total:'',
+            status:''
+          },
+          lists:[],
+          detail:{
+            product_id:'',
+            quantity: '',
+            price:'',
+          },
+          details:[],
+        },
+        methods: {
+          action(id){
+            // alert(id)
+            var type = $(this).attr("data-type");
+            var poDetail = document.querySelectorAll('.poDetail');
+            $('.poDetail').toggle();
+            var $this=$(this);
+            if($this.hasClass('block')){
+              $this.removeClass('block').addClass('none');
+            }else{
+              $this.removeClass('none').addClass('block');
+            }
+          }
+        },
+        mounted() {
+          fetch('orderList.php')
+          .then(res => res.json())
+          .then(res => this.lists = res)
+
+          fetch('orderDetail.php')
+          .then(res => res.json())
+          .then(res => this.details = res)
+        },
+
+      });
+    </script>
+
+
   </body>
 </html>
