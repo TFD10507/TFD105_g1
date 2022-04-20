@@ -251,11 +251,18 @@
                 max-width: 250px;
                 resize: none;
             }
+            .credit-card-num{
+                max-width: 60px;
+                margin-right: 10px;
+            }
         }
     }
 
     // 付款方式內容
     .payment_content {
+        input{
+            margin-bottom: 20px;
+        }
         li {
             img {
                 width: 40px;
@@ -276,9 +283,12 @@
             }
             &:nth-child(4) {
                 display: flex;
-                justify-content: right;
                 padding-bottom: 0;
-                padding-top: 20px;
+            }
+        }
+        .flex-verify{
+            p{
+                margin-bottom: 0;
             }
         }
     }
