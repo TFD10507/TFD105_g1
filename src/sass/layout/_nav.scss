@@ -20,6 +20,7 @@ header {
                 color: $p_color1;
                 display: block;
                 margin-right: 10px;
+                cursor: pointer;
                 i {
                     font-size: 35px;
                 }
@@ -135,26 +136,6 @@ header {
                             span {
                                 margin: 0 10px;
                             }
-                            // div {
-                            //     font-size: 20px;
-                            //     .num-jian,
-                            //     .input-num,
-                            //     .num-jia {
-                            //         text-align: center;
-                            //         display: inline-block;
-                            //         font-size: 20px;
-                            //         width: 30px;
-                            //         height: 30px;
-                            //         line-height: 30px;
-                            //         color: #999;
-                            //         cursor: pointer;
-                            //         border: 1px solid #e6e6e6;
-                            //     }
-                            //     .input-num {
-                            //         width: 48px;
-                            //         height: 30px;
-                            //     }
-                            // }
                         }
                         .operate {
                             font-size: 30px;
