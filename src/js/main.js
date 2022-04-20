@@ -8,12 +8,17 @@ $(function () {
     // });
 
     // 購物車側邊欄的出現控制
-    $('.btn_cart_open').on('click', function () {
-        $(".cart_side").animate({ right: '0' }, 1200);
-    });
-    $('.btn_cart_close').on('click', function () {
-        $(".cart_side").animate({ right: '-100%' }, 1200);
-    });
+    // ！！！！！！上線網址要改！！！！！！
+    if(location.href != "http://localhost/TFD105_g1/dist/cart.html"){
+        $('.btn_cart_open').on('click', function () {
+            $(".cart_side").animate({ right: '0' }, 1200);
+        });
+        $('.btn_cart_close').on('click', function () {
+            $(".cart_side").animate({ right: '-100%' }, 1200);
+        });
+    }else{ //當在結帳頁面的時候，控制購物車側邊欄不出現
+        $('.btn_cart_open').css("pointer-events","none")
+    }
 
     // ======== go to top ========
     var $win = $(window);
@@ -43,6 +48,7 @@ $(function () {
     // aos
     AOS.init();
 
+    // 彈窗套件
     function loginMember(msg, icon, html) {
 
         Swal.fire({

@@ -35,29 +35,28 @@
                         <ul class="title cart_title bg-primary mb-0">
                             <li>購物車</li>
                         </ul>
-                        <ul v-for="(product, index) in products" class="content cart_content bg-gray p-3">
+                        <ul v-for="(item, index) in products" class="content cart_content bg-gray p-3">
                             <li class="detail">
                                 <div class="img">
-                                    <img :src="product.img">
+                                    <img :src="item.img">
                                 </div>
                                 <div class="info ps-5">
-                                    <div class="pname">{{product.name}}</div>
-                                    <div class="ptype">{{product.type}}</div>
+                                    <div class="pname">{{item.name}}</div>
+                                    <div class="ptype">{{item.type}}</div>
+                                
                                     <div class="count">
-                                        <div><span class="num-jian" @click="add(index, -1)">-</span></div>
-                                        <div><input type="text" class="input-num" value="1"
-                                                v-model="product.quantity" /></div>
-                                        <div><span class="num-jia" @click="add(index, 1)">+</span></div>
+                                        <button class="count_btn" @click="add(index, -1)">-</button>
+                                        <span>{{item.count}}</span>
+                                        <button class="count_btn" @click="add(index, 1)">+</button>
                                     </div>
+
+
                                     <div class="price">
-                                        {{product.price}}
+                                        {{item.price}}
                                     </div>
                                     <div class="operate">
                                         <a href="#" class="del" @click="del(index)">
                                             <i class="fas fa-trash-alt"></i>
-                                        </a>
-                                        <a href="#" class="heart">
-                                            <i class="far fa-heart"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -151,8 +150,9 @@
                         </ul>
                         <ul class="content payment_content bg-gray p-3">
                             <li>
-                                <input type="radio" id="pay">
-                                <label for="pay">線上信用卡付款 ( 支援以下信用卡 ) </label>
+                                <!-- <input type="radio" id="pay">
+                                <label for="pay">線上信用卡付款 ( 支援以下信用卡 ) </label> -->
+                                線上信用卡付款 ( 支援以下信用卡 )
                             </li>
                             <li>
                                 <img src="./img/cart/visa.png" alt="">

@@ -5,13 +5,13 @@
     main {
         padding-top: 0;
     }
-    @media (max-width:767.98px) {
-        main{
+    @media (max-width: 767.98px) {
+        main {
             max-width: 500px;
         }
     }
-    @media (max-width:575.98px) {
-        main{
+    @media (max-width: 575.98px) {
+        main {
             max-width: 350px;
         }
     }
@@ -104,25 +104,17 @@
             .count {
                 display: flex;
                 padding-bottom: 10px;
-                div {
-                    font-size: 20px;
-                    .num-jian,
-                    .input-num,
-                    .num-jia {
-                        text-align: center;
-                        display: inline-block;
+                .count_btn {
+                    background-color: #fff;
+                    border-radius: 1px;
+                    border: 1px solid #333;
+                    padding: 0 10px;
+                    &:first-child {
                         font-size: 20px;
-                        width: 30px;
-                        height: 30px;
-                        line-height: 30px;
-                        color: #999;
-                        cursor: pointer;
-                        border: 1px solid #e6e6e6;
                     }
-                    .input-num {
-                        width: 48px;
-                        height: 30px;
-                    }
+                }
+                span {
+                    margin: 0 10px;
                 }
             }
             .operate {
@@ -138,10 +130,10 @@
     .coupon_content {
         li {
             display: flex;
-            button{
+            button {
                 min-width: 80px;
             }
-            input{
+            input {
                 width: 80%;
             }
         }
@@ -168,13 +160,13 @@
     main {
         padding-top: 0;
     }
-    @media (max-width:767.98px) {
-        main{
+    @media (max-width: 767.98px) {
+        main {
             max-width: 500px;
         }
     }
-    @media (max-width:575.98px) {
-        main{
+    @media (max-width: 575.98px) {
+        main {
             max-width: 350px;
         }
     }
@@ -244,14 +236,14 @@
             &:nth-child(2n) {
                 padding-bottom: 20px;
             }
-            input{
+            input {
                 max-width: 250px;
             }
             textarea {
                 max-width: 250px;
                 resize: none;
             }
-            .credit-card-num{
+            .credit-card-num {
                 max-width: 60px;
                 margin-right: 10px;
             }
@@ -260,7 +252,7 @@
 
     // 付款方式內容
     .payment_content {
-        input{
+        input {
             margin-bottom: 20px;
         }
         li {
@@ -286,8 +278,8 @@
                 padding-bottom: 0;
             }
         }
-        .flex-verify{
-            p{
+        .flex-verify {
+            p {
                 margin-bottom: 0;
             }
         }
@@ -306,13 +298,13 @@
             width: auto;
         }
     }
-    @media (max-width:767.98px) {
-        main{
+    @media (max-width: 767.98px) {
+        main {
             max-width: 500px;
         }
     }
-    @media (max-width:575.98px) {
-        main{
+    @media (max-width: 575.98px) {
+        main {
             max-width: 350px;
         }
     }
