@@ -11,10 +11,10 @@ new Vue({
      // 執行add這個function, index->陣列裡的第幾個物件 n->加1減1的值
      add(index, n) {
       // 如果按下加減後等於0
-      if (this.products[index].quantity + n == 0) {
+      if (this.products[index].count + n == 0) {
        return; // 就結束顯示預設數字 1
       }
-      this.products[index].quantity += n; // 不然就可以做加減
+      this.products[index].count += n; // 不然就可以做加減
      },
      //點擊垃圾桶 刪除
      del(index) {
@@ -51,7 +51,7 @@ new Vue({
        name: "SEOTO-EX 機能椅",
        type: "白橡木",
        price: 300,
-       quantity: 1,
+       count: 1,
       },
     //   {
     //    id: 0002,
@@ -59,7 +59,7 @@ new Vue({
     //    name: "SEOTO-EX 機能桌",
     //    type: "白橡木",
     //    price: 4970,
-    //    quantity: 1,
+    //    count: 1,
     //   },
      ];
    
@@ -80,7 +80,7 @@ new Vue({
       this.products.forEach((el) => {
        //陣列裡的物件執行這個涵式
        // 總計 = 物件的價格 * 物件的數量
-       total += el.price * el.quantity;
+       total += el.price * el.count;
       });
       //把值傳回sumTotal這個變數
       return total;
@@ -88,7 +88,7 @@ new Vue({
      sumCount: function () {
       let count = 0;
       this.products.forEach((el) => {
-       count = count + el.quantity;
+       count = count + el.count;
       });
       return count;
      },

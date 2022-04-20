@@ -8,7 +8,7 @@ $(document).on("click", function (e) {
     }
 });
 
-
+// 購物車側邊欄
 let getproduct = new Vue({
     el: '#cart_side_list',
     data() {
@@ -26,8 +26,10 @@ let getproduct = new Vue({
                         id: '',
                         count: '',
                     }
+                    // 抓取session中 cart 的 id 和 count，並丟入goods
                     goods.id = cart[i].id;
                     goods.count = cart[i].count;
+                    // 從資料庫抓取 session中 cart 的 id的資料
                     $.ajax({
                         url: 'php/getproductInfo.php',
                         type: 'POST',
@@ -35,10 +37,12 @@ let getproduct = new Vue({
                             id: cart[i].id,
                         },
                         dataType: 'json',
+                        // 成功抓取的話將商品資訊都丟回到goods
                         success: function (res) {
                             goods.pic = res[0].pic
                             goods.price = res[0].price
                             goods.names = res[0].names
+                            // 將goods丟入新建的陣列[carts]
                             self.carts.push(goods)
                             // console.log(self.carts);
                         },
