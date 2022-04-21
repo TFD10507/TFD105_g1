@@ -210,7 +210,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- 假資料示意區 -->
+                                <!-- customization -->
                                 <tr v-for="(customization,o) in customizations">
                                     <td>{{customization.id}}</td>
                                     <td>{{customization.customizeOrderID}}</td>
@@ -524,10 +524,10 @@
                                 </li>
                                 <li>
                                     <label>訂單狀態</label>
-                                    <select name="" id="">
-                                        <option value="">未付款</option>
-                                        <option value="">付款完成</option>
-                                        <option value="">已出貨</option>
+                                    <select name="" id="order_status">
+                                        <option value="待確認">待確認</option>
+                                        <option value="已確認">已確認</option>
+                                        <option value="已出貨">已出貨</option>
                                     </select>
                                 </li>
                             </ul>
@@ -568,7 +568,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">更新</button>
+                            <button type="button" class="btn btn-primary" @click="UPorder">更新</button>
                         </div>
                     </form>
                 </div>
@@ -998,6 +998,7 @@
                             this.customization.detail = res[0]['detail']
                             this.customization.quantity = res[0]['quantity']
                             this.customization.id = res[0]['id']
+                            this.customization.status = res[0]['status']
                             this.customization.customizeOrderID = res[0]['customizeOrderID']
                             let status = this.customization.status
                             $("#customization_status").find('option').removeAttr("selected")
@@ -1036,7 +1037,7 @@
                 ADDcoupon() {   //新增折扣事件 開始
                     let coupon_price = this.coupon_price
                     let coupon_day = this.coupon_day
-                    // alert(coupon_day)
+                    // alert(this.coupon_price)
                     if (coupon_price == '') {
                         alert("價錢未填寫")
                         return
@@ -1066,7 +1067,7 @@
                     }
                 },
                 //點擊新增折扣事件結尾
-                ADDkind() {
+                ADDkind() {  // 新增種類 開始
                     let kind_name = this.kind_name
                     alert(kind_name)
                     if (this.kind_name != '') {
@@ -1091,6 +1092,7 @@
                         this.kind_name = ''
                     }
                 },
+                //  新增種類 結束
                 ADDcolor() {    //點擊新增顏色 開始
                     if (this.color_name == '') {
                         alert("不可以沒有顏色名稱")
@@ -1198,7 +1200,7 @@
                     location.reload()
                 },
                 // 更新折扣 結束
-                UPproduct() {  // 更新
+                UPproduct() {  // 更新商品 開始
                     let product_status = $('#product_status').val()
                     // alert(this.product.kind)
                     fetch('php/Update_product.php', {
@@ -1244,7 +1246,31 @@
                     })
                     alert('更新成功')
                     location.reload()
-                },  // 更新客製化訂單 結束
+                },  
+                // 更新客製化訂單 結束
+                UPorder(){  // 更新訂單 開始
+                    let status = $('#order_status').val()
+                    alert(this.order.id)
+                    fetch('php/Update_order.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        mode: "cors",
+                        body: JSON.stringify(
+                            {
+                                UPaddress: this.order.address,
+                                UPphone: this.order.phone,
+                                UPstatus: status,
+                                UPid:this.order.id
+                            }
+                        ),
+                    })
+                    alert('更新成功')
+                    location.reload()
+                },
+                // 更新訂單 結束
                 add_product_img(e) {   // 新增商品圖片預覽 開始
                     const file = e.target.files.item(0)
                     const reader = new FileReader()
