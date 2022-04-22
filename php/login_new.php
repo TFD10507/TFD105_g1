@@ -11,7 +11,7 @@ $sql = "SELECT * FROM G1.member where account= :account and password = :password
 
 
 
-$statement = $pdo->prepare($sql);
+$statement = $link->prepare($sql);
 
 $statement->bindValue(":account", $member["login_account"]);
 $statement->bindValue(":password", $member["login_password"]);

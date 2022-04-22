@@ -4,7 +4,7 @@ include("connection.php");
 $id = $_POST["id"];
 
 $sql = "select * from product where id='$id'";
-$product = $pdo->prepare($sql);
+$product = $link->prepare($sql);
 
 $product->execute();
 $productRow = $product->fetchAll();
