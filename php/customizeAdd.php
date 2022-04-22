@@ -13,11 +13,12 @@ $cusID = date('YmdHis').rand(100,999);
 // echo $cusID;
 
 //建立SQL
-$sql = "insert into customization ( member_id, color,  detail, date, quantity, customizeOrderID, kind, status )
+$sql = "insert into G1. customization ( member_id, color,  detail, date, quantity, customizeOrderID, kind, status )
       values (1, :color, :detail, NOW(), :quantity, $cusID, :kind, '待處理');";
 
 //包裝起來才可以使PHP 用bindValue
-$statement = $link->prepare($sql);
+// $statement = $link->prepare($sql);
+$statement = $pdo->prepare($sql);
 
 //下列都是自定義PHP變數  , 不然看面資料庫看不懂 
 $statement->bindValue(":kind", $customize->kind);
@@ -30,3 +31,5 @@ $statement->execute();
 
 //  echo json_encode(['status'=> 'SUCCESS']);
 //  echo "新增成功!";
+
+?>
