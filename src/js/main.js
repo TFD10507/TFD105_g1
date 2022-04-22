@@ -82,6 +82,7 @@ $(function () {
         } else {
             let result = sessionStorage.getItem('status');
             // console.log(result);
+            
             if (result == "true") {
                 location.href = "./member.html";
 
