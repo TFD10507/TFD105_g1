@@ -35,7 +35,7 @@
                             <img id="mainImg" class="mainImg product" :src="pro[0].pic">
                         </li>
                         <li class="content">
-                            <h3 data-prd_id="001">{{pro[0].names}}</h3>
+                            <h3 data-prd_id="001">{{pro[0].name}}</h3>
                             <img class="favorite" src="./img/product/favorite.svg" alt="" srcset=""
                                 @click.stop.prevent="add_cart()">
                             <img class="favorite" src="./img/product/favorite_touch.svg" alt="" srcset=""
@@ -45,9 +45,7 @@
                             <p class="content">{{pro[0].detail}}</p>
                             <p>※可選擇等級的產品價格因等級而異。</p>
                             <p>尺寸/規格：</p>
-                            <!-- 到時候加一欄尺寸 -->
-                            <!-- <p>{{pro[0].size}}</p> -->
-                            <p>W159 x D45 x H83</p>
+                            <p>{{pro[0].size}}</p>
 
                             <div class="count">
                                 <button class="count_btn" @click="sub_btn">-</button>
