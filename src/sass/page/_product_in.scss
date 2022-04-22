@@ -3,6 +3,7 @@
 //     margin-top: 200px;
 // }
 body.product_in {
+    
     section.cart {
         ul.cart {
             max-width: 1200px;
@@ -101,6 +102,7 @@ body.product_in {
             top: 10px;
             right: 10px;
         }
+       
 
         main section.main>ul.cart>li>img:hover {
             /* outline: solid 0.5px gray; */
@@ -173,7 +175,6 @@ body.product_in {
             img {
                 cursor: pointer;
             }
-
             img:nth-child(2n+1) {
                 display: none;
             }
@@ -265,8 +266,6 @@ body.product_in {
             width: 100%;
         }
 
-
-
         @media screen and (max-width:575.98px) {
             ul.showbar li {
                 width: 20%;
@@ -285,9 +284,6 @@ body.product_in {
             section.main>ul.cart {
                 width: 100%;
             }
-
-
-
         }
     }
 }
