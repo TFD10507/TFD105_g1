@@ -501,18 +501,22 @@
                                     <input type="text" disabled v-model="order.member_id">
                                 </li>
                                 <li>
-                                    <label>下單時間</label>
-                                    <input type="text" disabled v-model="order.date">
-                                </li>
-                                <li>
-                                    <label>訂單金額</label>
-                                    <input type="text" disabled v-model="order.total_price">
+                                    <label>訂單內容</label>
+                                    <textarea name="" id="" cols=" 35" rows="6" v-model="order.other"></textarea>
                                 </li>
                             </ul>
                             <ul class="half">
                                 <li>
                                     <label>訂單編號</label>
                                     <input type="text" disabled v-model="order.ID_order">
+                                </li>
+                                <li>
+                                    <label>下單時間</label>
+                                    <input type="text" disabled v-model="order.date">
+                                </li>
+                                <li>
+                                    <label>訂單金額</label>
+                                    <input type="text" disabled v-model="order.total_price">
                                 </li>
                                 <li>
                                     <label>連絡電話</label>
@@ -538,30 +542,17 @@
                                         <tr>
                                             <th>商品編號</th>
                                             <th>商品名稱</th>
-                                            <th>商品種類</th>
-                                            <th>材質顏色</th>
                                             <th>商品數量</th>
                                             <th>商品金額</th>
                                             <th>小計</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <td>TB-001</td>
-                                        <td>雅典原木桌</td>
-                                        <td>桌子</td>
-                                        <td>松柏褐</td>
-                                        <td>4</td>
-                                        <td>1000</td>
-                                        <td>4000</td>
-                                    </tbody>
-                                    <tbody>
-                                        <td>TB-002</td>
-                                        <td>流行原木桌</td>
-                                        <td>桌子</td>
-                                        <td>原木灰</td>
-                                        <td>2</td>
-                                        <td>1000</td>
-                                        <td>2000</td>
+                                    <tbody v-for="(order_detail,index) in order_details">
+                                        <td>{{order_detail.id}}</td>
+                                        <td>{{order_detail.name}}</td>
+                                        <td>{{order_detail.quantity}}</td>
+                                        <td>{{order_detail.price}}</td>
+                                        <td>{{order_detail.total_price}}</td>
                                     </tbody>
                                 </table>
                             </div>
@@ -825,12 +816,12 @@
                     id: '',
                     member_id: '',
                     date: '',
-                    price: '',
                     ID_order: '',
                     phone: '',
                     address: '',
                     status: '',
                     total_price:'',
+                    other:'',
                 },
                 customizations: [],
                 customization: {
@@ -854,6 +845,7 @@
                 kinds: [],
                 kind: '',
                 img: '',
+                order_details:[]
             },
             mounted() {  //當網頁開啟時馬上執行以下內容
 
@@ -974,6 +966,20 @@
                             this.order.total_price = res[0]['total_price']
                             this.order.date = res[0]['date']
                             this.order.member_id = res[0]['member_id']
+                            this.order.other = res[0]['other']
+                        }),
+                    fetch('php/Select_order_detail.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        mode: "cors",
+                        body: JSON.stringify({ detail_id: id })
+                    })
+                        .then(res => res.json())
+                        .then(res => {
+                            this.order_details = res
                         })
                 },
                 // 撈單筆訂單資料 結束
