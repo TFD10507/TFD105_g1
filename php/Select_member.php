@@ -13,7 +13,7 @@
               $statement->execute();
        }else{  //沒有傳值,就改成搜索全部會員資料
               //建立SQL語法   *改成那張表的搜尋全部資料
-              $sql = "SELECT * FROM G1.member Order by id";
+              $sql = "SELECT * FROM member Order by id";
               //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
               $statement = $link->query($sql);
        }
