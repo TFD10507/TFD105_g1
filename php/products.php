@@ -4,7 +4,7 @@
     // 把所有在資料庫的商品都選擇出來
     $sql = "SELECT * FROM product";
     
-    $statement = $pdo->query($sql);
+    $statement = $link->query($sql);
     $data = $statement->fetchAll();
     if(count($data) > 0) {
         echo json_encode($data);
