@@ -27,7 +27,6 @@ $statement->bindValue(":status", $Umember->UPstatus);
 $statement->bindValue(":id", $Umember->UPid);
 
 // 執行
-// $statement->rowCount();
 $statement->execute();
 
 ?>
