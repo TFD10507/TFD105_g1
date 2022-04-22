@@ -246,7 +246,8 @@
                             <!-- 表單顯示區塊起始 -->
                             <thead>
                                 <tr>
-                                    <th>折扣碼編號</th>
+                                    <th>折扣流水號</th>
+                                    <th>折扣碼序號</th>
                                     <th>折扣金額</th>
                                     <th>創建日期</th>
                                     <th>使用期限</th>
@@ -257,6 +258,7 @@
                                 <!-- coupon -->
                                 <tr v-for="(coupon,c) in coupons">
                                     <td>{{coupon.id}}</td>
+                                    <td>{{coupon.code}}</td>
                                     <td>{{coupon.price}}</td>
                                     <td>{{coupon.date}}</td>
                                     <td>{{coupon.period}}天</td>
@@ -680,8 +682,12 @@
                         <div class="modal-body">
                             <ul class="half">
                                 <li>
-                                    <label for="">折扣碼編號</label>
+                                    <label for="">折扣流水號</label>
                                     <input type="text" disabled v-model="coupon.id">
+                                </li>
+                                <li>
+                                    <label for="">折扣碼序號</label>
+                                    <input type="text" disabled v-model="coupon.code">
                                 </li>
                                 <li>
                                     <label for="">折扣金額</label>
@@ -793,6 +799,7 @@
                     id: '',
                     price: '',
                     period: '',
+                    code:'',
                 },
                 product: {
                     id: '',
@@ -911,6 +918,7 @@
                             this.coupon.id = res[0]['id']
                             this.coupon.price = res[0]['price']
                             this.coupon.period = res[0]['period']
+                            this.coupon.code = res[0]['code']
                         })
                 },
                 // 撈單筆會員資料 結束
