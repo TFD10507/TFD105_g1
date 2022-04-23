@@ -79,6 +79,7 @@ $(function () {
         if (sessionStorage.getItem('status') == null) {
             // console.log(sessionStorage.getItem('status'));
             location.href = "./login.html";
+            $(icon).css("color", "#76706A");
         } else {
             let result = sessionStorage.getItem('status');
             // console.log(result);
@@ -89,6 +90,8 @@ $(function () {
                 $(icon).css("color", "#A0643E");
             } else {
                 location.href = "./login.html";
+                $(icon).css("color", "#76706A");
+
                 // console.log(2);
             }
 
@@ -96,7 +99,6 @@ $(function () {
     });
     
     if (result != null) {
-        
         $(icon).css("color", "#A0643E");
         $('#wheel-login').removeClass('-disable');
     }else{
