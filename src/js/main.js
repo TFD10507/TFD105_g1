@@ -82,11 +82,11 @@ $(function () {
         } else {
             let result = sessionStorage.getItem('status');
             // console.log(result);
+            
             if (result == "true") {
-                location.href = "./member.html";
-
-                $(icon).css("color", "#A0643E");
                 // console.log(1);
+                location.href = "./member.html";
+                $(icon).css("color", "#A0643E");
             } else {
                 location.href = "./login.html";
                 // console.log(2);
