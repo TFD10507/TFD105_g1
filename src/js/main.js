@@ -83,7 +83,7 @@ $(function () {
             let result = sessionStorage.getItem('status');
             // console.log(result);
             
-            if (result == "true") {
+            if (result != null) {
                 // console.log(1);
                 location.href = "./member.html";
                 $(icon).css("color", "#A0643E");
@@ -95,7 +95,7 @@ $(function () {
         }
     });
     
-    if (result == "true") {
+    if (result != null) {
         
         $(icon).css("color", "#A0643E");
         $('#wheel-login').removeClass('-disable');
