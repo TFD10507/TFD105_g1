@@ -139,7 +139,7 @@
 
                             <li>手機：</li>
                             <li>
-                                <input type="phone" v-model="userInfo.phone">
+                                <input type="phone" v-model="userInfo.phone" maxlength="10">
                                 <span>{{phoneErrMsg}}</span>
                             </li>
 
@@ -263,13 +263,13 @@
                         </ul>
                         <ul class="content bg-gray p-3">
                             <li class="detail">
-                                <div class="img">
-                                    <!-- <img src="./img/product/chair_001.jpg" alt=""> -->
-                                </div>
+                                <!-- <div class="img">
+                                    <img :src="order.img">
+                                </div> -->
                                 <div class="info ps-5">
-                                    <div class="orderid">00000000</div>
-                                    <div class="orderdate">2022/3/10</div>
-                                    <div class="orderprice">1000</div>
+                                    <div class="orderid">{{order.id}}</div>
+                                    <div class="orderdate">{{order.date}}</div>
+                                    <div class="orderprice">{{order.total}}</div>
                                 </div>
                             </li>
                             <li>
