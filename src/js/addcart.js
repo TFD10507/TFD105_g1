@@ -1,3 +1,24 @@
+function loginMember(msg, icon, html) {
+
+    Swal.fire({
+        title: msg,
+        icon: icon,
+        html: html,
+        
+        showConfirmButton: false, // 確認按鈕（預設會顯示不用設定）
+        confirmButtonText: '參加活動', //　按鈕顯示文字
+        confirmButtonAriaLabel: '參加活動', // 網頁無障礙用
+        confirmButtonColor: '#75706b', // 修改按鈕色碼
+
+        // 使用同確認按鈕
+        // showDenyButton: true, // 否定按鈕
+        showCancelButton: false, // 取消按鈕
+
+        buttonsStyling: false, // 是否使用sweetalert按鈕樣式（預設為true）
+    })
+}
+
+
 new Vue({
     el: '#productInfo',
     data() {
@@ -15,7 +36,7 @@ new Vue({
     methods: {
         //加入購物車-存入sessionStorage
         addcart() {
-            alert("已加入購物車");
+            loginMember("<strong>已加入購物車</strong>", 'success');
             let goods = {
                 id: this.id,
                 count: this.count,
@@ -61,6 +82,9 @@ new Vue({
     // 得到商品內頁的商品資訊
     mounted() {
         let that = this;
+
+        
+
         $.ajax({
             url: 'php/getproductInfo.php',
             type: "POST",

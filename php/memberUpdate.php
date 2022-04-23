@@ -19,6 +19,7 @@ $sql = "UPDATE member
 //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
 // $statement = $link->query($sql);
 $statement = $link->prepare($sql);
+// $statement = $pdo->prepare($sql);
 
 // // $statement->bindValue(":account", $member->account);
 $statement->bindValue(":user", $member->user);
@@ -41,3 +42,5 @@ $mem["message"] = $result_count != 0 ? "更新成功" : "更新錯誤，請聯�
 // echo ($mem["message"]);
 
 echo json_encode($mem["message"]);
+
+?>

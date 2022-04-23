@@ -79,24 +79,26 @@ $(function () {
         if (sessionStorage.getItem('status') == null) {
             // console.log(sessionStorage.getItem('status'));
             location.href = "./login.html";
+            $(icon).css("color", "#76706A");
         } else {
             let result = sessionStorage.getItem('status');
             // console.log(result);
             
-            if (result == "true") {
+            if (result != null) {
                 // console.log(1);
                 location.href = "./member.html";
                 $(icon).css("color", "#A0643E");
             } else {
                 location.href = "./login.html";
+                $(icon).css("color", "#76706A");
+
                 // console.log(2);
             }
 
         }
     });
     
-    if (result == "true") {
-        
+    if (result != null) {
         $(icon).css("color", "#A0643E");
         $('#wheel-login').removeClass('-disable');
     }else{
