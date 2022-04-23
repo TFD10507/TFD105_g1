@@ -209,10 +209,9 @@ new Vue({
     },
     // 提交訂單
     sendOrder() {
-      let user = sessionStorage.getItem("account");
-      // let user = sessionStorage.getItem("status");
+      let status = JSON.parse(sessionStorage.getItem("status"));
+      // console.log(status.id);
 
-      let statusId = sessionStorage.getItem("status");
       // 0.檢查收款人資訊是否填寫完整
       // 如果格子都有填寫，要檢查是否完整
       if (
@@ -245,51 +244,50 @@ new Vue({
         } else { //如果有填寫，也驗證完成，可以送出訂單！
           // 1.傳送訂單詳細資訊給後台
           fetch('php/send_order.php', {
-            method: 'POST',
-            headers: { // 告訴後端說TYPE是JSON
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              // 訂單詳細資訊
-              // account: user.id,
-              account: user,
-              name: this.userInfo.name,
-              phone: this.userInfo.phone,
-              address: this.userInfo.address,
-              other: this.userInfo.other,
-              products: this.products,
+              method: 'POST',
+              headers: { // 告訴後端說TYPE是JSON
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                // 訂單詳細資訊
+                id: status.id,
+                name: this.userInfo.name,
+                phone: this.userInfo.phone,
+                address: this.userInfo.address,
+                other: this.userInfo.other,
+                products: this.products,
+              })
             })
-          })
+            .then(res => res.json())
+            .then(data => {  //收到回應後做的事
+              // 跳轉到完成訂單畫面
+              this.step = 'C';
 
-          // 2. 後台判斷結果
-          // - 交易是否成功結果
-          // - 訂單編號
+              //將訂單內容丟回去前端的vue
+              let self = this;
+              
+              $.ajax({
+                url: 'php/get_order.php',
+                type: 'POST',
+                async: false,
+                data: {
+                  memberId: status.id,
+                  orderId: data,
+                },
+                // 成功抓取的話將訂單資訊都丟回到order
+                success: function (res) {
+                  res = JSON.parse(res)
+                  self.order.id = res[0].ID_order
+                  self.order.date = res[0].orderDate
+                  self.order.total = res[0].total
 
+                  loginMember('<strong>提交訂單成功</strong>', 'success');
 
-          // 3. 交易成功後將sessionstroage(購物車)清空
-          sessionStorage.removeItem('cart');
-
-          // 跳轉到完成訂單畫面
-          this.step = 'C';
-          
-          //將訂單內容丟回去前端 
-          let self = this;
-          $.ajax({
-            url: 'php/get_order.php',
-            type: 'POST',
-            data: {
-              memberId: statusId,
-            },
-            // 成功抓取的話將訂單資訊都丟回到order
-            success: function (res) {
-              res = JSON.parse(res)
-              self.order.id = res[0].ID_order
-              self.order.date = res[0].orderDate
-              self.order.total = res[0].total
-            },
-          })
-
-          loginMember('<strong>提交訂單成功</strong>', 'success');
+                  // 3. 交易成功後將sessionstroage(購物車)清空
+                  sessionStorage.removeItem('cart');
+                },
+              })
+            })
         }
       } else { //如果格子都沒填寫，提示訊息
         loginMember(`<strong>未填寫資料</strong>`, 'error');
@@ -298,8 +296,7 @@ new Vue({
 
     },
     goStepB() {
-      let user = sessionStorage.getItem("account");
-      // let user = sessionStorage.getItem("status");
+      let user = sessionStorage.getItem("status");
       if (this.products.length > 0) {
         // 判斷是否登入
         if (user) {
@@ -365,12 +362,6 @@ new Vue({
   },
   // 進入頁面就要有初始值就要用created
   created() {
-    // 到時候要刪掉！！！
-    sessionStorage.setItem("account", "ydolemlinn@gmail.com");
-    sessionStorage.setItem("status", "59");
-    // 到時候要刪掉！！！
-
-
     const self = this;
     let cart = JSON.parse(sessionStorage.getItem("cart"));
     if (cart) {
