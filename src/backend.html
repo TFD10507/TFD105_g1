@@ -27,7 +27,7 @@
 
     <header class="header">
         <img src="./img/backend/backend_logo.svg" alt="">
-        <a href="">
+        <a href="./backendLogin.html" @click="logout">
             <h5 class="h5">帳號登出</h5>
             <i class="bi bi-box-arrow-right"></i>
         </a>
@@ -210,7 +210,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- 假資料示意區 -->
+                                <!-- customization -->
                                 <tr v-for="(customization,o) in customizations">
                                     <td>{{customization.id}}</td>
                                     <td>{{customization.customizeOrderID}}</td>
@@ -246,7 +246,8 @@
                             <!-- 表單顯示區塊起始 -->
                             <thead>
                                 <tr>
-                                    <th>折扣碼編號</th>
+                                    <th>折扣流水號</th>
+                                    <th>折扣碼序號</th>
                                     <th>折扣金額</th>
                                     <th>創建日期</th>
                                     <th>使用期限</th>
@@ -257,6 +258,7 @@
                                 <!-- coupon -->
                                 <tr v-for="(coupon,c) in coupons">
                                     <td>{{coupon.id}}</td>
+                                    <td>{{coupon.code}}</td>
                                     <td>{{coupon.price}}</td>
                                     <td>{{coupon.date}}</td>
                                     <td>{{coupon.period}}天</td>
@@ -306,7 +308,7 @@
                                     <input type="text" v-model="member.phone">
                                 </li>
                                 <li>
-                                    <label>收貨地址</label>
+                                    <label>聯絡地址</label>
                                     <input type="text" v-model="member.address">
                                 </li>
                             </ul>
@@ -440,7 +442,7 @@
                                 </li>
                                 <li>
                                     <label>商品內容</label>
-                                    <textarea name="" id="" cols=" 35" rows="6">{{product.detail}}</textarea>
+                                    <textarea name="" id="" cols=" 35" rows="6" v-model="product.detail"></textarea>
                                 </li>
                             </ul>
                             <ul class="half">
@@ -494,40 +496,48 @@
                             <ul class="half">
                                 <li>
                                     <label>訂單流水</label>
-                                    <input type="text" disabled>
+                                    <input type="text" disabled v-model="order.id">
                                 </li>
                                 <li>
                                     <label>會員編號</label>
-                                    <input type="text" disabled>
+                                    <input type="text" disabled v-model="order.member_id">
                                 </li>
                                 <li>
-                                    <label>下單時間</label>
-                                    <input type="text" disabled>
+                                    <label>訂購人名</label>
+                                    <input type="text"  v-model="order.name">
                                 </li>
                                 <li>
-                                    <label>訂單金額</label>
-                                    <input type="text" disabled>
+                                    <label>訂單內容</label>
+                                    <textarea name="" id="" cols=" 35" rows="6" v-model="order.other"></textarea>
                                 </li>
                             </ul>
                             <ul class="half">
                                 <li>
                                     <label>訂單編號</label>
-                                    <input type="text" disabled>
+                                    <input type="text" disabled v-model="order.ID_order">
+                                </li>
+                                <li>
+                                    <label>下單時間</label>
+                                    <input type="text" disabled v-model="order.date">
+                                </li>
+                                <li>
+                                    <label>訂單金額</label>
+                                    <input type="text" disabled v-model="order.total_price">
                                 </li>
                                 <li>
                                     <label>連絡電話</label>
-                                    <input type="text">
+                                    <input type="text" v-model="order.phone">
                                 </li>
                                 <li>
-                                    <label>收貨地址</label>
-                                    <input type="text">
+                                    <label>聯絡地址</label>
+                                    <input type="text" v-model="order.address">
                                 </li>
                                 <li>
                                     <label>訂單狀態</label>
-                                    <select name="" id="">
-                                        <option value="">未付款</option>
-                                        <option value="">付款完成</option>
-                                        <option value="">已出貨</option>
+                                    <select name="" id="order_status">
+                                        <option value="待確認">待確認</option>
+                                        <option value="已確認">已確認</option>
+                                        <option value="已出貨">已出貨</option>
                                     </select>
                                 </li>
                             </ul>
@@ -538,37 +548,24 @@
                                         <tr>
                                             <th>商品編號</th>
                                             <th>商品名稱</th>
-                                            <th>商品種類</th>
-                                            <th>材質顏色</th>
                                             <th>商品數量</th>
                                             <th>商品金額</th>
                                             <th>小計</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <td>TB-001</td>
-                                        <td>雅典原木桌</td>
-                                        <td>桌子</td>
-                                        <td>松柏褐</td>
-                                        <td>4</td>
-                                        <td>1000</td>
-                                        <td>4000</td>
-                                    </tbody>
-                                    <tbody>
-                                        <td>TB-002</td>
-                                        <td>流行原木桌</td>
-                                        <td>桌子</td>
-                                        <td>原木灰</td>
-                                        <td>2</td>
-                                        <td>1000</td>
-                                        <td>2000</td>
+                                    <tbody v-for="(order_detail,index) in order_details">
+                                        <td>{{order_detail.id}}</td>
+                                        <td>{{order_detail.name}}</td>
+                                        <td>{{order_detail.quantity}}</td>
+                                        <td>{{order_detail.price}}</td>
+                                        <td>{{order_detail.total_price}}</td>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">更新</button>
+                            <button type="button" class="btn btn-primary" @click="UPorder">更新</button>
                         </div>
                     </form>
                 </div>
@@ -592,7 +589,7 @@
                             <ul class="half">
                                 <li>
                                     <label>訂單編號</label>
-                                    <input type="text" disabled v-model="customization.id">
+                                    <input type="text" disabled v-model="customization.customizeOrderID">
                                 </li>
                                 <li>
                                     <label>會員編號</label>
@@ -608,9 +605,9 @@
                                 </li>
                                 <li>
                                     <label>訂單狀態</label>
-                                    <select name="" id="">
+                                    <select name="" id="customization_status">
                                         <option value="待確認">待確認</option>
-                                        <option value="處理中">處理中</option>
+                                        <option value="已確認">已確認</option>
                                         <option value="已出貨">已出貨</option>
                                     </select>
                                 </li>
@@ -626,13 +623,13 @@
                                 </li>
                                 <li>
                                     <label>商品內容</label>
-                                    <textarea name="" id="" cols="35" rows="6">{{customization.detail}}</textarea >
+                                    <textarea name="" id="" cols="35" rows="6" disabled v-model="customization.detail"></textarea >
                                 </li>
                             </ul>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">更新</button>
+                            <button type="button" class="btn btn-primary" @click="UPcustomization">更新</button>
                         </div>
                     </form>
                 </div>
@@ -689,8 +686,12 @@
                         <div class="modal-body">
                             <ul class="half">
                                 <li>
-                                    <label for="">折扣碼編號</label>
+                                    <label for="">折扣流水號</label>
                                     <input type="text" disabled v-model="coupon.id">
+                                </li>
+                                <li>
+                                    <label for="">折扣碼序號</label>
+                                    <input type="text" disabled v-model="coupon.code">
                                 </li>
                                 <li>
                                     <label for="">折扣金額</label>
@@ -802,6 +803,7 @@
                     id: '',
                     price: '',
                     period: '',
+                    code:'',
                 },
                 product: {
                     id: '',
@@ -825,11 +827,13 @@
                     id: '',
                     member_id: '',
                     date: '',
-                    price: '',
                     ID_order: '',
                     phone: '',
                     address: '',
                     status: '',
+                    total_price:'',
+                    other:'',
+                    name:'',
                 },
                 customizations: [],
                 customization: {
@@ -853,8 +857,13 @@
                 kinds: [],
                 kind: '',
                 img: '',
+                order_details:[]
             },
             mounted() {  //當網頁開啟時馬上執行以下內容
+                // 判斷有無登入
+                // fetch('php/Select_member.php')
+                //     .then(res => res.json())
+                //     
 
                 //撈出會員資料
                 fetch('php/Select_member.php')
@@ -918,6 +927,7 @@
                             this.coupon.id = res[0]['id']
                             this.coupon.price = res[0]['price']
                             this.coupon.period = res[0]['period']
+                            this.coupon.code = res[0]['code']
                         })
                 },
                 // 撈單筆會員資料 結束
@@ -964,9 +974,33 @@
                     })
                         .then(res => res.json())
                         .then(res => {
+                            // console.log(res)
                             this.order.id = res[0]['id']
-                            this.order.price = res[0]['price']
-                            this.order.period = res[0]['period']
+                            this.order.ID_order = res[0]['ID_order']
+                            this.order.address = res[0]['address']
+                            this.order.phone = res[0]['phone']
+                            this.order.status = res[0]['status']
+                            this.order.total_price = res[0]['total_price']
+                            this.order.date = res[0]['date']
+                            this.order.member_id = res[0]['member_id']
+                            this.order.other = res[0]['other']
+                            this.order.name = res[0]['name']
+                            let status = this.order.status
+                            $("#order_status").find('option').removeAttr("selected")
+                            $(`#order_status option[ value = ${status}]`).attr("selected", true)
+                        })
+                    fetch('php/Select_order_detail.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        mode: "cors",
+                        body: JSON.stringify({ detail_id: id })
+                    })
+                        .then(res => res.json())
+                        .then(res => {
+                            this.order_details = res
                         })
                 },
                 // 撈單筆訂單資料 結束
@@ -991,6 +1025,11 @@
                             this.customization.detail = res[0]['detail']
                             this.customization.quantity = res[0]['quantity']
                             this.customization.id = res[0]['id']
+                            this.customization.status = res[0]['status']
+                            this.customization.customizeOrderID = res[0]['customizeOrderID']
+                            let status = this.customization.status
+                            $("#customization_status").find('option').removeAttr("selected")
+                            $(`#customization_status option[ value = ${status}]`).attr("selected", true)
                         })
                 },
                 // 撈單筆客製化訂單資料 結束
@@ -1025,7 +1064,7 @@
                 ADDcoupon() {   //新增折扣事件 開始
                     let coupon_price = this.coupon_price
                     let coupon_day = this.coupon_day
-                    // alert(coupon_day)
+                    // alert(this.coupon_price)
                     if (coupon_price == '') {
                         alert("價錢未填寫")
                         return
@@ -1055,7 +1094,7 @@
                     }
                 },
                 //點擊新增折扣事件結尾
-                ADDkind() {
+                ADDkind() {  // 新增種類 開始
                     let kind_name = this.kind_name
                     alert(kind_name)
                     if (this.kind_name != '') {
@@ -1077,9 +1116,11 @@
                         })
                             .then(res => res.json())
                         alert('新增成功')
-                        this.kind_name = ''
+                        // this.kind_name = ''
+                        location.reload()
                     }
                 },
+                //  新增種類 結束
                 ADDcolor() {    //點擊新增顏色 開始
                     if (this.color_name == '') {
                         alert("不可以沒有顏色名稱")
@@ -1187,7 +1228,7 @@
                     location.reload()
                 },
                 // 更新折扣 結束
-                UPproduct() {  // 更新
+                UPproduct() {  // 更新商品 開始
                     let product_status = $('#product_status').val()
                     // alert(this.product.kind)
                     fetch('php/Update_product.php', {
@@ -1214,6 +1255,50 @@
                     location.reload()
                 },
                 // 更新商品 結束
+                UPcustomization(){  // 更新客製化訂單 開始
+                    let status = $('#customization_status').val()
+                    // alert(status)
+                    fetch('php/Update_customization.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        mode: "cors",
+                        body: JSON.stringify(
+                            {
+                                UPid: this.customization.id,
+                                UPstatus: status,
+                            }
+                        ),
+                    })
+                    alert('更新成功')
+                    location.reload()
+                },  
+                // 更新客製化訂單 結束
+                UPorder(){  // 更新訂單 開始
+                    let status = $('#order_status').val()
+                    alert(this.order.id)
+                    fetch('php/Update_order.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        mode: "cors",
+                        body: JSON.stringify(
+                            {
+                                UPaddress: this.order.address,
+                                UPphone: this.order.phone,
+                                UPstatus: status,
+                                UPid:this.order.id
+                            }
+                        ),
+                    })
+                    alert('更新成功')
+                    location.reload()
+                },
+                // 更新訂單 結束
                 add_product_img(e) {   // 新增商品圖片預覽 開始
                     const file = e.target.files.item(0)
                     const reader = new FileReader()
@@ -1225,6 +1310,10 @@
                     this.img = e.target.result
                 },
                 // 新增商品圖片預覽 結束
+                logout(){
+                    fetch('php/backend_logout.php')
+                        .then(res => res.json())
+                },
             },
         })
     </script>

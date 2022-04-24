@@ -26,7 +26,7 @@
             <h3>資料變更</h3>
             <div id="container">
 
-              <div action="../memberUpdate.php" method="POST">
+              <div action="php/memberUpdate.php" method="POST">
                 <fieldset disabled>
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
@@ -65,7 +65,7 @@
                 </fieldset> -->
 
                 <div class="form-group margin_top_30 member-btn">
-                  <input type="submit" class="btn_style">
+                  <input id="memberSubmit" type="submit" class="btn_style">
                 </div>
               </div>
 
@@ -76,7 +76,7 @@
         <div id="pwd" data-tab-content>
             <h3>密碼變更</h3>
             <div id="container">
-              <!-- <form action="../passwordUpdate.php" method="post"> -->
+              <!-- <form action="php/passwordUpdate.php" method="post"> -->
               <form action="" method="">
                 <div class="row justify-content-center">
                   <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
@@ -97,7 +97,7 @@
                   </div>
                 </div>
                 <div class="form-group margin_top_30 password-btn">
-                  <input type="submit" class="btn_style" value="修改密碼">
+                  <input id="pswUpdate" type="submit" class="btn_style" value="修改密碼">
                 </div>
               </form>
 
@@ -121,70 +121,71 @@
               <tr class="list-title padding_10" v-for="(list,index) in lists">
                 <!-- 訂單編號	購買日期	訂單總額	訂單狀態 -->
                 <td>{{list.id}}</td> 
-                <td>{{list.ID_order}}</td>
-                <td>{{list.total}}</td>
+                <td>{{list.date}}</td>
+                <td>NT${{list.total_price}}</td>
                 <td>{{list.status}}</td>
-                <td class="detailPO unclick" data-type = "1">
-                  <!-- Button trigger -->
-                  <button type="button" class="btn btn-primary" @click="action(list.id)">
-                  點擊查看詳細
+                <td>
+                <!-- <td class="detailPO unclick" data-type = "1"> -->
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" @click="action(list.id)"
+                  data-toggle="modal" data-target="#poDetail">
+                  點擊查看詳情
                   </button>
                 </td>
               </tr>
             </tbody>
-            <!-- 訂單詳情內容 -->
-            <!-- <table id="poDetail" class="block" > -->
-              <thead id="orderDetail_id" class="order-title padding_10 poDetail" >
-                <tr class="detail1 hide .order-content" >
-                  <th style="text-align: center;">商品名稱</th>
-                  <th style="text-align: center;">數量</th>
-                  <th style="text-align: center;">單價</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="detail1 hide .order-content poDetail" v-for="(detail,index) in details" >
-                  <td style="text-align: center;">{{detail.product_id}}</td>
-                  <td style="text-align: center;">{{detail.quantity}}</td>
-                  <td style="text-align: center;">{{detail.price}}</td>
-                </tr>
-              </tbody>
-            <!-- </table> -->
           </table> 
         </div>
 
+        <!-- 訂單詳情內容 --> <!-- Modal -->
+          <div class="modal fade" id="poDetail" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">訂單詳情</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="border:none; text-decoration: none; background-color:transparent;">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <table class="table table-striped">
+                    <thead id="orderDetail_id" class="order-title padding_10 poDetail" >
+                      <tr class="detail1 hide .order-content" >
+                        <th style="text-align: center;">商品編號</th>
+                        <th style="text-align: center;">商品名稱</th>
+                        <th style="text-align: center;">數量</th>
+                        <th style="text-align: center;">單價</th>
+                        <th style="text-align: center;">小計</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="detail1 hide .order-content poDetail" v-for="(detail,index) in details" >
+                        <td style="text-align: center;">{{detail.id}}</td>
+                        <td style="text-align: center;">{{detail.name}}</td>
+                        <td style="text-align: center;">{{detail.quantity}}</td>
+                        <td style="text-align: center;">{{detail.price}}</td>
+                        <td style="text-align: center;">{{detail.sub_price}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" style="border-radius: 2px;">關閉</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <!-- 收藏清單內容 -->
         <div id="favor" data-tab-content class="container">
-          <div class="row">
-
-            <div class="liked_product col-12 col-lg-3 col-md-6">
+          <div id="favorRow" class="row">
+            
+            <!-- <div class="liked_product col-12 col-lg-3 col-md-6">
               <i class="heart-like-button fas fa-heart"></i>
               <img class="liked_img" src="./img/member/favor/chair_001.jpg">
               <span> 羅丹辦公椅</span>
-            </div>
+            </div> -->
 
-            <div class="liked_product col-12 col-lg-3 col-md-6">
-              <i class="heart-like-button fas fa-heart"></i>
-              <img class="liked_img" src="./img/member/favor/chair_002.jpg">
-              <span> 羅丹辦公椅</span>
-            </div>
-
-            <div class="liked_product col-12 col-lg-3 col-md-6">
-              <i class="heart-like-button fas fa-heart"></i>
-              <img class="liked_img" src="./img/member/favor/chair_003.jpg">
-              <span> 羅丹辦公椅</span>
-            </div>
-
-            <div class="liked_product col-12 col-lg-3 col-md-6">
-              <i class="heart-like-button fas fa-heart"></i>
-              <img class="liked_img" src="./img/member/favor/chair_001.jpg">
-              <span> 羅丹辦公椅</span>
-            </div>
-
-            <div class="liked_product col-12 col-lg-3 col-md-6">
-              <i class="heart-like-button fas fa-heart"></i>
-              <img class="liked_img" src="./img/member/favor/chair_001.jpg">
-              <span> 羅丹辦公椅</span>
-            </div>
           </div>
         </div>
       </div>
@@ -212,6 +213,10 @@
         });
       });
 
+      // 從sessionStorages拿出會員資料
+      var memberInfo = sessionStorage.getItem('status');
+      console.log(memberInfo); 
+
       // 訂單查詢明細展開   
       // $(".detail").on('click', function(event) {
       //   var type = $(this).attr("data-type");
@@ -224,23 +229,44 @@
       //   }
       // });
 
-      // 收藏清單愛心點擊照片消失功能
-      const heart_btn = document.querySelectorAll(".heart-like-button");
-      const liked_product = document.querySelectorAll('.liked_product');
-      // console.log(heart_btn);
-      // console.log(liked_product);
+      // 取出收藏清單在sessionStorage的資料：getItem()
+      var favorPic = JSON.parse(sessionStorage.getItem('collect'));
+      
+      for (let i = 0; i < favorPic.length; i++){
+        showFavorPic.addEventListener('click', function(){
+          let div = document.getElementById("favorRow");
+          div.insertAdjacentHTML("beforeend", 
+            `<div class="liked_product col-12 col-lg-3 col-md-6">
+              <i class="heart-like-button fas fa-heart"></i>
+              <img class="liked_img" src="${favorPic[i].product_img}">
+              <span class="product_name">${favorPic[i].product_name}</span>
+              </div>
+            `
+          );
 
-      for (let i = 0; i < heart_btn.length; i++){
-        heart_btn[i].addEventListener("click", function(e){
-        e.target.closest("div.liked_product").remove();
-        });
-      }
+          // 收藏清單愛心點擊照片消失功能
+          document.addEventListener("click",(e)=>{
+            if(e.target.classList.contains("heart-like-button")){
+              e.target.closest("div.liked_product").remove(); 
+            }
+            // sessionStorage.removeItem('collect','羅丹辦公椅')
+          })
+
+          // 1、陣列當中的物件，建議每個物件都要有各自的 id 喔。
+          // 2、然後抓出 sessionStorage 裡的資料，比對 id，將那筆資料給移除。
+          // 3、移除後，得到一個新的陣列資料，然後回存到 sessionStorage
+
+        })
+      }  
+      
+      // 將消失照片從sessionStorage移除 待補 不會寫
+    
 
       // 使用jQuery Ajax將mySQL data 資料fetch到html:會員資料
       $(document).ready(function() {
         $.ajax({
           type: "POST",
-          // 先撈原本的會員資料
+          // 先撈出mySQL內的會員資料
           url: "php/memberSelect.php",
           data:{},
           dataType: "html",
@@ -251,21 +277,22 @@
             // $('#member').html(data)
             // $('#member').append(data)
             $("#disabledTextInput").val(data[0].account)
-            $("#memberName").val(data[0].user)
+            $("#memberName").val(data[0].name)
             $("#memberAdd").val(data[0].address)
             $("#memberPhone").val(data[0].phone)
-            }
-          });
+          }
         });
+      });
 
         // 更改的會員資料update進mySQL
         var memberSubmit = document.getElementById('memberSubmit');
+        // console.log(memberSubmit);
         memberSubmit.addEventListener('click', function(){
           var user = document.getElementById("memberName").value
           var address = document.getElementById("memberAdd").value
           var phone = document.getElementById("memberPhone").value
 
-          fetch("memberUpdate.php", {
+          fetch("php/memberUpdate.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -279,7 +306,7 @@
             }),
           })
 
-          // 判定更新是否成功 成功: alert資料已更新
+        // 判定更新是否成功 成功: alert資料已更新
           .then(response =>{
             if(response.ok){
               alert("資料已更新");
@@ -313,44 +340,41 @@
               oldPassword: oldPassword,
               newPassword: newPassword,
               newPassword2: newPassword2
-              
+
             }),
           })
 
           // 判定舊密碼 新密碼 確認新密碼是否為空值, 或一致
           if(oldPassword==""){
-          alert("Old Password Filed is Empty !!");
+          alert(" 請填寫舊密碼 !!");
           document.getElementById('newPassword').focus();
           return false;
           }
           else if(newPassword==""){
-          alert("New Password Filed is Empty !!");
+          alert(" 請填寫新密碼 !!");
           document.getElementById('newPassword').focus();
           return false;
           }
           else if(newPassword2==""){
-          alert("Confirm Password Filed is Empty !!");
+          alert(" 請再次填寫新密碼 !!");
           document.getElementById('newPassword2').focus();
           return false;
           }
           else if(newPassword != newPassword2){
-          alert("Password and Confirm Password Field do not match  !!");
+          alert(" 新密碼不符，請確認  !!");
           document.getElementById('newPassword2').focus();
+          return false;
+          }
+          else if(newPassword.length < 7 || newPassword2.length < 7){
+          alert(" 密碼長度不足，請輸入7位以上數字或英文 !!");
+          document.getElementById('newPassword').focus();
           return false;
           }
           return true;
 
         });
-
-        // 使用jQuery Ajax將mySQL data 資料fetch到html: 訂單資料
-
-
-        // 使用jQuery Ajax將mySQL data 資料fetch到html: 訂單明細
-
-        
-        // 讀localStorage顯示收藏清單
-      
     </script>
+
     <script>
       // Vue for 訂單資料
       new Vue({
@@ -358,45 +382,80 @@
         data:{
           list:{
             id:'',
-            ID_order: '',
+            date: '',
             total:'',
-            status:''
+            status:'',
+            total_price:''
           },
           lists:[],
+        },
+        mounted() {
+          fetch('php/orderList.php')
+          .then(res => res.json())
+          .then(res => this.lists = res)
+        },
+
+        methods: {
+          action(id){
+          //   // alert(id)
+          //   fetch("php/orderDetail.php", {
+          //   method: "POST",
+          //   headers: {
+          //     "Content-Type": "application/json",
+          //     Accept: "application/json",
+          //   },
+          //   mode: "cors",
+          //   body: JSON.stringify({  
+
+          //     orderId : id
+              
+          //   })
+          // })
+          }
+        },
+      });
+    </script>
+    
+    <script>
+      // Vue for 訂單詳情
+      new Vue({
+        el:'#poDetail',
+        data:{
           detail:{
-            product_id:'',
+            id:'',
+            name:'',
             quantity: '',
             price:'',
+            sub_price:''
           },
           details:[],
+        },
+        mounted() {
+          fetch('php/orderDetail.php')
+          .then(res => res.json())
+          .then(res => this.details = res)
         },
         methods: {
           action(id){
             // alert(id)
-            var type = $(this).attr("data-type");
-            var poDetail = document.querySelectorAll('.poDetail');
-            $('.poDetail').toggle();
-            var $this=$(this);
-            if($this.hasClass('block')){
-              $this.removeClass('block').addClass('none');
-            }else{
-              $this.removeClass('none').addClass('block');
-            }
+            fetch("php/orderDetail.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            mode: "cors",
+            body: JSON.stringify({  
+
+              orderId : id
+              
+            })
+
+          })
           }
         },
-        mounted() {
-          fetch('orderList.php')
-          .then(res => res.json())
-          .then(res => this.lists = res)
-
-          fetch('orderDetail.php')
-          .then(res => res.json())
-          .then(res => this.details = res)
-        },
-
       });
     </script>
-
 
   </body>
 </html>

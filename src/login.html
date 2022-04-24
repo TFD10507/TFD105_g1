@@ -88,11 +88,10 @@
                                                 required="required" v-model="address">
                                         </label>
                                         <br>
-                                        <label>性別：<br><input type="radio" required="required" class="mb-4" name="gender"
-                                                value="男" v-model="gender">男
-                                            <input type="radio" required="required" class="mb-4" name="gender" value="女"
-                                                v-model="gender">女
-                                        </label>
+                                        <label>性別：<br></label>
+                                        <label>
+                                        <input type="radio" required="required" class="mb-4" name="gender" value="0" v-model="gender">男</label>
+                                        <label><input type="radio" required="required" class="mb-4" name="gender" value="1" v-model="gender">女</label>
                                         <br>
                                         <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
                                             <input class="btn btn-warning " type="button" value="註冊"
@@ -192,14 +191,14 @@
                             })
                             .then(resp => resp.json())
                             .then((body) => {
+                                console.log(body);
                                 const { successful } = body;
-                                let status = {login: ''};
-                                // console.log(body);
+                                let status = {login: '', id: '', account: ''};
                                 if (successful) {
                                     loginMember('<strong>登入成功</strong>', 'success', '<button class="btn btn-warning m-3"><a href="./product.html" style="color: #fff">開始購物</a></button> ')
                                     let login_reset = document.querySelector(".login_reset")
-                                    // login_reset.reset();
-                                    sessionStorage.setItem('status', true);
+                                    login_reset.reset();
+                                    sessionStorage.setItem('status', JSON.stringify(body));
                                     // if (sessionStorage.getItem('status') == null){
                                     //     // let data = true;
                                     
@@ -250,17 +249,19 @@
                                     gender: this.gender
                                 }),
                             })
-                                .then(resp => resp.json())
-                            loginMember("<strong>註冊成功</strong>", 'success', '<button class="btn btn-warning m-3"><a href="./product.html" style="color: #fff">開始購物</a></button> ')
+                                .then(resp => resp)
+                                .then((body) => {
+                            loginMember("<strong>註冊成功</strong>", 'success', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">前往登入</a></button> ')
                             let reset = document.querySelector(".reset")
                             reset.reset()
+                            });
                         }
-                    } else {
+                    }else{
                         // alert('請填寫完所有欄位再送出')
                         loginMember('<strong>請填寫完所有欄位再送出</strong>', 'error')
                     }
                 },
-            },
+            }
         })
     </script>
 </body>

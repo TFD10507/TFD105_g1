@@ -178,4 +178,4 @@ exports.cls = clear
 exports.default = series(parallel(includeHTML ,sassstyle, minijs ,package, move),browser)
 
 // online
-exports.online = series(clear, parallel(includeHTML ,sassstyle , babel5 , min_images))
+exports.online = series(clear, parallel(includeHTML ,sassstyle , babel5, minijs, min_images, move))

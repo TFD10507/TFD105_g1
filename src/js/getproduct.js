@@ -46,6 +46,9 @@ let getproduct = new Vue({
                             self.carts.push(goods)
                             // console.log(self.carts);
                         },
+                        error: function(res) {
+                            console.log(res);
+                        }
                     })
                 }
             }

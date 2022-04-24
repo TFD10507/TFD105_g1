@@ -10,7 +10,6 @@
 <body>
     @@include('layout/top.html')
     @@include('layout/nav.html')
-    @@include('layout/login.html')
     <div id="step">
         <div class="wrapper cart" v-if="step == 'A'">
             <div class="step pt-4 pb-4">
@@ -38,16 +37,16 @@
                         <ul v-for="(item, index) in products" class="content cart_content bg-gray p-3">
                             <li class="detail">
                                 <div class="img">
-                                    <img :src="item.img">
+                                    <img :src="item.pic">
                                 </div>
                                 <div class="info ps-5">
-                                    <div class="pname">{{item.name}}</div>
-                                    <div class="ptype">{{item.type}}</div>
-                                
+                                    <div class="pname">{{item.names}}</div>
+                                    <!-- <div class="ptype">{{item.type}}</div> -->
+
                                     <div class="count">
-                                        <button class="count_btn" @click="add(index, -1)">-</button>
+                                        <button class="count_btn" @click="reduce(item)">-</button>
                                         <span>{{item.count}}</span>
-                                        <button class="count_btn" @click="add(index, 1)">+</button>
+                                        <button class="count_btn" @click="add(item)">+</button>
                                     </div>
 
 
@@ -55,9 +54,9 @@
                                         {{item.price}}
                                     </div>
                                     <div class="operate">
-                                        <a href="#" class="del" @click="del(index)">
+                                        <button class="del" @click="del(index)">
                                             <i class="fas fa-trash-alt"></i>
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </li>
@@ -71,9 +70,10 @@
                         </ul>
                         <ul class="content coupon_content bg-gray p-3">
                             <li>
-                                <button class="btn btn-warning btn_style">折價券</button>
-                                <input type="text">
+                                <input type="text" v-model="coupon.code">
+                                <button class="btn btn-warning btn_style" @click="useCoupon">折價券折抵</button>
                             </li>
+                            <span>{{couponErrMsg}}</span>
                         </ul>
 
                         <!-- 訂單資訊 -->
@@ -87,7 +87,7 @@
                             </li>
                             <li>
                                 <span>折抵總計</span>
-                                <span>-NT$0</span>
+                                <span>-NT${{coupon.price}}</span>
                             </li>
                             <li>
                                 <span>運費</span>
@@ -95,11 +95,9 @@
                             </li>
                             <li>
                                 <span>總金額</span>
-                                <span>NT${{sumTotal + 80}}</span>
+                                <span>NT${{sumTotal - coupon.price + 80}}</span>
                             </li>
                             <li>
-                                <!-- <a href="cart2.html" class="btn btn-warning btn_style" id="checkout">結帳
-                                </a> -->
                                 <button type="button" class="btn btn-warning btn_style" id="checkout"
                                     @click="goStepB">結帳</button>
                             </li>
@@ -133,13 +131,27 @@
                         </ul>
                         <ul class="content bg-gray p-3">
                             <li>姓名：</li>
-                            <li><input type="name"></li>
+                            <li>
+                                <input type="name" v-model="userInfo.name">
+                                <span>{{userNameErrMsg}}</span>
+                            </li>
+
                             <li>手機：</li>
-                            <li><input type="phone"></li>
+                            <li>
+                                <input type="phone" v-model="userInfo.phone" maxlength="10">
+                                <span>{{phoneErrMsg}}</span>
+                            </li>
+
                             <li>地址：</li>
-                            <li><input type="address"></li>
+                            <li>
+                                <input type="address" v-model="userInfo.address">
+                                <span>{{addressErrMsg}}</span>
+                            </li>
+
                             <li>備註：</li>
-                            <li><textarea cols="30" rows="10"></textarea></li>
+                            <li>
+                                <textarea cols="30" rows="10" v-model="userInfo.other"></textarea>
+                            </li>
                         </ul>
                     </div>
 
@@ -148,48 +160,83 @@
                         <ul class="title bg-primary mb-0">
                             <li>付款方式</li>
                         </ul>
-                        <ul class="content payment_content bg-gray p-3">
-                            <li>
+                        <div class="content payment_content bg-gray p-3">
+                            <div>
                                 <!-- <input type="radio" id="pay">
                                 <label for="pay">線上信用卡付款 ( 支援以下信用卡 ) </label> -->
                                 線上信用卡付款 ( 支援以下信用卡 )
-                            </li>
-                            <li>
+                            </div>
+                            <div>
                                 <img src="./img/cart/visa.png" alt="">
                                 <img src="./img/cart/maestro.png" alt="">
                                 <img src="./img/cart/jcb.png" alt="">
                                 <img src="./img/cart/union-pay.png" alt="">
-                            </li>
-                            <li>信用卡卡號</li>
-                            <li>
-                                <input type="text" class="credit-card-num" placeholder="0000" maxlength="4">
-                                <input type="text" class="credit-card-num" placeholder="0000" maxlength="4">
-                                <input type="text" class="credit-card-num" placeholder="0000" maxlength="4">
-                                <input type="text" class="credit-card-num" placeholder="0000" maxlength="4">
-                            </li>
-                            <div class="flex-verify">
-                                <div class="verify">
-                                    <p>有效日期</p>
-                                    <input type="text" placeholder="MM/YY" maxlength="4">
-                                </div>
-                                <div class="verify">
-                                    <p>驗證碼</p>
-                                    <input type="text" placeholder="000" maxlength="3">
-                                </div>
                             </div>
-                            <li>
+                            <!-- <div>信用卡卡號：</div> -->
+                            <div class="cardInfo">
+                                <p>持卡人姓名：</p>
+                                <input type="text" id="cardname" v-model="cardInfo.cardName">
+								<span>{{cardNameErrMsg}}</span>
+
+                                <p>信用卡卡號：</p>
+                                <input type="text" 
+                                class="cardnum" 
+                                placeholder="0000" 
+                                maxlength="4"
+                                @keydown="creditdown"
+								@keyup="creditup" 
+                                v-model="cardInfo.cardNum.no1">
+
+                                <input type="text" 
+                                class="cardnum" 
+                                placeholder="0000" 
+                                maxlength="4"
+                                @keydown="creditdown"
+								@keyup="creditup"
+                                v-model="cardInfo.cardNum.no2">
+
+                                <input type="text" 
+                                class="cardnum" 
+                                placeholder="0000" 
+                                maxlength="4"
+                                @keydown="creditdown"
+								@keyup="creditup"
+                                v-model="cardInfo.cardNum.no3">
+
+                                <input 
+                                type="text" 
+                                class="cardnum" 
+                                placeholder="0000" 
+                                maxlength="4" 
+                                @keydown="creditdown"
+								@keyup="creditup"
+                                v-model="cardInfo.cardNum.no4">
+							    <span>{{cardNumErrMsg}}</span>
+
+
+                                <p>有效日期：</p>
+                                <input type="text" placeholder="MM" maxlength="2" id="month" v-model="cardInfo.cardDate.month">
+                                /
+                                <input type="text" placeholder="YY" maxlength="2" id="year" v-model="cardInfo.cardDate.year">
+								<span>{{cardDateErrMsg}}</span>
+
+                                <p>安全碼：</p>
+                                <input type="text" placeholder="000" maxlength="3" id="CSC" v-model="cardInfo.cardcsc">
+								<span>{{cardcscErrMsg}}</span>
+
+                            </div>
+                            <div>
                                 <input type="checkbox" id="check">
                                 <label for="check">我已閱讀並同意本網站的
                                     <a href="faq.html">《服務條款》</a>及
                                     <a href="faq.html">《退換貨政策》</a>
                                 </label>
-                            </li>
-                            <li>
-                                <!-- <a href="cart3.html" class="btn btn-warning btn_style" id="finish">提交訂單</a> -->
+                            </div>
+                            <div>
                                 <button class="btn btn_style" id="goback" @click="step = 'A'">回上一步</button>
-                                <button class="btn btn-warning btn_style" id="finish" @click="step = 'C'">提交訂單</button>
-                            </li>
-                        </ul>
+                                <button class="btn btn-warning btn_style" id="finish" @click="sendOrder">提交訂單</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -215,13 +262,10 @@
                         </ul>
                         <ul class="content bg-gray p-3">
                             <li class="detail">
-                                <div class="img">
-                                    <img src="./img/product/chair_001.jpg" alt="">
-                                </div>
                                 <div class="info ps-5">
-                                    <div class="orderid">00000000</div>
-                                    <div class="orderdate">2022/3/10</div>
-                                    <div class="orderprice">1000</div>
+                                    <div class="orderid">{{order.id}}</div>
+                                    <div class="orderdate">{{order.date}}</div>
+                                    <div class="orderprice">{{order.total}}</div>
                                 </div>
                             </li>
                             <li>
