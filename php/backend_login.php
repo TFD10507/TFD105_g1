@@ -1,5 +1,5 @@
 <?php
-require_once("./Connection.php");
+require_once("connection.php");
 
 // 網頁傳回來的 id 跟 psw
 
