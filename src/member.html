@@ -231,37 +231,33 @@
 
       // 取出收藏清單在sessionStorage的資料：getItem()
       var favorPic = JSON.parse(sessionStorage.getItem('collect'));
-      
+      var showFavorPic = document.getElementById('showFavorPic');
+
       for (let i = 0; i < favorPic.length; i++){
         showFavorPic.addEventListener('click', function(){
           let div = document.getElementById("favorRow");
           div.insertAdjacentHTML("beforeend", 
             `<div class="liked_product col-12 col-lg-3 col-md-6">
-              <i class="heart-like-button fas fa-heart"></i>
+              <i id="${favorPic[i].product_id}" class="heart-like-button fas fa-heart"></i>
               <img class="liked_img" src="${favorPic[i].product_img}">
               <span class="product_name">${favorPic[i].product_name}</span>
               </div>
             `
           );
 
-          // 收藏清單愛心點擊照片消失功能
-          document.addEventListener("click",(e)=>{
-            if(e.target.classList.contains("heart-like-button")){
-              e.target.closest("div.liked_product").remove(); 
-            }
-            // sessionStorage.removeItem('collect','羅丹辦公椅')
+          // 收藏清單愛心點擊照片消失功能 sessionStorage一併刪除
+          var dom = document.getElementById(`${favorPic[i].product_id}`)
+          dom.addEventListener("click",(e)=>{
+            e.target.closest("div.liked_product").remove();
+            console.log(e.target);
+
+            let items = JSON.parse(sessionStorage.getItem('collect'));
+            let filterItem = JSON.stringify(items.filter(it => it.product_id != e.target.id));
+            sessionStorage.setItem('collect', filterItem);
           })
-
-          // 1、陣列當中的物件，建議每個物件都要有各自的 id 喔。
-          // 2、然後抓出 sessionStorage 裡的資料，比對 id，將那筆資料給移除。
-          // 3、移除後，得到一個新的陣列資料，然後回存到 sessionStorage
-
         })
-      }  
+      }   
       
-      // 將消失照片從sessionStorage移除 待補 不會寫
-    
-
       // 使用jQuery Ajax將mySQL data 資料fetch到html:會員資料
       $(document).ready(function() {
         $.ajax({
