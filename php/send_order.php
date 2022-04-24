@@ -7,7 +7,7 @@
 
     $order = json_decode(file_get_contents("php://input"), true);
     
-    $account = $order["account"];
+    $memberId = $order["id"];
     $name = $order["name"];
     $phone = $order["phone"];
     $address = $order["address"];
@@ -16,12 +16,12 @@
     // 自動生成清單編號 17碼
     $cusID = date('YmdHis').rand(100,999);
 
-    // 找到會員帳號的id
-    $findMemberId = "SELECT id FROM member WHERE account='$account';";
-    // 執行sql語法，會回傳值
-    $statement = $link->query($findMemberId);
-    // 接回傳的值
-    $memberId = $statement->fetchColumn();
+    // // 找到會員帳號的id
+    // $findMemberId = "SELECT id FROM member WHERE account='$account';";
+    // // 執行sql語法，會回傳值
+    // $statement = $link->query($findMemberId);
+    // // 接回傳的值
+    // $memberId = $statement->fetchColumn();
 
     // 插入order的sql指令 - 將商品資訊插入
     $sql1 = "INSERT INTO `order`(ID_order, member_id, status, date, name, phone, address, other)
@@ -35,6 +35,7 @@
     $stmt1->bindValue(":address", $address);
     $stmt1->bindValue(":other", $other);
     $stmt1->execute();
+    // echo $cusID;
 
     // lastInsertId() 抓取insert後自動產生的id號
     $orderId = $link->lastInsertId();
@@ -50,8 +51,9 @@
         $stmt2->bindValue(":productsCount", $product["count"]);
         $stmt2->execute();
     };
-
+    echo $orderId;
 
 
     // =============== send_order end ================
 
+    

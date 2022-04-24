@@ -65,15 +65,16 @@
         padding-bottom: 50px;
     }
     .modal-footer{
-        height: 60px;
+        height: 100px;
         background-color: $btn_color;
         
     }
     .modal-footer span{
         color: $p_color2;
-        font-size: $p;
+        font-size: $nav_fz;
         font-weight: 600;
         margin: 0 auto;
+        text-align: center;
         
     }
     //未登入會員不能玩輪盤ㄛ！
