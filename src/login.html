@@ -18,8 +18,8 @@
         <main class="container" id="login">
 
             <div class="card mb-3 mt-5 login" style="max-width: 900px; ">
-                <div class="row">
-                    <div class="col-md-7">
+                <div class="row login_row">
+                    <div class="col-md-7 login_photo">
                         <img src="img/logo.png" class="img-fluid" alt="...">
                     </div>
                     <div class="col-md-5">
@@ -40,21 +40,39 @@
                             <div class="tab-content " id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
                                     <form class="login_reset justify-content-center">
-                                        帳號：<br><input type="text" value="" placeholder="請輸入 Email"
-                                            v-model="login_account">
-                                        <br>
-                                        <br>
-                                        密碼：<br><input type="password" value="" placeholder="請輸入密碼" class="mb-3 password"
-                                            v-model="login_password">
-                                        <i class="fas fa-eye eye1" @click="eyeToggle='open'" :class="openEye"></i>
-                                        <i class="fa-solid fa-eye-slash eye-slash1" @click="eyeToggle='close'"
-                                            :class="closeEye" style="display: none"></i>
+                                        <div class="row mb-3">
+                                            <label class="col-sm-12 col-form-label ">帳號：</label>
+                                            <br>
+                                            <div class="col-sm-12 ">
+                                                <input type="text" placeholder="請輸入 Email" v-model="login_account"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-sm-12 col-form-label">密碼：</label>
+                                            <br>
+                                            <div class="col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-sm-7">
+                                                        <input type="password" placeholder="請輸入密碼"
+                                                            class="mb-3 password form-control" v-model="login_password">
+                                                    </div>
+                                                    <div class="col-sm-5 login_eye">
+                                                        <i class="fas fa-eye eye1" @click="eyeToggle='open'"
+                                                            :class="openEye"></i>
+                                                        <i class="fa-solid fa-eye-slash eye-slash1"
+                                                            @click="eyeToggle='close'" :class="closeEye"
+                                                            style="display: none"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <br>
                                         <br>
                                         <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
                                             <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
                                                 <input class="btn btn-warning " type="button" value="登入"
-                                                    @click="member_login"></input>
+                                                    @click="member_login">
                                             </div>
                                         </div>
                                     </form>
@@ -90,8 +108,10 @@
                                         <br>
                                         <label>性別：<br></label>
                                         <label>
-                                        <input type="radio" required="required" class="mb-4" name="gender" value="0" v-model="gender">男</label>
-                                        <label><input type="radio" required="required" class="mb-4" name="gender" value="1" v-model="gender">女</label>
+                                            <input type="radio" required="required" class="mb-4" name="gender" value="0"
+                                                v-model="gender">男</label>
+                                        <label><input type="radio" required="required" class="mb-4" name="gender"
+                                                value="1" v-model="gender">女</label>
                                         <br>
                                         <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
                                             <input class="btn btn-warning " type="button" value="註冊"
@@ -189,33 +209,33 @@
                                     login_password: this.login_password,
                                 }),
                             })
-                            .then(resp => resp.json())
-                            .then((body) => {
-                                console.log(body);
-                                const { successful } = body;
-                                let status = {login: '', id: '', account: ''};
-                                if (successful) {
-                                    loginMember('<strong>登入成功</strong>', 'success', '<button class="btn btn-warning m-3"><a href="./product.html" style="color: #fff">開始購物</a></button> ')
-                                    let login_reset = document.querySelector(".login_reset")
-                                    login_reset.reset();
-                                    sessionStorage.setItem('status', JSON.stringify(body));
-                                    // if (sessionStorage.getItem('status') == null){
-                                    //     // let data = true;
-                                    
-                                        
-                                    //     console.log(sessionStorage.getItem('status'));
-                                    // }else{
-                                    //     console.log(sessionStorage.getItem('status'));
-                                    //     // let data = sessionStorage.getItem('status');
-                                    //     // data.login = 'false';
-                                    //     sessionStorage.setItem('status', false);
-                                    // }
+                                .then(resp => resp.json())
+                                .then((body) => {
+                                    console.log(body);
+                                    const { successful } = body;
+                                    let status = { login: '', id: '', account: '' };
+                                    if (successful) {
+                                        loginMember('<strong>登入成功</strong>', 'success', '<button class="btn btn-warning m-3"><a href="./product.html" style="color: #fff">開始購物</a></button> ')
+                                        let login_reset = document.querySelector(".login_reset")
+                                        login_reset.reset();
+                                        sessionStorage.setItem('status', JSON.stringify(body));
+                                        // if (sessionStorage.getItem('status') == null){
+                                        //     // let data = true;
 
-                                } else {
-                                    loginMember('<strong>登入失敗</strong>', 'error');
-                                    sessionStorage.setItem('status', false);
-                                }
-                            });
+
+                                        //     console.log(sessionStorage.getItem('status'));
+                                        // }else{
+                                        //     console.log(sessionStorage.getItem('status'));
+                                        //     // let data = sessionStorage.getItem('status');
+                                        //     // data.login = 'false';
+                                        //     sessionStorage.setItem('status', false);
+                                        // }
+
+                                    } else {
+                                        loginMember('<strong>登入失敗</strong>', 'error');
+                                        sessionStorage.setItem('status', false);
+                                    }
+                                });
 
                         }
                     } else {
@@ -249,14 +269,14 @@
                                     gender: this.gender
                                 }),
                             })
-                                .then(resp => resp.json())
+                                .then(resp => resp)
                                 .then((body) => {
-                            loginMember("<strong>註冊成功</strong>", 'success', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">前往登入</a></button> ')
-                            let reset = document.querySelector(".reset")
-                            reset.reset()
-                            });
+                                    loginMember("<strong>註冊成功</strong>", 'success', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">前往登入</a></button> ')
+                                    let reset = document.querySelector(".reset")
+                                    reset.reset()
+                                });
                         }
-                    }else{
+                    } else {
                         // alert('請填寫完所有欄位再送出')
                         loginMember('<strong>請填寫完所有欄位再送出</strong>', 'error')
                     }
