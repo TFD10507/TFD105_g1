@@ -27,3 +27,5 @@ $statement->bindValue(":gender", $member["gender"]);
 $statement->execute();
       //  echo json_encode(['status'=> 'SUCCESS']);
 echo "新增成功!";
+
+?>

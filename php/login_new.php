@@ -30,7 +30,7 @@ if ($resultCount > 0) {
    // $respBody["status"] = $data[0]["status"];
    // $respBody["address"] = $data[0]["address"];
    // $respBody["gender"] = $data[0]["gender"];
-   // $respBody["password"] = $data[0]["password"];
+   $respBody["password"] = $data[0]["password"];
    $respBody["successful"] = true;
    // $respBody["message"] = "s";
    // echo json_encode($respBody);

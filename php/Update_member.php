@@ -1,6 +1,6 @@
 <?php
 // 這是類是串聯別頁PHP
-require("./Connection.php");
+include('connection.php');
 //---------------------------------------------------
 $Umember = json_decode(file_get_contents("php://input"));
 echo json_encode($Umember);
