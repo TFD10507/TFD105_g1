@@ -92,6 +92,12 @@ new Vue({
       date: "",
       total: "",
     },
+    // ========= 折價券 ========
+    coupon: {
+      code: "",
+      price: "0",
+    },
+    couponErrMsg: "",
   },
   watch: {
     "userInfo.name": function () {
@@ -207,6 +213,50 @@ new Vue({
       }
       sessionStorage.setItem("cart", JSON.stringify(cart));
     },
+    // 使用折價券
+    useCoupon() {
+
+
+
+      fetch('php/get_coupon.php', {
+          method: 'POST',
+          headers: { // 告訴後端說TYPE是JSON
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            // 將折價券資訊丟給php
+            couponNum: this.coupon.code,
+          })
+        })
+        .then(res => res.json()) //接收回應並轉成json
+        .then(data => {
+          this.coupon.price = data[0].price
+          this.couponErrMsg = "";
+        })
+        .catch(error => { //失敗傳回價錢0
+          // 判斷是否有輸入號碼
+          if (this.coupon.code == "") {
+            this.couponErrMsg = "需輸入折價券號碼";
+          } else if (this.coupon.code != "") {
+            this.coupon.price = '0'
+            this.couponErrMsg = "請確認折價券號碼是否正確";
+          }
+        })
+    },
+    // 從步驟 A 到步驟 B
+    goStepB() {
+      let user = sessionStorage.getItem("status");
+      if (this.products.length > 0) {
+        // 判斷是否登入
+        if (user) {
+          this.step = 'B';
+        } else {
+          loginMember('<strong>請先登入會員</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
+        }
+      } else {
+        loginMember('<strong>購物車是空的唷！</strong>', 'warning');
+      }
+    },
     // 提交訂單
     sendOrder() {
       let status = JSON.parse(sessionStorage.getItem("status"));
@@ -259,13 +309,13 @@ new Vue({
               })
             })
             .then(res => res.json())
-            .then(data => {  //收到回應後做的事
+            .then(data => { //收到回應後做的事
               // 跳轉到完成訂單畫面
               this.step = 'C';
 
               //將訂單內容丟回去前端的vue
               let self = this;
-              
+
               $.ajax({
                 url: 'php/get_order.php',
                 type: 'POST',
@@ -294,19 +344,6 @@ new Vue({
       }
 
 
-    },
-    goStepB() {
-      let user = sessionStorage.getItem("status");
-      if (this.products.length > 0) {
-        // 判斷是否登入
-        if (user) {
-          this.step = 'B';
-        } else {
-          loginMember('<strong>請先登入會員</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
-        }
-      } else {
-        alert('購物車是空的呦 !!');
-      }
     },
     // 跨欄位刪除
     creditdown() {
@@ -395,7 +432,6 @@ new Vue({
       }
     }
   },
-  // 計算購物車商品的總價
   computed: {
     // 信用卡監聽
     creditWatch() {
@@ -423,6 +459,7 @@ new Vue({
         year
       };
     },
+    // 計算購物車商品的總價
     sumTotal: function () {
       //預設 total=0
       let total = 0;

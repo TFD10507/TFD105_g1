@@ -135,11 +135,14 @@
         li {
             display: flex;
             button {
-                min-width: 80px;
+                min-width: 120px;
             }
             input {
-                width: 80%;
+                width: 60%;
             }
+        }
+        span{
+            color: red;
         }
     }
     // 訂單資訊區塊

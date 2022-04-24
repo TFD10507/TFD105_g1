@@ -70,9 +70,10 @@
                         </ul>
                         <ul class="content coupon_content bg-gray p-3">
                             <li>
-                                <button class="btn btn-warning btn_style">折價券</button>
-                                <input type="text">
+                                <input type="text" v-model="coupon.code">
+                                <button class="btn btn-warning btn_style" @click="useCoupon">折價券折抵</button>
                             </li>
+                            <span>{{couponErrMsg}}</span>
                         </ul>
 
                         <!-- 訂單資訊 -->
@@ -86,7 +87,7 @@
                             </li>
                             <li>
                                 <span>折抵總計</span>
-                                <span>-NT$0</span>
+                                <span>-NT${{coupon.price}}</span>
                             </li>
                             <li>
                                 <span>運費</span>
@@ -94,11 +95,9 @@
                             </li>
                             <li>
                                 <span>總金額</span>
-                                <span>NT${{sumTotal + 80}}</span>
+                                <span>NT${{sumTotal - coupon.price + 80}}</span>
                             </li>
                             <li>
-                                <!-- <a href="cart2.html" class="btn btn-warning btn_style" id="checkout">結帳
-                                </a> -->
                                 <button type="button" class="btn btn-warning btn_style" id="checkout"
                                     @click="goStepB">結帳</button>
                             </li>
