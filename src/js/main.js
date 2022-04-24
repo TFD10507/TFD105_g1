@@ -74,31 +74,22 @@ $(function () {
     }
 
     let result = JSON.parse(sessionStorage.getItem('status'));
-    // console.log(result);
     let icon = document.querySelector(".fa-user-circle");
+    if(result) {
+        icon.style.color= "#A0643E";
+    } else {
+        icon.style.color= "#76706A";
+    }
     //  判斷是否登入
-    // console.log(icon);
+    console.log(result);
     icon.addEventListener("click", function () {
-        // console.log('aa');
         if (result == null) {
-            // console.log(sessionStorage.getItem('status'));
             location.href = "./login.html";
-            $(icon).css("color", "#76706A");
         } else {
-            // let result = sessionStorage.getItem('status');
-            // console.log(result);
-            // alert(result);
-            // alert(result.successful);
-
             if (result.successful) {
-                // console.log(1);
                 location.href = "./member.html";
-                $(icon).css("color", "#A0643E");
             } else {
                 location.href = "./login.html";
-                $(icon).css("color", "#76706A");
-
-                // console.log(2);
             }
 
         }
