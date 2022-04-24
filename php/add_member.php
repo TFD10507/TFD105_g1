@@ -1,5 +1,5 @@
 <?php
-include("./connection.php");
+include("connection.php");
 //---------------------------------------------------
 $member = json_decode(file_get_contents("php://input"), true);
 // echo json_encode($member);

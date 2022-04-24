@@ -2,7 +2,7 @@
 // 這支用來更新密碼進去G1.member
 
 session_start();
-require("Connection.php");
+require("connection.php");
 $_SESSION["userID"] = "test123";
 print_r($_SESSION["userID"]);
 
