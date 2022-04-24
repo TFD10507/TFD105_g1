@@ -34,7 +34,7 @@
                   data-tab-target="#table"
                   class="tab padding_10"
                   value="1"
-                  onclick="kind.value=1"
+                  onclick="kind.value= '原木圓桌'"
                 >
                   原木圓桌
                 </li>
@@ -44,7 +44,7 @@
                   data-tab-target="#cabinet"
                   class="tab padding_10"
                   value="2"
-                  onclick="kind.value=2"
+                  onclick="kind.value='原木收納櫃'"
                 >
                   原木收納櫃
                 </li>
@@ -54,7 +54,7 @@
                   data-tab-target="#chair"
                   class="tab padding_10"
                   value="3"
-                  onclick="kind.value=3"
+                  onclick="kind.value='原木收納櫃'"
                 >
                   原木餐椅
                 </li>
@@ -271,7 +271,7 @@
           var detail = document.getElementById("detail").value;
           var loginStatus = JSON.parse(sessionStorage.getItem('status'));
 
-          if ( loginStatus != true ){
+          if ( loginStatus.successful != true ){
             alert ( "請先登入會員!" );
             return
           }else{

@@ -855,6 +855,10 @@
                 order_details:[]
             },
             mounted() {  //當網頁開啟時馬上執行以下內容
+                // 判斷有無登入
+                // fetch('php/Select_member.php')
+                //     .then(res => res.json())
+                //     
 
                 //撈出會員資料
                 fetch('php/Select_member.php')
@@ -975,7 +979,10 @@
                             this.order.date = res[0]['date']
                             this.order.member_id = res[0]['member_id']
                             this.order.other = res[0]['other']
-                        }),
+                            let status = this.order.status
+                            $("#order_status").find('option').removeAttr("selected")
+                            $(`#order_status option[ value = ${status}]`).attr("selected", true)
+                        })
                     fetch('php/Select_order_detail.php', {
                         method: 'POST',
                         headers: {
