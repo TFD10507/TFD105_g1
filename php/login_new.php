@@ -7,7 +7,7 @@ $member = json_decode(file_get_contents("php://input"), true);
 // echo json_encode($member);
 
 //建立SQL
-$sql = "SELECT * FROM member where account= :account and password = :password ";
+$sql = "SELECT * FROM G1.member where account= :account and password = :password ";
 
 
 

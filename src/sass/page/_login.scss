@@ -9,4 +9,24 @@
         margin: 0 auto;
     }
 
+    .login_row{
+        margin-right: 0;
+        --bs-gutter-x: 0;
+    }
+
+    .login_photo{
+        // padding-left: 0;
+    }
+
+    .form-control{
+        border: 1px solid #ced4da;
+    }
+
+    .form-control:focus{
+        box-shadow: 0 0 0 0;
+    }
+
+    .row > * > .login_eye{
+        width: 0%;
+    }
 }
