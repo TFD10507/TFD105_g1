@@ -27,7 +27,7 @@
 
     <header class="header">
         <img src="./img/backend/backend_logo.svg" alt="">
-        <a href="">
+        <a href="./backendLogin.html" @click="logout">
             <h5 class="h5">帳號登出</h5>
             <i class="bi bi-box-arrow-right"></i>
         </a>
@@ -503,6 +503,10 @@
                                     <input type="text" disabled v-model="order.member_id">
                                 </li>
                                 <li>
+                                    <label>訂購人名</label>
+                                    <input type="text"  v-model="order.name">
+                                </li>
+                                <li>
                                     <label>訂單內容</label>
                                     <textarea name="" id="" cols=" 35" rows="6" v-model="order.other"></textarea>
                                 </li>
@@ -829,6 +833,7 @@
                     status: '',
                     total_price:'',
                     other:'',
+                    name:'',
                 },
                 customizations: [],
                 customization: {
@@ -979,6 +984,7 @@
                             this.order.date = res[0]['date']
                             this.order.member_id = res[0]['member_id']
                             this.order.other = res[0]['other']
+                            this.order.name = res[0]['name']
                             let status = this.order.status
                             $("#order_status").find('option').removeAttr("selected")
                             $(`#order_status option[ value = ${status}]`).attr("selected", true)
@@ -1110,7 +1116,8 @@
                         })
                             .then(res => res.json())
                         alert('新增成功')
-                        this.kind_name = ''
+                        // this.kind_name = ''
+                        location.reload()
                     }
                 },
                 //  新增種類 結束
@@ -1303,6 +1310,10 @@
                     this.img = e.target.result
                 },
                 // 新增商品圖片預覽 結束
+                logout(){
+                    fetch('php/backend_logout.php')
+                        .then(res => res.json())
+                },
             },
         })
     </script>

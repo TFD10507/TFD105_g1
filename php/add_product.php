@@ -1,5 +1,5 @@
 <?php
-require("Connection.php");
+include('connection.php');
 //---------------------------------------------------
 // $_REQUEST['Add_color'];
 if (is_array($_FILES)) {
@@ -36,3 +36,4 @@ $statement->bindValue(":pic", $data_base_path);
 //執行
 $statement->execute();
    // echo "新增成功!";
+?>

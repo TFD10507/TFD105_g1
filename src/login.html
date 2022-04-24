@@ -39,7 +39,7 @@
                             </ul>
                             <div class="tab-content " id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
-                                    <form class="login_reset" style="margin:20px;">
+                                    <form class="login_reset justify-content-center">
                                         帳號：<br><input type="text" value="" placeholder="請輸入 Email"
                                             v-model="login_account">
                                         <br>
@@ -60,7 +60,7 @@
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel">
-                                    <form class="reset" style="margin-left:20px;">
+                                    <form class="reset justify-content-center">
                                         <label>會員帳號：<br><input type="email" name="email" placeholder="請輸入 Email"
                                                 class="mb-2" required="required" v-model="account" /></label>
                                         <br>
@@ -177,7 +177,7 @@
                             loginMember('<strong>密碼長度不足</strong>', 'error')
                         } else {
                             // alert(this.login_account)
-                            fetch("../php/login_new.php", {
+                            fetch("php/login_new.php", {
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/json",
@@ -235,7 +235,7 @@
                             // alert("密碼長度不足")
                             loginMember('<strong>密碼長度不足</strong>', 'error')
                         } else {
-                            fetch("../php/add_member.php", {
+                            fetch("php/add_member.php", {
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/json",

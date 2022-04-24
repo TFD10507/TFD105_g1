@@ -1,5 +1,5 @@
 <?php
-require("Connection.php");
+include('connection.php');
 //---------------------------------------------------
 $kind = json_decode(file_get_contents("php://input"));
 // echo json_encode($kind);
@@ -16,3 +16,5 @@ $statement->bindValue(":name", $kind->newkindname);
 
 //  //執行
 $statement->execute();
+
+?>

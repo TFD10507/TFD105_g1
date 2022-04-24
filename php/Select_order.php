@@ -1,6 +1,6 @@
 <?php
 // 這是類是串聯別頁PHP
-require("./Connection.php");
+include('connection.php');
 //---------------------------------------------------
 // 把前端的數值丟進暫存容器
 $order = json_decode(file_get_contents("php://input"));
@@ -17,7 +17,8 @@ if (isset($order)) {
                      o.address,
                      SUM(p.price * ol.quantity) as     total_price,
                      o.status,
-                     o.other
+                     o.other,
+                     o.name
               from
                      `order` o
               join 

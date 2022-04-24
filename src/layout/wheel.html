@@ -253,32 +253,32 @@
     <div id="inner-wheel">
       <div class="sec" saleTitle="100元折扣！<br> 輸入COUPON100即刻享有折扣！" rotate="60" data-value="25">
         <span>
-          <img class="wheel-inner-img" src="./img/index/wheel/brown-1.svg" alt="">
+          <img class="wheel-inner-img" src="./img/index/wheel/brown-1.png" alt="">
         </span>
       </div>
-      <div class="sec" saleTitle="90元折扣！<br> 輸入COUPON90即刻享有折扣！" rotate="120" data-value="90">
+      <div class="sec" saleTitle="90元折扣！<br> 輸入COUPON090即刻享有折扣！" rotate="120" data-value="90">
         <span>
-          <img class="wheel-inner-img" src="./img/index/wheel/white-1.svg" alt="">
+          <img class="wheel-inner-img" src="./img/index/wheel/white-1.png" alt="">
         </span>
       </div>
       <div class="sec" saleTitle="200元折扣！<br> 輸入COUPON200即刻享有折扣！" rotate="180" data-value="20">
         <span>
-          <img class="wheel-inner-img" src="./img/index/wheel/brown-2.svg" alt="">
+          <img class="wheel-inner-img" src="./img/index/wheel/brown-2.png" alt="">
         </span>
       </div>
-      <div class="sec" saleTitle="70元折扣！<br> 輸入COUPON70即刻享有折扣！" rotate="240" data-value="70">
+      <div class="sec" saleTitle="70元折扣！<br> 輸入COUPON070即刻享有折扣！" rotate="240" data-value="70">
         <span>
-          <img class="wheel-inner-img" src="./img/index/wheel/white-2.svg" alt="">
+          <img class="wheel-inner-img" src="./img/index/wheel/white-2.png" alt="">
         </span>
       </div>
       <div class="sec" saleTitle="300元折扣！<br> 輸入COUPON300即刻享有折扣！" rotate="300" data-value="15">
         <span>
-          <img class="wheel-inner-img" src="./img/index/wheel/brown-3.svg" alt="">
+          <img class="wheel-inner-img" src="./img/index/wheel/brown-3.png" alt="">
         </span>
       </div>
-      <div class="sec" saleTitle="50元折扣！<br> 輸入COUPON50即刻享有折扣！" rotate="360" data-value="50">
+      <div class="sec" saleTitle="50元折扣！<br> 輸入COUPON050即刻享有折扣！" rotate="360" data-value="50">
         <span>
-          <img class="wheel-inner-img" src="./img/index/wheel/white-3.svg" alt="">
+          <img class="wheel-inner-img" src="./img/index/wheel/white-3.png" alt="">
         </span>
       </div>
     </div>
@@ -404,7 +404,7 @@
               $('#wheel-message').html(msg);
               // $("#alertMsg").slideDown();
               pubed = "isPub";
-              console.log(object);
+              // console.log(object);
             }
           }
         })
@@ -412,7 +412,7 @@
 
       }, 5000 + 1000 + secondCnt) //等待時間，等待動畫轉完後也抓取到最後轉盤的位置後，執行上列程式
 
-
+      $('#spin').off();
     });
   });
 
@@ -421,18 +421,4 @@
     $("#alertMsg").hide();
   }
 
-</script>
-<script>
-  new Vue({
-    el: '#wheel-wrapper',
-    data: {
-
-      123: '',
-    },
-    methods: {
-      abc() {
-        alert('123')
-      }
-    },
-  })
 </script>
