@@ -44,7 +44,7 @@
                   src="./img/product/favorite_touch.svg"
                   alt=""
                   srcset=""
-                  @click.stop.prevent="add_love()"
+                  @click.stop.prevent="remove_love()"
                 />
 
                 <hr />
@@ -53,7 +53,7 @@
                 <p>尺寸/規格：</p>
                 <!-- 到時候加一欄尺寸 -->
                 <!-- <p>{{pro[0].size}}</p> -->
-                <p>W159 x D45 x H83</p>
+                <p>{{pro[0].size}}</p>
                 <!-- 先註解(vue出錯，沒辦法寫入js) -->
                 <!-- <div class="count">
                   <button class="count_btn" @click="sub_btn">-</button>
@@ -92,66 +92,113 @@
         },
         beforeCreate() {
           let urlParams = new URLSearchParams(window.location.search);
-          this.id = urlParams.get("id");
-        },
+          this.id = urlParams.get("id");          
+          },
         methods: {
           addcart() {
             alert(123);
-          },
-          add_love() {
-            // alert("wsdaf");
-            let fabtn = document.querySelectorAll(".favorite");
-            fabtn[1].classList.toggle("-on");
-            // console.log(fabtn);
+          },         
+          test(){
             let proimg = document.querySelector("#mainImg");
-
-            console.log(proimg.src);
-            // 先設定一個物件
-            // let storagedata={
-            // product_img: $('pro[0].pic')[0].src,
-            // product_name: $('#app').text(),
-            // }
             let storagedata={
+                product_id:this.id,
                 product_img:proimg.src,
-                product_name:$('#001').text(),
-            }
-          
+                product_name:$('#001').text(),                
+            } 
+          } ,
+          add_love() {
+            //抓取產品id
+            console.log(this.id);
+            console.log(this.name);
+            
+            let fabtn = document.querySelectorAll(".favorite");
+            fabtn[1].classList.add("-on");
+            // console.log(fabtn);
+            // let proimg = document.querySelector("#mainImg");
+        
+            // let storagedata={
+            //     product_id:this.id,
+            //     product_img:proimg.src,
+            //     product_name:$('#001').text(),                
+            // }          
+            test()
+             // 設定條件式,為了讓下面的值設為null
+             let myList = sessionStorage.getItem("collect");          
+            // test2藉由click觸發下列事件
+            //假設mylist裡面有東西的時候
+            // for(let i = 0;i<=myListArray.length;i++){
+            // }            
+            if(myList != null ){
 
-            // 設定條件式,為了讓下面的值設為null
-            let myList = sessionStorage.getItem("collect");
-            // console.log(myList);
-            // fabtn[0].addEventListener("click", function () {
-            //   fabtn[1].classList.add("-on");
-            // });
-            //藉由click觸發下列事件
-            if(myList == null ){
-                          // console.log(storagedata);
-            sessionStorage.setItem("collect", JSON.stringify([storagedata]));
-                          // console.log(storagedata);                          
-            }else{
-            // let myListArr = JSON.parse("collect");
-            // console.log(JSON.stringify(myList));
+            // 設定myListArray=物件化過的myList
             let myListArray = JSON.parse(myList);
+            // 將storagedata推入myListArray
             myListArray.push(storagedata);
-            sessionStorage.setItem("collect", JSON.stringify(myListArray));
-            console.log(storagedata);
-            }                 
-          },
+            // 將sessionstorage推入myListArray
+            sessionStorage.setItem("collect", JSON.stringify(myListArray));      
+          }  
+            else{
+              sessionStorage.setItem("collect", JSON.stringify([storagedata]));
+            }
+            this.$options.methods.remove_love();
+        },
+        remove_love(){
+          test()
+          // let Sam = sessionStorage.getItem("collect");
+          
+          console.log(storagedata);
+          // console.log(Sam);
+
+
+          // let fabtn = document.querySelectorAll(".favorite");
+          // console.log(fabtn);
+          // fabtn[1].classList.remove("-on");
+          
+        // console.log(myListArray);
+            // 移除localstorage的某項
+            // for (let i = 0 ; i<=)
+      
+          }
+        // add_love() {
+          //   myListArray.pop(storagedata);
+          // }
+          
         },   
         mounted() {
+          //  load
+          // let heartStorage = localStorage.getItem("collect");          
+          // console.log(heartStorage);
+          // if(mylist != null){
+          // // 將mylist中的資料轉型為物件並丟入新建宣告myListArrayone中
+          // let myListArrayone = JSON.parse(mylist);
+          // console.log(myListArrayone);
+          // }
+          
+          // for(let i = 0;i <= myListArray.length;i++){
+          //   if(this.id ==mylist[i]){
+          // }       
+          // }         
+          // 為了保留this，所以再另外再設定一個變數，因此設定一個區域變數"that"
           let that = this;
           $.ajax({
+            //設定與php串接的鏈結
             url: "php/getproductInfo.php",
-            type: "POST",
+            // 可以使用POST或GET，不過抓取資料使用POST即可。
+            type: "POST",           
             data: {
-              id: this.id,
+              id: this.id,              
             },
             success: function (resp) {
-              console.log(resp);
+              //查看是否有抓到resp
+              // console.log(resp); 
               let getResp = JSON.parse(resp);
+              // 將php接收下來的東西設定函式resp，並用getResp去接轉型過後的resp
               that.pro = getResp;
+              //從vue看資料即可，因為已經塞入vue的monted的生命週期
+              // console.log(that.pro);
             },
           });
+         
         },
       });
 
@@ -219,7 +266,6 @@
       //     }
       //     res.textContent= (300*input.value);
       // });
-
       //空心變實心
       //   console.log(fabtn);
       // fabtn[0].addEventListener("click", function (e) {
@@ -265,7 +311,6 @@
       // });
     </script>
     <script>
-
     </script>
   </body>
 </html>
