@@ -83,8 +83,10 @@ $(function () {
         } else {
             let result = sessionStorage.getItem('status');
             // console.log(result);
-            
-            if (result != null) {
+            alert(result);
+            alert(result.successful);
+
+            if (result.successful) {
                 // console.log(1);
                 location.href = "./member.html";
                 $(icon).css("color", "#A0643E");
@@ -98,8 +100,8 @@ $(function () {
         }
     });
     
-    if (result != null) {
-        $(icon).css("color", "#A0643E");
+    if (result.successful) {
+        // $(icon).css("color", "#A0643E");
         $('#wheel-login').removeClass('-disable');
     }else{
 
