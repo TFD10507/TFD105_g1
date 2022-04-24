@@ -74,7 +74,6 @@ $(function () {
     }
 
     let result = JSON.parse(sessionStorage.getItem('status'));
-    console.log(result.successful);
     let icon = document.querySelector(".fa-user-circle");
     if(result) {
         icon.style.color= "#A0643E";
@@ -82,7 +81,7 @@ $(function () {
         icon.style.color= "#76706A";
     }
     //  判斷是否登入
-    // console.log(icon);
+    console.log(result);
     icon.addEventListener("click", function () {
         if (result == null) {
             location.href = "./login.html";
