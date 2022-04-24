@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,37 +9,60 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>backendLogin</title>
 </head>
+
 <body>
-    <main class="backendLogin">
-        <section class="">
+    <main class="backendLogin" id="backend_login">
+        <section class="./php/backend_login.php">
             <img src="./img/mori_logo.png" alt="">
             <h2>管理員登入</h2>
-            <form action="">
+            <form >
                 <h3 class="">帳號:</h3>
-                <input type="text">
+                <input type="text"  v-model="id" name="id">
                 <h3 class="">密碼:</h3>
-                <input type="password">
+                <input type="password" v-model="psw" name="psw">
                 <br>
-                <button type="submit">Login</button>
+                <button type="button" @click="login">Login</button>
             </form>
         </section>
     </main>
 
+    <!-- Vus,js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js"></script>
     <script>
-        // const url = ;
-        // const input = document.querySelector('input');
-
-        document.querySelector('button').addEventListener('click', () => {
-            fetch(URL , {
-                method: 'POST';
-                Headers: {
-                    'Content-Type':'application/json'
-                },
-                body : JSON.{
-                    
-                },
-            });
-        });
+        new Vue({
+            el: '#backend_login',
+            data: {
+                id:'',
+                psw:'',
+            },
+            methods: {
+                login(){
+                    // alert(this.id)
+                    fetch('php/backend_login.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        mode: "cors",
+                        body: JSON.stringify({ 
+                            account:this.id ,
+                            psw:this.psw
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(res => {
+                        // 回傳的 status 裡面字串式成功,就導向後台
+                        if (res['status']=='Success') {
+                            window.location = "http://localhost/ooo/backend.html"
+                        }else{
+                            window.location = "http://localhost/ooo/backendlogin.html"
+                        }
+                    })
+                }
+            },
+        })
     </script>
 </body>
+
 </html>

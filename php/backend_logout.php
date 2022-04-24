@@ -1,9 +1,7 @@
 <?php
 
 session_start();
-// 登出
+// 清除session儲存
 session_destroy();
-
-header("Location: ../backendLogin.html");
 
 ?>

@@ -1,54 +1,36 @@
 <?php
-require_once("connection.php");
+    include('connection.php');
+    
+    $backend = json_decode(file_get_contents('php://input'));
 
-// 網頁傳回來的 id 跟 psw
+    // SQL 語法
+    $sql = "select * from controller where account = :account and password = :psw";
+    // 啟動變數
+    $statement = $link->prepare($sql);
+    // 設定變數
+    $statement ->bindValue(":account", $backend->account);
+    $statement ->bindValue(":psw", $backend->psw);
+    // 執行
+    $statement->execute();
 
+    $data = $statement->fetchAll(PDO::FETCH_ASSOC);
 
- //MySQL相關資訊
- $db_host = "127.0.0.1";
- $db_user = "root";
- $db_pass = "password";
- $db_select = "pdo";
- $db_name = "G1";
+    // 創造空間放狀態
+    $status = [];
 
- //建立資料庫連線物件
- $dsn = "mysql:host=".$db_host.";dbname=".$db_name;
+    // 找尋資料庫 0 筆資料時候
+    if(count($data) == 0){
+        $status['status'] = 'Error';
+    } else {
+        // 寫入 session
+        session_start();
+        $_SESSION["id"] =  $data[0]["id"]; 
+        $_SESSION["name"] =  $data[0]["name"]; 
+        // echo json_encode($_SESSION);
+        // 寫入狀態
+        $status['status'] = 'Success';
+    }
 
- // 連線資訊
-//  try {
-//      // 建立MySQL伺服器連接和開啟資料庫 
-//      $link = new PDO($dsn, $db_user, $db_pass);
-//      // 指定PDO錯誤模式和錯誤處理
-//      $link->setAttribute(PDO::ATTR_ERRMODE, 
-//          PDO::ERRMODE_EXCEPTION);
-//      // echo "成功建立MySQL伺服器連接和開啟test資料庫"; 
-//      // print_r ($link);
-//  } catch (PDOException $e) {
-//      // echo "連接失敗: " . $e->getMessage();
-//  }
-
-$pdo = new PDO($dsn, $db_user, $db_pass);
-
-$id = $_POST["id"];
-$psw = $_POST["psw"];
-
-$sql = "select * from controller where account = '$id' and password = '$psw'";
-$statement = $pdo->query($sql);
-$data = $statement->fetchAll();
-
-if (count($data) > 0) {
-    //轉址
-    session_start();
-    $_SESSION["memberID"] = "$id";
-
-    // header("Location:Main.php");
-    // echo '登入成功';
-    // 再用登入成功傳到前面去判定
-    // header("Location:search1.php");
-    header("Location:../backend.html");
-} else {
-    // echo "帳號或密碼錯誤";
-    // 失敗回到原頁
-    header("Location:backendLogin.html");
-    // alert("帳號密碼錯誤");
-}
+    echo json_encode($status);
+    
+?>
