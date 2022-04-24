@@ -28,41 +28,41 @@ new Vue({
     step: "A",
     //========= 收件資訊 ========
     userInfo: {
-      // name: "",
-      // phone: "",
-      // address: "",
-      // other:"",
-      name: "王xx",
-      phone: "0910081421",
-      address: "台北市大安區",
-      other: "2424",
+      name: "",
+      phone: "",
+      address: "",
+      other:"",
+      // name: "王xx",
+      // phone: "0910081421",
+      // address: "台北市大安區",
+      // other: "2424",
     },
     //========= 信用卡資訊 ========
     cardInfo: {
-      // cardNum: {
-      //   no1: "",
-      //   no2: "",
-      //   no3: "",
-      //   no4: "",
-      // },
-      // cardName: "",
-      // cardDate: {
-      //   year: "",
-      //   month: "",
-      // },
-      // cardcsc: "",
       cardNum: {
-        no1: "1111",
-        no2: "1111",
-        no3: "1111",
-        no4: "1111",
+        no1: "",
+        no2: "",
+        no3: "",
+        no4: "",
       },
-      cardName: "111",
+      cardName: "",
       cardDate: {
-        year: "11",
-        month: "11",
+        year: "",
+        month: "",
       },
-      cardcsc: "111",
+      cardcsc: "",
+      //   cardNum: {
+      //     no1: "1111",
+      //     no2: "1111",
+      //     no3: "1111",
+      //     no4: "1111",
+      //   },
+      //   cardName: "111",
+      //   cardDate: {
+      //     year: "11",
+      //     month: "11",
+      //   },
+      //   cardcsc: "111",
     },
     // ========= 驗證資訊是否錯誤 ========
     // 收件人姓名
@@ -228,9 +228,9 @@ new Vue({
         .then(res => res.json()) //接收回應並轉成json
         .then(data => {
           this.coupon.price = data[0].price
-          if(this.coupon.price < this.sumTotal){
+          if (this.coupon.price < this.sumTotal) {
             this.couponErrMsg = "";
-          }else{
+          } else {
             this.coupon.price = '0'
             this.couponErrMsg = "折價金額不可大於結帳金額";
           }
