@@ -1,11 +1,11 @@
 <?php
-include('./connection.php');
+include("./connection.php");
 //---------------------------------------------------
 $member = json_decode(file_get_contents("php://input"), true);
 // echo json_encode($member);
 
 //建立SQL
-$sql = "insert into G1.member(account,password,name,phone,jointime,status,address,gender)
+$sql = "insert into member(account,password,name,phone,jointime,status,address,gender)
 values (:account,:password,'',:phone,NOW(),0,:address,:gender);";
 
   // 包裝起來才可以使PHP 用bindValue

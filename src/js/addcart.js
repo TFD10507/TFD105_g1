@@ -4,7 +4,7 @@ function loginMember(msg, icon, html) {
         title: msg,
         icon: icon,
         html: html,
-        
+
         showConfirmButton: false, // 確認按鈕（預設會顯示不用設定）
         confirmButtonText: '參加活動', //　按鈕顯示文字
         confirmButtonAriaLabel: '參加活動', // 網頁無障礙用
@@ -61,7 +61,7 @@ new Vue({
                     newcart.push(goods);
                 }
 
-            } else {  //如果newcart沒有商品，直接定義一個
+            } else { //如果newcart沒有商品，直接定義一個
                 newcart = [goods];
             }
             //把newcart陣列用cart這個名字儲存到瀏覽器裡
@@ -78,12 +78,65 @@ new Vue({
         add_btn() {
             this.count++;
         },
+        add_love() {
+            //抓取產品id
+            console.log(this.id);
+            console.log(this.name);
+
+            let fabtn = document.querySelectorAll(".favorite");
+            fabtn[1].classList.add("-on");
+            // console.log(fabtn);
+            // let proimg = document.querySelector("#mainImg");
+
+            // let storagedata={
+            //     product_id:this.id,
+            //     product_img:proimg.src,
+            //     product_name:$('#001').text(),                
+        },
+        test() {
+            // 設定條件式,為了讓下面的值設為null
+            let myList = sessionStorage.getItem("collect");
+            // test2藉由click觸發下列事件
+            //假設mylist裡面有東西的時候
+            // for(let i = 0;i<=myListArray.length;i++){
+            // }            
+            if (myList != null) {
+
+                // 設定myListArray=物件化過的myList
+                let myListArray = JSON.parse(myList);
+                // 將storagedata推入myListArray
+                myListArray.push(storagedata);
+                // 將sessionstorage推入myListArray
+                sessionStorage.setItem("collect", JSON.stringify(myListArray));
+            } else {
+                sessionStorage.setItem("collect", JSON.stringify([storagedata]));
+            }
+            this.$options.methods.remove_love();
+        },
+        remove_love() {
+            test()
+            // let Sam = sessionStorage.getItem("collect");
+
+            console.log(storagedata);
+            // console.log(Sam);
+
+
+            // let fabtn = document.querySelectorAll(".favorite");
+            // console.log(fabtn);
+            // fabtn[1].classList.remove("-on");
+
+            // console.log(myListArray);
+            // 移除localstorage的某項
+            // for (let i = 0 ; i<=)
+
+        },
+
     },
     // 得到商品內頁的商品資訊
     mounted() {
         let that = this;
 
-        
+
 
         $.ajax({
             url: 'php/getproductInfo.php',
