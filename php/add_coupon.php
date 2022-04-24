@@ -1,5 +1,5 @@
 <?php
-require("Connection.php");
+include('connection.php');
 
 $result = array('status' => '', 'message' => '');
 $coupon = json_decode(file_get_contents("php://input"));

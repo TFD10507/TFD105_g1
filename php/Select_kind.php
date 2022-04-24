@@ -1,6 +1,6 @@
 <?php
 // 這是類是串聯別頁PHP
-require("./Connection.php");
+include('connection.php');
 //---------------------------------------------------
 
 //建立SQL語法   *改成那張表的搜尋全部資料
@@ -17,4 +17,4 @@ $statement->execute();
 // 轉回去JSON檔案
 echo json_encode($data);
 
-
+?>

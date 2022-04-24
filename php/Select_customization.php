@@ -1,6 +1,6 @@
 <?php
        // 這是類是串聯別頁PHP
-       require("./Connection.php");
+       include('connection.php');
 
        //---------------------------------------------------
        $customization = json_decode(file_get_contents("php://input"));
@@ -24,3 +24,4 @@
 
        // 轉回去JSON檔案
        echo json_encode($data);
+?>

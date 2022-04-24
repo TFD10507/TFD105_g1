@@ -1,5 +1,5 @@
 <?php
-include("connection.php");
+include('connection.php');
 //---------------------------------------------------
 $member = json_decode(file_get_contents("php://input"), true);
 // echo json_encode($member);
@@ -27,3 +27,5 @@ $statement->bindValue(":gender", $member["gender"]);
 $statement->execute();
       //  echo json_encode(['status'=> 'SUCCESS']);
 echo "新增成功!";
+
+?>
