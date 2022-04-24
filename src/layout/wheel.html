@@ -404,7 +404,7 @@
               $('#wheel-message').html(msg);
               // $("#alertMsg").slideDown();
               pubed = "isPub";
-              console.log(object);
+              // console.log(object);
             }
           }
         })
@@ -412,7 +412,7 @@
 
       }, 5000 + 1000 + secondCnt) //等待時間，等待動畫轉完後也抓取到最後轉盤的位置後，執行上列程式
 
-
+      $('#spin').off();
     });
   });
 

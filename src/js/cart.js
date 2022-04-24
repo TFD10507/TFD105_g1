@@ -215,9 +215,6 @@ new Vue({
     },
     // 使用折價券
     useCoupon() {
-
-
-
       fetch('php/get_coupon.php', {
           method: 'POST',
           headers: { // 告訴後端說TYPE是JSON
@@ -231,7 +228,12 @@ new Vue({
         .then(res => res.json()) //接收回應並轉成json
         .then(data => {
           this.coupon.price = data[0].price
-          this.couponErrMsg = "";
+          if(this.coupon.price < this.sumTotal){
+            this.couponErrMsg = "";
+          }else{
+            this.coupon.price = '0'
+            this.couponErrMsg = "折價金額不可大於結帳金額";
+          }
         })
         .catch(error => { //失敗傳回價錢0
           // 判斷是否有輸入號碼
