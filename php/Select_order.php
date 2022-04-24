@@ -17,7 +17,8 @@ if (isset($order)) {
                      o.address,
                      SUM(p.price * ol.quantity) as     total_price,
                      o.status,
-                     o.other
+                     o.other,
+                     o.name
               from
                      `order` o
               join 
