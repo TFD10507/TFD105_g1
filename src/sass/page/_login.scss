@@ -14,10 +14,6 @@
         --bs-gutter-x: 0;
     }
 
-    .login_photo{
-        // padding-left: 0;
-    }
-
     .form-control{
         border: 1px solid #ced4da;
     }
@@ -27,6 +23,6 @@
     }
 
     .row > * > .login_eye{
-        width: 0%;
+        width: 50%;
     }
 }

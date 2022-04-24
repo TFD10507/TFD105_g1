@@ -53,11 +53,11 @@
                                             <br>
                                             <div class="col-sm-12">
                                                 <div class="row">
-                                                    <div class="col-sm-7">
+                                                    <div class="col-7">
                                                         <input type="password" placeholder="請輸入密碼"
                                                             class="mb-3 password form-control" v-model="login_password">
                                                     </div>
-                                                    <div class="col-sm-5 login_eye">
+                                                    <div class="col-5 login_eye">
                                                         <i class="fas fa-eye eye1" @click="eyeToggle='open'"
                                                             :class="openEye"></i>
                                                         <i class="fa-solid fa-eye-slash eye-slash1"
@@ -67,8 +67,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <br>
-                                        <br>
                                         <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
                                             <div class="d-grid gap-2 col-6 d-flex flex-row-reverse">
                                                 <input class="btn btn-warning " type="button" value="登入"
@@ -79,22 +77,34 @@
                                 </div>
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel">
                                     <form class="reset justify-content-center">
-                                        <label>會員帳號：<br><input type="email" name="email" placeholder="請輸入 Email"
-                                                class="mb-2" required="required" v-model="account" /></label>
+                                        <label class="col-sm-12 col-form-label ">會員帳號：</label>
                                         <br>
-                                        <label>手機：<br><input type="text" onkeyup="value=value.replace(/[^\d]/g,'')"
-                                                maxlength=10 placeholder="09xx-xxx-xxx" class="mb-2" required="required"
-                                                v-model="phone" /></label>
+                                        <div class="col-sm-12 ">
+                                            <input type="email" name="email" placeholder="請輸入 Email"
+                                                class="mb-2 form-control" required="required" v-model="account" />
+                                        </div>
+                                        <label class="col-sm-12 col-form-label ">手機：</label>
                                         <br>
-                                        <label for="floatingPassword">密碼：<br><input type="password" value=""
-                                                id="floatingPassword" placeholder="請輸入7位以上的英文或數字" class="password mb-2"
-                                                pattern="[a-zA-Z0-9]{7,}" required="required" v-model="password">
-                                        </label>
-                                        <i class="fas fa-eye eye1" @click="eyeToggle='open'" :class="openEye"></i>
-                                        <i class="fa-solid fa-eye-slash eye-slash1" @click="eyeToggle='close'"
-                                            :class="closeEye" style="display: none"></i>
+                                        <div class="col-sm-12 ">
+                                            <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength=10
+                                                placeholder="09xx-xxx-xxx" class="mb-2 form-control" required="required"
+                                                v-model="phone" />
+                                        </div>
 
+                                        <label for="floatingPassword" class="col-sm-12 col-form-label ">密碼：</label>
                                         <br>
+                                        <div class="col-sm-12">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <input type="password" id="floatingPassword" placeholder="請輸入7位以上英文或數字" class="password mb-2 form-control" pattern="[a-zA-Z0-9]{7,}" required="required" v-model="password">
+                                                </div>
+                                                <div class="col-5 login_eye">
+                                                    <i class="fas fa-eye eye1" @click="eyeToggle='open'" :class="openEye"></i>
+                                                    <i class="fa-solid fa-eye-slash eye-slash1" @click="eyeToggle='close'"
+                                                        :class="closeEye" style="display: none"></i>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <!-- <label>確認密碼：<br><input type="password" value="" placeholder="請再次輸入密碼"
                                                 class="mb-2 password" pattern="[a-zA-Z0-9]{7,}" required="required">
                                         </label> -->
@@ -102,12 +112,14 @@
                                         <i class="fa-solid fa-eye-slash eye-slash1" @click="eyeToggle='close'"
                                             :class="closeEye" style="display: none"></i> -->
 
-                                        <label>地址：<br><input type="text" value="" placeholder="請輸入地址" class="mb-2"
-                                                required="required" v-model="address">
-                                        </label>
-                                        <br>
-                                        <label>性別：<br></label>
-                                        <label>
+                                            <label class="col-sm-12 col-form-label ">地址：</label>
+                                            <br>
+                                            <div class="col-sm-12 ">
+                                            <input type="text" placeholder="請輸入地址" class="mb-2 form-control"
+                                                required="required" v-model="address" >
+                                            </div>
+                                            <label class="col-sm-12 col-form-label ">性別：<br></label>
+                                        <label >
                                             <input type="radio" required="required" class="mb-4" name="gender" value="0"
                                                 v-model="gender">男</label>
                                         <label><input type="radio" required="required" class="mb-4" name="gender"
