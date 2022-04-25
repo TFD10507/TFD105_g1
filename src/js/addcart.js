@@ -157,7 +157,7 @@ new Vue({
         // sessionStorage.setItem("collect",)
         item_storage = sessionStorage.getItem("collect");
         // console.log(item_storage);
-        if (item_storage != null) {
+        if (item_storage) {
             item_storage = JSON.parse(item_storage);
             // console.log(aaa);
             for (let i = 0; i < item_storage.length; i++) {
