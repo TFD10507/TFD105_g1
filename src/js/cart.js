@@ -426,7 +426,7 @@ new Vue({
             res = JSON.parse(res)
             goods.pic = res[0].pic
             goods.price = res[0].price
-            goods.names = res[0].names
+            goods.name = res[0].name
             // 將goods丟入新建的陣列[products]
             self.products.push(goods)
             // console.log(self.products);
