@@ -149,6 +149,7 @@ new Vue({
 
     // 得到商品內頁的商品資訊
     mounted() {
+        // sessionStorage.setItem("collect",)
         item_storage = sessionStorage.getItem("collect");
         // console.log(item_storage);
         if (item_storage != null) {
@@ -172,7 +173,6 @@ new Vue({
 
         }
 
-
         // load()
         //把物件存在that中
         let that = this;
@@ -185,19 +185,22 @@ new Vue({
             success: function (resp) {
                 let getResp = JSON.parse(resp);
                 that.pro = getResp;
-
-                if (allNum != -1) {
-
-                    // let fabtn = this.$el.querySelectorAll('.favorite')
-                    // // let fabtn = document.querySelectorAll(".favorite");
-                    // fabtn[1].classList.add("-on"); 
-                    // console.log(fabtn);
-                    // alert("asdsa");
-                    that.isShow = false;
-                    // $(`#hover_${urlNum}`).addClass("-on");            
-                    // alert("asdsa");
+                if (item_storage) {
+                    if (allNum != -1) {
+                        // let fabtn = this.$el.querySelectorAll('.favorite')
+                        // // let fabtn = document.querySelectorAll(".favorite");
+                        // fabtn[1].classList.add("-on"); 
+                        // console.log(fabtn);
+                        // alert("asdsa");
+                        that.isShow = false;
+                        // $(`#hover_${urlNum}`).addClass("-on");            
+                        // alert("asdsa");
+                    }
                 }
+
             }
         })
+
+
     },
 })

@@ -1310,7 +1310,7 @@
                     const reader = new FileReader()
                     reader.addEventListener('load', this.imageLoaded)
                     reader.readAsDataURL(file)
-                    console.log(this.imageLoaded)
+                    // console.log(this.imageLoaded)
                 },
                 imageLoaded(e) {
                     this.img = e.target.result
