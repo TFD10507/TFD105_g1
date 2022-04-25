@@ -37,7 +37,7 @@ new Vue({
         this.id = urlParams.get('id');
     },
     methods: {
-        //加入購物車-存入sessionStorage
+        //加入購物車-存入sessionStorage        
         addcart() {
             loginMember("<strong>已加入購物車</strong>", 'success');
             let goods = {
@@ -82,6 +82,13 @@ new Vue({
             this.count++;
         },
         add_love() {
+            let loginStaus =sessionStorage.getItem("status");
+            console.log(loginStaus);
+            if(loginStaus == null){
+                // $('.favorite_line').on('click', function () {
+                    loginMember('<strong>請先登入會員</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
+                    return;                
+            }
             aaa = this.arr.indexOf(this.id);
             // console.log(aaa);
             if (aaa != -1) {
