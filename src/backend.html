@@ -862,7 +862,7 @@
             mounted() {  //當網頁開啟時馬上執行以下內容
                 // 判斷有無登入
                 fetch('php/backend.php')
-                    .then(res => res)
+                    .then(res => res.json())
                     .then(res =>{
                         // 撈PHP現在登入狀態，回傳狀態是 Error 就踢回去登入頁面
                         if (res['status']=='Error') {
