@@ -17,7 +17,7 @@
         <li data-tab-target="#member" class="active tab padding_10">會員資料</li>
         <li data-tab-target="#pwd" class="tab padding_10">密碼變更</li>
         <li data-tab-target="#order" class="tab padding_10">訂單查詢</li>
-        <li data-tab-target="#favor" class="tab padding_10">收藏清單</li>
+        <li id="showFavorPic" data-tab-target="#favor" class="tab padding_10">收藏清單</li>
       </ul>
 
         <!-- 會員資料內容 -->
@@ -431,49 +431,71 @@
         });
     </script>
 
-    <script>
-      // Vue for 訂單資料
-      new Vue({
-        el:'#table_id',
-        data:{
-          list:{
-            id:'',
-            date: '',
-            total:'',
-            status:'',
-            total_price:''
-          },
-          lists:[],
-        },
-        mounted() {
-          fetch('php/orderList.php')
-          .then(res => res.json())
-          .then(res => this.lists = res)
-        },
+<script>
+  // Vue for 訂單資料 & 詳情
+  new Vue({
+    el:'#table_id',
+    data:{
+      // lists:
+      // {
+      //   id:'',
+      //   date: '',
+      //   total_price:'',
+      //   status:''
+      // },
+      // items:[],
+      products:[],
+      lists:[],
+      
+    },
+    mounted() {
+      let mid = loginInfo.id
+      // console.log(mid)
 
-        methods: {
-          action(id){
-          //   // alert(id)
-          //   fetch("php/orderDetail.php", {
-          //   method: "POST",
-          //   headers: {
-          //     "Content-Type": "application/json",
-          //     Accept: "application/json",
-          //   },
-          //   mode: "cors",
-          //   body: JSON.stringify({  
+      fetch('php/orderList.php',{
+        method:'POST',
+        headers:{
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        mode: "cors",
+        body: JSON.stringify({ id : mid })
+      })
+      .then(res => res.json())
+      .then(res => this.lists = res)
+    },
 
-          //     orderId : id
+    methods: {
+      aaa(id){
+        this.fetch(id)
+      },
+        // alert(id)  
               
-          //   })
-          // })
-          }
-        },
-      });
-    </script>
+      fetch(id){
+        fetch('php/orderDetail.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // 'Accept': 'application/json'
+          },
+          // mode: "cors",
+          body: JSON.stringify({ oid: id })
+        })
+        .then(res => res.json())
+        .then(res => 
+        {
+          this.products=res
+        })
+    }
+
+      
+    },
+  });
+
+</script>
     
-    <script>
-      // Vue for 訂單詳情
+    <!-- <script>
+      Vue for 訂單詳情
       new Vue({
         el:'#poDetail',
         data:{
@@ -493,7 +515,7 @@
         },
         methods: {
           action(id){
-            // alert(id)
+            alert(id)
             fetch("php/orderDetail.php", {
             method: "POST",
             headers: {
@@ -511,7 +533,7 @@
           }
         },
       });
-    </script>
+    </script> -->
 
   </body>
 </html>

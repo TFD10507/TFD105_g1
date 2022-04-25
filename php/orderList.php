@@ -1,10 +1,8 @@
 <?php
 // 這支用來fetch mySQL G1.order的訂單清單
-// get all info
-require ("connection.php");
+require("connection.php");
 
-//建立SQL語法 搜尋全部資料
-// $SQL = " SELECT * FROM `order` order by id ";
+$orderList = json_decode(file_get_contents("php://input"), true);
 
 $SQL = " SELECT
             o.id,
@@ -24,21 +22,18 @@ $SQL = " SELECT
             on o.id = ol.order_id
          join product p
             on ol.product_id = p.id
-         where m.id = 1
+         where o.member_id = :id
          group by
          o.id";
 
-//執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
-$statement = $link->query($SQL);
-// $statement = $pdo->prepare($SQL);
-// $statement = $pdo->prepare($SQL);
+$statement = $link->prepare($SQL);
 
-// //抓出全部且依照順序封裝成一個二維陣列
-$data = $statement->fetchAll(PDO::FETCH_ASSOC);
+$statement->bindValue(":id", $orderList['id']);
 
 $statement->execute();
 
-// // 轉回去JSON檔案
+$data = $statement->fetchAll();
+
 echo json_encode($data);
 
 ?>

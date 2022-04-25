@@ -265,17 +265,22 @@
         }
 
         // 取input value, 賦值進mySQL table
-        var submit = document.getElementById("submit");
-        submit.addEventListener("click", function () {
+        var customSubmit = document.getElementById("customSubmit");
+
+        customSubmit.addEventListener("click", function () {
           var kind = document.getElementById("kind").value;
           var color = document.getElementById("color").value;
           var quantity = document.getElementById("quantity").value;
           var detail = document.getElementById("detail").value;
-          var loginStatus = JSON.parse(sessionStorage.getItem('status'));
+          
+          // var modalbBtn = document.getElementById("submit");
+          
 
-          if ( loginStatus.successful != true ){
+          if ( loginStatus == null ){
             alert ( "請先登入會員!" );
-            return
+            window.location = 'login.html';
+            // return
+
           }else{
             fetch("php/customizeAdd.php", {
             method: "POST",
@@ -289,40 +294,36 @@
               color: color,
               quantity: quantity,
               detail: detail,
-            }),
+            })
           });
-
-          // 按下送出訂製單後彈出modal, 3秒後重整頁面
-          var modal = document.getElementById("myModal");
-          var modalbBtn = document.getElementById("submit");
-          var span = document.getElementsByClassName("close")[0];
-
-          function refreshPage() {
-            window.location.reload();
           }
-
-          modalbBtn.onclick = function () {
-            modal.style.display = "block";
-            setTimeout(refreshPage, 4000);
-          };
-
-          span.onclick = function () {
-            modal.style.display = "none";
-            setTimeout(refreshPage, 4000);
-          };
-
-          window.onclick = function (event) {
-            if (event.target == modal) {
-              modal.style.display = "none";
-              setTimeout(refreshPage, 4000);
-            }
-          };
-
-          }
-          
         });
-        
       };
+
+      // 按下送出訂製單後彈出modal, 3秒後重整頁面
+      var span = document.getElementsByClassName("close")[0];
+      var modal = document.getElementById("myModal");
+      function refreshPage() {
+        window.location.reload();
+      }
+
+      customSubmit.onclick = function () {
+        modal.style.display = "block";
+        setTimeout(refreshPage, 4000);
+      };
+
+      span.onclick = function () {
+        modal.style.display = "none";
+        setTimeout(refreshPage, 4000);
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+          setTimeout(refreshPage, 4000);
+        }
+      };
+      
     </script>
   </body>
 </html>
