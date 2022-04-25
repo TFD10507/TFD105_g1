@@ -5,7 +5,7 @@ require("connection.php");
 //---------------------------------------------------
 // variable
 $member = json_decode(file_get_contents("php://input"));
-print_r($member);
+// print_r($member);
 // exit();
 
 //SQL語法
@@ -14,14 +14,14 @@ $sql = "UPDATE member
                 name = :user,
                 address = :address,
                 phone = :phone
-            WHERE id = 3;";
+            WHERE account = :account";
 
 //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
 // $statement = $link->query($sql);
 $statement = $link->prepare($sql);
 // $statement = $pdo->prepare($sql);
 
-// // $statement->bindValue(":account", $member->account);
+$statement->bindValue(":account", $member->account);
 $statement->bindValue(":user", $member->user);
 $statement->bindValue(":address", $member->address);
 $statement->bindValue(":phone", $member->phone);
