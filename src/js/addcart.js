@@ -121,7 +121,7 @@ new Vue({
                     sessionStorage.setItem("collect", JSON.stringify([storagedata]));
                 }
             }else{
-                loginMember('<strong>請先登入會員</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
+                loginMember('<strong>請先登入會員</strong>', 'error', '<button class="btn btn-warning m-3"><a href="/login.html" style="color: #fff">登入</a></button> ');
             }
         },
         remove_love(num) {
