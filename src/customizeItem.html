@@ -250,7 +250,12 @@
         // 取input value, 賦值進mySQL table
         // 送出訂製單按鈕
         var customSubmit = document.getElementById("customSubmit");
-
+        var loginStatus = JSON.parse(sessionStorage.getItem('status'));
+        
+        if(loginStatus !== null){
+          var id = loginStatus.id;
+        }
+        
         customSubmit.addEventListener("click", function () {
           var kind = document.getElementById("kind").value;
           var color = document.getElementById("color").value;
@@ -295,12 +300,30 @@
             },
             mode: "cors",
             body: JSON.stringify({
+              id : id,
               kind: kind,
               color: color,
               quantity: quantity,
               detail: detail,
             })
-          });
+          })
+          .then((response) => {
+            if (response.ok) {
+            // console.log(response);
+              alert("已提交客製化清單，工作人員會盡快與您聯繫確認，謝謝‧");
+              window.location = "customize.html";
+            } else {
+                alert("Error");
+            }
+          })
+              // .then(data => {
+              //   console.log(data);
+              //   // if ($custom.message === "Success") {
+              //   //   alert("已提交客製化清單，工作人員會盡快與您聯繫確認，謝謝‧");
+                  
+              //     sessionStorage.removeItem('status')
+              //   // }
+              // });
           }
         });
       };
