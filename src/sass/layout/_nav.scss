@@ -40,13 +40,19 @@ header {
                     a {
                         color: $p_color2;
                         margin-right: 0;
+                        padding: 10px;
                         &:hover {
-                            color: darken($p_color2, 20);
+                            font-weight: bold;
+                            // color: darken($p_color2, 20);
+                            border-bottom: .5px solid white;
                         }
                     }
-                    &:hover {
-                        color: darken($p_color2, 20);
-                    }
+                    // button{
+                    //     &:hover {
+                    //         font-weight: bold;
+                    //         color: darken($p_color2, 20);
+                    //     }
+                    // }
                 }
                 li:nth-child(1) {
                     margin-bottom: 20px;

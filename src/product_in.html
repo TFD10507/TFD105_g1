@@ -35,7 +35,7 @@
                 <h3 id="001" data-prd_id="001">{{pro[0].name}}</h3>
                 <img
                   :id="'line_'+pro[0].id"
-                  class="favorite"
+                  class="favorite favorite_line"
                   src="./img/product/favorite.svg"
                   alt=""
                   srcset=""
@@ -80,8 +80,10 @@
           </section>
         </main>
       </section>
+
       @@include('layout/top.html') @@include('layout/footer.html')
     </div>
+
     <script src="./js/addcart.min.js"></script>
   </body>
 </html>

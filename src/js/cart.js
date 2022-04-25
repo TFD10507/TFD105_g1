@@ -254,7 +254,7 @@ new Vue({
         if (user) {
           this.step = 'B';
         } else {
-          loginMember('<strong>請先登入會員</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
+          loginMember('<strong>請先登入會員</strong>', 'error', '<button class="btn btn-warning m-3"><a href="/login.html" style="color: #fff">登入</a></button> ');
         }
       } else {
         loginMember('<strong>購物車是空的唷！</strong>', 'warning');

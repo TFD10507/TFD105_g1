@@ -210,6 +210,12 @@ body.product_in {
         .count {
             display: flex;
             padding-bottom: 10px;
+            
+            // justify-content: center;
+            // width: 20px;
+            // height: auto;
+            // width: 10px;
+            // height: 10px;
 
             div {
                 font-size: 20px;
@@ -246,6 +252,11 @@ body.product_in {
         li.content {
             text-align: center;
             justify-content: center;
+        }
+        .count {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
         }
 
         section.cart {
