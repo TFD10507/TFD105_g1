@@ -222,8 +222,11 @@
       // 取出收藏清單在sessionStorage的資料：getItem()
       var favorPic = JSON.parse(sessionStorage.getItem('collect'));
       var showFavorPic = document.getElementById('showFavorPic');
+      // console.log(showFavorPic);
+      // if(){} 判斷是否為空
 
-      for (let i = 0; i < favorPic.length; i++){
+      if( favorPic != null ){
+        for (let i = 0; i < favorPic.length; i++){
         showFavorPic.addEventListener('click', function(){
           let div = document.getElementById("favorRow");
           div.insertAdjacentHTML("beforeend", 
@@ -246,8 +249,9 @@
             sessionStorage.setItem('collect', filterItem);
           })
         })
-      }   
-      
+        }
+      }
+   
       // 使用jQuery Ajax將mySQL data 資料fetch到html:會員資料
       var loginInfo = JSON.parse(sessionStorage.getItem('status'));
       // console.log(loginInfo.id);
@@ -476,9 +480,7 @@
         {
           this.products=res
         })
-    }
-
-      
+      }
     },
   });
 

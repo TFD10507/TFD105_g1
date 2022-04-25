@@ -127,23 +127,6 @@
                     max="99"
                   />
                 </div>
-                <!-- counter -->
-                <!-- <div class="count__wrapper count__wrapper--ml .count">
-                  <div class="qty-input">
-                    <button class="qty-count qty-count--minus .count" data-action="minus" type="button">
-                      <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 2L3 7L8 12L7 14L0 7L7 0L8 2Z" fill="black" />
-                      </svg>
-                    </button>
-                    <input class="product-qty input" type="number" name="product-qty" min="0" max="10" value="1">
-                    <button class="qty-count qty-count--add" data-action="add" type="button">
-                      <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 2L5 7L0 12L1 14L8 7L1 0L0 2Z" fill="black" />
-                      </svg>
-                    </button>
-                  </div>
-                </div> -->
-                <!-- Counter || END -->
 
                 <div class="comment margin_top_20">
                   其他需求<br /><textarea id="detail" name="detail"></textarea>
@@ -265,16 +248,14 @@
         }
 
         // 取input value, 賦值進mySQL table
+        // 送出訂製單按鈕
         var customSubmit = document.getElementById("customSubmit");
 
         customSubmit.addEventListener("click", function () {
           var kind = document.getElementById("kind").value;
           var color = document.getElementById("color").value;
           var quantity = document.getElementById("quantity").value;
-          var detail = document.getElementById("detail").value;
-          
-          // var modalbBtn = document.getElementById("submit");
-          
+          var detail = document.getElementById("detail").value;        
 
           if ( loginStatus == null ){
             alert ( "請先登入會員!" );
@@ -282,6 +263,30 @@
             // return
 
           }else{
+            // 按下送出訂製單後彈出modal, 3秒後重整頁面
+            var span = document.getElementsByClassName("close")[0];
+            var modal = document.getElementById("myModal");
+            function refreshPage() {
+              window.location.reload();
+            }
+
+            customSubmit.onclick = function () {
+              modal.style.display = "block";
+              setTimeout(refreshPage, 4000);
+            };
+
+            span.onclick = function () {
+              modal.style.display = "none";
+              setTimeout(refreshPage, 4000);
+            };
+
+            window.onclick = function (event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+                setTimeout(refreshPage, 4000);
+              }
+            };
+            
             fetch("php/customizeAdd.php", {
             method: "POST",
             headers: {
@@ -301,28 +306,28 @@
       };
 
       // 按下送出訂製單後彈出modal, 3秒後重整頁面
-      var span = document.getElementsByClassName("close")[0];
-      var modal = document.getElementById("myModal");
-      function refreshPage() {
-        window.location.reload();
-      }
+      // var span = document.getElementsByClassName("close")[0];
+      // var modal = document.getElementById("myModal");
+      // function refreshPage() {
+      //   window.location.reload();
+      // }
 
-      customSubmit.onclick = function () {
-        modal.style.display = "block";
-        setTimeout(refreshPage, 4000);
-      };
+      // customSubmit.onclick = function () {
+      //   modal.style.display = "block";
+      //   setTimeout(refreshPage, 4000);
+      // };
 
-      span.onclick = function () {
-        modal.style.display = "none";
-        setTimeout(refreshPage, 4000);
-      };
+      // span.onclick = function () {
+      //   modal.style.display = "none";
+      //   setTimeout(refreshPage, 4000);
+      // };
 
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-          setTimeout(refreshPage, 4000);
-        }
-      };
+      // window.onclick = function (event) {
+      //   if (event.target == modal) {
+      //     modal.style.display = "none";
+      //     setTimeout(refreshPage, 4000);
+      //   }
+      // };
       
     </script>
   </body>
