@@ -81,7 +81,7 @@ $(function () {
         icon.style.color= "#76706A";
     }
     //  判斷是否登入
-    console.log(result);
+    // console.log(result);
     icon.addEventListener("click", function () {
         if (result == null) {
             location.href = "./login.html";

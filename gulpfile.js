@@ -153,6 +153,9 @@ exports.minimg = min_images
          .pipe(babel({
              presets: ['@babel/env']
          }))
+         .pipe(rename({   
+            extname:'.min.js' //修改副檔名
+         }))
          .pipe(uglify())
          .pipe(dest('dist/js'));
  }
