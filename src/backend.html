@@ -1095,8 +1095,7 @@
                             .then(res => res.json())
                         // .then(res => console.log(res))
                         alert('新增成功')
-                        this.coupon_price = ''
-                        this.coupon_day = ''
+                        location.reload()
                     }
                 },
                 //點擊新增折扣事件結尾
@@ -1122,7 +1121,6 @@
                         })
                             .then(res => res.json())
                         alert('新增成功')
-                        // this.kind_name = ''
                         location.reload()
                     }
                 },
@@ -1149,6 +1147,7 @@
                                 }
                             }
                         })
+                        alert('新增成功')
                         location.reload()
                     }
                 },
@@ -1183,6 +1182,7 @@
                                 }
                             }
                         })
+                        alert('新增成功')
                         location.reload()
                     }
                 },
@@ -1316,7 +1316,6 @@
                     this.img = e.target.result
                 },
                 // 新增商品圖片預覽 結束
-                
             },
         })
     </script>
