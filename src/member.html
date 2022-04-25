@@ -260,50 +260,63 @@
       
       // 使用jQuery Ajax將mySQL data 資料fetch到html:會員資料
       var loginInfo = JSON.parse(sessionStorage.getItem('status'));
-      console.log(loginInfo.id);
+      // console.log(loginInfo.id);
       
-      fetch("php/memberSelect.php",{
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        mode: "cors",
-        body: JSON.stringify({
-                  
-          id : loginInfo.id
-
-        }),
-      });
-
       $(document).ready(function() {
-        $.ajax({
-          type: "POST",
-          // 先撈出mySQL內的會員資料
-          url: "php/memberSelect.php",
-          data:{},
-          dataType: "html",
-          async: false,
-          success: function(data) {
-            var data = JSON.parse(data);
-            // console.log(data);
-            // $('#member').html(data)
-            // $('#member').append(data)
-            $("#disabledTextInput").val(data[0].account)
-            $("#memberName").val(data[0].name)
-            $("#memberAdd").val(data[0].address)
-            $("#memberPhone").val(data[0].phone)
-          }
-        });
+        var loginInfo = JSON.parse(sessionStorage.getItem('status'));
+        fetch('php/memberSelect.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          mode: "cors",
+          body: JSON.stringify({ 
+            id: loginInfo.id,
+          })
+        })
+          .then(res => res.json())
+          .then(res => {
+            
+            $("#disabledTextInput").val(res[0].account)
+            $("#memberName").val(res[0].name)
+            $("#memberAdd").val(res[0].address)
+            $("#memberPhone").val(res[0].phone)
+          // console.log(res)
+          })
+
+        // $.ajax({
+        //   type: "POST",
+        //   // 先撈出mySQL內的會員資料
+        //   url: "php/memberSelect.php",
+        //   data:{
+        //     id : loginInfo.id,
+        //   },
+        //   dataType: "json",
+        //   async: false,
+        //   success: function(data) {
+        //     // var data = JSON.stringify(data);
+        //     var data = JSON.parse(data);
+        //     // console.log(data);
+        //     // $('#member').html(data)
+        //     // $('#member').append(data)
+        //     $("#disabledTextInput").val(data[0].account)
+        //     $("#memberName").val(data[0].name)
+        //     $("#memberAdd").val(data[0].address)
+        //     $("#memberPhone").val(data[0].phone)
+        //   }
+        // });
       });
 
         // 更改的會員資料update進mySQL
         var memberSubmit = document.getElementById('memberSubmit');
         // console.log(memberSubmit);
         memberSubmit.addEventListener('click', function(){
+          var account = document.getElementById("disabledTextInput").value
           var user = document.getElementById("memberName").value
           var address = document.getElementById("memberAdd").value
           var phone = document.getElementById("memberPhone").value
+          // console.log(account);
 
           fetch("php/memberUpdate.php", {
             method: "POST",
@@ -313,10 +326,12 @@
             },
             mode: "cors",
             body: JSON.stringify({
-                  
+              
+              account: account,
               user: user,  
               address: address,
               phone: phone,
+
             }),
           })
 
@@ -325,7 +340,7 @@
             if(response.ok){
               alert("資料已更新");
             }else{
-              "error"
+              alert("Error");
             }
           })
         });
