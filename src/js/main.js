@@ -1,7 +1,7 @@
 $(function () {
     // 購物車側邊欄的出現控制
-    // ！！！！！！上線網址要改！！！！！！
-    if (location.href != "http://localhost/TFD105_g1/dist/cart.html") {
+    // ！！！！！！上線網址要改！！！！！
+    if (location.href != "./cart.html") {
         $('.btn_cart_open').on('click', function () {
             $(".cart_side").animate({
                 right: '0'
@@ -75,7 +75,7 @@ $(function () {
     //  判斷是否登入
     icon.addEventListener("click", function (e) {
         if (result == null) {
-            location.href = "/login.html";
+            location.href = "./login.html";
         } else {
             if (result.successful) {
                 // ===== 導覽列的會員中心子選單 ======
@@ -88,7 +88,7 @@ $(function () {
                     
                     if (location.href.includes("member.html")) {
                         console.log("1");
-                        location.href = "/index.html";
+                        location.href = "./index.html";
                     } else {
                         // 重整頁面
                         location.href = location.href;
@@ -96,7 +96,7 @@ $(function () {
                     sessionStorage.removeItem("status");
                 })
             } else {
-                location.href = "/login.html";
+                location.href = "./login.html";
             }
         }
     });
