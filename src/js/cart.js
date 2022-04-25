@@ -238,6 +238,7 @@ new Vue({
         .catch(error => { //失敗傳回價錢0
           // 判斷是否有輸入號碼
           if (this.coupon.code == "") {
+            this.coupon.price = '0'
             this.couponErrMsg = "需輸入折價券號碼";
           } else if (this.coupon.code != "") {
             this.coupon.price = '0'

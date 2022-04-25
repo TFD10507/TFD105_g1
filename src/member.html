@@ -215,7 +215,7 @@
 
       // 從sessionStorages拿出會員資料
       var memberInfo = sessionStorage.getItem('status');
-      console.log(memberInfo); 
+      // console.log(memberInfo); 
 
       // 訂單查詢明細展開   
       // $(".detail").on('click', function(event) {
@@ -259,6 +259,23 @@
       }   
       
       // 使用jQuery Ajax將mySQL data 資料fetch到html:會員資料
+      var loginInfo = JSON.parse(sessionStorage.getItem('status'));
+      console.log(loginInfo.id);
+      
+      fetch("php/memberSelect.php",{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({
+                  
+          id : loginInfo.id
+
+        }),
+      });
+
       $(document).ready(function() {
         $.ajax({
           type: "POST",
@@ -295,7 +312,8 @@
               Accept: "application/json",
             },
             mode: "cors",
-            body: JSON.stringify({    
+            body: JSON.stringify({
+                  
               user: user,  
               address: address,
               phone: phone,
@@ -314,13 +332,46 @@
 
         // 修改密碼
         var pswUpdate = document.getElementById('pswUpdate');
+
         pswUpdate.addEventListener('click', function valid(){
-          var oldPassword = document.getElementById('oldPassword').value;
-          var newPassword = document.getElementById('newPassword').value;
-          var newPassword2 = document.getElementById('newPassword2').value;
-          // console.log(oldPassword);
-          // console.log(newPassword);
-          // console.log(newPassword2);
+        var oldPassword = document.getElementById('oldPassword').value;
+        var newPassword = document.getElementById('newPassword').value;
+        var newPassword2 = document.getElementById('newPassword2').value;
+        // console.log(oldPassword);
+        // console.log(newPassword);
+        // console.log(newPassword2);
+
+        // 判定舊密碼 新密碼 確認新密碼是否為空值, 或一致
+        if(oldPassword==""){
+          alert(" 請填寫舊密碼 !!");
+          document.getElementById('newPassword').focus();
+          return false;
+          }
+          else if(oldPassword !== loginInfo.password){
+          alert(" 舊密碼輸入錯誤，請確認 !!");
+          document.getElementById('newPassword').focus();
+          return false;
+          }
+          else if(newPassword.length < 7 || newPassword2.length < 7){
+          alert(" 密碼長度不足，請輸入7位以上數字或英文 !!");
+          document.getElementById('newPassword').focus();
+          return false;
+          }
+          else if(newPassword==""){
+          alert(" 請填寫新密碼 !!");
+          document.getElementById('newPassword').focus();
+          return false;
+          }
+          else if(newPassword2==""){
+          alert(" 請再次填寫新密碼 !!");
+          document.getElementById('newPassword2').focus();
+          return false;
+          }
+          else if(newPassword != newPassword2){
+          alert(" 新密碼不符，請確認  !!");
+          document.getElementById('newPassword2').focus();
+          return false;
+          }
 
           fetch("php/passwordUpdate.php", {
             method: "POST",
@@ -343,7 +394,8 @@
 
           // 判定更新是否成功 成功: alert資料已更新
           .then(response =>{
-            console.log(response);
+            // console.log(response);
+            // {id: 9, account: '123@gmail.com', password: '123123123', successful: true}
             if(response.ok){
               return response.json()
             }else{
@@ -351,45 +403,13 @@
             }
             
           }).then(data =>{
-            console.log(data);
+            // console.log(data);
             if(data.message === 'Success'){
               alert("密碼已更新，請重新登入");
               window.location = 'login.html';
               sessionStorage.removeItem('status')
             }
           })
-
-          // 判定舊密碼 新密碼 確認新密碼是否為空值, 或一致
-          if(oldPassword==""){
-          alert(" 請填寫舊密碼 !!");
-          document.getElementById('newPassword').focus();
-          return false;
-          }
-          else if(oldPassword !== loginInfo.password){
-          alert(" 舊密碼輸入錯誤，請確認 !!");
-          document.getElementById('newPassword').focus();
-          return false;
-          }
-          else if(newPassword==""){
-          alert(" 請填寫新密碼 !!");
-          document.getElementById('newPassword').focus();
-          return false;
-          }
-          else if(newPassword2==""){
-          alert(" 請再次填寫新密碼 !!");
-          document.getElementById('newPassword2').focus();
-          return false;
-          }
-          else if(newPassword != newPassword2){
-          alert(" 新密碼不符，請確認  !!");
-          document.getElementById('newPassword2').focus();
-          return false;
-          }
-          else if(newPassword.length < 7 || newPassword2.length < 7){
-          alert(" 密碼長度不足，請輸入7位以上數字或英文 !!");
-          document.getElementById('newPassword').focus();
-          return false;
-          }
 
           return true
 

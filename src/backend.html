@@ -25,12 +25,12 @@
 
 <body class="backend">
 
-    <header class="header">
+    <header class="header" id="logout">
         <img src="./img/backend/backend_logo.svg" alt="">
-        <a href="./backendLogin.html" @click="logout">
+        <button type="button" @click="logout">
             <h5 class="h5">帳號登出</h5>
             <i class="bi bi-box-arrow-right"></i>
-        </a>
+        </button>
     </header>
 
     <main id="app">
@@ -861,9 +861,15 @@
             },
             mounted() {  //當網頁開啟時馬上執行以下內容
                 // 判斷有無登入
-                // fetch('php/Select_member.php')
-                //     .then(res => res.json())
-                //     
+                fetch('php/backend.php')
+                    .then(res => res)
+                    .then(res =>{
+                        // 撈PHP現在登入狀態，回傳狀態是 Error 就踢回去登入頁面
+                        if (res['status']=='Error') {
+                            window.location = "http://localhost/TFD105_g1/dist/backendlogin.html"
+                            // window.location = "https://tibamef2e.com/tfd105/g1/backendLogin.html"
+                        }
+                    })
 
                 //撈出會員資料
                 fetch('php/Select_member.php')
@@ -1310,11 +1316,22 @@
                     this.img = e.target.result
                 },
                 // 新增商品圖片預覽 結束
+                
+            },
+        })
+    </script>
+    <script>
+        new Vue({
+            el:'#logout',
+            data:{},
+            methods:{
                 logout(){
+                    // alert('111')
                     fetch('php/backend_logout.php')
                         .then(res => res.json())
+                        location.reload()
                 },
-            },
+            }
         })
     </script>
 </body>
