@@ -75,22 +75,28 @@ $(function () {
     //  判斷是否登入
     icon.addEventListener("click", function (e) {
         if (result == null) {
-            location.href = "./login.html";
+            location.href = "/login.html";
         } else {
             if (result.successful) {
                 // ===== 導覽列的會員中心子選單 ======
                 e.preventDefault();
                 $('.member_list').toggle(500);
                 // 當點擊到會員登出時
-                $('#iconLogout').on("click",function(e){
+                $('#iconLogout').on("click", function (e) {
                     e.preventDefault();
                     // 清除會員狀態
+                    
+                    if (location.href.includes("member.html")) {
+                        console.log("1");
+                        location.href = "/index.html";
+                    } else {
+                        // 重整頁面
+                        location.href = location.href;
+                    }
                     sessionStorage.removeItem("status");
-                    // 重整頁面
-                    location.href = location.href;
                 })
             } else {
-                location.href = "./login.html";
+                location.href = "/login.html";
             }
         }
     });
@@ -106,7 +112,7 @@ $(function () {
         })
     }
 
-    
+
 
 
 });
