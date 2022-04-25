@@ -37,7 +37,7 @@ new Vue({
         this.id = urlParams.get('id');
     },
     methods: {
-        //加入購物車-存入sessionStorage
+        //加入購物車-存入sessionStorage        
         addcart() {
             loginMember("<strong>已加入購物車</strong>", 'success');
             let goods = {
@@ -82,6 +82,14 @@ new Vue({
             this.count++;
         },
         add_love() {
+<<<<<<< HEAD
+            let loginStaus =sessionStorage.getItem("status");
+            console.log(loginStaus);
+            if(loginStaus == null){
+                // $('.favorite_line').on('click', function () {
+                    loginMember('<strong>請先登入會員</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
+                    return;                
+            }
             aaa = this.arr.indexOf(this.id);
             // console.log(aaa);
             if (aaa != -1) {
@@ -117,6 +125,48 @@ new Vue({
                 sessionStorage.setItem("collect", JSON.stringify(myListArray));
             } else {
                 sessionStorage.setItem("collect", JSON.stringify([storagedata]));
+=======
+            let status = sessionStorage.getItem("status");
+            if(status){
+                aaa = this.arr.indexOf(this.id);
+                // console.log(aaa);
+                if (aaa != -1) {
+                    return;
+                }
+                //抓取產品id
+                // console.log(this.id);
+                // console.log(this.pro[0].name);
+                // let fabtn = document.querySelectorAll(".favorite");            
+                // fabtn[1].classList.add("-on");     
+                this.isShow = false;
+                // test_2();
+                // console.log(fabtn);
+                let proimg = document.querySelector("#mainImg");
+                let storagedata = {
+                    product_id: this.id,
+                    product_img: proimg.src,
+                    product_name: $('#001').text(),
+                }
+                // 設定條件式,為了讓下面的值設為null
+                let myList = sessionStorage.getItem("collect");
+                // console.log(myList);
+                // test2藉由click觸發下列事件
+                //假設mylist裡面有東西的時候
+                // for(let i = 0;i<=myListArray.length;i++){
+                // }            
+                if (myList != null) {
+                    // 設定myListArray=物件化過的myList
+                    let myListArray = JSON.parse(myList);
+                    // 將storagedata推入myListArray
+                    myListArray.push(storagedata);
+                    // 將sessionstorage推入myListArray
+                    sessionStorage.setItem("collect", JSON.stringify(myListArray));
+                } else {
+                    sessionStorage.setItem("collect", JSON.stringify([storagedata]));
+                }
+            }else{
+                loginMember('<strong>請先登入會員</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
+>>>>>>> 71bb112f959de3aa2a12aca974e19add8dfa38f4
             }
         },
         remove_love(num) {

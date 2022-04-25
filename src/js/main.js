@@ -1,7 +1,7 @@
 $(function () {
     // 購物車側邊欄的出現控制
-    // ！！！！！！上線網址要改！！！！！！
-    if (location.href != "http://localhost/TFD105_g1/dist/cart.html") {
+    // ！！！！！！上線網址要改！！！！！
+    if (location.href != "/tfd105/g1/cart.html") {
         $('.btn_cart_open').on('click', function () {
             $(".cart_side").animate({
                 right: '0'
@@ -75,22 +75,28 @@ $(function () {
     //  判斷是否登入
     icon.addEventListener("click", function (e) {
         if (result == null) {
-            location.href = "./login.html";
+            location.href = "/tfd105/g1/login.html";
         } else {
             if (result.successful) {
                 // ===== 導覽列的會員中心子選單 ======
                 e.preventDefault();
                 $('.member_list').toggle(500);
                 // 當點擊到會員登出時
-                $('#iconLogout').on("click",function(e){
+                $('#iconLogout').on("click", function (e) {
                     e.preventDefault();
                     // 清除會員狀態
+                    
+                    if (location.href.includes("member.html")) {
+                        console.log("1");
+                        location.href = "/tfd105/g1/index.html";
+                    } else {
+                        // 重整頁面
+                        location.href = location.href;
+                    }
                     sessionStorage.removeItem("status");
-                    // 重整頁面
-                    location.href = location.href;
                 })
             } else {
-                location.href = "./login.html";
+                location.href = "/tfd105/g1/login.html";
             }
         }
     });
@@ -102,11 +108,11 @@ $(function () {
         }
     } else {
         $('#wheel-outter-button').on('click', function () {
-            loginMember('<strong>請先登入會員<br>即可獲得轉盤機會</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
+            loginMember('<strong>請先登入會員<br>即可獲得轉盤機會</strong>', 'error', '<button class="btn btn-warning m-3"><a href="/tfd105/g1/login.html" style="color: #fff">登入</a></button> ');
         })
     }
 
-    
+
 
 
 });
