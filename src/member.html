@@ -11,7 +11,7 @@
 
     <main class="container">
       <h2 class="padding_10"><span class="textUnderline">會員中心</span></h1>
-
+      
         <!-- tab頁籤 -->
       <ul class="tabs margin_top_20">
         <li data-tab-target="#member" class="active tab padding_10">會員資料</li>
@@ -19,176 +19,166 @@
         <li data-tab-target="#order" class="tab padding_10">訂單查詢</li>
         <li id="showFavorPic" data-tab-target="#favor" class="tab padding_10">收藏清單</li>
       </ul>
-
+  
         <!-- 會員資料內容 -->
-      <div class="tab-content padding_20">
-        <div id="member" data-tab-content class="active">
+        <div class="tab-content padding_20">
+          <div id="member" data-tab-content class="active">
             <h3>資料變更</h3>
-            <div id="container">
-
-              <div action="php/memberUpdate.php" method="POST">
-                <fieldset disabled>
+              <div id="container">
+  
+                <div action="php/memberUpdate.php" method="POST">
+                  <fieldset disabled>
+                    <div class="row justify-content-center">
+                      <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                        <label for="disabledTextInput">會員帳號:</label>
+                        <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" name="userID">
+                      </div>
+                    </div>
+                  </fieldset>
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
-                      <label for="disabledTextInput">會員帳號:</label>
-                      <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" name="userID">
+                      <label for="memberName">姓名:</label>
+                      <input type="text" class="form-control margin_top_10" id="memberName" placeholder="輸入姓名" name="userName">
                     </div>
                   </div>
-                </fieldset>
-                
-                <div class="row justify-content-center">
-                  <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
-                    <label for="memberName">姓名:</label>
-                    <input type="text" class="form-control margin_top_10" id="memberName" placeholder="輸入姓名" name="userName">
-                  </div>
-                </div>
-                <div class="row justify-content-center">
-                  <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
-                    <label for="memberAdd">聯絡地址:</label>
-                    <input type="text" class="form-control margin_top_10" id="memberAdd" placeholder="輸入地址" name="userAdd">
-                  </div>
-                </div>
-                <div class="row justify-content-center">
-                  <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
-                    <label for="memberPhone">電話:</label>
-                    <input type="text" class="form-control margin_top_10" id="memberPhone" placeholder="輸入電話" name="userTel">
-                  </div>
-                </div>
-                
-                <!-- <fieldset disabled>
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
-                      <label for="disabledTextInput">生日:</label>
-                      <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input" name="userBD">
+                      <label for="memberAdd">聯絡地址:</label>
+                      <input type="text" class="form-control margin_top_10" id="memberAdd" placeholder="輸入地址" name="userAdd">
                     </div>
                   </div>
-                </fieldset> -->
-
-                <div class="form-group margin_top_30 member-btn">
-                  <input id="memberSubmit" type="submit" class="btn_style">
+                  <div class="row justify-content-center">
+                    <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                      <label for="memberPhone">電話:</label>
+                      <input type="text" class="form-control margin_top_10" id="memberPhone" placeholder="輸入電話" name="userTel">
+                    </div>
+                  </div>
+  
+                  <div class="form-group margin_top_30 member-btn">
+                    <input id="memberSubmit" type="submit" class="btn_style">
+                  </div>
                 </div>
               </div>
-
-            </div>
-        </div>
-
-        <!-- 密碼變更內容 -->
-        <div id="pwd" data-tab-content>
+          </div>
+  
+          <!-- 密碼變更內容 -->
+          <div id="pwd" data-tab-content>
             <h3>密碼變更</h3>
-            <div id="container">
-              <!-- <form action="php/passwordUpdate.php" method="post"> -->
-              <div>
-                <div class="row justify-content-center">
-                  <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
-                    <label for="oldPassword">舊密碼:</label>
-                    <input type="password" class="form-control margin_top_10" id="oldPassword" placeholder="輸入舊密碼" required>
+              <div id="container">
+                <!-- <form action="php/passwordUpdate.php" method="post"> -->
+                <div>
+                  <div class="row justify-content-center">
+                    <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                      <label for="oldPassword">舊密碼:</label>
+                      <input type="password" class="form-control margin_top_10" id="oldPassword" placeholder="輸入舊密碼" required>
+                    </div>
                   </div>
-                </div>
-                <div class="row justify-content-center">
-                  <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
-                    <label for="newPassword">新密碼:</label>
-                    <input type="password" class="form-control margin_top_10" id="newPassword" placeholder="輸入新密碼" required>
+                  <div class="row justify-content-center">
+                    <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                      <label for="newPassword">新密碼:</label>
+                      <input type="password" class="form-control margin_top_10" id="newPassword" placeholder="輸入新密碼" required>
+                    </div>
                   </div>
-                </div>
-                <div class="row justify-content-center">
-                  <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
-                    <label for="newPassword2">確認新密碼:</label>
-                    <input type="password" class="form-control margin_top_10" id="newPassword2" placeholder="再次輸入新密碼" required>
+                  <div class="row justify-content-center">
+                    <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
+                      <label for="newPassword2">確認新密碼:</label>
+                      <input type="password" class="form-control margin_top_10" id="newPassword2" placeholder="再次輸入新密碼" required>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group margin_top_30 password-btn">
-                  <input id="pswUpdate" type="submit" class="btn_style" value="修改密碼">
+                  <div class="form-group margin_top_30 password-btn">
+                    <input id="pswUpdate" type="submit" class="btn_style" value="修改密碼">
+                  </div>
                 </div>
               </div>
-
-            </div>
-        </div>
-
-        <!-- 訂單查詢內容 -->
-        <div id="order" data-tab-content>             
-          <table id="table_id" class="table table-striped table-sm">
-            <thead class="order-title padding_10">
-              <tr>
-                <th>訂單編號</th>
-                <th>購買日期</th>
-                <th>訂單總額</th>
-                <th>訂單狀態</th>
-                <th>訂單詳情</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 訂單 -->
-              <tr class="list-title padding_10" v-for="(list,index) in lists">
-                <!-- 訂單編號	購買日期	訂單總額	訂單狀態 -->
-                <td>{{list.id}}</td> 
-                <td>{{list.date}}</td>
-                <td>NT${{list.total_price}}</td>
-                <td>{{list.status}}</td>
-                <td>
-                <!-- <td class="detailPO unclick" data-type = "1"> -->
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary" @click="action(list.id)"
-                  data-toggle="modal" data-target="#poDetail">
-                  點擊查看詳情
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table> 
-        </div>
-
-        <!-- 訂單詳情內容 --> <!-- Modal -->
-          <div class="modal fade" id="poDetail" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">訂單詳情</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="border:none; text-decoration: none; background-color:transparent;">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <table class="table table-striped">
-                    <thead id="orderDetail_id" class="order-title padding_10 poDetail" >
-                      <tr class="detail1 hide .order-content" >
-                        <th style="text-align: center;">商品編號</th>
-                        <th style="text-align: center;">商品名稱</th>
-                        <th style="text-align: center;">數量</th>
-                        <th style="text-align: center;">單價</th>
-                        <th style="text-align: center;">小計</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="detail1 hide .order-content poDetail" v-for="(detail,index) in details" >
-                        <td style="text-align: center;">{{detail.id}}</td>
-                        <td style="text-align: center;">{{detail.name}}</td>
-                        <td style="text-align: center;">{{detail.quantity}}</td>
-                        <td style="text-align: center;">{{detail.price}}</td>
-                        <td style="text-align: center;">{{detail.sub_price}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal" style="border-radius: 2px;">關閉</button>
+          </div>
+  
+          <!-- 訂單查詢內容 -->
+          <div id="order" data-tab-content>
+            <div id="table_id">
+              <table  class="table table-striped table-sm">
+                <thead class="order-title padding_10">
+                  <tr>
+                    <th>訂單編號</th>
+                    <th>購買日期</th>
+                    <th>訂單總額</th>
+                    <th>訂單狀態</th>
+                    <th>訂單詳情</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 訂單 -->
+                  <tr class="list-title padding_10" v-for="(list,index) in lists">
+                    <!-- 訂單編號	購買日期	訂單總額	訂單狀態 -->
+                    <td>{{list.id}}</td> 
+                    <td>{{list.date}}</td>
+                    <td>NT${{list.total_price}}</td>
+                    <td>{{list.status}}</td>
+                    <td>
+                    <!-- <td class="detailPO unclick" data-type = "1"> -->
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-primary" @click="aaa(list.id)"
+                      data-toggle="modal" data-target="#poDetail">
+                      點擊查看詳情
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+  
+              <!-- 訂單詳情內容 --> <!-- Modal -->
+              <div class="modal fade" id="poDetail" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">訂單詳情</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="border:none; text-decoration: none; background-color:transparent;">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table table-striped">
+                        <thead id="orderDetail_id" class="order-title padding_10 poDetail" >
+                          <tr class="detail1 hide .order-content" >
+                            <th style="text-align: center;">商品編號</th>
+                            <th style="text-align: center;">商品名稱</th>
+                            <th style="text-align: center;">數量</th>
+                            <th style="text-align: center;">單價</th>
+                            <th style="text-align: center;">小計</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="detail1 hide .order-content poDetail" v-for="(product,index) in products" >
+                            <td style="text-align: center;">{{product.id}}</td>
+                            <td style="text-align: center;">{{product.name}}</td>
+                            <td style="text-align: center;">{{product.quantity}}</td>
+                            <td style="text-align: center;">{{product.price}}</td>
+                            <td style="text-align: center;">{{product.sub_price}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" style="border-radius: 2px;">關閉</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-        <!-- 收藏清單內容 -->
-        <div id="favor" data-tab-content class="container">
-          <div id="favorRow" class="row">
-            
-            <!-- <div class="liked_product col-12 col-lg-3 col-md-6">
-              <i class="heart-like-button fas fa-heart"></i>
-              <img class="liked_img" src="./img/member/favor/chair_001.jpg">
-              <span> 羅丹辦公椅</span>
-            </div> -->
-
+  
+          <!-- 收藏清單內容 -->
+          <div id="favor" data-tab-content class="container">
+            <div id="favorRow" class="row">
+              
+              <!-- <div class="liked_product col-12 col-lg-3 col-md-6">
+                <i class="heart-like-button fas fa-heart"></i>
+                <img class="liked_img" src="./img/member/favor/chair_001.jpg">
+                <span> 羅丹辦公椅</span>
+              </div> -->
+  
+            </div>
           </div>
         </div>
-      </div>
     </main>
 
     @@include('layout/footer.html')
