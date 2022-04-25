@@ -1,12 +1,4 @@
 $(function () {
-
-    // ===== 導覽列的會員中心子選單 ======
-    // $('.member_ul').on("click", function (e) {
-    //     e.preventDefault();
-    //     // $('.member_list').toggleClass("active");
-    //     $('.member_list').toggle(500);
-    // });
-
     // 購物車側邊欄的出現控制
     // ！！！！！！上線網址要改！！！！！！
     if (location.href != "http://localhost/TFD105_g1/dist/cart.html") {
@@ -75,23 +67,25 @@ $(function () {
 
     let result = JSON.parse(sessionStorage.getItem('status'));
     let icon = document.querySelector(".fa-user-circle");
-    if(result) {
-        icon.style.color= "#A0643E";
+    if (result) {
+        icon.style.color = "#A0643E";
     } else {
-        icon.style.color= "#76706A";
+        icon.style.color = "#76706A";
     }
     //  判斷是否登入
     // console.log(result);
-    icon.addEventListener("click", function () {
+    icon.addEventListener("click", function (e) {
         if (result == null) {
             location.href = "./login.html";
         } else {
             if (result.successful) {
-                location.href = "./member.html";
+                // ===== 導覽列的會員中心子選單 ======
+                e.preventDefault();
+                $('.member_list').toggle(500);
+                // location.href = "./member.html";
             } else {
                 location.href = "./login.html";
             }
-
         }
     });
 
