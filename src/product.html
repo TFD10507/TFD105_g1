@@ -52,8 +52,8 @@
           data-aos="fade-up"
           data-aos-duration="3000"
           v-for="(product,i) in productArr">
+          <!-- <a :href="'./product_in.html?id='+product.id"> -->
           <a :href="'./product_in.html?id='+product.id">
-          <!-- <a :href="'./product_in2.html?id='+product.id"> -->
             <div class="product tumbnail thumbnail-3">
               <img :src="product.img" alt="" />
               <!-- <img class="favorite" src="./img/product/favorite.svg" alt="" srcset="" @click.stop.prevent="add_cart()"> -->
