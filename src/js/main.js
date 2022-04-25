@@ -1,7 +1,7 @@
 $(function () {
     // 購物車側邊欄的出現控制
     // ！！！！！！上線網址要改！！！！！
-    if (location.href != "/tfd105/g1/cart.html") {
+    if (location.href != "./cart.html") {
         $('.btn_cart_open').on('click', function () {
             $(".cart_side").animate({
                 right: '0'
@@ -75,7 +75,7 @@ $(function () {
     //  判斷是否登入
     icon.addEventListener("click", function (e) {
         if (result == null) {
-            location.href = "/tfd105/g1/login.html";
+            location.href = "./login.html";
         } else {
             if (result.successful) {
                 // ===== 導覽列的會員中心子選單 ======
@@ -88,7 +88,7 @@ $(function () {
                     
                     if (location.href.includes("member.html")) {
                         console.log("1");
-                        location.href = "/tfd105/g1/index.html";
+                        location.href = "./index.html";
                     } else {
                         // 重整頁面
                         location.href = location.href;
@@ -96,7 +96,7 @@ $(function () {
                     sessionStorage.removeItem("status");
                 })
             } else {
-                location.href = "/tfd105/g1/login.html";
+                location.href = "./login.html";
             }
         }
     });
@@ -108,7 +108,7 @@ $(function () {
         }
     } else {
         $('#wheel-outter-button').on('click', function () {
-            loginMember('<strong>請先登入會員<br>即可獲得轉盤機會</strong>', 'error', '<button class="btn btn-warning m-3"><a href="/tfd105/g1/login.html" style="color: #fff">登入</a></button> ');
+            loginMember('<strong>請先登入會員<br>即可獲得轉盤機會</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
         })
     }
 
