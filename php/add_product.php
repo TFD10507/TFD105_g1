@@ -5,12 +5,13 @@ include('connection.php');
 if (is_array($_FILES)) {
    if (is_uploaded_file($_FILES['productpic']['tmp_name'])) {
       // 準確找尋資料夾位子
-      $parent=dirname(__DIR__);
+      // $parent=dirname(__DIR__);
       $sourcePath = $_FILES['productpic']['tmp_name'];
       // 傳給資料庫路徑
-      $data_base_path = './img/product/'.$_FILES['productpic']['name'];
+      // $data_base_path = './img/product/'.$_FILES['productpic']['name'];
       // 精準找到檔案位子路徑
-      $targetPath = $parent."\\img\\product\\" . $_FILES['productpic']['name'];
+      // $targetPath = $parent."\\img\\product\\" . $_FILES['productpic']['name'];
+      $targetPath = "./img/product/" . $_FILES['productpic']['name'];
       move_uploaded_file($sourcePath, $targetPath);
    }
 }
