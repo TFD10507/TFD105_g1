@@ -83,8 +83,6 @@ $(function () {
                 // 當點擊到會員登出時
                 $('#iconLogout').on("click", function (e) {
                     e.preventDefault();
-                    // 清除會員狀態
-                    
                     if (location.href.includes("member.html")) {
                         console.log("1");
                         location.href = "./index.html";
@@ -92,7 +90,9 @@ $(function () {
                         // 重整頁面
                         location.href = location.href;
                     }
+                    // 清除會員狀態
                     sessionStorage.removeItem("status");
+                    sessionStorage.removeItem("cart");
                 })
             } else {
                 location.href = "./login.html";
