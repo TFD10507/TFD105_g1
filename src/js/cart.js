@@ -51,18 +51,18 @@ new Vue({
         month: "",
       },
       cardcsc: "",
-      //   cardNum: {
-      //     no1: "1111",
-      //     no2: "1111",
-      //     no3: "1111",
-      //     no4: "1111",
-      //   },
-      //   cardName: "111",
-      //   cardDate: {
-      //     year: "11",
-      //     month: "11",
-      //   },
-      //   cardcsc: "111",
+      // cardNum: {
+      //   no1: "1111",
+      //   no2: "1111",
+      //   no3: "1111",
+      //   no4: "1111",
+      // },
+      // cardName: "111",
+      // cardDate: {
+      //   year: "11",
+      //   month: "11",
+      // },
+      // cardcsc: "111",
     },
     // ========= 驗證資訊是否錯誤 ========
     // 收件人姓名
@@ -253,8 +253,8 @@ new Vue({
         // 判斷是否登入
         if (user) {
           this.step = 'B';
-          if(this.coupon.price > 0 ){
-            sessionStorage.setItem("coupon",this.coupon.price);
+          if (this.coupon.price > 0) {
+            sessionStorage.setItem("coupon", this.coupon.price);
           }
         } else {
           loginMember('<strong>請先登入會員</strong>', 'error', '<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ');
@@ -266,92 +266,97 @@ new Vue({
     },
     // 提交訂單
     sendOrder() {
+      console.log($("input#check").prop('checked'));
       let status = JSON.parse(sessionStorage.getItem("status"));
       // console.log(status.id);
 
       // 0.檢查收款人資訊是否填寫完整
       // 如果格子都有填寫，要檢查是否完整
-      if (
-        this.userInfo.name != "" &&
-        this.userInfo.phone != "" &&
-        this.userInfo.address != "" &&
-        this.cardInfo.cardNum.no1 != "" &&
-        this.cardInfo.cardNum.no2 != "" &&
-        this.cardInfo.cardNum.no3 != "" &&
-        this.cardInfo.cardNum.no4 != "" &&
-        this.cardInfo.cardName != "" &&
-        this.cardInfo.cardDate.year != "" &&
-        this.cardInfo.cardDate.month != "" &&
-        this.cardInfo.cardcsc != ""
-      ) {
-        if (this.userNameError) {
-          loginMember(`<strong>${this.userNameErrMsg}</strong>`, 'error');
-        } else if (this.phoneError) {
-          loginMember(`<strong>${this.phoneErrMsg}</strong>`, 'error');
-        } else if (this.addressError) {
-          loginMember(`<strong>${this.addressErrMsg}</strong>`, 'error');
-        } else if (this.cardNumError) {
-          loginMember(`<strong>${this.cardNumErrMsg}</strong>`, 'error');
-        } else if (this.cardNameError) {
-          loginMember(`<strong>${this.cardNameErrMsg}</strong>`, 'error');
-        } else if (this.cardDateError) {
-          loginMember(`<strong>${this.cardDateErrMsg}</strong>`, 'error');
-        } else if (this.cardcscError) {
-          loginMember(`<strong>${this.cardcscErrMsg}</strong>`, 'error');
-        } else { //如果有填寫，也驗證完成，可以送出訂單！
-          // 1.傳送訂單詳細資訊給後台
-          fetch('php/send_order.php', {
-              method: 'POST',
-              headers: { // 告訴後端說TYPE是JSON
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                // 訂單詳細資訊
-                id: status.id,
-                name: this.userInfo.name,
-                phone: this.userInfo.phone,
-                address: this.userInfo.address,
-                other: this.userInfo.other,
-                products: this.products,
-              })
-            })
-            .then(res => res.json())
-            .then(data => { //收到回應後做的事
-              // 跳轉到完成訂單畫面
-              this.step = 'C';
-
-              //將訂單內容丟回去前端的vue
-              let self = this;
-
-              $.ajax({
-                url: 'php/get_order.php',
-                type: 'POST',
-                async: false,
-                data: {
-                  memberId: status.id,
-                  orderId: data,
+      // if (($("input#check").prop('checked')) == "true") {
+        if (
+          this.userInfo.name != "" &&
+          this.userInfo.phone != "" &&
+          this.userInfo.address != "" &&
+          this.cardInfo.cardNum.no1 != "" &&
+          this.cardInfo.cardNum.no2 != "" &&
+          this.cardInfo.cardNum.no3 != "" &&
+          this.cardInfo.cardNum.no4 != "" &&
+          this.cardInfo.cardName != "" &&
+          this.cardInfo.cardDate.year != "" &&
+          this.cardInfo.cardDate.month != "" &&
+          this.cardInfo.cardcsc != ""
+        ) {
+          if (this.userNameError) {
+            loginMember(`<strong>${this.userNameErrMsg}</strong>`, 'error');
+          } else if (this.phoneError) {
+            loginMember(`<strong>${this.phoneErrMsg}</strong>`, 'error');
+          } else if (this.addressError) {
+            loginMember(`<strong>${this.addressErrMsg}</strong>`, 'error');
+          } else if (this.cardNumError) {
+            loginMember(`<strong>${this.cardNumErrMsg}</strong>`, 'error');
+          } else if (this.cardNameError) {
+            loginMember(`<strong>${this.cardNameErrMsg}</strong>`, 'error');
+          } else if (this.cardDateError) {
+            loginMember(`<strong>${this.cardDateErrMsg}</strong>`, 'error');
+          } else if (this.cardcscError) {
+            loginMember(`<strong>${this.cardcscErrMsg}</strong>`, 'error');
+          } else { //如果有填寫，也驗證完成，可以送出訂單！
+            // 1.傳送訂單詳細資訊給後台
+            fetch('php/send_order.php', {
+                method: 'POST',
+                headers: { // 告訴後端說TYPE是JSON
+                  'Content-Type': 'application/json'
                 },
-                // 成功抓取的話將訂單資訊都丟回到order
-                success: function (res) {
-                  // 存放折價券金額
-                  let coupon = JSON.parse(sessionStorage.getItem("coupon"))
-                  res = JSON.parse(res)
-                  self.order.id = res[0].ID_order
-                  self.order.date = res[0].orderDate
-                  self.order.total = (res[0].total - coupon)
-
-                  loginMember('<strong>提交訂單成功</strong>', 'success');
-
-                  // 3. 交易成功後將sessionstroage(購物車)清空
-                  sessionStorage.removeItem('cart');
-                  
-                },
+                body: JSON.stringify({
+                  // 訂單詳細資訊
+                  id: status.id,
+                  name: this.userInfo.name,
+                  phone: this.userInfo.phone,
+                  address: this.userInfo.address,
+                  other: this.userInfo.other,
+                  products: this.products,
+                })
               })
-            })
+              .then(res => res.json())
+              .then(data => { //收到回應後做的事
+                // 跳轉到完成訂單畫面
+                this.step = 'C';
+
+                //將訂單內容丟回去前端的vue
+                let self = this;
+
+                $.ajax({
+                  url: 'php/get_order.php',
+                  type: 'POST',
+                  async: false,
+                  data: {
+                    memberId: status.id,
+                    orderId: data,
+                  },
+                  // 成功抓取的話將訂單資訊都丟回到order
+                  success: function (res) {
+                    // 存放折價券金額
+                    let coupon = JSON.parse(sessionStorage.getItem("coupon"))
+                    res = JSON.parse(res)
+                    self.order.id = res[0].ID_order
+                    self.order.date = res[0].orderDate
+                    self.order.total = (res[0].total - coupon)
+
+                    loginMember('<strong>提交訂單成功</strong>', 'success');
+
+                    // 3. 交易成功後將sessionstroage(購物車)清空
+                    sessionStorage.removeItem('cart');
+
+                  },
+                })
+              })
+          }
+        } else { //如果格子都沒填寫，提示訊息
+          loginMember(`<strong>未填寫資料</strong>`, 'error');
         }
-      } else { //如果格子都沒填寫，提示訊息
-        loginMember(`<strong>未填寫資料</strong>`, 'error');
-      }
+      // } else {
+      //   loginMember(`<strong>請同意本網站的服務條款及退換貨政策</strong>`, 'error');
+      // }
 
 
     },
