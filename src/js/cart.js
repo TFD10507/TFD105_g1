@@ -333,6 +333,7 @@ new Vue({
                 },
                 // 成功抓取的話將訂單資訊都丟回到order
                 success: function (res) {
+                  // 存放折價券金額
                   let coupon = JSON.parse(sessionStorage.getItem("coupon"))
                   res = JSON.parse(res)
                   self.order.id = res[0].ID_order
