@@ -70,22 +70,22 @@
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                       <label for="oldPassword">舊密碼:</label>
-                      <input id="password-field" type="password" class="form-control margin_top_10" id="oldPassword" placeholder="輸入舊密碼" required>
-                      <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                      <input id="oldPassword" type="password" class="form-control margin_top_10" placeholder="輸入舊密碼" required>
+                      <span toggle="#oldPassword" class="fa-solid fa-eye-slash eye1 field-icon toggle-password"></span>
                     </div>
                   </div>
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                       <label for="newPassword">新密碼:</label>
-                      <input id="password-field" type="password" class="form-control margin_top_10" id="newPassword" placeholder="輸入新密碼" required>
-                      <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                      <input id="newPassword" type="password" class="form-control margin_top_10" placeholder="輸入新密碼" required>
+                      <span toggle="#password-field" class="fa-solid fa-eye-slash eye1 field-icon toggle-password"></span>
                     </div>
                   </div>
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                       <label for="newPassword2">確認新密碼:</label>
-                      <input id="password-field" type="password" class="form-control margin_top_10" id="newPassword2" placeholder="再次輸入新密碼" required>
-                      <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                      <input id="newPassword2" type="password" class="form-control margin_top_10" placeholder="再次輸入新密碼" required>
+                      <span toggle="#newPassword2" class="fa-solid fa-eye-slash eye1 field-icon toggle-password"></span>
                     </div>
                   </div>
                   <div class="form-group margin_top_30 password-btn">
@@ -119,7 +119,7 @@
                     <td>
                     <!-- <td class="detailPO unclick" data-type = "1"> -->
                       <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-primary" @click="aaa(list.id)"
+                      <button type="button" class="btn btn-primary" @click="showDetails(list.id)"
                       data-toggle="modal" data-target="#poDetail">
                       點擊查看詳情
                       </button>
@@ -130,7 +130,7 @@
   
               <!-- 訂單詳情內容 --> <!-- Modal -->
               <div class="modal fade" id="poDetail" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">訂單詳情</h5>
@@ -138,28 +138,40 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <div class="modal-body">
-                      <table class="table table-striped">
-                        <thead id="orderDetail_id" class="order-title padding_10 poDetail" >
-                          <tr class="detail1 hide .order-content" >
-                            <th style="text-align: center;">商品編號</th>
-                            <th style="text-align: center;">商品名稱</th>
-                            <th style="text-align: center;">數量</th>
-                            <th style="text-align: center;">單價</th>
-                            <th style="text-align: center;">小計</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="detail1 hide .order-content poDetail" v-for="(product,index) in products" >
-                            <td style="text-align: center;">{{product.id}}</td>
-                            <td style="text-align: center;">{{product.name}}</td>
-                            <td style="text-align: center;">{{product.quantity}}</td>
-                            <td style="text-align: center;">{{product.price}}</td>
-                            <td style="text-align: center;">{{product.sub_price}}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                      <div class="modal-body">
+                        <table class="table table-striped">
+                          <thead id="orderDetail_id" class="order-title padding_10 poDetail" >
+                            <tr class="detail1 hide .order-content" >
+                              <th style="text-align: center;">商品編號</th>
+                              <th style="text-align: center;">商品名稱</th>
+                              <th style="text-align: center;">數量</th>
+                              <th style="text-align: center;">單價</th>
+                              <th style="text-align: center;">小計</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="detail1 hide .order-content poDetail" v-for="(product,index) in products" >
+                              <td style="text-align: center;">{{product.id}}</td>
+                              <td style="text-align: center;">{{product.name}}</td>
+                              <td style="text-align: center;">{{product.quantity}}</td>
+                              <td style="text-align: center;">{{product.price}}</td>
+                              <td style="text-align: center;">{{product.sub_price}}</td>
+                            </tr>
+                          </tbody>
+                          <thead>
+                            <tr>
+                              <th style="text-align: center;">運費</th>
+                              <th style="text-align: center;">折價券折抵</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td style="text-align: center;">80</td>
+                              <td style="text-align: center;">TEST</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-primary" data-dismiss="modal" style="border-radius: 2px;">關閉</button>
                     </div>
@@ -344,7 +356,6 @@
 
         // 修改密碼
         var pswUpdate = document.getElementById('pswUpdate');
-
         pswUpdate.addEventListener('click', function valid(){
         var oldPassword = document.getElementById('oldPassword').value;
         var newPassword = document.getElementById('newPassword').value;
@@ -407,6 +418,7 @@
           // 判定更新是否成功 成功: alert資料已更新
           .then(response =>{
             // console.log(response);
+            // {id: 9, account: '123@gmail.com', password: '123123123', successful: true}
             if(response.ok){
               return response.json()
             }else{
