@@ -11,7 +11,7 @@
         opacity: 0.5;
         background: none;
         border: 0;
-        
+
         &:hover {
             opacity: 1;
         }
@@ -19,25 +19,25 @@
             max-width: 100%;
         }
         // 跳動動畫
-        -webkit-animation:box 3s infinite ;
-        @-webkit-keyframes box{
-            0%{
-              bottom:120px;
+        -webkit-animation: box 3s infinite;
+        @-webkit-keyframes box {
+            0% {
+                bottom: 120px;
             }
-            50%{
-            bottom:100px; 
-            //   border-bottom-right-radius:25px;
+            50% {
+                bottom: 100px;
+                //   border-bottom-right-radius:25px;
             }
-            100%{
-            bottom:120px;
+            100% {
+                bottom: 120px;
             }
-          }
+        }
     }
     //輪盤樣式設定
-    .modal-content{
+    .modal-content {
         margin: 0 auto;
     }
-    .modal-title{
+    .modal-title {
         font-size: $h2;
         font-weight: 800;
         color: $btn_color;
@@ -46,39 +46,37 @@
         margin-top: 10px;
         display: inline-block;
     }
-    .sec span{
+    .sec span {
         position: relative;
     }
-    .wheel-inner-img{
+    .wheel-inner-img {
         position: absolute;
         bottom: 45px;
         right: -50px;
         width: 70px;
     }
-    .coupon-text{
+    .coupon-text {
         text-align: center;
         font-size: $p;
         margin-bottom: 0px;
     }
-    .modal-body{
+    .modal-body {
         margin-top: -25px;
         padding-bottom: 50px;
     }
-    .modal-footer{
+    .modal-footer {
         height: 100px;
         background-color: $btn_color;
-        
     }
-    .modal-footer span{
+    .modal-footer span {
         color: $p_color2;
         font-size: $nav_fz;
         font-weight: 600;
         margin: 0 auto;
         text-align: center;
-        
     }
     //未登入會員不能玩輪盤ㄛ！
-    .-disable{
+    .-disable {
         pointer-events: none;
         opacity: 0.3;
     }
@@ -114,6 +112,7 @@
             background-image: url("../img/index/pic_slider01.jpg");
             background-size: cover;
             background-position: center top;
+            background-repeat: no-repeat center;
 
             div {
                 // max-width: 1200px;
@@ -125,91 +124,12 @@
                     text-align: left;
                 }
             }
-            .banner_img {
-                // width: 500px;
-                padding-right: 0;
-                margin-top: 50px;
-                position: relative;
-                // position: absolute;
-                // right: 0;
-                // top: 300px;
-                // &::before {
-                //     content: "";
-                //     display: block;
-                //     width: 120px;
-                //     height: 1px;
-                //     background: $p_color;
-                //     transform: rotate(90deg);
-                // }
-
-                img {
-                    max-width: 100%;
-                }
-                // scroll
-                .vertical {
-                    writing-mode: vertical-lr;
-                    position: absolute;
-                    bottom: 90px;
-                    left: -70px;
-                    &::before {
-                        content: "";
-                        display: inline-block;
-                        width: 100px;
-                        height: 0.5px;
-                        background: $p_color;
-                        // transform: rotate(90deg) translateX(130px);
-                        animation: fade 2s linear infinite;
-                    }
-                    @keyframes fade {
-                        0% {
-                            transform: rotate(90deg) translateX(130px);
-                            opacity: 0;
-                        }
-                        50% {
-                            transform: rotate(90deg) translateX(140px);
-                            opacity: 1;
-                        }
-                        100% {
-                            transform: rotate(90deg) translateX(150px);
-                            opacity: 0;
-                        }
-                    }
-                    &::after {
-                        content: "";
-                        display: inline-block;
-                        width: 25px;
-                        height: 0.5px;
-                        background: $p_color;
-                        // transform: rotate(-60deg) translateX(-78px) translateY(52px);
-                        animation: fade2 2s linear infinite;
-                    }
-                    @keyframes fade2 {
-                        0% {
-                            transform: rotate(-60deg) translateX(-78px) translateY(52px);
-                            opacity: 0;
-                        }
-                        50% {
-                            transform: rotate(-60deg) translateX(-86px) translateY(57px);
-                            opacity: 1;
-                        }
-                        100% {
-                            transform: rotate(-60deg) translateX(-95px) translateY(62px);
-                            opacity: 0;
-                        }
-                    }
-                }
-            }
-            @media (max-width: 768.98px) {
-                .banner_img {
-                    margin-top: 20px;
-                }
+        }
+        @media (max-width: 768.98px) {
+            .banner {
+                margin-bottom: 50px;
             }
         }
-        //   @media (max-width: 768.98px) {
-        //       .banner {
-        //           margin-bottom: 50px;
-        //       }
-        //   }
 
         // 關於我們
         .section2 {
