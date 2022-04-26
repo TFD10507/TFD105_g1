@@ -70,19 +70,22 @@
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                       <label for="oldPassword">舊密碼:</label>
-                      <input type="password" class="form-control margin_top_10" id="oldPassword" placeholder="輸入舊密碼" required>
+                      <input id="password-field" type="password" class="form-control margin_top_10" id="oldPassword" placeholder="輸入舊密碼" required>
+                      <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                   </div>
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                       <label for="newPassword">新密碼:</label>
-                      <input type="password" class="form-control margin_top_10" id="newPassword" placeholder="輸入新密碼" required>
+                      <input id="password-field" type="password" class="form-control margin_top_10" id="newPassword" placeholder="輸入新密碼" required>
+                      <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                   </div>
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                       <label for="newPassword2">確認新密碼:</label>
-                      <input type="password" class="form-control margin_top_10" id="newPassword2" placeholder="再次輸入新密碼" required>
+                      <input id="password-field" type="password" class="form-control margin_top_10" id="newPassword2" placeholder="再次輸入新密碼" required>
+                      <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                   </div>
                   <div class="form-group margin_top_30 password-btn">
@@ -422,68 +425,103 @@
           return true
 
         });
+
+
+        // 顯示密碼眼睛
+        $(".toggle-password").click(function() {
+
+          $(this).toggleClass("fa-eye fa-eye-slash");
+          var input = $($(this).siblings('input'));
+
+          if (input.attr("type") == "password") {
+            input.attr("type", "text");
+          } else {
+            input.attr("type", "password");
+          }
+        });
     </script>
 
-<script>
-  // Vue for 訂單資料 & 詳情
-  new Vue({
-    el:'#table_id',
-    data:{
-      // lists:
-      // {
-      //   id:'',
-      //   date: '',
-      //   total_price:'',
-      //   status:''
-      // },
-      // items:[],
-      products:[],
-      lists:[],
-      
-    },
-    mounted() {
-      let mid = loginInfo.id
-      // console.log(mid)
-
-      fetch('php/orderList.php',{
-        method:'POST',
-        headers:{
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+    <script>
+      // Vue for 訂單資料 & 詳情
+      new Vue({
+        el:'#table_id',
+        data:{
+          // lists:
+          // {
+          //   id:'',
+          //   date: '',
+          //   total_price:'',
+          //   status:''
+          // },
+          // items:[],
+          products:[],
+          lists:[],
+          
         },
-        mode: "cors",
-        body: JSON.stringify({ id : mid })
-      })
-      .then(res => res.json())
-      .then(res => this.lists = res)
-    },
+        mounted() {
+          let coupon = sessionStorage.getItem('coupon');
+          let delivery = 80;
+          console.log(coupon);
 
-    methods: {
-      aaa(id){
-        this.fetch(id)
-      },
-        // alert(id)  
-              
-      fetch(id){
-        fetch('php/orderDetail.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            // 'Accept': 'application/json'
+          let mid = loginInfo.id
+          // console.log(mid)
+
+          fetch('php/orderList.php',{
+            method:'POST',
+            headers:{
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            mode: "cors",
+            body: JSON.stringify({ id : mid })
+          })
+          .then(res => res.json())
+          .then(res => {
+            this.lists.push({
+              id: res[0].id,
+              date: res[0].date,
+              total_price: res[0].total_price - coupon + delivery,
+              status: res[0].status,
+            })
+            for (i = 1; i < res.length ; i++){
+              this.lists.push({
+                id: res[i].id,
+                date: res[i].date,
+                total_price: res[i].total_price,
+                status: res[i].status,
+            })
+            }
+          }
+            // this.lists = res,
+          )
+        },
+
+        methods: {
+          showDetails(id){
+            this.fetch(id)
           },
-          // mode: "cors",
-          body: JSON.stringify({ oid: id })
-        })
-        .then(res => res.json())
-        .then(res => 
-        {
-          this.products=res
-        })
-      }
-    },
-  });
+            // alert(id)  
+                  
+          fetch(id){
+            fetch('php/orderDetail.php', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                // 'Accept': 'application/json'
+              },
+              // mode: "cors",
+              body: JSON.stringify({ oid: id })
+            })
+            .then(res => res.json())
+            .then(res => 
+            {
+              this.products=res
+            })
+          }
+        },
+      });
 
-</script>
+    </script>
     
     <!-- <script>
       Vue for 訂單詳情
