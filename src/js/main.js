@@ -1,7 +1,6 @@
 $(function () {
     // 購物車側邊欄的出現控制
-    // ！！！！！！上線網址要改！！！！！
-    if (location.href != "./cart.html") {
+    if (location.href != "https://tibamef2e.com/tfd105/g1/cart.html") {
         $('.btn_cart_open').on('click', function () {
             $(".cart_side").animate({
                 right: '0'
