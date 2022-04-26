@@ -253,12 +253,16 @@ new Vue({
         // 判斷是否登入
         if (user) {
           this.step = 'B';
+          if(this.coupon.price > 0 ){
+            sessionStorage.setItem("coupon",this.coupon.price);
+          }
         } else {
           loginMember('<strong>請先登入會員</strong>', 'error', '<button class="btn btn-warning m-3"><a href="/login.html" style="color: #fff">登入</a></button> ');
         }
       } else {
         loginMember('<strong>購物車是空的唷！</strong>', 'warning');
       }
+
     },
     // 提交訂單
     sendOrder() {
@@ -329,15 +333,18 @@ new Vue({
                 },
                 // 成功抓取的話將訂單資訊都丟回到order
                 success: function (res) {
+                  // 存放折價券金額
+                  let coupon = JSON.parse(sessionStorage.getItem("coupon"))
                   res = JSON.parse(res)
                   self.order.id = res[0].ID_order
                   self.order.date = res[0].orderDate
-                  self.order.total = res[0].total
+                  self.order.total = (res[0].total - coupon)
 
                   loginMember('<strong>提交訂單成功</strong>', 'success');
 
                   // 3. 交易成功後將sessionstroage(購物車)清空
                   sessionStorage.removeItem('cart');
+                  
                 },
               })
             })
