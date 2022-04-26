@@ -106,6 +106,8 @@
                     <th>訂單總額</th>
                     <th>訂單狀態</th>
                     <th>訂單詳情</th>
+                    <th>運費</th>
+                    <th>折價券折抵</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -116,6 +118,8 @@
                     <td>{{list.date}}</td>
                     <td>NT${{list.total_price}}</td>
                     <td>{{list.status}}</td>
+                    <td>80</td>
+                    <td>{{list.coupon}}</td>
                     <td>
                     <!-- <td class="detailPO unclick" data-type = "1"> -->
                       <!-- Button trigger modal -->
@@ -167,7 +171,7 @@
                           <tbody>
                             <tr>
                               <td style="text-align: center;">80</td>
-                              <td style="text-align: center;">TEST</td>
+                              <td style="text-align: center;">{{coupon}}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -468,12 +472,14 @@
           // items:[],
           products:[],
           lists:[],
-          
+          coupon:"",
+          coupon1: 0,
         },
         mounted() {
           let coupon = sessionStorage.getItem('coupon');
-          let delivery = 80;
-          console.log(coupon);
+          this.coupon = coupon;
+          let delivery = parseInt('80');
+          // console.log(coupon);
 
           let mid = loginInfo.id
           // console.log(mid)
@@ -493,16 +499,20 @@
               id: res[0].id,
               date: res[0].date,
               total_price: res[0].total_price - coupon + delivery,
-              status: res[0].status,
+              status: res[0].status, 
+              coupon: this.coupon,            
             })
+
             for (i = 1; i < res.length ; i++){
               this.lists.push({
                 id: res[i].id,
                 date: res[i].date,
-                total_price: res[i].total_price,
+                total_price: res[i].total_price - 0 + delivery,
                 status: res[i].status,
-            })
-            }
+                coupon: this.coupon1,
+              })
+
+            }      
           }
             // this.lists = res,
           )
@@ -512,8 +522,7 @@
           showDetails(id){
             this.fetch(id)
           },
-            // alert(id)  
-                  
+            // alert(id)       
           fetch(id){
             fetch('php/orderDetail.php', {
               method: 'POST',
@@ -526,13 +535,19 @@
             })
             .then(res => res.json())
             .then(res => 
-            {
-              this.products=res
+              {
+                this.products=res
+              // this.products.push({
+              //   id: res[0].id,
+              // name: res[0].name,
+              // quantity: res[0].quantity,
+              // price: res[0].price,
+              // sub_price: res[0].sub_price,
+              // })
             })
           }
         },
       });
-
     </script>
     
     <!-- <script>
