@@ -159,7 +159,26 @@
     </main>
 
     @@include('layout/footer.html')
+    <script>
+      function sendCustomOrder(msg, icon, html) {
+          Swal.fire({
+              title: msg,
+              icon: icon,
+              html: html,
 
+              showConfirmButton: false, // 確認按鈕（預設會顯示不用設定）
+              confirmButtonText: '參加活動', //　按鈕顯示文字
+              confirmButtonAriaLabel: '參加活動', // 網頁無障礙用
+              confirmButtonColor: '#75706b', // 修改按鈕色碼
+
+              // 使用同確認按鈕
+              // showDenyButton: true, // 否定按鈕
+              showCancelButton: false, // 取消按鈕
+
+              buttonsStyling: false, // 是否使用sweetalert按鈕樣式（預設為true）
+          })
+      }
+    </script>
     <script>
       window.onload = function () {
         const color_btn_el = document.querySelectorAll(".colors .color");
@@ -263,34 +282,35 @@
           var detail = document.getElementById("detail").value;        
 
           if ( loginStatus == null ){
-            alert ( "請先登入會員!" );
-            window.location = 'login.html';
+            sendCustomOrder('<strong>請先登入會員</strong>', 'error','<button class="btn btn-warning m-3"><a href="./login.html" style="color: #fff">登入</a></button> ')
+            // alert ( "請先登入會員!" );
+            // window.location = 'login.html';
             // return
 
           }else{
             // 按下送出訂製單後彈出modal, 3秒後重整頁面
-            var span = document.getElementsByClassName("close")[0];
-            var modal = document.getElementById("myModal");
-            function refreshPage() {
-              window.location.reload();
-            }
+            // var span = document.getElementsByClassName("close")[0];
+            // var modal = document.getElementById("myModal");
+            // function refreshPage() {
+            //   window.location.reload();
+            // }
 
-            customSubmit.onclick = function () {
-              modal.style.display = "block";
-              setTimeout(refreshPage, 4000);
-            };
+            // customSubmit.onclick = function () {
+            //   modal.style.display = "block";
+            //   setTimeout(refreshPage, 4000);
+            // };
 
-            span.onclick = function () {
-              modal.style.display = "none";
-              setTimeout(refreshPage, 4000);
-            };
+            // span.onclick = function () {
+            //   modal.style.display = "none";
+            //   setTimeout(refreshPage, 4000);
+            // };
 
-            window.onclick = function (event) {
-              if (event.target == modal) {
-                modal.style.display = "none";
-                setTimeout(refreshPage, 4000);
-              }
-            };
+            // window.onclick = function (event) {
+            //   if (event.target == modal) {
+            //     modal.style.display = "none";
+            //     setTimeout(refreshPage, 4000);
+            //   }
+            // };
             
             fetch("php/customizeAdd.php", {
             method: "POST",
@@ -309,9 +329,11 @@
           })
           .then((response) => {
             if (response.ok) {
-            // console.log(response);
-              alert("已提交客製化清單，工作人員會盡快與您聯繫確認，謝謝‧");
-              window.location = "customize.html";
+              sendCustomOrder('<strong>訂製單已提交，工作人員會盡快與您聯繫確認，謝謝</strong>', 'success','<button class="btn btn-warning m-3"><a href="./customize.html" style="color: #fff">回到客製化首頁</a></button> ')
+              // const { successful } = body;
+              // console.log(response);
+              // alert("已提交客製化清單，工作人員會盡快與您聯繫確認，謝謝‧");
+              // window.location = "customize.html";
             } else {
                 alert("Error");
             }
@@ -327,31 +349,6 @@
           }
         });
       };
-
-      // 按下送出訂製單後彈出modal, 3秒後重整頁面
-      // var span = document.getElementsByClassName("close")[0];
-      // var modal = document.getElementById("myModal");
-      // function refreshPage() {
-      //   window.location.reload();
-      // }
-
-      // customSubmit.onclick = function () {
-      //   modal.style.display = "block";
-      //   setTimeout(refreshPage, 4000);
-      // };
-
-      // span.onclick = function () {
-      //   modal.style.display = "none";
-      //   setTimeout(refreshPage, 4000);
-      // };
-
-      // window.onclick = function (event) {
-      //   if (event.target == modal) {
-      //     modal.style.display = "none";
-      //     setTimeout(refreshPage, 4000);
-      //   }
-      // };
-      
     </script>
   </body>
 </html>
