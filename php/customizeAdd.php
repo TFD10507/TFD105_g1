@@ -6,30 +6,37 @@ require("connection.php");
 
 $customize = json_decode(file_get_contents("php://input"));
 echo json_encode($customize);
-// echo ("hello");
+// print_r($customize);
+// exit;
 
 // 自動生成清單編號 17碼
 $cusID = date('YmdHis').rand(100,999);
-// echo $cusID;
 
 //建立SQL
-$sql = "insert into G1. customization ( member_id, color,  detail, date, quantity, customizeOrderID, kind, status )
-      values (1, :color, :detail, NOW(), :quantity, $cusID, :kind, '待處理');";
+$sql = "insert into customization ( member_id, color,  detail, date, quantity, customizeOrderID, kind, status )
+      values (:id, :color, :detail, NOW(), :quantity, $cusID, :kind, '待處理');";
 
 //包裝起來才可以使PHP 用bindValue
 $statement = $link->prepare($sql);
-// $statement = $pdo->prepare($sql);
 
-//下列都是自定義PHP變數  , 不然看面資料庫看不懂 
+$statement->bindValue(":id", $customize->id);
 $statement->bindValue(":kind", $customize->kind);
 $statement->bindValue(":color", $customize->color);
 $statement->bindValue(":quantity", $customize->quantity);
 $statement->bindValue(":detail", $customize->detail);
 
- //執行
+$data = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+//執行
 $statement->execute();
+
+$result_count = $statement->rowCount();
+
+// 判定是否更新成功 
+$custom["message"] = $result_count > 0 ? "Success" : "Error";
 
 //  echo json_encode(['status'=> 'SUCCESS']);
 //  echo "新增成功!";
 
+echo json_encode($custom["message"]);
 ?>

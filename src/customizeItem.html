@@ -127,23 +127,6 @@
                     max="99"
                   />
                 </div>
-                <!-- counter -->
-                <!-- <div class="count__wrapper count__wrapper--ml .count">
-                  <div class="qty-input">
-                    <button class="qty-count qty-count--minus .count" data-action="minus" type="button">
-                      <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 2L3 7L8 12L7 14L0 7L7 0L8 2Z" fill="black" />
-                      </svg>
-                    </button>
-                    <input class="product-qty input" type="number" name="product-qty" min="0" max="10" value="1">
-                    <button class="qty-count qty-count--add" data-action="add" type="button">
-                      <svg class="config__arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 2L5 7L0 12L1 14L8 7L1 0L0 2Z" fill="black" />
-                      </svg>
-                    </button>
-                  </div>
-                </div> -->
-                <!-- Counter || END -->
 
                 <div class="comment margin_top_20">
                   其他需求<br /><textarea id="detail" name="detail"></textarea>
@@ -152,7 +135,7 @@
                 <!-- Button trigger modal 按下送出訂製單出現彈窗 -->
                 <div class="form-group margin_top_30 submit-btn">
                   <a
-                    id="submit"
+                    id="customSubmit"
                     type="button"
                     class="btn_style"
                     data-toggle="modal"
@@ -265,18 +248,50 @@
         }
 
         // 取input value, 賦值進mySQL table
-        var submit = document.getElementById("submit");
-        submit.addEventListener("click", function () {
+        // 送出訂製單按鈕
+        var customSubmit = document.getElementById("customSubmit");
+        var loginStatus = JSON.parse(sessionStorage.getItem('status'));
+        
+        if(loginStatus !== null){
+          var id = loginStatus.id;
+        }
+        
+        customSubmit.addEventListener("click", function () {
           var kind = document.getElementById("kind").value;
           var color = document.getElementById("color").value;
           var quantity = document.getElementById("quantity").value;
-          var detail = document.getElementById("detail").value;
-          var loginStatus = JSON.parse(sessionStorage.getItem('status'));
+          var detail = document.getElementById("detail").value;        
 
-          if ( loginStatus.successful != true ){
+          if ( loginStatus == null ){
             alert ( "請先登入會員!" );
-            return
+            window.location = 'login.html';
+            // return
+
           }else{
+            // 按下送出訂製單後彈出modal, 3秒後重整頁面
+            var span = document.getElementsByClassName("close")[0];
+            var modal = document.getElementById("myModal");
+            function refreshPage() {
+              window.location.reload();
+            }
+
+            customSubmit.onclick = function () {
+              modal.style.display = "block";
+              setTimeout(refreshPage, 4000);
+            };
+
+            span.onclick = function () {
+              modal.style.display = "none";
+              setTimeout(refreshPage, 4000);
+            };
+
+            window.onclick = function (event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+                setTimeout(refreshPage, 4000);
+              }
+            };
+            
             fetch("php/customizeAdd.php", {
             method: "POST",
             headers: {
@@ -285,44 +300,58 @@
             },
             mode: "cors",
             body: JSON.stringify({
+              id : id,
               kind: kind,
               color: color,
               quantity: quantity,
               detail: detail,
-            }),
-          });
-
-          // 按下送出訂製單後彈出modal, 3秒後重整頁面
-          var modal = document.getElementById("myModal");
-          var modalbBtn = document.getElementById("submit");
-          var span = document.getElementsByClassName("close")[0];
-
-          function refreshPage() {
-            window.location.reload();
-          }
-
-          modalbBtn.onclick = function () {
-            modal.style.display = "block";
-            setTimeout(refreshPage, 4000);
-          };
-
-          span.onclick = function () {
-            modal.style.display = "none";
-            setTimeout(refreshPage, 4000);
-          };
-
-          window.onclick = function (event) {
-            if (event.target == modal) {
-              modal.style.display = "none";
-              setTimeout(refreshPage, 4000);
+            })
+          })
+          .then((response) => {
+            if (response.ok) {
+            // console.log(response);
+              alert("已提交客製化清單，工作人員會盡快與您聯繫確認，謝謝‧");
+              window.location = "customize.html";
+            } else {
+                alert("Error");
             }
-          };
-
+          })
+              // .then(data => {
+              //   console.log(data);
+              //   // if ($custom.message === "Success") {
+              //   //   alert("已提交客製化清單，工作人員會盡快與您聯繫確認，謝謝‧");
+                  
+              //     sessionStorage.removeItem('status')
+              //   // }
+              // });
           }
-          
         });
-        
       };
+
+      // 按下送出訂製單後彈出modal, 3秒後重整頁面
+      // var span = document.getElementsByClassName("close")[0];
+      // var modal = document.getElementById("myModal");
+      // function refreshPage() {
+      //   window.location.reload();
+      // }
+
+      // customSubmit.onclick = function () {
+      //   modal.style.display = "block";
+      //   setTimeout(refreshPage, 4000);
+      // };
+
+      // span.onclick = function () {
+      //   modal.style.display = "none";
+      //   setTimeout(refreshPage, 4000);
+      // };
+
+      // window.onclick = function (event) {
+      //   if (event.target == modal) {
+      //     modal.style.display = "none";
+      //     setTimeout(refreshPage, 4000);
+      //   }
+      // };
+      
     </script>
   </body>
 </html>
