@@ -15,7 +15,7 @@
 
    $kind = $_POST['kind'];
    // 把所有在資料庫的商品都選擇出來
-   $sql = "SELECT * FROM product where kind_id = '$kind'";
+   $sql = "SELECT * FROM product where kind_id = '$kind' and status = 0";
    
    $statement = $link->query($sql);
    $data = $statement->fetchAll();
