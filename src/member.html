@@ -404,7 +404,6 @@
           // 判定更新是否成功 成功: alert資料已更新
           .then(response =>{
             // console.log(response);
-            // {id: 9, account: '123@gmail.com', password: '123123123', successful: true}
             if(response.ok){
               return response.json()
             }else{
