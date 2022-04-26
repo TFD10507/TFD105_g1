@@ -70,22 +70,22 @@
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                       <label for="oldPassword">舊密碼:</label>
-                      <input id="password-field" type="password" class="form-control margin_top_10" id="oldPassword" placeholder="輸入舊密碼" required>
-                      <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                      <input id="oldPassword" type="password" class="form-control margin_top_10" placeholder="輸入舊密碼" required>
+                      <span toggle="#oldPassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                   </div>
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                       <label for="newPassword">新密碼:</label>
-                      <input id="password-field" type="password" class="form-control margin_top_10" id="newPassword" placeholder="輸入新密碼" required>
+                      <input id="newPassword" type="password" class="form-control margin_top_10" placeholder="輸入新密碼" required>
                       <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                   </div>
                   <div class="row justify-content-center">
                     <div class="form-group margin_top_20 col-12 col-md-8 col-lg-6">
                       <label for="newPassword2">確認新密碼:</label>
-                      <input id="password-field" type="password" class="form-control margin_top_10" id="newPassword2" placeholder="再次輸入新密碼" required>
-                      <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                      <input id="newPassword2" type="password" class="form-control margin_top_10" placeholder="再次輸入新密碼" required>
+                      <span toggle="#newPassword2" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                   </div>
                   <div class="form-group margin_top_30 password-btn">
@@ -344,7 +344,6 @@
 
         // 修改密碼
         var pswUpdate = document.getElementById('pswUpdate');
-
         pswUpdate.addEventListener('click', function valid(){
         var oldPassword = document.getElementById('oldPassword').value;
         var newPassword = document.getElementById('newPassword').value;
@@ -407,6 +406,7 @@
           // 判定更新是否成功 成功: alert資料已更新
           .then(response =>{
             // console.log(response);
+            // {id: 9, account: '123@gmail.com', password: '123123123', successful: true}
             if(response.ok){
               return response.json()
             }else{
