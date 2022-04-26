@@ -14,8 +14,16 @@ body.product {
     flex-basis: 300px;
     position: sticky;
     z-index: 20;
-    width: 3%;
+    width: 3%;  
+    
+  @media (max-width: 767px) {
+    width:8%;
+  }
 
+  @media (max-width: 400px) {
+    width:8%;
+  
+  }
     section.smallicon {
       margin-left: auto;
       margin: 20px 0;
@@ -33,10 +41,10 @@ body.product {
         flex-direction: column;
 
         a {
-          width: 50px;
-          height: 50px;
+          width: 45px;
+          height: 45px;
           // margin: 5px 10px;
-          padding: 5px 10px;
+          padding: 5px 8px;
           margin-top: 10px;
 
           img.smallNav {
@@ -215,6 +223,14 @@ body.product {
 
     .single-product .table-mobile tr:before {
       display: none;
+    }
+    div.smallicon_case {
+
+      a {
+        width: 20px;
+        height: 20px;
+       
+      }
     }
   }
 }
