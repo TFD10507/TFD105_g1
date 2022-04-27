@@ -84,7 +84,7 @@ new Vue({
         add_love() {
             let status = sessionStorage.getItem("status");
             if(status){
-                aaa = this.arr.indexOf(this.id);
+                var aaa = this.arr.indexOf(this.id);
                 // console.log(aaa);
                 if (aaa != -1) {
                     return;
