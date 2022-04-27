@@ -69,6 +69,7 @@ new Vue({
             }
             //把newcart陣列用cart這個名字儲存到瀏覽器裡
             sessionStorage.setItem("cart", JSON.stringify(newcart));
+            // window.location = "https://tibamef2e.com/tfd105/g1/product.html"
         },
 
         // 頁面上的數量控制鍵 -> 減
@@ -84,7 +85,7 @@ new Vue({
         add_love() {
             let status = sessionStorage.getItem("status");
             if(status){
-                aaa = this.arr.indexOf(this.id);
+                var aaa = this.arr.indexOf(this.id);
                 // console.log(aaa);
                 if (aaa != -1) {
                     return;
@@ -197,7 +198,7 @@ new Vue({
     // 得到商品內頁的商品資訊
     mounted() {
         // sessionStorage.setItem("collect",)
-        item_storage = sessionStorage.getItem("collect");
+        let item_storage = sessionStorage.getItem("collect");
         // console.log(item_storage);
         if (item_storage) {
             item_storage = JSON.parse(item_storage);
@@ -212,9 +213,9 @@ new Vue({
             let url = location.href;
             // console.log(url);
 
-            urlNum = url.split('=')[1];
+            var urlNum = url.split('=')[1];
             // console.log(urlNum);
-            allNum = this.arr.indexOf(urlNum);
+            var allNum = this.arr.indexOf(urlNum);
             // console.log(allNum);
             // -1代表沒有重複      
 
