@@ -69,6 +69,7 @@ new Vue({
             }
             //把newcart陣列用cart這個名字儲存到瀏覽器裡
             sessionStorage.setItem("cart", JSON.stringify(newcart));
+            // window.location = "https://tibamef2e.com/tfd105/g1/product.html"
         },
 
         // 頁面上的數量控制鍵 -> 減
@@ -84,7 +85,7 @@ new Vue({
         add_love() {
             let status = sessionStorage.getItem("status");
             if(status){
-                aaa = this.arr.indexOf(this.id);
+                var aaa = this.arr.indexOf(this.id);
                 // console.log(aaa);
                 if (aaa != -1) {
                     return;
