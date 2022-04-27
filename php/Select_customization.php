@@ -12,7 +12,7 @@
               $statement->execute();
        }else{
               //建立SQL語法   *改成那張表的搜尋全部資料
-              $sql = "SELECT * FROM customization Order by id";
+              $sql = "SELECT * FROM customization Order by id desc";
               //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
               $statement = $link->query($sql);
        }
