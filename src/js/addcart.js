@@ -212,9 +212,9 @@ new Vue({
             let url = location.href;
             // console.log(url);
 
-            urlNum = url.split('=')[1];
+            var urlNum = url.split('=')[1];
             // console.log(urlNum);
-            allNum = this.arr.indexOf(urlNum);
+            var allNum = this.arr.indexOf(urlNum);
             // console.log(allNum);
             // -1代表沒有重複      
 
