@@ -197,7 +197,7 @@ new Vue({
     // 得到商品內頁的商品資訊
     mounted() {
         // sessionStorage.setItem("collect",)
-        item_storage = sessionStorage.getItem("collect");
+        let item_storage = sessionStorage.getItem("collect");
         // console.log(item_storage);
         if (item_storage) {
             item_storage = JSON.parse(item_storage);
