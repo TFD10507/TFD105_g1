@@ -108,6 +108,10 @@
                                     data-target="#addproductedit">
                                     <i class="bi bi-bag-plus-fill add"></i>點擊新增商品
                                 </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#addkindedit">
+                                    <i class="bi bi-bookmark-plus-fill add"></i>點擊新增種類
+                                </button>
                             </section>
                             <!-- 表單顯示區塊起始 -->
                             <thead>
@@ -191,10 +195,6 @@
                             <!-- 標題.新增資料區塊 -->
                             <section>
                                 <h2 class="h2">客製化管理</h2>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#addkindedit">
-                                    <i class="bi bi-bookmark-plus-fill add"></i>點擊新增種類
-                                </button>
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#addcoloredit">
                                     <i class="bi bi-paint-bucket add"></i>點擊新增顏色
@@ -1103,8 +1103,8 @@
                 //點擊新增折扣事件結尾
                 ADDkind() {  // 新增種類 開始
                     let kind_name = this.kind_name
-                    alert(kind_name)
-                    if (this.kind_name != '') {
+                    // alert(kind_name)
+                    if (this.kind_name == '') {
                         alert("種類名稱未填寫")
                         return
                     } else {
