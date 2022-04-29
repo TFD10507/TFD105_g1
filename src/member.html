@@ -18,6 +18,7 @@
         <li data-tab-target="#pwd" class="tab padding_10">密碼變更</li>
         <li data-tab-target="#order" class="tab padding_10">訂單查詢</li>
         <li id="showFavorPic" data-tab-target="#favor" class="tab padding_10">收藏清單</li>
+        <li data-tab-target="#customize" class="tab padding_10">客製化清單</li>
       </ul>
   
         <!-- 會員資料內容 -->
@@ -197,6 +198,80 @@
   
             </div>
           </div>
+
+          <!-- 客製化訂單內容 -->
+          <div id="customize" data-tab-content class="container">
+            <div id="customize_id">
+              <table  class="table table-striped table-sm">
+                <thead class="order-title padding_10">
+                  <tr>
+                    <th style="text-align: center;">訂單編號</th>
+                    <th style="text-align: center;">訂購日期</th>
+                    <th style="text-align: center;">商品名稱</th>
+                    <!-- <th>木材顏色</th> -->
+                    <th style="text-align: center;">數量</th>
+                    <!-- <th>其他需求</th> -->
+                    <th style="text-align: center;">訂單狀態</th>
+                    <th style="text-align: center;">訂單詳情</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 訂單 -->
+                  <tr class="list-title padding_10" v-for="(item,index) in customizes">
+                    <!-- 訂單編號	購買日期 訂單狀態 訂單詳情 -->
+                    <td style="text-align: center;">{{item.customizeOrderID}}</td> 
+                    <td style="text-align: center;">{{item.date}}</td>
+                    <td style="text-align: center;">{{item.kind}}</td>
+                    <!-- <td>{{item.color}}</td> -->
+                    <td style="text-align: center;">{{item.quantity}}</td>
+                    <!-- <td>{{item.detail}}</td> -->
+                    <td style="text-align: center;">{{item.status}}</td>
+                    <td>
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-primary" @click="customDetails(item.customizeOrderID)"
+                      data-toggle="modal" data-target="#customDetail">
+                      點擊查看詳情
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- 客製化詳情內容 --> <!-- Modal -->
+              <div class="modal fade" id="customDetail" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">訂單詳情</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="border:none; text-decoration: none; background-color:transparent;">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                      <div class="modal-body">
+                        <table class="table table-striped">
+                          <thead id="orderDetail_id" class="order-title padding_10 customDetail" >
+                            <tr class="detail1 hide .order-content" >
+                              <th style="text-align: center; width:150px;">木材顏色</th>
+                              <th style="text-align: center; ">其他需求</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="detail1 hide .order-content customDetail" v-for="(item,index) in cusDetails" >
+                              <td style="text-align: center;">{{item.color}}</td>
+                              <td style="text-align: center;">{{item.detail}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" style="border-radius: 2px;">關閉</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
     </main>
 
@@ -422,7 +497,6 @@
           // 判定更新是否成功 成功: alert資料已更新
           .then(response =>{
             // console.log(response);
-            // {id: 9, account: '123@gmail.com', password: '123123123', successful: true}
             if(response.ok){
               return response.json()
             }else{
@@ -462,14 +536,6 @@
       new Vue({
         el:'#table_id',
         data:{
-          // lists:
-          // {
-          //   id:'',
-          //   date: '',
-          //   total_price:'',
-          //   status:''
-          // },
-          // items:[],
           products:[],
           lists:[],
           coupon:"",
@@ -537,59 +603,61 @@
             .then(res => 
               {
                 this.products=res
-              // this.products.push({
-              //   id: res[0].id,
-              // name: res[0].name,
-              // quantity: res[0].quantity,
-              // price: res[0].price,
-              // sub_price: res[0].sub_price,
-              // })
+
             })
           }
         },
       });
     </script>
-    
-    <!-- <script>
-      Vue for 訂單詳情
+
+    <script>
+      // Vue for 客製化清單
       new Vue({
-        el:'#poDetail',
-        data:{
-          detail:{
-            id:'',
-            name:'',
-            quantity: '',
-            price:'',
-            sub_price:''
-          },
-          details:[],
+        el:'#customize',
+        data: {
+          customizes:[],
+          cusDetails:[]
         },
-        mounted() {
-          fetch('php/orderDetail.php')
-          .then(res => res.json())
-          .then(res => this.details = res)
-        },
-        methods: {
-          action(id){
-            alert(id)
-            fetch("php/orderDetail.php", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
+        mounted(){
+          let mid = loginInfo.id
+          // console.log(mid)
+          fetch('php/customList.php',{
+            method:'POST',
+            headers:{
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
             },
             mode: "cors",
-            body: JSON.stringify({  
-
-              orderId : id
-              
-            })
-
+            body: JSON.stringify({ id : mid })
           })
+          .then(res => res.json())
+          .then(res => {
+            this.customizes=res
+          })
+        },
+        methods: {
+          customDetails(id){
+            this.fetch(id)
+          },
+            // alert(id)       
+          fetch(id){
+            fetch('php/customDetail.php', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                // 'Accept': 'application/json'
+              },
+              // mode: "cors",
+              body: JSON.stringify({ cid: id })
+            })
+            .then(res => res.json())
+            .then(res => 
+              {
+                this.cusDetails=res
+            })
           }
         },
-      });
-    </script> -->
-
+      })
+    </script>
   </body>
 </html>
