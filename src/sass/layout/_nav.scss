@@ -249,12 +249,12 @@ header {
             height: 100vh;
             background-color: $s_color2;
             display: flex;
-            transition: right 1s;
+            transition: right .5s;
             .mainImg {
                 position: absolute;
                 top: 0;
                 right: -100%;
-                transition: right 1s 0.5s;
+                transition: right 1s;
                 width: 50%;
                 height: 100vh;
                 background-image: url("../img/index/Group216.png");
@@ -265,7 +265,7 @@ header {
                 position: absolute;
                 top: 0;
                 right: -100%;
-                transition: right 1s 1s;
+                transition: right 1s .3s;
                 width: 50%;
                 height: 100vh;
                 display: flex;

@@ -103,7 +103,7 @@ new Vue({
     "userInfo.name": function () {
       if (this.userInfo.name.length < 2) {
         this.userNameError = true;
-        this.userNameErrMsg = "字數需大於2";
+        this.userNameErrMsg = "字數需大於1";
       } else {
         this.userNameError = false;
         this.userNameErrMsg = "";
@@ -131,7 +131,7 @@ new Vue({
     "cardInfo.cardName": function () {
       if (this.cardInfo.cardName.length < 2) {
         this.cardNameError = true;
-        this.cardNameErrMsg = "字數需大於2";
+        this.cardNameErrMsg = "字數需大於1";
       } else {
         this.cardNameError = false;
         this.cardNameErrMsg = "";
